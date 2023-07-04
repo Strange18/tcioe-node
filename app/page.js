@@ -28,7 +28,7 @@ export default function Home() {
       <div>
         <HeroComponent img={hero} />
         <CampusChiefComponent post={data.post} name={data.name} photo={data.photo} message={data.message} />
-        <AboutThapathaliComponent />
+        <AboutThapathaliComponent/>
         <OurDepartmentsSection />
         <CampusImageGallery />
         <StudentTestimonials />
