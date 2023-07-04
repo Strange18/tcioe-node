@@ -50,7 +50,7 @@ const TextContainer = styled('div')`
 
 const HeaderComponent = ({ menuItems }) => {
   return (
-    <Header>
+    <Header className="header-container">
         <Link href="/" style={{ textDecoration: "none"}}>
           <Flexbox>
             <Logo>
@@ -63,9 +63,20 @@ const HeaderComponent = ({ menuItems }) => {
           </Flexbox>
         </Link>
         
-        <NavBar menuItems={menuItems}/>
+        <div className="header-right-container">
+          <NavBar menuItems={menuItems}/>
 
-        <SearchNotice />
+          <SearchNotice />
+        </div>
+
+        <input type="checkbox" name="" id="check" />
+
+        <div className="hamburger-menu-container">
+          <div className="hamburger-menu">
+            <div></div>
+          </div>
+        </div>
+
     </Header>
   )
 }

@@ -13,14 +13,18 @@ const Container = styled('div')`
     background-color: #F6F5F5;
     padding: 12px 24px;
     border-radius: 16px;
-`
+
+    @media (max-width: 920px) {
+      & {
+        
+      }
+    }
+    `
 
 const LogoContainer = styled('div')`
     width:16px;
     height:16px;
     position:relative;
-
-
 `
 
 const Text = styled('h1')`
