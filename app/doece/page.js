@@ -3,10 +3,11 @@ import React from 'react'
 import HeroComponent from "@/components/HeroComponent";
 import CampusChiefComponent from "@/components/CampusChiefComponent";
 import ProgramsOfferedComponent from "@/components/ProgramsOfferedComponent";
+import KCDSirComponent from "@/components/KCDSirComponent"
 
 //paxi backend bata head_data fetch garera pathaune
 import hero from "@/assets/heroDOECE.png";
-import CampusCheifimage from '@/assets/CC_image.png'
+import CampusCheifimage from '@/assets/KCD.jpg'
 import computer from "@/assets/computer.png";
 import electronics from "@/assets/electronics.png";
 import CampusImageGallery from '@/components/CampusImageGallery';
@@ -40,7 +41,7 @@ const Page = () => {
     <>
       <div>
           <HeroComponent img={hero} />
-          <CampusChiefComponent post={head_data.post} name={head_data.name} photo={head_data.photo} message={head_data.message} />
+          <KCDSirComponent post={head_data.post} name={head_data.name} photo={head_data.photo} message={head_data.message} />
           <ProgramsOfferedComponent programs={programs_data} />
           <CampusImageGallery />
           <StudentTestimonials />

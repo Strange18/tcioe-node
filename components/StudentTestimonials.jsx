@@ -185,7 +185,7 @@ const StudentTestimonials = () => {
             id: 4,
             name: 'Prashant Raj Bista',
             content: 'Studying at Thapathali Campus was an enriching and transformative experience. The engaging learning environment, coupled with a strong emphasis on research and innovation, nurtured my intellectual curiosity and instilled in me a lifelong love for engineering. The exposure to cutting-edge technologies and industry connections provided by the college broadened my perspective and opened doors to exciting career opportunities. I owe my success to Thapathali Campus and its exceptional faculty.',
-            student_id: 'BCT, 077',
+            student_id: 'BCE, 077',
             student_profile: Prashant
         }
 

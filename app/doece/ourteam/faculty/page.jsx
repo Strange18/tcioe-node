@@ -3,7 +3,7 @@ import { RenderTeamCards } from "@/components/RenderTeamCards";
 
 async function getData() {
   const res = await fetch(
-    "https://backend.omprakashsharma.com.np/api/department/staff-members/",
+    "https://notice.tcioe.edu.np/api/department/staff-members/",
     { cache: "no-store" }
   );
   if (!res.ok) {

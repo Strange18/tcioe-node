@@ -196,8 +196,8 @@ const FooterComponent = () => {
                     <Heading>
                         Quick Links
                     </Heading>
-                    <Links href="/admission">About</Links>
-                    <Links href="/about">Admission</Links>
+                    <Links href="/about">About</Links>
+                    <Links href="/admission">Admission</Links>
                     <Links href="/resources">Resources</Links>
                     <Links href="/notice">Notices</Links>
                 </QuickLinks>
@@ -235,7 +235,7 @@ const FooterComponent = () => {
 
                 </SocialMedia>
                 <Copyright>Copyright © 2023 Thapathali campus </Copyright>
-                <RandComponent>^_^</RandComponent>
+                <RandComponent></RandComponent>
 
             </BottomSection>
 
