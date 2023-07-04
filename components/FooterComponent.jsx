@@ -226,10 +226,10 @@ const FooterComponent = () => {
             </Container>
             <BottomSection>
                 <SocialMedia>
-                    <Link href="">
+                    {/* <Link href="">
                     <Image src={Linkedin} width={30} height={30} alt="icon" color="#ffffff"/>
-                    </Link>
-                    <Link href="">
+                    </Link> */}
+                    <Link href="https://www.facebook.com/profile.php?id=100090608649691">
                     <Image src={Facebook} width={30} height={30} alt="icon" color="#ffffff"/>
                     </Link>
 

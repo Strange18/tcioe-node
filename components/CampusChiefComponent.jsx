@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import CampusCheifimage from '../assets/CC_image.png'
+import CampusCheifimage from '../assets/CC_image.webp'
 const Wrapper = styled.div`
     width: 100%;
-    min-height: 552px;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
     padding: 12px 64px 12px 64px;
