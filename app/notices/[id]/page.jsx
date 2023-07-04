@@ -80,12 +80,13 @@ const page = ({ params }) => {
         const getData = async () => {
             const query = await fetch(`https://notices.tcioe.edu.np/api/notice/notices/${params.id}`);
             const response = await query.json();
-            console.log("Response from api", response);
+            // console.log("Response from api", response);
             if(response){
                 const file=response.download_file.split("/")[5]
                 // console.log("download",response.download_file)
                 // console.log("file",response.download_file.split("/"))
                 // console.log("decodedd",decodeURI(file))
+                console.log(decodeURI(file))
                 setNotice(decodeURI(file));
             }
         }

@@ -275,9 +275,9 @@ const page = () => {
         const getData = async () => {
             const query = await fetch("https://notices.tcioe.edu.np/api/notice/notices/", { cache: 'no-store' });
             const response = await query.json();
-            console.log("Responses from api");
+            // console.log("Responses from api");
             setNotices(response);
-            console.log(response);
+            // console.log(response);
         }
         getData();
     }, []);
