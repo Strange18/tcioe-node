@@ -63,11 +63,6 @@ const HeaderComponent = ({ menuItems }) => {
           </Flexbox>
         </Link>
         
-        <div className="header-right-container">
-          <NavBar menuItems={menuItems}/>
-
-          <SearchNotice />
-        </div>
 
         <input type="checkbox" name="" id="check" />
 
@@ -75,6 +70,12 @@ const HeaderComponent = ({ menuItems }) => {
           <div className="hamburger-menu">
             <div></div>
           </div>
+        </div>
+        
+        <div className="header-right-container">
+          <NavBar menuItems={menuItems}/>
+
+          <SearchNotice />
         </div>
 
     </Header>
