@@ -12,7 +12,7 @@ import CampusCheifimage from '../assets/CC_image.png'
 import HeaderComponent from "@/components/HeaderComponent";
 import { menuItems } from "@/utils/menuItems";
 import FooterComponent from "@/components/FooterComponent";
-
+import SubNavBar from "@/components/SubNavBar";
 const data = {
   post: "Campus chief",
   name: "Dr. Prof. Khem Gyawali",
@@ -23,6 +23,7 @@ const data = {
 export default function Home() {
   return (
     <>
+    <SubNavBar/>
       <HeaderComponent menuItems={menuItems}/>
       <div>
         <HeroComponent img={hero} />

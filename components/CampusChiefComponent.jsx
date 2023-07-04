@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import CampusCheifimage from '../assets/CC_image.webp'
+// import CampusCheifimage from '../assets/CC_image.webp'
 const Wrapper = styled.div`
     width: 100%;
     min-height: 400px;
@@ -114,7 +114,7 @@ const CampusChiefComponent = ({post,name,photo,message}) => {
                 </PostContainer>
             </LeftContainer>
             <RightContainer>
-                <Image src={CampusCheifimage} layout="fill" objectFit="contain" alt="Campus Chief" />
+                <Image src={photo} layout="fill" objectFit="contain" alt="Campus Chief" />
             </RightContainer>
         </Container>
         </Wrapper>

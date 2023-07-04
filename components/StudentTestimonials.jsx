@@ -1,23 +1,33 @@
 "use client"
 import React from 'react'
 import styled from 'styled-components'
+import Image from 'next/image'
 import StudentTestimonialCard from './StudentTestimonialCard'
 import usePosition from '../utils/usePosition'
 import Bikrant from '../public/bikrant.jpg'
 import Khemraj from '../public/khemraj.jpg'
 import Shubham from '../public/shubham.jpg'
 import Prashant from '../public/prashant.jpg'
+import vectortest from '../assets/testimonialVector.png'
+import quote from '../assets/quotevector.png'
 
 
 const Container = styled.section`
     position: relative;
-
     width: 100%;
-    height: 100%;
-    background-color: #7177FF;
+    min-height: 50vh;
+    background-color: #fffff;
     padding: 5rem 0rem;
-    margin-top: 276px;
+    margin-top: 250px;
+    display:flex;
+    flex-direction:column;
 
+`
+const Wrapper= styled.div`
+    display:flex;
+    flex-direction:column;
+    background-color:#7177FF;
+    position:relative;
 `
 
 const H1 = styled.h1`
@@ -27,43 +37,59 @@ const H1 = styled.h1`
     margin: 24px 0;
 `
 
-const Quote = ({ width = 185, height = 136}) => (
-    <svg width={width} height={height} viewBox="0 0 185 136" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M115.625 125.135C115.625 131.412 120.749 136.596 126.944 135.586C159.766 130.235 185 102.03 185 68.3126L185 19.1253C185 8.63187 176.493 0.125275 166 0.125275H134.625C124.132 0.125275 115.625 8.63186 115.625 19.1253V49.3126C115.625 59.806 124.132 68.3126 134.625 68.3126H142.875C153.368 68.3126 162.245 77.1872 157.95 86.7617C152.26 99.4479 140.857 109.035 126.886 112.431C120.787 113.914 115.625 118.859 115.625 125.135ZM0 125.135C0 131.412 5.12427 136.596 11.319 135.586C44.1414 130.235 69.375 102.03 69.375 68.3126V19.1253C69.375 8.63187 60.8684 0.125275 50.375 0.125275H19C8.50659 0.125275 0 8.63186 0 19.1253L0 49.3126C0 59.806 8.50659 68.3126 19 68.3126H27.25C37.7434 68.3126 46.6195 77.1872 42.3252 86.7617C36.6352 99.4479 25.2319 109.035 11.2605 112.431C5.16168 113.914 0 118.859 0 125.135Z" fill="#C6C9FF"/>
-    </svg>
-)
 
-const Curve = ({ width = 1200, height = 136}) => (
-    <svg width={width} height={height} viewBox="0 0 1439 132" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1053.6 64.3214C984.048 77.0975 916.703 99.9972 847.343 113.886C748.544 133.684 645.655 134.88 547.012 114.348C451.15 94.444 351.752 45.8974 257.029 21.2334C173.028 -0.648045 81.3155 -9.65876 0 17.6812V131.15L1439 131.15V98.7658C1316.13 52.7601 1182.84 40.848 1053.6 64.3214Z" fill="#7177FF"/>
-    </svg>
-)
 
 const IconContainer = styled('div')`
-    position: absolute;
-    right: 2rem;
-    top: 0;
+    height:135px;
+    width:185px;
+    z-index:10;
+    position:absolute;
+    right:20px;
+    top:0px;
+
+    @media (max-width: 950px) {
+        height:20px;
+        width:50px;
+    }
+`
+const Icon = styled.div`
+    position:relative;
+    height:100%;
+    width:100%;
 `
 
 const CurveContainer = styled('div')`
-    position: absolute;
     width: 100%;
-    height:135px;
-    bottom: 100%;
-    left: 0;
-    overflow-y: hidden;
+    height:130px;
+    position: absolute;
+    top:-49px;
+    right:0px;
+    // overflow-y: hidden;
 
-    &>svg {
-        position: relative;
-        display: block;
-        width: 100%;
-        height: 140px;
+    @media (max-width: 950px) {
+        height:100px;
+        top:-18px;
+    right:0px;
     }
+
+`
+
+const Curve =styled.div`
+    width: 100%;
+    height:100%;
+    posistion:relative;
 `
 
 export const CarouserContainer = styled('div')`
   position: relative;
   overflow: hidden;
+  margin-bottom:32px;
+  height:400px;
+
+  @media(max-width:950px){
+    height:600px;
+    width:100%;
+  }
 `
 
 export const CarouserContainerInner = styled('div')`
@@ -193,10 +219,16 @@ const StudentTestimonials = () => {
   return (
     <Container>
         <CurveContainer>
-            <Curve />
+            <Curve>
+
+            <Image src={vectortest} layout="fill" objectFit="cover" alt="Campus Chief" />
+            </Curve>
         </CurveContainer>
+        <Wrapper>
         <IconContainer>
-            <Quote />
+            <Icon>
+                < Image src={quote} layout="fill" objectFit="contain" alt="Campus Chief" />
+            </Icon>
         </IconContainer>
         <H1>Student Testimonials</H1>
         <CarouserContainer>
@@ -213,6 +245,7 @@ const StudentTestimonials = () => {
                 <ArrowRight />
             </RightCarouselButton>
         </CarouserContainer>
+        </Wrapper>
     </Container>
   )
 }

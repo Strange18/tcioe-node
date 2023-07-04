@@ -3,8 +3,8 @@ import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 
-const Container = styled('div')`
-    min-height: 200px;
+const Container = styled.div`
+    height: 350px;
     min-width: 600px;
     background-color: #fff;
     padding: 3rem;
@@ -17,10 +17,24 @@ const Container = styled('div')`
     justify-content: center;
     align-items: center;
     gap: 2rem;
+
+    @media(max-width:950px){
+        height:450px;
+        min-width:350px;
+        padding: 1px;
+        // color:red;
+      }
 `
 
 const Content = styled('p')`
     font-size: 1rem;
+    width:90%;
+    text-align:justify;
+    @media(max-width:950px){
+        size:0.5rem;
+        width:90%;
+      }
+    
 `
 
 const CardContainer = styled('div')`
@@ -39,6 +53,9 @@ const StudentProfile = styled('div')`
     &>* {
         border-radius: 100%;
     }
+    @media(max-width:950px){
+        // display:none;
+      }
 `
 
 const StudentName = styled('h1')`

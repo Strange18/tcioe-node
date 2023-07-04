@@ -11,35 +11,35 @@ const SubNavBar = () => {
     <nav className={styles.subNav}>
       <section className={styles.section_left}>
         <div>
-          <Link href="/">
-            <IoLibraryOutline />
-            <span>Library</span>
+            <Link href="https://library.tcioe.edu.np/" target="_blank">
+            <IoLibraryOutline className={styles.icon} />
+            <span className={styles.link}>Library</span>
           </Link>
         </div>
         <div>
-          <Link href="/">
-            <BsFillJournalBookmarkFill />
-            <span>Journal</span>
+          <Link href="https://journal.tcioe.edu.np/" target="_blank" >
+            <BsFillJournalBookmarkFill className={styles.icon} />
+            <span className={styles.link}>Journal</span>
           </Link>
         </div>
       </section>
       <section className={styles.section_right}>
         <div>
-          <Link href="/">
-            <RiFilePaper2Line />
-            <span>Phone Directory</span>
+          <Link href="/" >
+            <RiFilePaper2Line className={styles.icon} />
+            <span className={styles.link}>Phone Directory</span>
           </Link>
         </div>
         <div>
-          <Link href="/">
-            <RiFilePaper2Line />
-            <span>Alumni</span>
+          <Link href="/" >
+            <RiFilePaper2Line className={styles.icon} />
+            <span className={styles.link}>Alumni</span>
           </Link>
         </div>
         <div>
-          <Link href="/">
-            <FaUserGraduate />
-            <span>My Portal</span>
+          <Link href="/" >
+            <FaUserGraduate className={styles.icon}/>
+            <span className={styles.link}>My Portal</span>
           </Link>
         </div>
       </section>
