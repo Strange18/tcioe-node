@@ -185,6 +185,10 @@ button span {
       display: block;
   }
 
+  #check:not(:checked) ~ .header-right-container {
+    display: none;
+  }
+
   .header-right-container {
     position: fixed;
     height: calc(100vh - 5.2rem);
