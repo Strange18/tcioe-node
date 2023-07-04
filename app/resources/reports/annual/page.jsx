@@ -115,7 +115,7 @@ const page = () => {
         <Container>
           <List>
             <Item
-              href="http://49.236.212.118:8001/media/files/1679668129.pdf"
+              href="https://notices.tcioe.edu.np/media/files/Annual_Report__2078_079.pdf"
               target="_blank"
             >
               <ItemText>

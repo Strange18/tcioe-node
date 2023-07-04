@@ -41,10 +41,8 @@ const Line = styled.div`
 const Container = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 24px;
-  height: 50vh;
+  flex-direction: column;
+  height: 40vh;
   @media (max-width: 958px) {
     flex-direction: column-reverse;
   }
@@ -53,7 +51,6 @@ const List = styled.div`
   flex: 3.5;
   display: flex;
   flex-direction: column;
-  gap: 18px;
 `;
 const Item = styled(Link)`
   text-decoration: none;
@@ -109,17 +106,27 @@ const page = () => {
       <HeaderComponent menuItems={menuItems} />
       <Wrapper>
         <Header>
-          <Title>Self Study Report</Title>
+          <Title>Self Study Reports</Title>
           <Line width={"100px"} />
         </Header>
         <Container>
           <List>
             <Item
-              href="https://backend.omprakashsharma.com.np/media/files/1683460135.pdf"
+              href="https://notices.tcioe.edu.np/media/files/Self_Study_Report_For_QAA.pdf"
               target="_blank"
             >
               <ItemText>
                 <ItemTitle>Self Study Report For QAA</ItemTitle>
+              </ItemText>
+            </Item>
+          </List>
+          <List>
+            <Item
+              href="https://notices.tcioe.edu.np/media/files/Self_Study_Report_-_ANNEX_QAA.pdf"
+              target="_blank"
+            >
+              <ItemText>
+                <ItemTitle>Self Study Report - ANNEX (QAA)</ItemTitle>
               </ItemText>
             </Item>
           </List>
