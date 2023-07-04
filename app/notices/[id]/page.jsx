@@ -78,7 +78,7 @@ const page = ({ params }) => {
 
     useEffect(() => {
         const getData = async () => {
-            const query = await fetch(`https://backend.omprakashsharma.com.np/api/notice/notices/${params.id}`);
+            const query = await fetch(`https://notice.tcioe.edu.np/api/notice/notices/${params.id}`);
             const response = await query.json();
             console.log("Response from api", response.download_file);
             setNotice(response);

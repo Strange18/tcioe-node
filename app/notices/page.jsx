@@ -273,7 +273,7 @@ const page = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const query = await fetch("https://backend.omprakashsharma.com.np/api/notice/notices/", { cache: 'no-store' });
+            const query = await fetch("https://notice.tcioe.edu.np/api/notice/notices/", { cache: 'no-store' });
             const response = await query.json();
             console.log("Responses from api");
             setNotices(response.results);
@@ -333,7 +333,7 @@ const page = () => {
                 <Container>
                     <List>
                         {notices ? notices.map((notice) => (
-                            <Item href={`https://backend.omprakashsharma.com.np/media/files/${notice.download_file.split('/')[5]}`} key={notice.id} >
+                            <Item href={`https://notice.tcioe.edu.np/media/files/${notice.download_file.split('/')[5]}`} key={notice.id} >
                                 <ItemDate>
                                     <ItemDateMonth>
                                         {Number(notice.published_date.split("-")[1]) === 1 ? "Jan" : Number(notice.published_date.split("-")[1]) === 2 ? "Feb" : Number(notice.published_date.split("-")[1]) === 3 ? "Mar" : Number(notice.published_date.split("-")[1]) === 4 ? "Apr" : Number(notice.published_date.split("-")[1]) === 5 ? "May" : Number(notice.published_date.split("-")[1]) === 6 ? "Jun" : Number(notice.published_date.split("-")[1]) === 7 ? "Jul" : Number(notice.published_date.split("-")[1]) === 8 ? "Aug" : Number(notice.published_date.split("-")[1]) === 9 ? "Sep" : Number(notice.published_date.split("-")[1]) === 10 ? "Oct" : Number(notice.published_date.split("-")[1]) === 11 ? "Nov" : "Dec"}
