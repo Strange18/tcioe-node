@@ -15,6 +15,16 @@
   --dark-brown: #f2f2f2;
 }
 
+.header-container {
+  position: relative
+}
+
+.header-right-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .menus {
   display: flex;
   align-items: center;
@@ -95,4 +105,117 @@ button span {
   position: absolute;
   left: 100%;
   top: -7px;
+}
+
+.hamburger-menu-container{
+  flex: 1;
+  display: none;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.hamburger-menu{
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburger-menu div{
+  width: 1.6rem;
+  height: 3px;
+  border-radius: 3px;
+  background-color: black;
+  position: relative;
+  z-index: 1001;
+  transition: .5s;
+}
+
+.hamburger-menu div:before,
+.hamburger-menu div:after{
+  content: '';
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background-color: black;
+  border-radius: 3px;
+  transition: .5s;
+}
+
+.hamburger-menu div:before{
+  transform: translateY(-7px);
+}
+
+.hamburger-menu div:after{
+  transform: translateY(7px);
+}
+
+#check {
+  position: absolute;
+  top: 50%;
+  right: 4rem;
+  transform: translateY(-50%);
+  width: 2.5rem;
+  height: 2.5rem;
+  z-index: 90000;
+  cursor: pointer;
+  opacity: 0;
+  display: none;
+}
+
+#check:checked ~ .hamburger-menu-container .hamburger-menu div{
+  background-color: transparent;
+}
+
+#check:checked ~ .hamburger-menu-container .hamburger-menu div:before{
+  transform: translateY(0) rotate(-45deg);
+}
+
+#check:checked ~ .hamburger-menu-container .hamburger-menu div:after{
+  transform: translateY(0) rotate(45deg);
+}
+
+@media (max-width: 920px) {
+  .hamburger-menu-container{
+    display: flex;
+  }
+
+  #check{
+      display: block;
+  }
+
+  .header-right-container {
+    position: fixed;
+    height: calc(100vh - 5.2rem);
+    top: 5.2rem;
+    left: 0;
+    overflow: scroll;
+    width: 100%;
+    background-color: white;
+
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .menus {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .dropdown {
+    position: initial;
+    top: initial;
+    left: initial;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .dropdown .dropdown-submenu {
+    position: initial;
+    left: initial;
+    top: initial;
+    padding: 0 1rem;
+  }
 }

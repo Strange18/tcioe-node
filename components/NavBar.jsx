@@ -5,7 +5,7 @@ import NavBarMenuItems from './NavBarMenuItems';
 const NavBar = ({ menuItems }) => {
   const depthLevel = 0;
   return (
-    <nav>
+    <nav className="navbar-container">
       <ul className="menus">
         {menuItems.map((menu, index) => {
           return (
