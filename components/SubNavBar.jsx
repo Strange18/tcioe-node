@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React from "react";
 import styles from "./SubNavBar.module.css";
-import { BsFillJournalBookmarkFill } from "react-icons/bs";
+import { BsFillJournalBookmarkFill,BsJournalBookmark } from "react-icons/bs";
 import { IoLibraryOutline } from "react-icons/io5";
 import { FaUserGraduate } from "react-icons/fa";
 import { RiFilePaper2Line } from "react-icons/ri";
@@ -20,6 +20,12 @@ const SubNavBar = () => {
           <Link href="https://journal.tcioe.edu.np/" target="_blank" >
             <BsFillJournalBookmarkFill className={styles.icon} />
             <span className={styles.link}>Journal</span>
+          </Link>
+        </div>
+        <div>
+          <Link href="https://elibrary.tcioe.edu.np/" target="_blank" >
+            <BsJournalBookmark className={styles.icon} />
+            <span className={styles.link}>Thesis</span>
           </Link>
         </div>
       </section>
