@@ -73,7 +73,7 @@ const Container = styled.div`
 const page = ({ params }) => {
     // const router = useRouter()
     // console.log(router)
-    console.log("params", params)
+    // console.log("params", params)
     const [notice, setNotice] = useState([]);
 
     useEffect(() => {
