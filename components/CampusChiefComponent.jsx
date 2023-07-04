@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import CampusCheifimage from '../assets/CC_image.webp'
+import CampusCheifimage from '../assets/CC_image.png'
 const Wrapper = styled.div`
     width: 100%;
     min-height: 400px;
