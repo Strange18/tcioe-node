@@ -75,7 +75,7 @@ const MyComponent = () => {
       }
     };
 
-    fetchData();
+    // fetchData();
   }, []);
 
   if (isLoading) {
