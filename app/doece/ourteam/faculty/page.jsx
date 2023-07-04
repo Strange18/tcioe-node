@@ -15,4 +15,9 @@ async function getData() {
 export default async function Home() {
   // const data = await getData();
   // return <RenderTeamCards Members={data} title="Faculty" />;
+  return(
+    <>
+    hello
+    </>
+  )
 }
