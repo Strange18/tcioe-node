@@ -6,6 +6,9 @@ import { BsFillJournalBookmarkFill, BsJournalBookmark } from "react-icons/bs";
 import { IoLibraryOutline } from "react-icons/io5";
 import { FaUserGraduate } from "react-icons/fa";
 import { RiFilePaper2Line } from "react-icons/ri";
+import {AiOutlineMail} from "react-icons/ai";
+
+
 const SubNavBar = () => {
   return (
     <nav className={styles.subNav}>
@@ -25,7 +28,7 @@ const SubNavBar = () => {
         <div>
           <Link href="https://elibrary.tcioe.edu.np/" target="_blank">
             <BsJournalBookmark className={styles.icon} />
-            <span className={styles.link}>Thesis</span>
+            <span className={styles.link}>DSpace</span>
           </Link>
         </div>
       </section>
@@ -40,6 +43,12 @@ const SubNavBar = () => {
           <Link href="https://notices.tcioe.edu.np/media/files/Tracer_Study_Questionnaire.pdf">
             <RiFilePaper2Line className={styles.icon} />
             <span className={styles.link}>Alumni</span>
+          </Link>
+        </div>
+        <div>
+          <Link href="https://mail.google.com">
+            <AiOutlineMail className={styles.icon} />
+            <span className={styles.link}>Check Mail</span>
           </Link>
         </div>
         <div>
