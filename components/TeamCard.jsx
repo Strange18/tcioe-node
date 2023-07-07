@@ -12,12 +12,12 @@ const CardWrapper = styled.section`
   border-top: 0px;
   margin-top: 10em;
   cursor: pointer;
-    transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
-    &:hover {
-        box-shadow: 0 4px 4px -4px gray;
-        scale: 1.1;
-    }
+  &:hover {
+    box-shadow: 0 4px 4px -4px gray;
+    scale: 1.1;
+  }
 `;
 
 const CardImg = styled.section`
@@ -84,35 +84,35 @@ const Responsibility = styled.h4`
   text-align: center;
 `;
 const TeamCard = ({ detail }) => {
-    return (
-        <CardWrapper>
-            {detail.Image ? (
-                <>
-                    <CardImg>
-                        <ImgDiv>
-                            <Image src={detail.Image} layout="fill" objectFit="cover" />
-                        </ImgDiv>
-                        <EmptyDiv></EmptyDiv>
-                    </CardImg>
-                    <CardInfo>
-                        <Title>{detail.Name}</Title>
-                        {detail.Responsibility && (
-                            <Responsibility>{detail.Responsibility}</Responsibility>
-                        )}
-                        <Designation>{detail.Designation}</Designation>
-                    </CardInfo>
-                </>
-            ) : (
-                <CardInfoWithoutImg>
-                    <Title>{detail.Name}</Title>
-                    {detail.Responsibility && (
-                        <Responsibility>{detail.Responsibility}</Responsibility>
-                    )}
-                    <Designation>{detail.Designation}</Designation>
-                </CardInfoWithoutImg>
+  return (
+    <CardWrapper>
+      {detail.Image ? (
+        <>
+          <CardImg>
+            <ImgDiv>
+              <Image src={detail.Image} layout="fill" objectFit="cover" />
+            </ImgDiv>
+            <EmptyDiv></EmptyDiv>
+          </CardImg>
+          <CardInfo>
+            <Title>{detail.Name}</Title>
+            {detail.Responsibility && (
+              <Responsibility>{detail.Responsibility}</Responsibility>
             )}
-        </CardWrapper>
-    );
+            <Designation>{detail.Designation}</Designation>
+          </CardInfo>
+        </>
+      ) : (
+        <CardInfoWithoutImg>
+          <Title>{detail.Name}</Title>
+          {detail.Responsibility && (
+            <Responsibility>{detail.Responsibility}</Responsibility>
+          )}
+          <Designation>{detail.Designation}</Designation>
+        </CardInfoWithoutImg>
+      )}
+    </CardWrapper>
+  );
 };
 
 export default TeamCard;

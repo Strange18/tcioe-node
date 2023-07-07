@@ -96,14 +96,14 @@ const MyComponent = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((data) => (
+          {/* {data.map((data) => (
             <tr key={data.id}>
               <td>{data.roll}</td>
               <td>{data.name}</td>
               <td>{data.is_cr ? <Tick>&#10004;</Tick> : ''}</td>
               <td>{data.is_topper ? <Tick>&#10004;</Tick> : ''}</td>
             </tr>
-          ))}
+          ))} */}
         </tbody>
       </Tables>
     </>
