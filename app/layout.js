@@ -1,13 +1,14 @@
 import HeaderComponent from "@/components/HeaderComponent"
 import "./globals.css"
 import FooterComponent from "@/components/FooterComponent"
+import StyledComponentsRegistry from "@/components/Registry"
 
 export const metadata = {
   title: 'Thapathali Campus',
   description: 'TCIOE',
 }
 
-export default function RootLayout({ children }) {
+function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
@@ -16,9 +17,13 @@ export default function RootLayout({ children }) {
         <link rel="shortcut icon" href="/favicon.ico" />
       </head>
       <body>
-        <main>{children}</main>
-        <FooterComponent />
+        <StyledComponentsRegistry>
+          <main>{children}</main>
+          <FooterComponent />
+        </StyledComponentsRegistry>
       </body>
     </html>
   )
 }
+
+export default RootLayout;

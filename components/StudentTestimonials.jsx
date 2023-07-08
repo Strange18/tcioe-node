@@ -162,7 +162,7 @@ export const LeftCarouselButton = styled(CarouselButton)`
     transform: translate(0%, -50%);
   }
   
-  visibility: ${({hasItemsOnLeft}) => (hasItemsOnLeft ? `all` : `hidden`)};
+  visibility: ${({hasitemsonleft}) => (hasitemsonleft ? `all` : `hidden`)};
 `
 
 export const RightCarouselButton = styled(CarouselButton)`
@@ -173,14 +173,14 @@ export const RightCarouselButton = styled(CarouselButton)`
     transform: translate(0%, -50%);
   }
 
-  visibility: ${({hasItemsOnRight}) => (hasItemsOnRight ? `all` : `hidden`)};
+  visibility: ${({hasitemsonright}) => (hasitemsonright ? `all` : `hidden`)};
 `
 
 const StudentTestimonials = () => {
     const ref = React.useRef()
     const {
-        hasItemsOnLeft,
-        hasItemsOnRight,
+        hasitemsonleft,
+        hasitemsonright,
         scrollLeft,
         scrollRight
     } = usePosition(ref)
@@ -237,11 +237,11 @@ const StudentTestimonials = () => {
                     <StudentTestimonialCard key={testimonial.id} testimonial={testimonial} />)
                 )}
             </CarouserContainerInner>
-            <LeftCarouselButton hasItemsOnLeft={hasItemsOnLeft} onClick={scrollLeft}>
+            <LeftCarouselButton hasitemsonleft={hasitemsonleft} onClick={scrollLeft}>
                 <ArrowLeft />
             </LeftCarouselButton>
 
-            <RightCarouselButton hasItemsOnRight={hasItemsOnRight} onClick={scrollRight}>
+            <RightCarouselButton hasitemsonright={hasitemsonright} onClick={scrollRight}>
                 <ArrowRight />
             </RightCarouselButton>
         </CarouserContainer>
