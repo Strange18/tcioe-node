@@ -3,7 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 import logo from '@/assets/logo.svg';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import NavBar from './NavBar';
 import SearchNotice from './SearchNotice';
 

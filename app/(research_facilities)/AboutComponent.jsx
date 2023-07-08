@@ -1,6 +1,6 @@
 "use client"
 import styled from 'styled-components'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 const Container = styled.div`
     width: 100%;
