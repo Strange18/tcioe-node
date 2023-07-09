@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import styled from 'styled-components'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import StudentTestimonialCard from './StudentTestimonialCard'
 import usePosition from '../utils/usePosition'
 import Bikrant from '../public/bikrant.jpg'
