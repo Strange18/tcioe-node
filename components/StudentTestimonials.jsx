@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import styled from 'styled-components'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import StudentTestimonialCard from './StudentTestimonialCard'
 import usePosition from '../utils/usePosition'
 import Bikrant from '../public/bikrant.jpg'
@@ -162,7 +162,7 @@ export const LeftCarouselButton = styled(CarouselButton)`
     transform: translate(0%, -50%);
   }
   
-  visibility: ${({hasItemsOnLeft}) => (hasItemsOnLeft ? `all` : `hidden`)};
+  visibility: ${({$hasItemsOnLeft}) => ($hasItemsOnLeft ? `all` : `hidden`)};
 `
 
 export const RightCarouselButton = styled(CarouselButton)`
@@ -173,7 +173,7 @@ export const RightCarouselButton = styled(CarouselButton)`
     transform: translate(0%, -50%);
   }
 
-  visibility: ${({hasItemsOnRight}) => (hasItemsOnRight ? `all` : `hidden`)};
+  visibility: ${({$hasItemsOnRight}) => ($hasItemsOnRight ? `all` : `hidden`)};
 `
 
 const StudentTestimonials = () => {
@@ -237,11 +237,11 @@ const StudentTestimonials = () => {
                     <StudentTestimonialCard key={testimonial.id} testimonial={testimonial} />)
                 )}
             </CarouserContainerInner>
-            <LeftCarouselButton hasItemsOnLeft={hasItemsOnLeft} onClick={scrollLeft}>
+            <LeftCarouselButton $hasItemsOnLeft={hasItemsOnLeft} onClick={scrollLeft}>
                 <ArrowLeft />
             </LeftCarouselButton>
 
-            <RightCarouselButton hasItemsOnRight={hasItemsOnRight} onClick={scrollRight}>
+            <RightCarouselButton $hasItemsOnRight={hasItemsOnRight} onClick={scrollRight}>
                 <ArrowRight />
             </RightCarouselButton>
         </CarouserContainer>
