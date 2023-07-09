@@ -13,6 +13,7 @@ import HeaderComponent from "@/components/HeaderComponent";
 import { menuItems } from "@/utils/menuItems";
 import FooterComponent from "@/components/FooterComponent";
 import SubNavBar from "@/components/SubNavBar";
+import { useRouter } from "next/router";
 const data = {
   post: "Campus Chief",
   name: "Dr. Khem Gyanwali",
@@ -22,6 +23,7 @@ const data = {
 };
 
 export default function Home() {
+  // const router = useRouter();
   return (
     <>
       <SubNavBar />
@@ -29,6 +31,7 @@ export default function Home() {
       <div>
         <HeroComponent img={hero} />
         <CampusChiefComponent
+        // router={router}
           post={data.post}
           name={data.name}
           photo={data.photo}

@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 import CampusCheifimage from "../assets/CC_image.png";
 const Wrapper = styled.div`
@@ -48,11 +49,24 @@ const BodyText = styled.div`
   color: #8a8a8a;
   line-height: 2rem;
   text-align: justify;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  max-height: ${({ expanded }) => (expanded ? "unset" : "120px")};
 `;
-const Readmore = styled(Link)`
+const Readmore = styled.a`
   font-size: 16px;
   color: #4c7fbc;
   text-decoration: none;
+  cursor: pointer;
+  margin-top: -1rem;
+`;
+
+const Readless = styled.a`
+  font-size: 16px;
+  color: #4c7fbc;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: -1rem;
 `;
 
 const PostContainer = styled.div`
@@ -89,15 +103,27 @@ const RightContainer = styled.div`
 `;
 
 const CampusChiefComponent = ({ post, name, photo, message }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleReadMoreClick = () => {
+    setExpanded(true);
+  };
+  const handleReadLessClick = () => {
+    setExpanded(false);
+  };
   return (
     <Wrapper>
       <Heading>Message From {post}</Heading>
       <Container>
         <LeftContainer>
-          <BodyText>
+          <BodyText expanded={expanded}>
             {message}
-            <Readmore href="/"> Read More</Readmore>
           </BodyText>
+          {expanded ? (
+            <Readless onClick={handleReadLessClick}>Read Less</Readless>
+          ) : (
+            <Readmore onClick={handleReadMoreClick}>Read More</Readmore>
+          )}
           <PostContainer>
             <CampusChiefName>{name}</CampusChiefName>
             <CampusChiefPost>{post}, TCIOE</CampusChiefPost>
