@@ -12,7 +12,7 @@ export const CardsContainer = styled.section`
 `;
 
 export const Title = styled.h1`
-  width: 20%;
+  width: 10%;
   padding-bottom: 0.3em;
   color: #333333;
   border-bottom: 5px solid #7177ff;
@@ -24,19 +24,22 @@ export const Wrapper = styled.section`
   padding: 2em 0;
 `;
 
-export const RenderTeamCards = ({ Members, title }) => {
+export const RenderTeamCards = ({ Members }) => {
   return (
     <Wrapper>
-      {title && <Title>{title}</Title>}
+      <Title>Staff</Title>
       <CardsContainer>
         {/* chek if member is not empty */}
         {Members && Members.length > 0 ? (
           Members.map((member, index) => {
+
             return <TeamCard key={index} detail={member} />;
+
           })
         ) : (
-          <h1>Data is being updated</h1>
+          <h1>No data found</h1>
         )}
+
       </CardsContainer>
     </Wrapper>
   );
