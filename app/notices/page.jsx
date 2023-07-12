@@ -40,18 +40,17 @@ const Line = styled.div`
 `;
 
 const Container = styled.div`
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 24px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 24px;
 
-    @media (max-width: 958px) {
-        flex-direction: column-reverse;
-        width: 100%;
-    }
-    
-`
+  @media (max-width: 958px) {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+`;
 
 const List = styled.div`
   flex: 3.5;
@@ -71,12 +70,15 @@ const Buttoned = styled.button`
   padding: 4px 8px;
   font-size: 1rem;
   position: relative;
-  background-color: ${props =>
-    props.data === 'News' ? '#034587' :
-    props.data === 'Admin' ? '#0E5B24' :
-    props.data === 'Exam' ? '#A81C1C' :
-    '#282727'};
-    text-align: center;
+  background-color: ${(props) =>
+    props.data === "News"
+      ? "#034587"
+      : props.data === "Admin"
+      ? "#0E5B24"
+      : props.data === "Exam"
+      ? "#A81C1C"
+      : "#282727"};
+  text-align: center;
 `;
 
 const Item = styled(Link)`
@@ -171,21 +173,21 @@ const ItemTagContainer = styled.div`
 `;
 
 const SearchSection = styled.div`
-flex:1;
-display: flex;
-flex-direction: column;
-gap: 12px;
-padding: 25px;
-position: fixed;
-top: 8rem;
-right: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 25px;
+  position: fixed;
+  top: 8rem;
+  right: 2rem;
 
-@media (max-width: 958px) {
+  @media (max-width: 958px) {
     position: relative;
     top: 0;
     right: 0;
-}
-`
+  }
+`;
 
 const SearchLabel = styled.div`
   font-size: 1.2rem;
@@ -210,8 +212,8 @@ const SearchInput = styled.input`
   }
 
   @media (max-width: 958px) {
-    width: 70%
-}
+    width: 70%;
+  }
 `;
 const DatePickerContainer = styled.div`
   width: 100%;
@@ -330,7 +332,7 @@ const Page = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [noticesPerPage] = useState(10);
 
-  const [selectedNoticeType, setSelectedNoticeType] = useState('');
+  const [selectedNoticeType, setSelectedNoticeType] = useState("");
 
   useEffect(() => {
     const getData = async () => {
@@ -428,8 +430,8 @@ const Page = () => {
                   </ItemText>
                   <ItemTagContainer></ItemTagContainer>
                   <Buttoned data={notice.notice_category.category}>
-  {notice.notice_category.notice_type}
-</Buttoned>
+                    {notice.notice_category.notice_type}
+                  </Buttoned>
                 </Item>
               ))
             ) : (
@@ -463,7 +465,6 @@ const Page = () => {
                   type="radio"
                   name="notice_type"
                   value={item.notice_type}
-                  // checked={item?.isChecked || false}
                   checked={selectedNoticeType === item.notice_type}
                   onChange={HandleChange}
                 />
@@ -512,12 +513,6 @@ const Pagination = ({
 
     const pages = [];
 
-    //   pages.push(
-    //     <li key={1}>
-    //       <button onClick={() => paginate(1)}>1</button>
-    //     </li>
-    //   );
-
     pages.push(
       <PageNumber key={1}>
         <PageButton onClick={() => paginate(1)} active={currentPage === 1}>
@@ -533,16 +528,6 @@ const Pagination = ({
       pages.push(<Ellipsis key="ellipsis-start">...</Ellipsis>);
     }
 
-    //   for (let i = visiblePages[0]; i <= visiblePages[1]; i++) {
-    //     if (i !== 1 && i !== totalPages) {
-    //       pages.push(
-    //         <li key={i}>
-    //           <button onClick={() => paginate(i)}>{i}</button>
-    //         </li>
-    //       );
-    //     }
-    //   }
-
     for (let i = visiblePages[0]; i <= visiblePages[1]; i++) {
       if (i !== 1 && i !== totalPages) {
         pages.push(
@@ -556,17 +541,8 @@ const Pagination = ({
     }
 
     if (visiblePages[1] < totalPages - 1) {
-      // pages.push(<li key="ellipsis-end">...</li>);
       pages.push(<Ellipsis key="ellipsis-end">...</Ellipsis>);
     }
-
-    //   if (totalPages > 1) {
-    //     pages.push(
-    //       <li key={totalPages}>
-    //         <button onClick={() => paginate(totalPages)}>{totalPages}</button>
-    //       </li>
-    //     );
-    //   }
 
     if (totalPages > 1) {
       pages.push(
