@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { menuItems } from "@/utils/menuItems";
 import HeaderComponent from "@/components/HeaderComponent";
+import { addDays } from "date-fns";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -71,7 +72,7 @@ const Buttoned = styled.button`
   font-size: 1rem;
   position: relative;
   background-color: ${(props) =>
-    props.data === "News"
+    props.data === "Administration"
       ? "#034587"
       : props.data === "Admin"
       ? "#0E5B24"
@@ -79,6 +80,10 @@ const Buttoned = styled.button`
       ? "#A81C1C"
       : "#282727"};
   text-align: center;
+
+  @media (max-width: 700px) {
+    font-size: 0.6rem;
+  }
 `;
 
 const Item = styled(Link)`
@@ -150,6 +155,10 @@ const ItemTitle = styled.div`
 
   @media (max-width: 958px) {
     font-size: 1rem;
+  }
+
+  @media (max-width: 700px) {
+    font-size: 0.7rem;
   }
 `;
 const ItemSubtitle = styled.div`
@@ -245,11 +254,17 @@ const SearchButton = styled.button`
   outline: none;
   border: none;
   transition: 0.2s ease-in-out;
+  cursor: pointer;
 
   &:hover {
     background-color: #5f65e2;
   }
 `;
+
+const SameLine = styled.div`
+display: flex;
+`; 
+
 const RadioContainer = styled.div`
   width: 100%;
   display: flex;
@@ -315,7 +330,7 @@ const Ellipsis = styled.li`
 const typedata = [
   {
     id: 1,
-    notice_type: "News",
+    notice_type: "Administration",
   },
   {
     id: 2,
@@ -333,6 +348,10 @@ const Page = () => {
   const [noticesPerPage] = useState(10);
 
   const [selectedNoticeType, setSelectedNoticeType] = useState("");
+  const [filteredNotices, setFilteredNotices] = useState([]);
+
+  // const [startDate, setStartDate] = useState(null);
+  // const [endDate, setEndDate] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -352,6 +371,41 @@ const Page = () => {
   const currentNotices = notices.slice(indexOfFirstNotice, indexOfLastNotice);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const handleSearch = () => {
+    setCurrentPage(1);
+    // Filter notices based on the selected date range and notice type
+
+    const filteredNotices = notices.filter((notice) => {
+      const noticeDate = new Date(notice.published_date);
+      return (
+        (!startDate || noticeDate >= startDate) &&
+        (!endDate || noticeDate <= endDate) &&
+        (!selectedNoticeType ||
+          notice.notice_category.notice_type === selectedNoticeType)
+      );
+    });
+    setNotices(filteredNotices);
+  };
+
+  const handleReset = () => {
+    setCurrentPage(1);
+    setStartDate(null);
+    setEndDate(null);
+    setSelectedNoticeType("");
+    // Fetch all notices again from the remote API
+    const getData = async () => {
+      const query = await fetch(
+        "https://notices.tcioe.edu.np/api/notice/notices/",
+        { cache: "no-store" }
+      );
+      const response = await query.json();
+      setNotices(response);
+    };
+    getData();
+  };
+
+  const [currentDate, setCurrentDate] = useState(new Date());
 
   const [Types, setTypes] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
@@ -429,7 +483,7 @@ const Page = () => {
                     />
                   </ItemText>
                   <ItemTagContainer></ItemTagContainer>
-                  <Buttoned data={notice.notice_category.category}>
+                  <Buttoned data={notice.notice_category.notice_type}>
                     {notice.notice_category.notice_type}
                   </Buttoned>
                 </Item>
@@ -448,6 +502,8 @@ const Page = () => {
                 closeOnScroll={true}
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
+                // maxDate={currentDate}
+                maxDate={endDate || new Date()}
               />
             </DatePickerContainer>
             <SearchLabel>To</SearchLabel>
@@ -456,6 +512,10 @@ const Page = () => {
                 closeOnScroll={true}
                 selected={endDate}
                 onChange={(date) => setEndDate(date)}
+                // maxDate={currentDate}
+                maxDate={new Date()}
+                minDate={startDate}
+                filterDate={(date) => date >= startDate}
               />
             </DatePickerContainer>
             <SearchLabel>Type</SearchLabel>
@@ -473,7 +533,10 @@ const Page = () => {
                 </RadioLabel>
               </RadioContainer>
             ))}
-            <SearchButton>Search</SearchButton>
+            <SameLine>
+              <SearchButton onClick={handleSearch}>Search</SearchButton> &nbsp;
+              <SearchButton onClick={handleReset}>Reset</SearchButton>
+            </SameLine>
           </SearchSection>
         </Container>
       </Wrapper>
