@@ -1,11 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Link from "next/link";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { menuItems } from "@/utils/menuItems";
 import HeaderComponent from "@/components/HeaderComponent";
+import { addDays } from "date-fns";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -62,8 +63,8 @@ const List = styled.div`
 
 const Buttoned = styled.button`
   position: absolute;
-  top: -2rem;
-  right: 10px;
+  top: -2.8rem;
+  right: -9px;
   color: #f7f4f4;
   border: none;
   border-radius: 4px;
@@ -71,7 +72,7 @@ const Buttoned = styled.button`
   font-size: 1rem;
   position: relative;
   background-color: ${(props) =>
-    props.data === "News"
+    props.data === "Administration"
       ? "#034587"
       : props.data === "Admin"
       ? "#0E5B24"
@@ -79,6 +80,10 @@ const Buttoned = styled.button`
       ? "#A81C1C"
       : "#282727"};
   text-align: center;
+
+  @media (max-width: 700px) {
+    font-size: 0.6rem;
+  }
 `;
 
 const Item = styled(Link)`
@@ -96,6 +101,22 @@ const Item = styled(Link)`
 
   &:hover {
     background-color: #d6d5d5;
+  }
+
+  ${(props) =>
+    props.isSingleOrDoubleNotice &&
+    css`
+      margin-top: 4.5rem;
+      margin-bottom: 15rem;
+    `}
+
+  @media (max-width: 958px) {
+    ${(props) =>
+      props.isSingleOrDoubleNotice &&
+      css`
+        margin-top: 0rem;
+        margin-bottom: 0rem;
+      `}
   }
 `;
 const ItemDate = styled.div`
@@ -151,6 +172,10 @@ const ItemTitle = styled.div`
   @media (max-width: 958px) {
     font-size: 1rem;
   }
+
+  @media (max-width: 700px) {
+    font-size: 0.7rem;
+  }
 `;
 const ItemSubtitle = styled.div`
   font-size: 0.8rem;
@@ -179,7 +204,7 @@ const SearchSection = styled.div`
   gap: 12px;
   padding: 25px;
   position: fixed;
-  top: 8rem;
+  top: 5rem;
   right: 2rem;
 
   @media (max-width: 958px) {
@@ -245,11 +270,17 @@ const SearchButton = styled.button`
   outline: none;
   border: none;
   transition: 0.2s ease-in-out;
+  cursor: pointer;
 
   &:hover {
     background-color: #5f65e2;
   }
 `;
+
+const SameLine = styled.div`
+  display: flex;
+`;
+
 const RadioContainer = styled.div`
   width: 100%;
   display: flex;
@@ -297,13 +328,27 @@ const PageButton = styled.button`
   padding: 6px 12px;
   background-color: ${(props) => (props.active ? "#7177FF" : "transparent")};
   color: ${(props) => (props.active ? "#FFFFFF" : "#181B57")};
-  border: none;
+  border: 1px solid #e6e6e6;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 
   &:hover {
     background-color: ${(props) => (props.active ? "#7177FF" : "#e6e6e6")};
+  }
+`;
+
+const NoticenotFound = styled.h2`
+  font-size: 1.8rem;
+  text-align: center;
+  color: #20068e;
+  margin: 13rem 15rem;
+  font-family: 'Courier New', Courier, monospace;
+
+  @media (max-width: 500px) {
+    margin: 1rem auto;
+    font-size: 1rem;
+    font-weight: bold;
   }
 `;
 
@@ -315,15 +360,27 @@ const Ellipsis = styled.li`
 const typedata = [
   {
     id: 1,
-    notice_type: "News",
-  },
-  {
-    id: 2,
     notice_type: "Admin",
   },
   {
+    id: 2,
+    notice_type: "Administration",
+  },
+  {
     id: 3,
+    notice_type: "Admission",
+  },
+  {
+    id: 4,
     notice_type: "Exam",
+  },
+  {
+    id: 5,
+    notice_type: "Scholarship",
+  }, 
+  {
+    id: 6,
+    notice_type: "Other",
   },
 ];
 
@@ -331,10 +388,76 @@ const Page = () => {
   const [notices, setNotices] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [noticesPerPage] = useState(10);
-
   const [selectedNoticeType, setSelectedNoticeType] = useState("");
+  const [noticesNotFound, setNoticesNotFound] = useState(false);
+  const [Types, setTypes] = useState([]);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   useEffect(() => {
+    const getData = async () => {
+      const query = await fetch(
+        `https://notices.tcioe.edu.np/api/notice/search/?keyword=${searchKeyword}`,
+        { cache: "no-store" }
+      );
+      const response = await query.json();
+      setNotices(response);
+    };
+    getData();
+  }, [selectedNoticeType]);
+
+  // Pagination Logic
+  const indexOfLastNotice = currentPage * noticesPerPage;
+  const indexOfFirstNotice = indexOfLastNotice - noticesPerPage;
+  const currentNotices = notices.slice(indexOfFirstNotice, indexOfLastNotice);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const handleSearch = async () => {
+    setCurrentPage(1);
+    setNoticesNotFound(false);
+  
+    const query = await fetch(
+      "https://notices.tcioe.edu.np/api/notice/notices/",
+      { cache: "no-store" }
+    );
+    const response = await query.json();
+  
+    // Split search keyword into individual keywords
+    const searchKeywords = searchKeyword.split(" ").filter((keyword) => keyword.trim() !== "");
+  
+    // Filter notices based on the selected date range, notice type, and search keywords
+    const filteredNotices = response.filter((notice) => {
+      const noticeDate = new Date(notice.published_date);
+      const isMatchedKeyword = searchKeywords.some((keyword) =>
+        new RegExp(keyword, "i").test(notice.title) || new RegExp(keyword, "i").test(notice.description)
+      );
+  
+      return (
+        (!startDate || noticeDate >= startDate) &&
+        (!endDate || noticeDate <= endDate) &&
+        (!selectedNoticeType || notice.notice_category.notice_type === selectedNoticeType) &&
+        (searchKeywords.length === 0 || isMatchedKeyword)
+      );
+    });
+  
+    if (filteredNotices.length === 0) {
+      setNoticesNotFound(true);
+    } else {
+      setNotices(filteredNotices);
+    }
+  };
+  
+
+  const handleReset = () => {
+    setCurrentPage(1);
+    setStartDate(null);
+    setEndDate(null);
+    setSelectedNoticeType("");
+    setSearchKeyword("");
+    setNoticesNotFound(false);
+    // Fetch all notices again from the remote API
     const getData = async () => {
       const query = await fetch(
         "https://notices.tcioe.edu.np/api/notice/notices/",
@@ -344,30 +467,27 @@ const Page = () => {
       setNotices(response);
     };
     getData();
-  }, []);
-
-  // Pagination Logic
-  const indexOfLastNotice = currentPage * noticesPerPage;
-  const indexOfFirstNotice = indexOfLastNotice - noticesPerPage;
-  const currentNotices = notices.slice(indexOfFirstNotice, indexOfLastNotice);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const [Types, setTypes] = useState([]);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  };
 
   useEffect(() => {
     setTypes(typedata);
   }, []);
 
-  const HandleChange = (event) => {
-    setSelectedNoticeType(event.target.value);
-    const { name, checked } = event.target;
-    let tempstate = Types.map((item) =>
-      item.notice_type === name ? { ...item, isChecked: checked } : item
-    );
-    setTypes(tempstate);
+  const HandleChange = async (event) => {
+    const { value } = event.target;
+    setSelectedNoticeType(value);
+
+    // Filter notices based on the selected notice type
+    const filteredNotices = notices.filter((notice) => {
+      return notice.notice_category.notice_type === value;
+    });
+
+    if (filteredNotices.length === 0) {
+      setNoticesNotFound(true);
+    } else {
+      setNotices(filteredNotices);
+      setNoticesNotFound(false);
+    }
   };
 
   return (
@@ -379,75 +499,141 @@ const Page = () => {
           <Line width={"100px"} />
         </Header>
         <Container>
-          <List>
-            {currentNotices ? (
-              currentNotices.map((notice) => (
-                <Item
-                  href={`https://notices.tcioe.edu.np/media/files/${
-                    notice.download_file.split("/")[5]
-                  }`}
-                  target="_blank"
-                  key={notice.id}
-                >
-                  <ItemDate>
-                    <ItemDateMonth>
-                      {Number(notice.published_date.split("-")[1]) === 1
-                        ? "Jan"
-                        : Number(notice.published_date.split("-")[1]) === 2
-                        ? "Feb"
-                        : Number(notice.published_date.split("-")[1]) === 3
-                        ? "Mar"
-                        : Number(notice.published_date.split("-")[1]) === 4
-                        ? "Apr"
-                        : Number(notice.published_date.split("-")[1]) === 5
-                        ? "May"
-                        : Number(notice.published_date.split("-")[1]) === 6
-                        ? "Jun"
-                        : Number(notice.published_date.split("-")[1]) === 7
-                        ? "Jul"
-                        : Number(notice.published_date.split("-")[1]) === 8
-                        ? "Aug"
-                        : Number(notice.published_date.split("-")[1]) === 9
-                        ? "Sep"
-                        : Number(notice.published_date.split("-")[1]) === 10
-                        ? "Oct"
-                        : Number(notice.published_date.split("-")[1]) === 11
-                        ? "Nov"
-                        : "Dec"}
-                    </ItemDateMonth>
-                    <ItemDateDay>
-                      {notice.published_date.split("-")[2]}
-                    </ItemDateDay>
-                    <ItemDateDates>
-                      {notice.published_date.split("-")[0]}
-                    </ItemDateDates>
-                  </ItemDate>
-                  <ItemText>
-                    <ItemTitle>{notice.title}</ItemTitle>
-                    <ItemSubtitle
-                      dangerouslySetInnerHTML={{ __html: notice.description }}
-                    />
-                  </ItemText>
-                  <ItemTagContainer></ItemTagContainer>
-                  <Buttoned data={notice.notice_category.category}>
-                    {notice.notice_category.notice_type}
-                  </Buttoned>
-                </Item>
-              ))
-            ) : (
-              <h1>Loading</h1>
-            )}
-          </List>
+          {noticesNotFound ? (
+            <NoticenotFound>No search found for your query...</NoticenotFound>
+          ) : (
+            <List>
+              {/* {currentNotices ? ( */}
+              {currentNotices.length <= 1
+                ? currentNotices.map((notice) => (
+                    <Item
+                      href={`https://notices.tcioe.edu.np/media/files/${
+                        notice.download_file.split("/")[5]
+                      }`}
+                      target="_blank"
+                      key={notice.id}
+                      isSingleOrDoubleNotice={currentNotices.length <= 2}
+                      // isLastItem={index === currentNotices.length - 1}
+                    >
+                      <ItemDate>
+                        <ItemDateMonth>
+                          {Number(notice.published_date.split("-")[1]) === 1
+                            ? "Jan"
+                            : Number(notice.published_date.split("-")[1]) === 2
+                            ? "Feb"
+                            : Number(notice.published_date.split("-")[1]) === 3
+                            ? "Mar"
+                            : Number(notice.published_date.split("-")[1]) === 4
+                            ? "Apr"
+                            : Number(notice.published_date.split("-")[1]) === 5
+                            ? "May"
+                            : Number(notice.published_date.split("-")[1]) === 6
+                            ? "Jun"
+                            : Number(notice.published_date.split("-")[1]) === 7
+                            ? "Jul"
+                            : Number(notice.published_date.split("-")[1]) === 8
+                            ? "Aug"
+                            : Number(notice.published_date.split("-")[1]) === 9
+                            ? "Sep"
+                            : Number(notice.published_date.split("-")[1]) === 10
+                            ? "Oct"
+                            : Number(notice.published_date.split("-")[1]) === 11
+                            ? "Nov"
+                            : "Dec"}
+                        </ItemDateMonth>
+                        <ItemDateDay>
+                          {notice.published_date.split("-")[2]}
+                        </ItemDateDay>
+                        <ItemDateDates>
+                          {notice.published_date.split("-")[0]}
+                        </ItemDateDates>
+                      </ItemDate>
+                      <ItemText>
+                        <ItemTitle>{notice.title}</ItemTitle>
+                        <ItemSubtitle
+                          dangerouslySetInnerHTML={{
+                            __html: notice.description,
+                          }}
+                        />
+                      </ItemText>
+                      <ItemTagContainer></ItemTagContainer>
+                      <Buttoned data={notice.notice_category.notice_type}>
+                        {notice.notice_category.notice_type}
+                      </Buttoned>
+                    </Item>
+                  ))
+                : currentNotices.map((notice) => (
+                    <Item
+                      href={`https://notices.tcioe.edu.np/media/files/${
+                        notice.download_file.split("/")[5]
+                      }`}
+                      target="_blank"
+                      key={notice.id}
+                    >
+                      <ItemDate>
+                        <ItemDateMonth>
+                          {Number(notice.published_date.split("-")[1]) === 1
+                            ? "Jan"
+                            : Number(notice.published_date.split("-")[1]) === 2
+                            ? "Feb"
+                            : Number(notice.published_date.split("-")[1]) === 3
+                            ? "Mar"
+                            : Number(notice.published_date.split("-")[1]) === 4
+                            ? "Apr"
+                            : Number(notice.published_date.split("-")[1]) === 5
+                            ? "May"
+                            : Number(notice.published_date.split("-")[1]) === 6
+                            ? "Jun"
+                            : Number(notice.published_date.split("-")[1]) === 7
+                            ? "Jul"
+                            : Number(notice.published_date.split("-")[1]) === 8
+                            ? "Aug"
+                            : Number(notice.published_date.split("-")[1]) === 9
+                            ? "Sep"
+                            : Number(notice.published_date.split("-")[1]) === 10
+                            ? "Oct"
+                            : Number(notice.published_date.split("-")[1]) === 11
+                            ? "Nov"
+                            : "Dec"}
+                        </ItemDateMonth>
+                        <ItemDateDay>
+                          {notice.published_date.split("-")[2]}
+                        </ItemDateDay>
+                        <ItemDateDates>
+                          {notice.published_date.split("-")[0]}
+                        </ItemDateDates>
+                      </ItemDate>
+                      <ItemText>
+                        <ItemTitle>{notice.title}</ItemTitle>
+                        <ItemSubtitle
+                          dangerouslySetInnerHTML={{
+                            __html: notice.description,
+                          }}
+                        />
+                      </ItemText>
+                      <ItemTagContainer></ItemTagContainer>
+                      <Buttoned data={notice.notice_category.notice_type}>
+                        {notice.notice_category.notice_type}
+                      </Buttoned>
+                    </Item>
+                  ))}
+            </List>
+          )}
 
           <SearchSection>
             <SearchLabel>Filter</SearchLabel>
-            <SearchInput placeholder="Search Keywords..." />
+            <SearchInput
+              placeholder="Search Keywords..."
+              value={searchKeyword}
+              onChange={(e) => setSearchKeyword(e.target.value)}
+            />
             <SearchLabel>From</SearchLabel>
             <DatePickerContainer>
               <DatePicker
                 closeOnScroll={true}
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
+                maxDate={endDate || new Date()}
               />
             </DatePickerContainer>
             <SearchLabel>To</SearchLabel>
@@ -456,6 +642,9 @@ const Page = () => {
                 closeOnScroll={true}
                 selected={endDate}
                 onChange={(date) => setEndDate(date)}
+                maxDate={new Date()}
+                minDate={startDate}
+                filterDate={(date) => date >= startDate}
               />
             </DatePickerContainer>
             <SearchLabel>Type</SearchLabel>
@@ -466,6 +655,7 @@ const Page = () => {
                   name="notice_type"
                   value={item.notice_type}
                   checked={selectedNoticeType === item.notice_type}
+                  // checked={item.isChecked}
                   onChange={HandleChange}
                 />
                 <RadioLabel htmlFor={item.notice_type}>
@@ -473,21 +663,23 @@ const Page = () => {
                 </RadioLabel>
               </RadioContainer>
             ))}
-            <SearchButton>Search</SearchButton>
+            <SameLine>
+              <SearchButton onClick={handleSearch}>Search</SearchButton> &nbsp;
+              <SearchButton onClick={handleReset}>Reset</SearchButton>
+            </SameLine>
           </SearchSection>
         </Container>
       </Wrapper>
-      {/* Header, Wrapper, and other components... */}
-
-      {/* Notice List */}
 
       {/* Pagination */}
-      <Pagination
-        noticesPerPage={noticesPerPage}
-        totalNotices={notices.length}
-        currentPage={currentPage}
-        paginate={paginate}
-      />
+      {!noticesNotFound && (
+        <Pagination
+          noticesPerPage={noticesPerPage}
+          totalNotices={notices.length}
+          currentPage={currentPage}
+          paginate={paginate}
+        />
+      )}
     </>
   );
 };
@@ -512,14 +704,15 @@ const Pagination = ({
     if (totalPages <= 1) return null;
 
     const pages = [];
-
-    pages.push(
-      <PageNumber key={1}>
-        <PageButton onClick={() => paginate(1)} active={currentPage === 1}>
-          1
-        </PageButton>
-      </PageNumber>
-    );
+    if (currentPage !== 1) {
+      pages.push(
+        <PageNumber key={1}>
+          <PageButton onClick={() => paginate(1)} active={currentPage === 1}>
+            1
+          </PageButton>
+        </PageNumber>
+      );
+    }
 
     const visiblePages = getVisiblePages(currentPage, totalPages);
 
@@ -529,7 +722,7 @@ const Pagination = ({
     }
 
     for (let i = visiblePages[0]; i <= visiblePages[1]; i++) {
-      if (i !== 1 && i !== totalPages) {
+      if (i !== 1 && i !== totalPages && i !== 0) {
         pages.push(
           <PageNumber key={i}>
             <PageButton onClick={() => paginate(i)} active={currentPage === i}>
@@ -579,6 +772,5 @@ const Pagination = ({
     return [startPage, endPage];
   };
 
-  // return <ul className="pagination">{renderPages()}</ul>;
   return <PaginationContainer>{renderPages()}</PaginationContainer>;
 };
