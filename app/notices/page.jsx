@@ -107,7 +107,7 @@ const Item = styled(Link)`
     props.isSingleOrDoubleNotice &&
     css`
       margin-top: 4.5rem;
-      margin-bottom: 7rem;
+      margin-bottom: 15rem;
     `}
 
   @media (max-width: 958px) {
@@ -204,7 +204,7 @@ const SearchSection = styled.div`
   gap: 12px;
   padding: 25px;
   position: fixed;
-  top: 4rem;
+  top: 5rem;
   right: 2rem;
 
   @media (max-width: 958px) {
@@ -338,15 +338,17 @@ const PageButton = styled.button`
   }
 `;
 
-const NoticenotFound = styled.h1`
-  fontsize: 2rem;
+const NoticenotFound = styled.h2`
+  font-size: 1.8rem;
   text-align: center;
-  font-style: italic;
   color: #20068e;
-  margin: 10rem 0;
+  margin: 13rem 15rem;
+  font-family: 'Courier New', Courier, monospace;
 
   @media (max-width: 500px) {
-    margin: 3rem auto;
+    margin: 1rem auto;
+    font-size: 1rem;
+    font-weight: bold;
   }
 `;
 
@@ -358,15 +360,27 @@ const Ellipsis = styled.li`
 const typedata = [
   {
     id: 1,
-    notice_type: "Administration",
-  },
-  {
-    id: 2,
     notice_type: "Admin",
   },
   {
+    id: 2,
+    notice_type: "Administration",
+  },
+  {
     id: 3,
+    notice_type: "Admission",
+  },
+  {
+    id: 4,
     notice_type: "Exam",
+  },
+  {
+    id: 5,
+    notice_type: "Scholarship",
+  }, 
+  {
+    id: 6,
+    notice_type: "Other",
   },
 ];
 
@@ -486,7 +500,7 @@ const Page = () => {
         </Header>
         <Container>
           {noticesNotFound ? (
-            <NoticenotFound>Notices not found...!</NoticenotFound>
+            <NoticenotFound>No search found for your query...</NoticenotFound>
           ) : (
             <List>
               {/* {currentNotices ? ( */}
