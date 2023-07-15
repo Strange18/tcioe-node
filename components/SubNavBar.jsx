@@ -46,7 +46,7 @@ const SubNavBar = () => {
           </Link>
         </div>
         <div>
-          <Link href="https://mail.google.com">
+          <Link href="https://mail.google.com" target="_blank">
             <AiOutlineMail className={styles.icon} />
             <span className={styles.link}>Check Mail</span>
           </Link>
