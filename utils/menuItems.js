@@ -207,7 +207,7 @@ export const menuItems = [
         submenu: [
           {
             title: "SILPA Magazine",
-            url: "https://fliphtml5.com/lcurg/vfkh/Shilpa%3A_First_Edition/",
+            url: "/resources/magazines/silpa",
           },
           {
             title: "Industrial Vision",
