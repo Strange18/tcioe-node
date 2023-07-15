@@ -47,7 +47,7 @@ const Container = styled.div`
   justify-content: space-between;
   gap: 24px;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 958px) {
     flex-direction: column-reverse;
     width: 100%;
   }
@@ -166,28 +166,24 @@ const ItemTitle = styled.div`
   font-size: 1.2rem;
   color: #181b57;
   font-weight: bold;
-  width: 150%;
+  width: 100%;
   overflow: hidden;
 
   @media (max-width: 958px) {
     font-size: 1rem;
-    width: 200%;
   }
 
   @media (max-width: 700px) {
     font-size: 0.7rem;
-    width: 200%;
   }
 `;
 const ItemSubtitle = styled.div`
   font-size: 0.8rem;
   color: #8a8a8a;
-  width: 150%;
+  width: 100%;
   overflow: hidden;
-
   @media (max-width: 958px) {
     font-size: 0.6rem;
-    width: 200%;
   }
 `;
 
@@ -211,7 +207,7 @@ const SearchSection = styled.div`
   top: 5rem;
   right: 2rem;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 958px) {
     position: relative;
     top: 0;
     right: 0;
@@ -240,8 +236,8 @@ const SearchInput = styled.input`
     border: 1px solid #7177ff;
   }
 
-  @media (max-width: 1100px) {
-    width: 14rem;
+  @media (max-width: 958px) {
+    width: 70%;
   }
 `;
 const DatePickerContainer = styled.div`
@@ -264,6 +260,7 @@ const DatePickerContainer = styled.div`
   }
 `;
 const SearchButton = styled.button`
+  width: 65%;
   height: 30px;
   border-radius: 6px;
   background-color: #7177ff;
@@ -277,10 +274,6 @@ const SearchButton = styled.button`
 
   &:hover {
     background-color: #5f65e2;
-  }
-
-  @media (max-width: 1100px) {
-    width: 10rem;
   }
 `;
 
@@ -352,13 +345,7 @@ const NoticenotFound = styled.h2`
   margin: 13rem 15rem;
   font-family: 'Courier New', Courier, monospace;
 
-  @media (max-width: 1441px) {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin: 13rem auto;
-  }
-
-  @media (max-width: 1100px) {
+  @media (max-width: 500px) {
     margin: 1rem auto;
     font-size: 1rem;
     font-weight: bold;
