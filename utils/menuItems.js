@@ -5,7 +5,7 @@ export const menuItems = [
     submenu: [
       {
         title: "Mission, Vision and Values",
-        url: "/about/mvv",
+        url: "/about",
       },
       {
         title: "Organization Chart",
@@ -175,10 +175,10 @@ export const menuItems = [
           },
         ],
       },
-      {
-        title: "Journal Publications",
-        url: "/resources/journals",
-      },
+      // {
+      //   title: "Journal Publications",
+      //   url: "/resources/journals",
+      // },
       {
         title: "Campus Reports",
         url: "",
@@ -303,30 +303,30 @@ export const menuItems = [
       },
     ],
   },
-  {
-    title: "Careers",
-    url: "",
-    submenu: [
-      {
-        title: "Full-time and Part-time Faculty Positions",
-        url: "/careers/faculty",
-      },
-      {
-        title: "Non-Teaching Vacancies",
-        url: "/careers/non-teaching",
-      },
-      {
-        title: "Research Openings",
-        url: "/careers/research",
-      },
-      {
-        title: "Project Opportunities",
-        url: "/careers/projects",
-      },
-      {
-        title: "Career Fairs / Job Exhibitions",
-        url: "/careers/fairs",
-      },
-    ],
-  },
+  // {
+  //   title: "Careers",
+  //   url: "",
+  //   submenu: [
+  //     {
+  //       title: "Full-time and Part-time Faculty Positions",
+  //       url: "/careers/faculty",
+  //     },
+  //     {
+  //       title: "Non-Teaching Vacancies",
+  //       url: "/careers/non-teaching",
+  //     },
+  //     {
+  //       title: "Research Openings",
+  //       url: "/careers/research",
+  //     },
+  //     {
+  //       title: "Project Opportunities",
+  //       url: "/careers/projects",
+  //     },
+  //     {
+  //       title: "Career Fairs / Job Exhibitions",
+  //       url: "/careers/fairs",
+  //     },
+  //   ],
+  // },
 ];
