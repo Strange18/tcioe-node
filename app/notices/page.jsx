@@ -41,7 +41,7 @@ const Line = styled.div`
 `;
 
 const Container = styled.div`
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -89,7 +89,7 @@ const Buttoned = styled.button`
 const Item = styled(Link)`
   text-decoration: none;
   width: 100%;
-  height: 120px;
+  height: 130px;
   background-color: #f0efef;
   border-radius: 12px;
   padding: 12px;
@@ -98,6 +98,7 @@ const Item = styled(Link)`
   align-items: center;
   gap: 18px;
   transition: 0.2s ease-in-out;
+
 
   &:hover {
     background-color: #d6d5d5;
@@ -166,28 +167,31 @@ const ItemTitle = styled.div`
   font-size: 1.2rem;
   color: #181b57;
   font-weight: bold;
-  width: 150%;
+  width: 140%;
   overflow: hidden;
+  
 
   @media (max-width: 958px) {
     font-size: 1rem;
-    width: 200%;
   }
 
-  @media (max-width: 700px) {
-    font-size: 0.7rem;
-    width: 200%;
+  @media (max-width: 400px) {
+    width: 180%;
+    padding-top: 0.5rem;
   }
 `;
 const ItemSubtitle = styled.div`
   font-size: 0.8rem;
   color: #8a8a8a;
-  width: 150%;
+  width: 140%;
   overflow: hidden;
 
   @media (max-width: 958px) {
     font-size: 0.6rem;
-    width: 200%;
+  }
+
+  @media (max-width: 400px) {
+    width: 180%;
   }
 `;
 
@@ -205,16 +209,19 @@ const SearchSection = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 11px;
   padding: 25px;
-  position: fixed;
+  position: sticky;
   top: 5rem;
   right: 2rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 10rem);
 
   @media (max-width: 1100px) {
     position: relative;
     top: 0;
     right: 0;
+    max-height: initial;
   }
 `;
 
@@ -225,7 +232,7 @@ const SearchLabel = styled.div`
   margin-bottom: 0px;
 `;
 const SearchInput = styled.input`
-  width: 100%;
+  width: 14rem;
   height: 30px;
   border-radius: 6px;
   border: 1px solid #dbdee7;
@@ -400,7 +407,7 @@ const typedata = [
 const Page = () => {
   const [notices, setNotices] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [noticesPerPage] = useState(10);
+  const [noticesPerPage] = useState(15);
   const [selectedNoticeType, setSelectedNoticeType] = useState("");
   const [noticesNotFound, setNoticesNotFound] = useState(false);
   const [Types, setTypes] = useState([]);
@@ -717,7 +724,7 @@ const Pagination = ({
     if (totalPages <= 1) return null;
 
     const pages = [];
-    if (currentPage !== 1) {
+    const visiblePages = getVisiblePages(currentPage, totalPages);
       pages.push(
         <PageNumber key={1}>
           <PageButton onClick={() => paginate(1)} active={currentPage === 1}>
@@ -725,9 +732,8 @@ const Pagination = ({
           </PageButton>
         </PageNumber>
       );
-    }
 
-    const visiblePages = getVisiblePages(currentPage, totalPages);
+    
 
     if (visiblePages[0] > 2) {
       // pages.push(<li key="ellipsis-start">...</li>);
