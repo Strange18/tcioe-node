@@ -1,4 +1,4 @@
-import img1 from "@/assets/img.jpg";
+import img1 from "@/assets/logo.png";
 import { RenderTeamCards } from "@/components/RenderTeamCards";
 
 export default function Home() {
@@ -6,31 +6,31 @@ export default function Home() {
     {
       id: 1,
       Name: "Mr. Nabin Lamichhane",
-      Designation: "Technical Assistant",
+      staff_designation: "Technical Assistant",
       Responsibility: null,
-      Image: img1,
+      image: img1,
     },
     {
       id: 2,
       Name: "Ms. Kabira Khadka",
-      Designation: "Lab Technician Electronics",
+      staff_designation: "Lab Technician Electronics",
       Responsibility: null,
-      Image: img1,
+      image: img1,
     },
     {
       id: 3,
       Name: "Mr. Tika Ram Maharjan",
-      Designation: "Office Helper",
+      staff_designation: "Office Helper",
       Responsibility: null,
-      Image: img1,
+      image: img1,
     },
     {
       id: 4,
       Name: "Mr. Minod Pode",
-      Designation: "Office Helper",
+      staff_designation: "Office Helper",
       Responsibility: null,
-      Image: img1,
+      image: img1,
     },
   ];
-  return <RenderTeamCards Members={StaffMembers} />;
+  return <RenderTeamCards Members={StaffMembers} title="Staff" />;
 }

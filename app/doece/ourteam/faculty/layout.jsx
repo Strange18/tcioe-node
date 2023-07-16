@@ -1,26 +1,22 @@
-import { Inter } from "next/font/google";
 import FooterComponent from "@/components/FooterComponent";
 import HeaderComponent from "@/components/HeaderComponent";
 import { menuItems } from "@/utils/departmentMenuItems";
-const inter = Inter({ subsets: ["latin"] });
+import Head from "next/head";
 
 export const metadata = {
-  title: "Faculty Members",
+  title: "DOECE: Faculty members",
   description:
-    "Full time faculty members of department of electronics and computer engineering ",
+    "Full time faculty members of the department of electroncis and computer engineering",
 };
 
-export default function RootLayout({ children }) {
+export default function root({ children }) {
   return (
     <>
-      <head>
+      <Head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
-      </head>
-      <body>
-        <HeaderComponent menuItems={menuItems} />
-        <main>{children}</main>
-      </body>
+      </Head>
+      {children}
     </>
   );
 }
