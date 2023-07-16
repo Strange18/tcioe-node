@@ -5,7 +5,7 @@ import CampusChiefComponent from "@/components/CampusChiefComponent";
 import ProgramsOfferedComponent from "@/components/ProgramsOfferedComponent";
 
 //paxi backend bata head_data fetch garera pathaune
-import hero from "@/assets/heroEce.jpeg";
+import hero from "@/assets/heroDOECE.png";
 import CampusCheifimage from "@/assets/hod.png";
 import computer from "@/assets/computer.png";
 import electronics from "@/assets/electronics.png";
