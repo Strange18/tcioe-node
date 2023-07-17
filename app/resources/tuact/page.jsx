@@ -44,7 +44,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   gap: 24px;
-  height: 50vh;
+  height: 20vh;
   @media (max-width: 958px) {
     flex-direction: column-reverse;
   }
@@ -108,22 +108,92 @@ const page = () => {
     <>
       <HeaderComponent menuItems={menuItems} />
       <Wrapper>
+
         <Header>
-          <Title>Alumni Tracer</Title>
+          <Title>ऐन</Title>
           <Line width={"100px"} />
         </Header>
         <Container>
           <List>
             <Item
-              href="https://notices.tcioe.edu.np/media/files/Tracer_Study_Questionnaire.pdf"
+              href="https://notices.tcioe.edu.np/media/files/be_barch-academic-calendar-2080_2Mfhq49.pdf"
               target="_blank"
             >
               <ItemText>
-                <ItemTitle>Tracer Study Questionnaire</ItemTitle>
+                <ItemTitle>B.E./BArch. Academic Calendar</ItemTitle>
               </ItemText>
             </Item>
           </List>
         </Container>
+
+        <Header>
+          <Title>नियम</Title>
+          <Line width={"100px"} />
+        </Header>
+        <Container>
+          <List>
+            <Item
+              href="https://notices.tcioe.edu.np/media/files/be_barch-academic-calendar-2080_2Mfhq49.pdf"
+              target="_blank"
+            >
+              <ItemText>
+                <ItemTitle>B.E./BArch. Academic Calendar</ItemTitle>
+              </ItemText>
+            </Item>
+          </List>
+        </Container>
+
+        <Header>
+          <Title>विनियम</Title>
+          <Line width={"100px"} />
+        </Header>
+        <Container>
+          <List>
+            <Item
+              href="https://notices.tcioe.edu.np/media/files/be_barch-academic-calendar-2080_2Mfhq49.pdf"
+              target="_blank"
+            >
+              <ItemText>
+                <ItemTitle>B.E./BArch. Academic Calendar</ItemTitle>
+              </ItemText>
+            </Item>
+          </List>
+        </Container>
+
+        <Header>
+          <Title>कार्यविधि</Title>
+          <Line width={"100px"} />
+        </Header>
+        <Container>
+          <List>
+            <Item
+              href="https://notices.tcioe.edu.np/media/files/be_barch-academic-calendar-2080_2Mfhq49.pdf"
+              target="_blank"
+            >
+              <ItemText>
+                <ItemTitle>B.E./BArch. Academic Calendar</ItemTitle>
+              </ItemText>
+            </Item>
+          </List>
+        </Container>
+
+        <Header>
+          <Title>निर्देशिका</Title>
+          <Line width={"100px"} />
+        </Header>
+        <Container>
+          <List>
+            <Item
+              href="https://notices.tcioe.edu.np/media/files/be_barch-academic-calendar-2080_2Mfhq49.pdf"
+              target="_blank"
+            >
+              <ItemText>
+                <ItemTitle>B.E./BArch. Academic Calendar</ItemTitle>
+              </ItemText>
+            </Item>
+          </List>
+        </Container>
+
       </Wrapper>
     </>
   );

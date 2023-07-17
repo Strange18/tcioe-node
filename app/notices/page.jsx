@@ -41,14 +41,14 @@ const Line = styled.div`
 `;
 
 const Container = styled.div`
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: 24px;
 
-  @media (max-width: 958px) {
-    flex-direction: column-reverse;
+  @media (max-width: 1200px) {
+    flex-direction: column;
     width: 100%;
   }
 `;
@@ -74,11 +74,17 @@ const Buttoned = styled.button`
   background-color: ${(props) =>
     props.data === "Administration"
       ? "#034587"
-      : props.data === "Admin"
-      ? "#0E5B24"
+      : props.data === "Admission"
+      ? "#09c109"
       : props.data === "Exam"
-      ? "#A81C1C"
-      : "#282727"};
+      ? "#f43131"
+      : props.data === "Scholarship"
+      ? "#3bbbed"
+      : props.data === "Department"
+      ? "#44a0e1"
+      : props.data === "General"
+      ? "#282727"
+      : "#ef07c4"};
   text-align: center;
 
   @media (max-width: 700px) {
@@ -89,7 +95,7 @@ const Buttoned = styled.button`
 const Item = styled(Link)`
   text-decoration: none;
   width: 100%;
-  height: 120px;
+  height: 130px;
   background-color: #f0efef;
   border-radius: 12px;
   padding: 12px;
@@ -98,6 +104,7 @@ const Item = styled(Link)`
   align-items: center;
   gap: 18px;
   transition: 0.2s ease-in-out;
+
 
   &:hover {
     background-color: #d6d5d5;
@@ -166,24 +173,31 @@ const ItemTitle = styled.div`
   font-size: 1.2rem;
   color: #181b57;
   font-weight: bold;
-  width: 100%;
+  width: 140%;
   overflow: hidden;
+  
 
   @media (max-width: 958px) {
     font-size: 1rem;
   }
 
-  @media (max-width: 700px) {
-    font-size: 0.7rem;
+  @media (max-width: 400px) {
+    width: 180%;
+    padding-top: 0.5rem;
   }
 `;
 const ItemSubtitle = styled.div`
   font-size: 0.8rem;
   color: #8a8a8a;
-  width: 100%;
+  width: 140%;
   overflow: hidden;
+
   @media (max-width: 958px) {
     font-size: 0.6rem;
+  }
+
+  @media (max-width: 400px) {
+    width: 180%;
   }
 `;
 
@@ -201,16 +215,21 @@ const SearchSection = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 11px;
   padding: 25px;
-  position: fixed;
+  position: sticky;
   top: 5rem;
   right: 2rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 10rem);
+  margin-top: -6rem;
 
-  @media (max-width: 958px) {
+  @media (max-width: 1200px) {
     position: relative;
     top: 0;
     right: 0;
+    max-height: initial;
+    margin-top: 0rem;
   }
 `;
 
@@ -221,7 +240,7 @@ const SearchLabel = styled.div`
   margin-bottom: 0px;
 `;
 const SearchInput = styled.input`
-  width: 100%;
+  width: 14rem;
   height: 30px;
   border-radius: 6px;
   border: 1px solid #dbdee7;
@@ -236,8 +255,8 @@ const SearchInput = styled.input`
     border: 1px solid #7177ff;
   }
 
-  @media (max-width: 958px) {
-    width: 70%;
+  @media (max-width: 1100px) {
+    width: 14rem;
   }
 `;
 const DatePickerContainer = styled.div`
@@ -260,7 +279,6 @@ const DatePickerContainer = styled.div`
   }
 `;
 const SearchButton = styled.button`
-  width: 65%;
   height: 30px;
   border-radius: 6px;
   background-color: #7177ff;
@@ -274,6 +292,10 @@ const SearchButton = styled.button`
 
   &:hover {
     background-color: #5f65e2;
+  }
+
+  @media (max-width: 1100px) {
+    width: 10rem;
   }
 `;
 
@@ -342,14 +364,27 @@ const NoticenotFound = styled.h2`
   font-size: 1.8rem;
   text-align: center;
   color: #20068e;
-  margin: 13rem 15rem;
+  margin: auto 13rem;
   font-family: 'Courier New', Courier, monospace;
 
-  @media (max-width: 500px) {
+  @media (max-width: 1441px) {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  @media (max-width: 1100px) {
     margin: 1rem auto;
     font-size: 1rem;
     font-weight: bold;
   }
+`;
+
+const NotPag = styled.div`
+flex: 3;
+display: flex;
+flex-direction: column;
+gap: 18px;
+overflow-y: auto;
 `;
 
 const Ellipsis = styled.li`
@@ -360,27 +395,27 @@ const Ellipsis = styled.li`
 const typedata = [
   {
     id: 1,
-    notice_type: "Admin",
-  },
-  {
-    id: 2,
     notice_type: "Administration",
   },
   {
-    id: 3,
+    id: 2,
     notice_type: "Admission",
   },
   {
-    id: 4,
+    id: 3,
     notice_type: "Exam",
   },
   {
-    id: 5,
+    id: 4,
     notice_type: "Scholarship",
+  },
+  {
+    id: 5,
+    notice_type: "Department",
   }, 
   {
     id: 6,
-    notice_type: "Other",
+    notice_type: "General",
   },
 ];
 
@@ -394,6 +429,20 @@ const Page = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [searchKeyword, setSearchKeyword] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+
+    };
+  
+    // Check if both start date and end date have values
+    if (startDate && endDate) {
+      handleSearch(); // Call handleSearch function
+    } else {
+      fetchData(); // Fetch data normally
+    }
+  }, [selectedNoticeType, startDate, endDate, searchKeyword]);
+  
 
   useEffect(() => {
     const getData = async () => {
@@ -431,7 +480,7 @@ const Page = () => {
     const filteredNotices = response.filter((notice) => {
       const noticeDate = new Date(notice.published_date);
       const isMatchedKeyword = searchKeywords.some((keyword) =>
-        new RegExp(keyword, "i").test(notice.title) || new RegExp(keyword, "i").test(notice.description)
+        new RegExp(keyword, "i").test(notice.title) || new RegExp(keyword, "i").test(notice.description) || new RegExp(keyword, "i").test(notice.notice_category.notice_type)
       );
   
       return (
@@ -490,6 +539,12 @@ const Page = () => {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <>
       <HeaderComponent menuItems={menuItems} />
@@ -502,6 +557,7 @@ const Page = () => {
           {noticesNotFound ? (
             <NoticenotFound>No search found for your query...</NoticenotFound>
           ) : (
+            <NotPag>
             <List>
               {/* {currentNotices ? ( */}
               {currentNotices.length <= 1
@@ -618,6 +674,16 @@ const Page = () => {
                     </Item>
                   ))}
             </List>
+                  {/* Pagination */}
+      {!noticesNotFound && (
+        <Pagination
+          noticesPerPage={noticesPerPage}
+          totalNotices={notices.length}
+          currentPage={currentPage}
+          paginate={paginate}
+        />
+      )}
+            </NotPag>
           )}
 
           <SearchSection>
@@ -626,6 +692,7 @@ const Page = () => {
               placeholder="Search Keywords..."
               value={searchKeyword}
               onChange={(e) => setSearchKeyword(e.target.value)}
+              onKeyUp={handleKeyDown}
             />
             <SearchLabel>From</SearchLabel>
             <DatePickerContainer>
@@ -634,6 +701,12 @@ const Page = () => {
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
                 maxDate={endDate || new Date()}
+                placeholderText="Start Date..."
+                className="w-100"
+                peekNextMonth
+                showMonthDropdown
+                showYearDropdown
+                dropdownMode="select"
               />
             </DatePickerContainer>
             <SearchLabel>To</SearchLabel>
@@ -645,9 +718,15 @@ const Page = () => {
                 maxDate={new Date()}
                 minDate={startDate}
                 filterDate={(date) => date >= startDate}
+                placeholderText="End Date..."
+                className="w-100"
+                peekNextMonth
+                showMonthDropdown
+                showYearDropdown
+                dropdownMode="select"
               />
             </DatePickerContainer>
-            <SearchLabel>Type</SearchLabel>
+            {/* <SearchLabel>Type</SearchLabel>
             {Types.map((item) => (
               <RadioContainer key={item.id}>
                 <Radio
@@ -655,14 +734,13 @@ const Page = () => {
                   name="notice_type"
                   value={item.notice_type}
                   checked={selectedNoticeType === item.notice_type}
-                  // checked={item.isChecked}
                   onChange={HandleChange}
                 />
                 <RadioLabel htmlFor={item.notice_type}>
                   {item.notice_type}
                 </RadioLabel>
               </RadioContainer>
-            ))}
+            ))} */}
             <SameLine>
               <SearchButton onClick={handleSearch}>Search</SearchButton> &nbsp;
               <SearchButton onClick={handleReset}>Reset</SearchButton>
@@ -671,15 +749,6 @@ const Page = () => {
         </Container>
       </Wrapper>
 
-      {/* Pagination */}
-      {!noticesNotFound && (
-        <Pagination
-          noticesPerPage={noticesPerPage}
-          totalNotices={notices.length}
-          currentPage={currentPage}
-          paginate={paginate}
-        />
-      )}
     </>
   );
 };
@@ -704,7 +773,7 @@ const Pagination = ({
     if (totalPages <= 1) return null;
 
     const pages = [];
-    if (currentPage !== 1) {
+    const visiblePages = getVisiblePages(currentPage, totalPages);
       pages.push(
         <PageNumber key={1}>
           <PageButton onClick={() => paginate(1)} active={currentPage === 1}>
@@ -712,9 +781,8 @@ const Pagination = ({
           </PageButton>
         </PageNumber>
       );
-    }
 
-    const visiblePages = getVisiblePages(currentPage, totalPages);
+    
 
     if (visiblePages[0] > 2) {
       // pages.push(<li key="ellipsis-start">...</li>);

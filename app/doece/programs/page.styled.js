@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const SyllabusTableContainer = styled.div`
-  width: 100%;
-  height: 60vh;
-  border: 1px solid #000;
-`;
+    width: 100%;
+    height: 60vh;
+    border: 1px solid #000;
+`
 
 export const SyllabusTable = styled.table`
   border-collapse: collapse;
@@ -32,8 +32,8 @@ export const SyllabusTable = styled.table`
 
 export const NavigationButton = styled.button`
   border: none;
-  background: ${({ isActive }) => (isActive ? "#7177FF" : "none")};
-  color: ${({ isActive }) => (isActive ? "#fff" : "#777777")};
+  background: ${({ isActive }) => (isActive ? '#7177FF' : 'none')};
+  color: ${({ isActive }) => (isActive ? '#fff' : '#777777')};
   cursor: pointer;
   font-weight: bold;
   padding: 10px 40px;
@@ -41,22 +41,23 @@ export const NavigationButton = styled.button`
   margin-left: 25px;
   border-radius: 5px;
 
-  &:hover {
-    background-color: #7588f2;
-    color: #fff;
-  }
+    &:hover {
+        background-color: #7588F2;
+        color: #fff;
+    }
 
-  @media screen and (max-width: 768px) {
-    padding: 10px 20px;
-  }
+    @media screen and (max-width: 768px) {
+        padding: 10px 20px;
+    }
 `;
 export const NavigationButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px 0;
-  width: 100%;
-`;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    width: 100%;
+
+`
 
 export const Heading = styled.h1`
   margin: 25px;
@@ -74,13 +75,11 @@ export const Heading = styled.h1`
     position: absolute;
     margin-left: 5px;
     top: 50%;
-    left: calc(
-      9% - 1px
-    ); /* Adjust the value to position the border closer or farther from the heading */
+    left: calc(9% - 1px); /* Adjust the value to position the border closer or farther from the heading */
     transform: translateY(-50%);
     height: 100%; /* Adjust the height to control the length of the border line */
     width: 4px; /* Adjust the width to control the thickness of the border line */
-    background-color: #7177ff;
+    background-color: #7177FF;
   }
 
   @media (max-width: 768px) {
@@ -100,7 +99,7 @@ export const Dropdown = styled.select`
   border-radius: 5px;
   border: 1px solid #ffff;
   color: #ffff;
-  background-color: #7177ff;
+  background-color: #7177FF;
   outline: none;
   cursor: pointer;
 
@@ -112,12 +111,12 @@ export const Dropdown = styled.select`
     box-shadow: 0 0 0 2px #ffff;
   }
 
-  option {
-    color: #000000;
-    background-color: #ffff;
-    display: flex;
-    white-space: pre;
-    min-height: 20px;
-    padding: 0px 2px 1px;
-  }
+    option {
+        color: #000000;
+        background-color: #ffff;
+        display: flex;
+        white-space: pre;
+        min-height: 20px;
+        padding: 0px 2px 1px;
+    }
 `;
