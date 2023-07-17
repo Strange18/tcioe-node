@@ -11,12 +11,12 @@ const UpperWrapper = tw.div`
   z-2
   px-[64px]
   py-[64px]
-  text-white
+  text-[#f8f8f8]
 `;
 const LowerWrapper = tw.div`
   px-[64px]
   py-[64px]
-  text-[#8a8a8a]
+  text-[#484848]
 `;
 const ImgWrapper = tw.div`
     rounded-[10px] absolute right-[64px] top-[25%] xl:static xl:h-[100%] xl:flex xl:justify-center xl:pt-[64px] 
@@ -32,7 +32,7 @@ const Line = tw.div`
 const Text = tw.p`
   w-[60%]
   text-justify
-  text-xl
+  text-lg
   xl:w-[100%]
   xl:text-lg
   md:text-sm
