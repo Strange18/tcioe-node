@@ -47,7 +47,7 @@ const Container = styled.div`
   justify-content: space-between;
   gap: 24px;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1200px) {
     flex-direction: column;
     width: 100%;
   }
@@ -224,7 +224,7 @@ const SearchSection = styled.div`
   max-height: calc(100vh - 10rem);
   margin-top: -6rem;
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1200px) {
     position: relative;
     top: 0;
     right: 0;
@@ -364,7 +364,7 @@ const NoticenotFound = styled.h2`
   font-size: 1.8rem;
   text-align: center;
   color: #20068e;
-  margin: auto 15.8rem;
+  margin: auto 13rem;
   font-family: 'Courier New', Courier, monospace;
 
   @media (max-width: 1441px) {
@@ -379,17 +379,17 @@ const NoticenotFound = styled.h2`
   }
 `;
 
-const Ellipsis = styled.li`
-  margin: 2rem 5px;
-  color: #8a8a8a;
-`;
-
 const NotPag = styled.div`
-flex: 4.5;
+flex: 3;
 display: flex;
 flex-direction: column;
 gap: 18px;
 overflow-y: auto;
+`;
+
+const Ellipsis = styled.li`
+  margin: 2rem 5px;
+  color: #8a8a8a;
 `;
 
 const typedata = [
