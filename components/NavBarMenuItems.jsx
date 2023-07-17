@@ -33,7 +33,7 @@ const NavBarMenuItems = ({ items, depthLevel }) => {
           <DropDownMenu submenus={items.submenu} dropdown={dropdown} depthLevel={depthLevel}/>
         </>
       ) : (
-        <a href={items.url}>{items.title}</a>
+        <a href={items.url} target="_blank">{items.title}</a>
       )}
     </li>
   )
