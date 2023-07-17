@@ -1,6 +1,6 @@
 "use client";
-import Image from "next/legacy/image";
-import Link from "next/link";
+
+import Image from 'next/legacy/image'
 import React from "react";
 import { styled } from "styled-components";
 
@@ -59,8 +59,10 @@ const CardInfoWithoutImg = styled.section`
   width: 100%;
   gap: 0.4em;
   justify-content: center;
+  padding-top: 3em;
   height: 75px;
   border-top: 5px solid #f97a00;
+  // min-width: 300px;
 `;
 
 const Title = styled.h2`
@@ -72,48 +74,41 @@ const Title = styled.h2`
 const Designation = styled.h4`
   color: #777;
   font-weight: 600;
-  font-size: 1rem;
-  text-align: center;
-`;
-const Email = styled.h4`
-  color: #777;
-  font-weight: 600;
   font-size: 0.8rem;
   text-align: center;
 `;
+const Responsibility = styled.h4`
+  color: #777;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+`;
 const TeamCard = ({ detail }) => {
-  const { photo } = detail;
-  const modifiedPhoto = photo
-    ? photo.replace(
-        "http://10.10.100.246:9000/",
-        "https://notices.tcioe.edu.np/"
-      )
-    : null;
   return (
     <CardWrapper>
-      {modifiedPhoto ? (
+      {detail.Image ? (
         <>
           <CardImg>
             <ImgDiv>
-              <Image src={modifiedPhoto} layout="fill" objectFit="cover" />
+              <Image src={detail.Image} layout="fill" objectFit="cover" />
             </ImgDiv>
             <EmptyDiv></EmptyDiv>
           </CardImg>
           <CardInfo>
-            <Title>{detail.name}</Title>
-            <Designation>{detail.staff_designation}</Designation>
-            {detail.email && <Email>{detail.email}</Email>}
+            <Title>{detail.Name}</Title>
+            {detail.Responsibility && (
+              <Responsibility>{detail.Responsibility}</Responsibility>
+            )}
+            <Designation>{detail.Designation}</Designation>
           </CardInfo>
         </>
       ) : (
         <CardInfoWithoutImg>
           <Title>{detail.Name}</Title>
-          <Designation>{detail.staff_designation}</Designation>
-          {detail.email && (
-            <Email>
-              <a href={`mailto:${detail.email}`}>{detail.email}</a>
-            </Email>
+          {detail.Responsibility && (
+            <Responsibility>{detail.Responsibility}</Responsibility>
           )}
+          <Designation>{detail.Designation}</Designation>
         </CardInfoWithoutImg>
       )}
     </CardWrapper>
