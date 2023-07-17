@@ -726,7 +726,7 @@ const Page = () => {
                 dropdownMode="select"
               />
             </DatePickerContainer>
-            <SearchLabel>Type</SearchLabel>
+            {/* <SearchLabel>Type</SearchLabel>
             {Types.map((item) => (
               <RadioContainer key={item.id}>
                 <Radio
@@ -740,7 +740,7 @@ const Page = () => {
                   {item.notice_type}
                 </RadioLabel>
               </RadioContainer>
-            ))}
+            ))} */}
             <SameLine>
               <SearchButton onClick={handleSearch}>Search</SearchButton> &nbsp;
               <SearchButton onClick={handleReset}>Reset</SearchButton>
