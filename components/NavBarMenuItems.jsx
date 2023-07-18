@@ -1,26 +1,25 @@
 "use client"
-import React from 'react'
-import { useState, useEffect, useRef } from 'react'
-import DropDownMenu from './DropDownMenu'
+import React, { useState, useEffect, useRef } from 'react';
+import DropDownMenu from './DropDownMenu';
 
 const NavBarMenuItems = ({ items, depthLevel }) => {
-    const [dropdown, setDropdown] = useState(false);
-    let ref = useRef();
+  const [dropdown, setDropdown] = useState(false);
+  let ref = useRef();
 
-    useEffect(() => {
-        const handler = (event) => {
-         if (dropdown && ref.current && !ref.current.contains(event.target)) {
-          setDropdown(false);
-         }
-        };
-        document.addEventListener("mousedown", handler);
-        document.addEventListener("touchstart", handler);
-        return () => {
-         // Cleanup the event listener
-         document.removeEventListener("mousedown", handler);
-         document.removeEventListener("touchstart", handler);
-        };
-    }, [dropdown]);
+  useEffect(() => {
+    const handler = (event) => {
+      if (dropdown && ref.current && !ref.current.contains(event.target)) {
+        setDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    document.addEventListener("touchstart", handler);
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("mousedown", handler);
+      document.removeEventListener("touchstart", handler);
+    };
+  }, [dropdown]);
 
   return (
     <li className="menu-items" ref={ref}>
@@ -33,10 +32,10 @@ const NavBarMenuItems = ({ items, depthLevel }) => {
           <DropDownMenu submenus={items.submenu} dropdown={dropdown} depthLevel={depthLevel}/>
         </>
       ) : (
-        <a href={items.url} target="_blank">{items.title}</a>
+        <a href={items.url} target={items.title === "SILPA Magazine" || items.title === "Industrial Vision" ? "_blank" : "_self"}>{items.title}</a>
       )}
     </li>
-  )
-}
+  );
+};
 
-export default NavBarMenuItems
+export default NavBarMenuItems;

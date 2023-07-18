@@ -9,7 +9,7 @@ export const menuItems = [
       },
       {
         title: "Organization Chart",
-        url: "/about/organization_chart",
+        url: "/about/organization",
       },
       {
         title: "Key Campus Officials",
@@ -211,7 +211,7 @@ export const menuItems = [
           },
           {
             title: "Industrial Vision",
-            url: "https://drive.google.com/file/d/1r_PyskuHbBKP7VEkgg0lWGhBWz2kpzKG/view",
+            url: "https://drive.google.com/file/d/1r_PyskuHbBKP7VEkgg0lWGhBWz2kpzKG/view" ,
           },
         ],
       },
