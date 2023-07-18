@@ -1,7 +1,6 @@
 "use client"
-import React from 'react'
-import { useState, useRef } from 'react'
-import DropDownMenu from './DropDownMenu'
+import React, { useState, useEffect, useRef } from 'react';
+import DropDownMenu from './DropDownMenu';
 
 const NavBarMenuItems = ({ items, depthLevel }) => {
   const [dropdown, setDropdown] = useState(false);
@@ -41,7 +40,7 @@ const NavBarMenuItems = ({ items, depthLevel }) => {
           )}
         </>
       ) : (
-        <a href={items.url}>{items.title}</a>
+        <a href={items.url} target={items.title === "SILPA Magazine" || items.title === "Industrial Vision" ? "_blank" : "_self"}>{items.title}</a>
       )}
     </li>
   );
