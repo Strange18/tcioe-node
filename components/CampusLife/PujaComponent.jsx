@@ -9,21 +9,26 @@ const UpperWrapper = tw.div`
   gap-3
   bg-gradient-to-b from-[#012454] to-blue-900
   z-2
-  px-[64px]
-  py-[64px]
+  p-[64px]
   md:p-[32px]
   text-[#f8f8f8]
 `;
 const LowerWrapper = tw.div`
-  px-[64px]
-  py-[64px]
-  text-[#484848]
+  p-[64px]
   md:p-[32px]
+  text-[#484848]
 `;
 const ImgWrapper = tw.div`
-    rounded-[10px] absolute right-[64px] top-[25%] xl:static xl:h-[100%] xl:flex xl:justify-center xl:pt-[64px] 
+    rounded-[10px] absolute right-[64px] top-[18%] xl:static xl:h-[100%] xl:flex xl:justify-center xl:pt-[64px] 
     xl:w-full
     md:px-[64px]
+`;
+
+const Title = tw.h1`
+  uppercase
+  text-3xl
+  font-bold
+
 `;
 
 const Line = tw.div`
@@ -43,6 +48,7 @@ const AboutHeroComponents = (props) => {
   return (
     <Container>
       <UpperWrapper>
+        <Title>{props.title}</Title>
         <Line />
         <Text>{props.text1}</Text>
       </UpperWrapper>

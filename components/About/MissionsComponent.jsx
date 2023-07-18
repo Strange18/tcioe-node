@@ -6,6 +6,7 @@ bg-[#f8f8f8]
 flex
 flex-1
 p-[64px]
+md:p-[32px]
 gap-14
 lg:flex-col
 `;
