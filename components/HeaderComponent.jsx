@@ -5,7 +5,7 @@ import styled from "styled-components";
 import logo from "@/assets/logo.svg";
 import Image from "next/legacy/image";
 import NavBar from "./NavBar";
-import SearchNotice from "./SearchNotice";
+// import SearchNotice from "./SearchNotice";
 
 const Header = styled("header")`
   width: 100%;
@@ -85,7 +85,7 @@ const HeaderComponent = ({ menuItems }) => {
       <div className="header-right-container">
         <NavBar menuItems={menuItems} />
 
-        <SearchNotice />
+        {/* <SearchNotice /> */}
       </div>
     </Header>
   );

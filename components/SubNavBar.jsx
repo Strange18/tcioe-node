@@ -33,10 +33,10 @@ const SubNavBar = () => {
       </section>
       <section className={styles.section_right}>
         <div>
-          <Link href="/">
+          {/* <Link href="/">
             <RiFilePaper2Line className={styles.icon} />
             <span className={styles.link}>Phone Directory</span>
-          </Link>
+          </Link> */}
         </div>
         <div>
           <Link href="/alumni">

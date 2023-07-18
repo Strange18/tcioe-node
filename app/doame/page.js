@@ -6,6 +6,7 @@ const Heading = styled.h1`
 text-align: center;
 margin: 8rem 0;
 color: #20068E;
+font-family: 'Courier New', Courier, monospace;
 `;
 
 const Page = () => {
