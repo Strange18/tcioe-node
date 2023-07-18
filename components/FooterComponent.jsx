@@ -191,6 +191,7 @@ const FooterComponent = () => {
           <Links href="/admission">Admission</Links>
           <Links href="/resources">Resources</Links>
           <Links href="/notices">Notices</Links>
+          <Links href="/campusmap">Campus Map</Links>
         </QuickLinks>
         <Contact>
           <Heading>Contact</Heading>

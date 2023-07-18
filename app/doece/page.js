@@ -48,7 +48,12 @@ const Page = () => {
           message={head_data.message}
         />
         <ProgramsOfferedComponent programs={programs_data} />
-        <CampusImageGallery />
+        <CampusImageGallery
+          title={"The Thapathali"}
+          description={
+            "A college experience transcending beyond just classrooms and lectures. Come and live the Thapathali Experience!"
+          }
+        />
         <StudentTestimonials />
       </div>
     </>
