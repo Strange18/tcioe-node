@@ -115,7 +115,7 @@ const page = () => {
         <Container>
           <List>
             <Item
-              href="https://notices.tcioe.edu.np/media/files/be_barch-academic-calendar-2080_2Mfhq49.pdf"
+              href="https://notices.tcioe.edu.np/media/files/be_barch-academic-calendar-2080_Dzj9wo0.pdf"
               target="_blank"
             >
               <ItemText>
