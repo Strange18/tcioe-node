@@ -232,7 +232,7 @@ const FooterComponent = () => {
           {/* <Link href="">
                     <Image src={Linkedin} width={30} height={30} alt="icon" color="#ffffff"/>
                     </Link> */}
-          <Link href="https://www.facebook.com/profile.php?id=100090608649691">
+          <Link href="https://www.facebook.com/profile.php?id=100090608649691" target="_blank">
             <Image
               src={Facebook}
               width={30}
