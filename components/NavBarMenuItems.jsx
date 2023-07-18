@@ -4,32 +4,40 @@ import DropDownMenu from './DropDownMenu';
 
 const NavBarMenuItems = ({ items, depthLevel }) => {
   const [dropdown, setDropdown] = useState(false);
-  let ref = useRef();
+  const dropdownRef = useRef();
+  const contentRef = useRef();
 
-  useEffect(() => {
-    const handler = (event) => {
-      if (dropdown && ref.current && !ref.current.contains(event.target)) {
-        setDropdown(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    document.addEventListener("touchstart", handler);
-    return () => {
-      // Cleanup the event listener
-      document.removeEventListener("mousedown", handler);
-      document.removeEventListener("touchstart", handler);
-    };
-  }, [dropdown]);
+  const handleMouseEnter = () => {
+    setDropdown(true);
+  };
+
+  const handleMouseLeave = () => {
+    setDropdown(false);
+  };
 
   return (
-    <li className="menu-items" ref={ref}>
+    <li
+      className="menu-items"
+      ref={dropdownRef}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       {items.submenu ? (
         <>
-          <button type="button" aria-haspopup="menu" onClick={() => setDropdown(prev => !prev)}>
+          <button type="button" aria-haspopup="menu">
             {items.title}{' '}
             {depthLevel > 0 ? <span>&#x25b6;</span> : <span className="arrow" />}
           </button>
-          <DropDownMenu submenus={items.submenu} dropdown={dropdown} depthLevel={depthLevel}/>
+          {dropdown && (
+            <DropDownMenu
+              submenus={items.submenu}
+              dropdown={dropdown}
+              depthLevel={depthLevel}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              contentRef={contentRef}
+            />
+          )}
         </>
       ) : (
         <a href={items.url} target={items.title === "SILPA Magazine" || items.title === "Industrial Vision" ? "_blank" : "_self"}>{items.title}</a>

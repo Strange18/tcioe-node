@@ -5,19 +5,7 @@ import styled from 'styled-components'
 import SearchIcon from '@/assets/searchIcon.svg'
 
 const Container = styled('div')`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-
-    background-color: #F6F5F5;
-    padding: 12px 24px;
-    border-radius: 16px;
-
-    @media (max-width: 920px) {
-      & {
-        
-      }
+margin: 0 5rem;
     }
     `
 
@@ -36,10 +24,10 @@ const Text = styled('h1')`
 const SearchNotice = () => {
   return (
     <Container>
-        <LogoContainer>
+        {/* <LogoContainer>
               <Image src={SearchIcon} layout="fill" objectFit="contain" alt="" />
         </LogoContainer>
-        <Text>Search...</Text>
+        <Text>Search...</Text> */}
     </Container>
   )
 }

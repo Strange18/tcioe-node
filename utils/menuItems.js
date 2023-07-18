@@ -9,7 +9,7 @@ export const menuItems = [
       },
       {
         title: "Organization Chart",
-        url: "/about/organization",
+        url: "/about/organization_chart",
       },
       {
         title: "Key Campus Officials",
@@ -40,10 +40,6 @@ export const menuItems = [
             url: "/about/units/research",
           },
         ],
-      },
-      {
-        title: "Campus Map",
-        url: "/about/map",
       },
       {
         title: "Campus Rules and Guidelines",

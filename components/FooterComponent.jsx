@@ -20,7 +20,7 @@ const Footer = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // margin-top: 5rem;
+
 
   @media (max-width: 950px) {
     min-height: 450px;
@@ -191,6 +191,7 @@ const FooterComponent = () => {
           <Links href="/admission">Admission</Links>
           <Links href="/resources">Resources</Links>
           <Links href="/notices">Notices</Links>
+          <Links href="/campusmap">Campus Map</Links>
         </QuickLinks>
         <Contact>
           <Heading>Contact</Heading>
