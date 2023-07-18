@@ -1,10 +1,10 @@
 import FooterComponent from "@/components/FooterComponent";
 import HeaderComponent from "@/components/HeaderComponent";
-import { menuItems } from "@/utils/departmentMenuItems";
+import { menuItems } from "@/utils/departmentMenuitems_doas";
 
 export const metadata = {
-  title: "Department of Electronics and Computer Engineering",
-  description: "DOECE ",
+  title: "Department of Applied Science",
+  description: "DOAS ",
 };
 
 export default function RootLayout({ children }) {
