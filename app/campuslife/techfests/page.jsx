@@ -1,6 +1,6 @@
 import React from "react";
 import PujaComponent from "@/components/CampusLife/PujaComponent";
-import utsarga from "assets/campusLife/utsarga.png";
+import utsarga from "/assets/campuslife/utsarga.png";
 import CampusImageGallery from "@/components/CampusImageGallery";
 
 const page = () => {

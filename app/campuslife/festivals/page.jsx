@@ -1,6 +1,6 @@
 import React from "react";
 import PujaComponent from "@/components/CampusLife/PujaComponent";
-import saraswotipuja from "assets/campusLife/saraswotiPuja.png";
+import saraswotipuja from "/assets/campuslife/saraswotiPuja.png";
 import CampusImageGallery from "@/components/CampusImageGallery";
 
 const page = () => {
