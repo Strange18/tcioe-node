@@ -20,7 +20,7 @@ const Footer = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // margin-top: 5rem;
+
 
   @media (max-width: 950px) {
     min-height: 450px;
