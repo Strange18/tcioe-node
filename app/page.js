@@ -31,7 +31,7 @@ export default function Home() {
       <div>
         <HeroComponent img={hero} />
         <CampusChiefComponent
-        // router={router}
+          // router={router}
           post={data.post}
           name={data.name}
           photo={data.photo}
@@ -39,7 +39,12 @@ export default function Home() {
         />
         <AboutThapathaliComponent />
         <OurDepartmentsSection />
-        <CampusImageGallery />
+        <CampusImageGallery
+          title={"The Thapathali"}
+          description={
+            "A college experience transcending beyond just classrooms and lectures. Come and live the Thapathali Experience!"
+          }
+        />
         <StudentTestimonials />
       </div>
     </>
