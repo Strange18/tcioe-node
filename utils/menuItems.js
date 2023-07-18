@@ -42,10 +42,6 @@ export const menuItems = [
         ],
       },
       {
-        title: "Campus Map",
-        url: "/about/map",
-      },
-      {
         title: "Campus Rules and Guidelines",
         url: "/about/rules",
       },
