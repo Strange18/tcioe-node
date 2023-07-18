@@ -2,6 +2,8 @@
 
 import React from "react";
 import styled from "styled-components";
+import { menuItems } from "@/utils/menuItems";
+import HeaderComponent from "@/components/HeaderComponent";
 
 const Container = styled.div`
   max-width: 1200px;
@@ -13,29 +15,8 @@ const Container = styled.div`
   }
 `;
 
-const Heading = styled.h1`
-  text-align: center;
-  margin-top: 1rem;
-  font-size: 2.2rem;
-  font-weight: bold;
-  font-family: "Times New Roman", Times, serif;
-`;
 
-const SubHeading1 = styled.h2`
-  text-align: center;
-
-  font-weight: bold;
-  color: white;
-
-  span {
-    font-size: 1.7rem;
-    background: black;
-    padding: 0 0.3rem;
-    font-family: "Times New Roman", Times, serif;
-  }
-`;
-
-const SubHeading2 = styled.h3`
+const SubHeading = styled.h3`
   text-align: left;
   margin: 2rem auto;
 `;
@@ -69,19 +50,44 @@ const ParaHeading = styled.p`
   margin-top: 3rem;
 `;
 
+const Header = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+`;
+const Title = styled.div`
+  font-size: 2rem;
+  font-weight: bold;
+  color: #181b57;
+
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
+  }
+`;
+const Line = styled.div`
+  height: 4px;
+  width: ${(props) => (props.width ? props.width : "100px")};
+  background-color: #f97a00;
+  border-radius: 6px;
+`;
+
 const CodeOfConduct = () => {
   return (
+    <>
+    <HeaderComponent menuItems={menuItems} />
     <Container>
-      <Heading>Nepal Engineering Council </Heading>
-      <SubHeading1>
-        <span>Professional Code of Conduct</span>
-      </SubHeading1>
-      <SubHeading2>
-        The professional Code of Conduct to be followed by the registered
+      <Header>
+          <Title>Professional Code of Conduct</Title>
+          <Line width={"100px"} />
+        </Header>
+      <SubHeading>
+        The Professional Code of Conduct to be followed by the registered
         Engineers of the Council, subject to the provision of the Nepal
         Engineering Council (NEC) Act, 2055 (1998) and the Nepal Engineering
         Council Regulation, 2057(2000), has been published as follows :{" "}
-      </SubHeading2>
+      </SubHeading>
       <BulletList>
         <ListItem>
           <span>Discipline and Honesty:</span> The Engineering
@@ -145,6 +151,7 @@ const CodeOfConduct = () => {
       <Para>Fax: 977-01-4422099</Para>
       <Para>Website: <a href="https://www.nec.gov.np/" target="_blank">www.nec.gov.np</a>, Email: necgov@ntc.net.np</Para>
     </Container>
+    </>
   );
 };
 
