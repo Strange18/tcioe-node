@@ -109,17 +109,17 @@ const page = () => {
       <HeaderComponent menuItems={menuItems} />
       <Wrapper>
         <Header>
-          <Title>B.E./BArch. Academic Calendar</Title>
+          <Title>M.Sc. Academic Calendar</Title>
           <Line width={"100px"} />
         </Header>
         <Container>
           <List>
             <Item
-              href="https://notices.tcioe.edu.np/media/files/be_barch-academic-calendar-2080_Dzj9wo0.pdf"
+              href="https://notices.tcioe.edu.np/media/files/M.Sc._Academic_Calendar_2079-2080.pdf"
               target="_blank"
             >
               <ItemText>
-                <ItemTitle>B.E./BArch. Academic Calendar</ItemTitle>
+                <ItemTitle>M.Sc. Academic Calendar (2079-2080)</ItemTitle>
               </ItemText>
             </Item>
           </List>
