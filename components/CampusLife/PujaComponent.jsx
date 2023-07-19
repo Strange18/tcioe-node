@@ -31,7 +31,7 @@ const Title = tw.h1`
 
 `;
 
-const Line = tw.div`
+export const Line = tw.div`
   h-[7px]
   w-[100px]
   bg-[#f97a01]
@@ -44,7 +44,7 @@ const Text = tw.p`
   xl:text-lg
   md:text-sm
 `;
-const AboutHeroComponents = (props) => {
+const PujaComponent = (props) => {
   return (
     <Container>
       <UpperWrapper>
@@ -68,4 +68,4 @@ const AboutHeroComponents = (props) => {
   );
 };
 
-export default AboutHeroComponents;
+export default PujaComponent;
