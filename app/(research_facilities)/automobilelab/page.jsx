@@ -1,41 +1,56 @@
-// import AboutComponent from "../AboutComponent";
-// import energy_lab_img from "../../../assets/research_facilities/energy_lab.png";
+"use client";
 
-// const data = {
-//   heading: "Automobile Lab",
-//   body_text: "The Department of Automobile and Mechanical Engineering at Thapathali Campus has actively engaged students in extracurricular activities focused on energy conservation and electric vehicles. By organizing energy audits and promoting the use of electric vehicles, students gained valuable knowledge about energy conservation and the benefits of electric transportation. These initiatives not only developed practical skills but also raised awareness about sustainable energy solutions. The Energy System Research Laboratory (ESRL) within the department has emerged as a leading research facility, conducting groundbreaking research on energy modeling in South Asia. Under the guidance of Assistant Professor Dr. Khem Gyanwali, the laboratory's research assistants have made significant contributions to the field. Ongoing projects at ESRL are advancing our understanding of renewable energy, energy efficiency, and energy storage. The Energy Modeling Research Group is exploring innovative ways to harness renewable energy, while the Advanced Computation Research Group is developing neural network models for various applications. Future projects include locating optimal EV charging stations and developing guidelines for transforming conventional vehicles into electric ones. With dedicated faculty members and promising projects, the Energy System Research Lab is poised for continued success.",
-//   img: energy_lab_img,
-// };
+import React from 'react';
+import AboutComponent from '../AboutComponent';
+import automobile_lab_img from '../../../assets/research_facilities/automobile_lab.jpg';
+import styled from "styled-components";
 
-// export default function EnergyLab() {
-//   return (
-//     <>
-//       <AboutComponent heading={data.heading} body_text={data.body_text} img={data.img} />
-//     </>
-//   );
-// }
+const SubHeading = styled.h2`
 
+font-size: 22px;
+font-weight: 700;
+color: #090c4c;
+text-align: left;
+margin-top: 2rem;
+margin-bottom: 1rem;
 
-
-'use client';
-
-import styled from 'styled-components'
-
-const Heading = styled.h1`
-
-text-align: center;
-margin: 8rem 0;
-color: #20068E;
-
+@media (max-width: 1200px) {
+  flex: 100%;
+}
 
 `;
 
-const Page = () => {
-  return (
-    <>
-    <Heading>Work in Progress...!</Heading>
-    </>
-  );
+const listStyles = {
+  listStyleType: 'disc',
 };
 
-export default Page;
+
+const data = {
+  heading: 'Automobile Lab',
+  body_text: 'Serving as the first technical college in the country, Thapathali campus is known for its research facilities, especially in Automobile and Mechanical engineering. As the only college in the country to offer a bachelor\'s in Automobile engineering, the college executive committee has decided to start an Automobile research laboratory inside the college. With the rapidly growing demand for Automobiles in the country, the next vehicle to be manufactured in Nepal could be prototyped here.',
+  img: automobile_lab_img,
+};
+
+export default function EnergyLab() {
+  return (
+    <>
+      <AboutComponent heading={data.heading} body_text={getBodyTextWithObjectives()} img={data.img} />
+    </>
+  );
+}
+
+function getBodyTextWithObjectives() {
+  return (
+    <>
+      <p>
+        {data.body_text}
+      </p>
+      <SubHeading>Objectives</SubHeading>
+      <ul style={listStyles}>
+        <li>Provide best infrastructures for automobile research,</li>
+        <li>To prepare best human resources in the automobile field,</li>
+        <li>To create suitable platform for the study of aspects related to Automobile Engineering.</li>
+      </ul>
+    </>
+  );
+}
