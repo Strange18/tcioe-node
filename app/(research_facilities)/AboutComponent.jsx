@@ -11,11 +11,13 @@ const Container = styled.div`
   flex-wrap: wrap;
   gap: 32px;
   padding: 12px 64px 12px 64px;
+  margin-bottom: 2rem;
 
   @media (max-width: 1200px) {
     flex-direction: column;
     align-items: center;
     padding: 12px 32px 12px 32px;
+    margin-top: -4rem;
   }
 `;
 
@@ -25,17 +27,9 @@ const RightContainer = styled.div`
   flex-direction: column;
   gap: 24px;
   padding: 75px 0 0px 0;
-`;
-
-const Heading = styled.div`
-  font-size: 24px;
-  font-weight: 700;
-  color: #090c4c;
-  text-align: center;
 
   @media (max-width: 1200px) {
-    margin-top: -3rem;
-    flex: 100%;
+    margin-top: -7rem;
   }
 `;
 
@@ -60,6 +54,29 @@ const LeftContainer = styled.div`
   }
 `;
 
+const Header = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+`;
+const Title = styled.div`
+  font-size: 2rem;
+  font-weight: bold;
+  color: #181b57;
+
+  @media (max-width: 600px) {
+    font-size: 1.5rem;
+  }
+`;
+const Line = styled.div`
+  height: 4px;
+  width: ${(props) => (props.width ? props.width : "100px")};
+  background-color: #f97a00;
+  border-radius: 6px;
+`;
+
 const AboutComponent = ({ heading, body_text, img }) => {
   return (
     <Container>
@@ -74,7 +91,11 @@ const AboutComponent = ({ heading, body_text, img }) => {
         />
       </LeftContainer>
       <RightContainer>
-        <Heading>{heading}</Heading>
+      <Header>
+          <Title>{heading}</Title>
+          <Line width={"100px"} />
+          
+        </Header>
         <BodyText>{body_text}</BodyText>
       </RightContainer>
     </Container>
