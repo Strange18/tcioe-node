@@ -113,7 +113,6 @@ const Links = styled.a`
   font-size: 18px;
   color: #949494;
   line-height: 1.3rem;
-  width: 50px;
   @media (max-width: 950px) {
     font-size: 16px;
   }
@@ -192,6 +191,7 @@ const FooterComponent = () => {
           <Links href="/resources">Resources</Links>
           <Links href="/notices">Notices</Links>
           <Links href="/campusmap">Campus Map</Links>
+          <Links href="/phone">Phone Directory</Links>
         </QuickLinks>
         <Contact>
           <Heading>Contact</Heading>
