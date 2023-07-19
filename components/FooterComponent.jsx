@@ -108,7 +108,7 @@ const Heading = styled.div`
     font-size: 18px;
   }
 `;
-const Links = styled(Link)`
+const Links = styled.a`
   text-decoration: none;
   font-size: 18px;
   color: #949494;
