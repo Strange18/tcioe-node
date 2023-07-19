@@ -1,8 +1,7 @@
-"use client"
+"use client";
 
-
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const PageContainer = styled.div`
   display: flex;
@@ -28,8 +27,7 @@ const Heading = styled.h1`
   text-align: center;
   font-size: 3rem;
   margin-bottom: 2rem;
-  color: #20068E;
-  
+  color: #20068e;
 `;
 
 const Subheading = styled.h2`
@@ -48,8 +46,12 @@ const Page = () => {
   return (
     <PageContainer>
       <ContentContainer>
-        <Heading><Emoji>🚧</Emoji>Work in Progress<Emoji>🚧</Emoji></Heading>
-        <Subheading>This page is under construction. Check back soon!</Subheading>
+        <Heading>
+          <Emoji>🚧</Emoji>Work in Progress<Emoji>🚧</Emoji>
+        </Heading>
+        <Subheading>
+          This page is under construction. Check back soon!
+        </Subheading>
       </ContentContainer>
     </PageContainer>
   );
