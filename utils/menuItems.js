@@ -269,7 +269,7 @@ export const menuItems = [
           },
           {
             title: "RAC",
-            url: "/campuslife/clubs/rac",
+            url: "/campuslife/student_club/RAC",
           },
           {
             title: "SOIESS",
