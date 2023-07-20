@@ -51,7 +51,7 @@ const SubNavBar = () => {
           </Link>
         </div>
         <div>
-          <Link href="/">
+          <Link href="/myportal">
             <FaUserGraduate className={styles.icon} />
             <span className={styles.link}>My Portal</span>
           </Link>
