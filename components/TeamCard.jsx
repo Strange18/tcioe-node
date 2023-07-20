@@ -50,16 +50,16 @@ const CardInfo = styled.section`
   gap: 0.4em;
   justify-content: center;
   padding-bottom: 1.5em;
-  height: 75px;
+  height: 95px;
 `;
 
 const CardInfoWithoutImg = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 0.4em;
   justify-content: center;
-  height: 75px;
+  gap: 0.3em;
+  height: 110px;
   border-top: 5px solid #f97a00;
 `;
 
@@ -74,12 +74,17 @@ const Designation = styled.h4`
   font-weight: 600;
   font-size: 1rem;
   text-align: center;
+  width: 90%;
+  margin: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
 `;
 const Email = styled.h4`
   color: #777;
   font-weight: 600;
   font-size: 0.8rem;
   text-align: center;
+  color: #7177ff;
 `;
 const TeamCard = ({ detail }) => {
   const { photo } = detail;
@@ -107,7 +112,7 @@ const TeamCard = ({ detail }) => {
         </>
       ) : (
         <CardInfoWithoutImg>
-          <Title>{detail.Name}</Title>
+          <Title>{detail.name}</Title>
           <Designation>{detail.staff_designation}</Designation>
           {detail.email && (
             <Email>
