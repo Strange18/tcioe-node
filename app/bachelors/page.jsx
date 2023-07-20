@@ -7,8 +7,8 @@ import ProgramsOfferedComponent from "@/components/ProgramsOfferedComponent";
 //paxi backend bata head_data fetch garera pathaune
 import ProgramsIntroComponent from "@/components/ProgramsIntroComponent";
 
-import computer from "@/assets/computer.png";
-import electronics from "@/assets/electronics.png";
+import computer from "@/assets/computer.jpg";
+import electronics from "@/assets/electronics.jpg";
 import automobile from "@/assets/auto_pic.jpeg";
 import mechanical from "@/assets/mech_pic.jpeg";
 import civil from "@/assets/civil_pic.jpeg";
