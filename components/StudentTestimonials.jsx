@@ -7,7 +7,7 @@ import usePosition from "../utils/usePosition";
 import Bikrant from "../public/bikrant.jpg";
 import Khemraj from "../public/khemraj.jpg";
 import Shubham from "../public/shubham.jpg";
-import Prashant from "../public/prashant.jpg";
+import Aamod from "../public/aamod.jpeg";
 import vectortest from "../assets/testimonialVector.png";
 import quote from "../assets/quotevector.png";
 
@@ -180,22 +180,14 @@ const StudentTestimonials = () => {
   const testimonial_api = [
     {
       id: 1,
-      name: "Bikrant Bidari",
-      content:
-        "Enrolling at Thapathali Campus, the best Engineering College in Nepal, was a game-changer for me. The top-notch education and resources provided paved the way for my success in the engineering field. I am forever grateful for the exceptional exposure I received, which broadened my horizons and opened doors to incredible opportunities.",
-      student_id: "BCT, 076",
-      student_profile: Bikrant,
+      name: "Er. Aamod Khatiwada",
+      content: 
+        "Thapathali Campus, Institute of Engineering, brought my dreams to life with Electronics and Communication Engineering. The diverse curriculum, including Sensor Networks, IoT, Robotics, and more, laid a strong foundation for my career. With supportive professors and a dynamic college environment, I grew into a confident and qualified graduate. I'm grateful for the invaluable experiences that shaped my path.",
+      student_id: "BEX, 071",
+      student_profile: Aamod,
     },
     {
       id: 2,
-      name: "Khemraj Shrestha",
-      content:
-        "Attending Thapathali Campus was a dream come true. The outstanding faculty, well-equipped labs, and stimulating learning environment propelled my growth and nurtured my passion for engineering. I can confidently say that my experience at this esteemed institution has shaped me into a competent professional, ready to tackle any challenge in the real world.",
-      student_id: "BCT, 077",
-      student_profile: Khemraj,
-    },
-    {
-      id: 3,
       name: "Shubham Regmi",
       content:
         "Thapathali Campus holds a special place in my heart. The dedication and expertise of the professors, coupled with state-of-the-art facilities, made my learning journey truly remarkable. The practical knowledge I gained, combined with the guidance I received, has given me the confidence to excel in the engineering industry. I owe my success to this exceptional institution.",
@@ -203,12 +195,20 @@ const StudentTestimonials = () => {
       student_profile: Shubham,
     },
     {
-      id: 4,
-      name: "Prashant Raj Bista",
+      id: 3,
+      name: "Bikrant Bidari",
       content:
-        "Studying at Thapathali Campus was an enriching and transformative experience. The engaging learning environment, coupled with a strong emphasis on research and innovation, nurtured my intellectual curiosity and instilled in me a lifelong love for engineering. The exposure to cutting-edge technologies and industry connections provided by the college broadened my perspective and opened doors to exciting career opportunities. I owe my success to Thapathali Campus and its exceptional faculty.",
-      student_id: "BCE, 077",
-      student_profile: Prashant,
+        "Enrolling at Thapathali Campus, the best Engineering College in Nepal, was a game-changer for me. The top-notch education and resources provided paved the way for my success in the engineering field. I am forever grateful for the exceptional exposure I received, which broadened my horizons and opened doors to incredible opportunities.",
+      student_id: "BCT, 076",
+      student_profile: Bikrant,
+    },
+    {
+      id: 4,
+      name: "Khemraj Shrestha",
+      content:
+        "Attending Thapathali Campus was a dream come true. The outstanding faculty, well-equipped labs, and stimulating learning environment propelled my growth and nurtured my passion for engineering. I can confidently say that my experience at this esteemed institution has shaped me into a competent professional, ready to tackle any challenge in the real world.",
+      student_id: "BCT, 077",
+      student_profile: Khemraj,
     },
   ];
   return (

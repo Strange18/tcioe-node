@@ -120,7 +120,7 @@ export const menuItems = [
             url: "/earthquakelab",
           },
           {
-            title: "Informatics and Data Analytics Research Lab",
+            title: "Informatics and Data Analytics Research Lab (Proposed)",
             url: "/informaticslab",
           },
         ],
@@ -265,7 +265,7 @@ export const menuItems = [
           },
           {
             title: "ECAST",
-            url: "/campuslife/clubs/ecast",
+            url: "/campuslife/student_club/ECAST",
           },
           {
             title: "RAC",
