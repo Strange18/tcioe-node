@@ -41,10 +41,6 @@ export const menuItems = [
           },
         ],
       },
-      {
-        title: "Campus Rules and Guidelines",
-        url: "/about/rules",
-      },
     ],
   },
   {
@@ -212,11 +208,11 @@ export const menuItems = [
         ],
       },
       {
-        title: "Student Code of Conduct by Tribhuvan University",
-        url: "/resources/studentcoc",
+        title: "Download",
+        url: "/resources/download",
       },
       {
-        title: "Professional Code of Conduct by Nepal Engineering Council",
+        title: "Professional Code of Conduct",
         url: "/resources/professionalcoc",
       },
       {
