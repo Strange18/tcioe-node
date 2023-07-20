@@ -69,7 +69,7 @@ const OurDepartmentsSection = () => {
       title: "Applied Science",
       link: "/doas",
       subtitle:
-        "The Applied Science Department serves as a center for applied science education, research, and innovation. It prepares students to apply scientific knowledge and methodologies to address real-world challenges and contribute to the development and improvement of various industries and sectors.",
+        "The department serves as a center for applied science education, research, and innovation. It prepares students to apply scientific knowledge and methodologies to address real-world challenges and contribute to the development of various industries and sectors.",
     },
   ];
 
