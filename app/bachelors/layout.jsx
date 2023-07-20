@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import FooterComponent from "@/components/FooterComponent";
 import HeaderComponent from "@/components/HeaderComponent";
 import { menuItems } from "@/utils/menuItems";
+import Head from "next/head";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -9,17 +10,16 @@ export const metadata = {
   description:
     "Description of Bachelor Degree Programs available at Thapathali Campus IOE",
 };
-export default function RootLayout({ children }) {
+
+export default function root({ children }) {
   return (
     <>
-      <head>
+      <Head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
-      </head>
-      <body>
-        <HeaderComponent menuItems={menuItems} />
-        <main>{children}</main>
-      </body>
+      </Head>
+      <HeaderComponent menuItems={menuItems} />
+      {children}
     </>
   );
 }
