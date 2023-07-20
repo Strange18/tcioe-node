@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import AboutHeroComponents from "@/components/About/AboutHeroComponents";
 import thc from "/assets/about/thc.png";
 import HistoryComponent from "@/components/About/HistoryComponent";
