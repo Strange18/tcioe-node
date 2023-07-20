@@ -1,6 +1,6 @@
 import React from "react";
-import ClubsComponent from "@/components/CampusLife/ClubsComponent";
-import rac2 from "/assets/rac2.jpeg";
+import ClubsComponent from "@/components/CampusLife/ClubComponent";
+import rac2 from "/assets/campuslife/RAC/rac2.jpeg";
 import RacImageGallery from "@/components/RacGallary";
 
 const page = () => {
