@@ -7,8 +7,8 @@ import ProgramsOfferedComponent from "@/components/ProgramsOfferedComponent";
 //paxi backend bata head_data fetch garera pathaune
 import hero from "@/assets/heroDoece.jpeg";
 import CampusCheifimage from "@/assets/hod.png";
-import computer from "@/assets/computer.png";
-import electronics from "@/assets/electronics.png";
+import computer from "@/assets/computer.jpg";
+import electronics from "@/assets/electronics.jpg";
 import CampusImageGallery from "@/components/CampusImageGallery";
 import StudentTestimonials from "@/components/StudentTestimonials";
 
