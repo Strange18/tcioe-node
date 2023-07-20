@@ -265,7 +265,7 @@ export const menuItems = [
           },
           {
             title: "ECAST",
-            url: "/campuslife/clubs/ecast",
+            url: "/campuslife/student_club/ECAST",
           },
           {
             title: "RAC",

@@ -40,7 +40,7 @@ const NavBarMenuItems = ({ items, depthLevel }) => {
           )}
         </>
       ) : (
-        <a href={items.url} target={items.title === "SILPA Magazine" || items.title === "Industrial Vision" ? "_blank" : "_self"}>{items.title}</a>
+        <a href={items.url} target={items.title === "SILPA Magazine" || items.title === "Industrial Vision" || items.title==="B.E./B.Arch. Admission" || items.title==="M.Sc. Admission"  ? "_blank" : "_self"}>{items.title}</a>
       )}
     </li>
   );

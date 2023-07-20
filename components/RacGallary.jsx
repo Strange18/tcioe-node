@@ -3,31 +3,25 @@ import React from "react";
 import { BodyText } from "./AboutThapathaliComponent";
 import styled from "styled-components";
 import CampusImageIndividual from "./CampusImageIndividual";
-import rac1 from "/assets/rac1.jpeg";
-import rac2 from "/assets/rac2.jpeg";
-
- import rac4 from "/assets/rac4.jpeg"; 
-import rac5 from "/assets/rac5.jpeg";
-import rac6 from "/assets/rac6.jpeg";
-import rac7 from "/assets/rac7.jpeg";
-import rac8 from "/assets/rac8.jpeg";
-import rac9 from "/assets/rac9.jpeg";
-import rac10 from "/assets/rac10.jpeg";
-import rac11 from "/assets/rac11.jpeg";
-import rac from "/assets/rac.jpeg";
-import rac12 from "/assets/rac12.jpeg";
-import rac14 from "/assets/rac14.jpeg";
-import rac15 from "/assets/rac15.jpeg";
-import rac16 from "/assets/rac16.jpeg";
-import rac17 from "/assets/rac17.jpeg";
-import rac18 from "/assets/rac18.jpg";
-import rac19 from "/assets/rac19.jpeg";
-import rac20 from "/assets/rac20.jpeg";
-
-
-
-
-
+import rac1 from "/assets/campuslife/RAC/rac1.jpeg";
+import rac2 from "/assets/campuslife/RAC/rac2.jpeg";
+import rac4 from "/assets/campuslife/RAC/rac4.jpeg"; 
+import rac5 from "/assets/campuslife/RAC/rac5.jpeg";
+import rac6 from "/assets/campuslife/RAC/rac6.jpeg";
+import rac7 from "/assets/campuslife/RAC/rac7.jpeg";
+import rac8 from "/assets/campuslife/RAC/rac8.jpeg";
+import rac9 from "/assets/campuslife/RAC/rac9.jpeg";
+import rac10 from "/assets/campuslife/RAC/rac10.jpeg";
+import rac11 from "/assets/campuslife/RAC/rac11.jpeg";
+import rac from "/assets/campuslife/RAC/rac.jpeg";
+import rac12 from "/assets/campuslife/RAC/rac12.jpeg";
+import rac14 from "/assets/campuslife/RAC/rac14.jpeg";
+import rac15 from "/assets/campuslife/RAC/rac15.jpeg";
+import rac16 from "/assets/campuslife/RAC/rac16.jpeg";
+import rac17 from "/assets/campuslife/RAC/rac17.jpeg";
+import rac18 from "/assets/campuslife/RAC/rac18.jpg";
+import rac19 from "/assets/campuslife/RAC/rac19.jpeg";
+import rac20 from "/assets/campuslife/RAC/rac20.jpeg";
 
 
 const HeadingText = styled("h1")`

@@ -105,7 +105,6 @@ const Item = styled(Link)`
   gap: 18px;
   transition: 0.2s ease-in-out;
 
-
   &:hover {
     background-color: #d6d5d5;
   }
@@ -174,7 +173,6 @@ const ItemTitle = styled.div`
   font-weight: bold;
   width: 140%;
   overflow: hidden;
-  
 
   @media (max-width: 958px) {
     font-size: 1rem;
@@ -364,7 +362,7 @@ const NoticenotFound = styled.h2`
   text-align: center;
   color: #20068e;
   margin: auto 13rem;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 
   @media (max-width: 1441px) {
     font-size: 1.1rem;
@@ -379,11 +377,11 @@ const NoticenotFound = styled.h2`
 `;
 
 const NotPag = styled.div`
-flex: 3;
-display: flex;
-flex-direction: column;
-gap: 18px;
-overflow-y: auto;
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
 `;
 
 const Ellipsis = styled.li`
@@ -411,7 +409,7 @@ const typedata = [
   {
     id: 5,
     notice_type: "Department",
-  }, 
+  },
   {
     id: 6,
     notice_type: "General",
@@ -430,10 +428,8 @@ const Page = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async () => {};
 
-    };
-  
     // Check if both start date and end date have values
     if (startDate && endDate) {
       handleSearch(); // Call handleSearch function
@@ -441,7 +437,6 @@ const Page = () => {
       fetchData(); // Fetch data normally
     }
   }, [selectedNoticeType, startDate, endDate, searchKeyword]);
-  
 
   useEffect(() => {
     const getData = async () => {
@@ -465,38 +460,43 @@ const Page = () => {
   const handleSearch = async () => {
     setCurrentPage(1);
     setNoticesNotFound(false);
-  
+
     const query = await fetch(
       "https://notices.tcioe.edu.np/api/notice/notices/",
       { cache: "no-store" }
     );
     const response = await query.json();
-  
+
     // Split search keyword into individual keywords
-    const searchKeywords = searchKeyword.split(" ").filter((keyword) => keyword.trim() !== "");
-  
+    const searchKeywords = searchKeyword
+      .split(" ")
+      .filter((keyword) => keyword.trim() !== "");
+
     // Filter notices based on the selected date range, notice type, and search keywords
     const filteredNotices = response.filter((notice) => {
       const noticeDate = new Date(notice.published_date);
-      const isMatchedKeyword = searchKeywords.some((keyword) =>
-        new RegExp(keyword, "i").test(notice.title) || new RegExp(keyword, "i").test(notice.description) || new RegExp(keyword, "i").test(notice.notice_category.notice_type)
+      const isMatchedKeyword = searchKeywords.some(
+        (keyword) =>
+          new RegExp(keyword, "i").test(notice.title) ||
+          new RegExp(keyword, "i").test(notice.description) ||
+          new RegExp(keyword, "i").test(notice.notice_category.notice_type)
       );
-  
+
       return (
         (!startDate || noticeDate >= startDate) &&
         (!endDate || noticeDate <= endDate) &&
-        (!selectedNoticeType || notice.notice_category.notice_type === selectedNoticeType) &&
+        (!selectedNoticeType ||
+          notice.notice_category.notice_type === selectedNoticeType) &&
         (searchKeywords.length === 0 || isMatchedKeyword)
       );
     });
-  
+
     if (filteredNotices.length === 0) {
       setNoticesNotFound(true);
     } else {
       setNotices(filteredNotices);
     }
   };
-  
 
   const handleReset = () => {
     setCurrentPage(1);
@@ -557,131 +557,151 @@ const Page = () => {
             <NoticenotFound>No search found for your query...</NoticenotFound>
           ) : (
             <NotPag>
-            <List>
-              {/* {currentNotices ? ( */}
-              {currentNotices.length <= 1
-                ? currentNotices.map((notice) => (
-                    <Item
-                      href={`https://notices.tcioe.edu.np/media/files/${
-                        notice.download_file.split("/")[5]
-                      }`}
-                      target="_blank"
-                      key={notice.id}
-                      isSingleOrDoubleNotice={currentNotices.length <= 2}
-                      // isLastItem={index === currentNotices.length - 1}
-                    >
-                      <ItemDate>
-                        <ItemDateMonth>
-                          {Number(notice.published_date.split("-")[1]) === 1
-                            ? "Jan"
-                            : Number(notice.published_date.split("-")[1]) === 2
-                            ? "Feb"
-                            : Number(notice.published_date.split("-")[1]) === 3
-                            ? "Mar"
-                            : Number(notice.published_date.split("-")[1]) === 4
-                            ? "Apr"
-                            : Number(notice.published_date.split("-")[1]) === 5
-                            ? "May"
-                            : Number(notice.published_date.split("-")[1]) === 6
-                            ? "Jun"
-                            : Number(notice.published_date.split("-")[1]) === 7
-                            ? "Jul"
-                            : Number(notice.published_date.split("-")[1]) === 8
-                            ? "Aug"
-                            : Number(notice.published_date.split("-")[1]) === 9
-                            ? "Sep"
-                            : Number(notice.published_date.split("-")[1]) === 10
-                            ? "Oct"
-                            : Number(notice.published_date.split("-")[1]) === 11
-                            ? "Nov"
-                            : "Dec"}
-                        </ItemDateMonth>
-                        <ItemDateDay>
-                          {notice.published_date.split("-")[2]}
-                        </ItemDateDay>
-                        <ItemDateDates>
-                          {notice.published_date.split("-")[0]}
-                        </ItemDateDates>
-                      </ItemDate>
-                      <ItemText>
-                        <ItemTitle>{notice.title}</ItemTitle>
-                        <ItemSubtitle
-                          dangerouslySetInnerHTML={{
-                            __html: notice.description,
-                          }}
-                        />
-                      </ItemText>
-                      <ItemTagContainer></ItemTagContainer>
-                      <Buttoned data={notice.notice_category.notice_type}>
-                        {notice.notice_category.notice_type}
-                      </Buttoned>
-                    </Item>
-                  ))
-                : currentNotices.map((notice) => (
-                    <Item
-                      href={`https://notices.tcioe.edu.np/media/files/${
-                        notice.download_file.split("/")[5]
-                      }`}
-                      target="_blank"
-                      key={notice.id}
-                    >
-                      <ItemDate>
-                        <ItemDateMonth>
-                          {Number(notice.published_date.split("-")[1]) === 1
-                            ? "Jan"
-                            : Number(notice.published_date.split("-")[1]) === 2
-                            ? "Feb"
-                            : Number(notice.published_date.split("-")[1]) === 3
-                            ? "Mar"
-                            : Number(notice.published_date.split("-")[1]) === 4
-                            ? "Apr"
-                            : Number(notice.published_date.split("-")[1]) === 5
-                            ? "May"
-                            : Number(notice.published_date.split("-")[1]) === 6
-                            ? "Jun"
-                            : Number(notice.published_date.split("-")[1]) === 7
-                            ? "Jul"
-                            : Number(notice.published_date.split("-")[1]) === 8
-                            ? "Aug"
-                            : Number(notice.published_date.split("-")[1]) === 9
-                            ? "Sep"
-                            : Number(notice.published_date.split("-")[1]) === 10
-                            ? "Oct"
-                            : Number(notice.published_date.split("-")[1]) === 11
-                            ? "Nov"
-                            : "Dec"}
-                        </ItemDateMonth>
-                        <ItemDateDay>
-                          {notice.published_date.split("-")[2]}
-                        </ItemDateDay>
-                        <ItemDateDates>
-                          {notice.published_date.split("-")[0]}
-                        </ItemDateDates>
-                      </ItemDate>
-                      <ItemText>
-                        <ItemTitle>{notice.title}</ItemTitle>
-                        <ItemSubtitle
-                          dangerouslySetInnerHTML={{
-                            __html: notice.description,
-                          }}
-                        />
-                      </ItemText>
-                      <ItemTagContainer></ItemTagContainer>
-                      <Buttoned data={notice.notice_category.notice_type}>
-                        {notice.notice_category.notice_type}
-                      </Buttoned>
-                    </Item>
-                  ))}
-            </List>
-                  {/* Pagination */}
-      {!noticesNotFound && (
-        <Pagination
-          noticesPerPage={noticesPerPage}
-          totalNotices={notices.length}
-          currentPage={currentPage}
-          paginate={paginate}
-        />
-      )}
+              <List>
+                {/* {currentNotices ? ( */}
+                {currentNotices.length <= 1
+                  ? currentNotices.map((notice) => (
+                      <Item
+                        href={`https://notices.tcioe.edu.np/media/files/${
+                          notice.download_file.split("/")[5]
+                        }`}
+                        target="_blank"
+                        key={notice.id}
+                        isSingleOrDoubleNotice={currentNotices.length <= 2}
+                        // isLastItem={index === currentNotices.length - 1}
+                      >
+                        <ItemDate>
+                          <ItemDateMonth>
+                            {Number(notice.published_date.split("-")[1]) === 1
+                              ? "Jan"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                2
+                              ? "Feb"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                3
+                              ? "Mar"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                4
+                              ? "Apr"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                5
+                              ? "May"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                6
+                              ? "Jun"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                7
+                              ? "Jul"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                8
+                              ? "Aug"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                9
+                              ? "Sep"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                10
+                              ? "Oct"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                11
+                              ? "Nov"
+                              : "Dec"}
+                          </ItemDateMonth>
+                          <ItemDateDay>
+                            {notice.published_date.split("-")[2]}
+                          </ItemDateDay>
+                          <ItemDateDates>
+                            {notice.published_date.split("-")[0]}
+                          </ItemDateDates>
+                        </ItemDate>
+                        <ItemText>
+                          <ItemTitle>{notice.title}</ItemTitle>
+                          <ItemSubtitle
+                            dangerouslySetInnerHTML={{
+                              __html: notice.description,
+                            }}
+                          />
+                        </ItemText>
+                        <ItemTagContainer></ItemTagContainer>
+                        <Buttoned data={notice.notice_category.notice_type}>
+                          {notice.notice_category.notice_type}
+                        </Buttoned>
+                      </Item>
+                    ))
+                  : currentNotices.map((notice) => (
+                      <Item
+                        href={`https://notices.tcioe.edu.np/media/files/${
+                          notice.download_file.split("/")[5]
+                        }`}
+                        target="_blank"
+                        key={notice.id}
+                      >
+                        <ItemDate>
+                          <ItemDateMonth>
+                            {Number(notice.published_date.split("-")[1]) === 1
+                              ? "Jan"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                2
+                              ? "Feb"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                3
+                              ? "Mar"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                4
+                              ? "Apr"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                5
+                              ? "May"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                6
+                              ? "Jun"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                7
+                              ? "Jul"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                8
+                              ? "Aug"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                9
+                              ? "Sep"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                10
+                              ? "Oct"
+                              : Number(notice.published_date.split("-")[1]) ===
+                                11
+                              ? "Nov"
+                              : "Dec"}
+                          </ItemDateMonth>
+                          <ItemDateDay>
+                            {notice.published_date.split("-")[2]}
+                          </ItemDateDay>
+                          <ItemDateDates>
+                            {notice.published_date.split("-")[0]}
+                          </ItemDateDates>
+                        </ItemDate>
+                        <ItemText>
+                          <ItemTitle>{notice.title}</ItemTitle>
+                          <ItemSubtitle
+                            dangerouslySetInnerHTML={{
+                              __html: notice.description,
+                            }}
+                          />
+                        </ItemText>
+                        <ItemTagContainer></ItemTagContainer>
+                        <Buttoned data={notice.notice_category.notice_type}>
+                          {notice.notice_category.notice_type}
+                        </Buttoned>
+                      </Item>
+                    ))}
+              </List>
+              {/* Pagination */}
+              {!noticesNotFound && (
+                <Pagination
+                  noticesPerPage={noticesPerPage}
+                  totalNotices={notices.length}
+                  currentPage={currentPage}
+                  paginate={paginate}
+                />
+              )}
             </NotPag>
           )}
 
@@ -747,7 +767,6 @@ const Page = () => {
           </SearchSection>
         </Container>
       </Wrapper>
-
     </>
   );
 };
@@ -773,15 +792,13 @@ const Pagination = ({
 
     const pages = [];
     const visiblePages = getVisiblePages(currentPage, totalPages);
-      pages.push(
-        <PageNumber key={1}>
-          <PageButton onClick={() => paginate(1)} active={currentPage === 1}>
-            1
-          </PageButton>
-        </PageNumber>
-      );
-
-    
+    pages.push(
+      <PageNumber key={1}>
+        <PageButton onClick={() => paginate(1)} active={currentPage === 1}>
+          1
+        </PageButton>
+      </PageNumber>
+    );
 
     if (visiblePages[0] > 2) {
       // pages.push(<li key="ellipsis-start">...</li>);

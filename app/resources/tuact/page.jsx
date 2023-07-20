@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0px;
+  margin-bottom: 2rem;
   @media (max-width: 768px) {
     padding: 16px 12px 0 12px;
   }
@@ -28,8 +29,8 @@ const Header = styled.div`
 const Title = styled.div`
   font-size: 2rem;
   font-weight: bold;
-  /* margin-bottom: 12px; */
   color: #181b57;
+  margin-top: 1.5rem;
 `;
 const Line = styled.div`
   height: 4px;
@@ -44,7 +45,6 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   gap: 24px;
-  height: 100vh;
   @media (max-width: 958px) {
     flex-direction: column-reverse;
   }
@@ -61,7 +61,7 @@ const Item = styled(Link)`
   height: 120px;
   background-color: #f0efef;
   border-radius: 12px;
-  padding: 3rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -92,41 +92,33 @@ const ItemTitle = styled.div`
     font-size: 1rem;
   }
 `;
-const ItemSubtitle = styled.div`
-  font-size: 0.8rem;
-  color: #8a8a8a;
-  width: 100%;
-  overflow: hidden;
-  @media (max-width: 958px) {
-    font-size: 0.6rem;
-  }
-`;
 
-const Heading = styled.h1`
-
-text-align: left;
-margin: 2rem 0;
-color: #20068E;
-
-
-`;
+const extractTitleWithoutNumbers = (title) => {
+  return title.replace(/[\d_\-]+/g, '');
+};
 
 const page = () => {
-  // const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch('https://notices.tcioe.edu.np/api/notice/notices/');
-  //       const jsonData = await response.json();
-  //       setData(jsonData);
-  //     } catch (error) {
-  //       console.error('Error fetching data:', error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://notices.tcioe.edu.np/api/resources/');
+        const jsonData = await response.json();
+        setData(jsonData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-  //   fetchData();
-  // }, []);
+    fetchData();
+  }, []);
+
+  const filteredData1 = data.filter(item => item.title.startsWith("1_"));
+  const filteredData2 = data.filter(item => item.title.startsWith("2_"));
+  const filteredData3 = data.filter(item => item.title.startsWith("3_"));
+  const filteredData4 = data.filter(item => item.title.startsWith("4_"));
+  const filteredData5 = data.filter(item => item.title.startsWith("5_"));
 
   return (
     <>
@@ -136,90 +128,81 @@ const page = () => {
           <Title>ऐन</Title>
           <Line width={"100px"} />
         </Header>
-        {/* <Container>
+        <Container>
           <List>
-            {data.map((item) => (
-              <Item href={item.download_file} target="_blank" key={item.id}>
+          {filteredData1.map(item => (
+              <Item href={item.file} target="_blank" key={item.id}>
                 <ItemText>
-                  <ItemTitle>{item.title}</ItemTitle>
+                  <ItemTitle>{extractTitleWithoutNumbers(item.title)}</ItemTitle>
                 </ItemText>
               </Item>
             ))}
           </List>
-        </Container> */}
-        <Heading>Coming Soon...</Heading>
+        </Container>
 
         <Header>
           <Title>नियम</Title>
           <Line width={"100px"} />
         </Header>
-        {/* <Container>
+        <Container>
           <List>
-            <Item
-              href="https://notices.tcioe.edu.np/media/files/be_barch-academic-calendar-2080_2Mfhq49.pdf"
-              target="_blank"
-            >
-              <ItemText>
-                <ItemTitle>B.E./BArch. Academic Calendar</ItemTitle>
-              </ItemText>
-            </Item>
+          {filteredData2.map(item => (
+              <Item href={item.file} target="_blank" key={item.id}>
+                <ItemText>
+                <ItemTitle>{extractTitleWithoutNumbers(item.title)}</ItemTitle>
+                </ItemText>
+              </Item>
+            ))}
           </List>
-        </Container> */}
-        <Heading>Coming Soon...</Heading>
+        </Container>
 
         <Header>
           <Title>विनियम</Title>
           <Line width={"100px"} />
         </Header>
-        {/* <Container>
+        <Container>
           <List>
-            <Item
-              href="https://notices.tcioe.edu.np/media/files/be_barch-academic-calendar-2080_2Mfhq49.pdf"
-              target="_blank"
-            >
-              <ItemText>
-                <ItemTitle>B.E./BArch. Academic Calendar</ItemTitle>
-              </ItemText>
-            </Item>
+          {filteredData3.map(item => (
+              <Item href={item.file} target="_blank" key={item.id}>
+                <ItemText>
+                <ItemTitle>{extractTitleWithoutNumbers(item.title)}</ItemTitle>
+                </ItemText>
+              </Item>
+            ))}
           </List>
-        </Container> */}
-        <Heading>Coming Soon...</Heading>
+        </Container>
 
         <Header>
           <Title>कार्यविधि</Title>
           <Line width={"100px"} />
         </Header>
-        {/* <Container>
+        <Container>
           <List>
-            <Item
-              href="https://notices.tcioe.edu.np/media/files/be_barch-academic-calendar-2080_2Mfhq49.pdf"
-              target="_blank"
-            >
-              <ItemText>
-                <ItemTitle>B.E./BArch. Academic Calendar</ItemTitle>
-              </ItemText>
-            </Item>
+          {filteredData4.map(item => (
+              <Item href={item.file} target="_blank" key={item.id}>
+                <ItemText>
+                <ItemTitle>{extractTitleWithoutNumbers(item.title)}</ItemTitle>
+                </ItemText>
+              </Item>
+            ))}
           </List>
-        </Container> */}
-        <Heading>Coming Soon...</Heading>
+        </Container>
 
         <Header>
           <Title>निर्देशिका</Title>
           <Line width={"100px"} />
         </Header>
-        {/* <Container>
+        <Container>
           <List>
-            <Item
-              href="https://notices.tcioe.edu.np/media/files/be_barch-academic-calendar-2080_2Mfhq49.pdf"
-              target="_blank"
-            >
-              <ItemText>
-                <ItemTitle>B.E./BArch. Academic Calendar</ItemTitle>
-              </ItemText>
-            </Item>
+          {filteredData5.map(item => (
+              <Item href={item.file} target="_blank" key={item.id}>
+                <ItemText>
+                <ItemTitle>{extractTitleWithoutNumbers(item.title)}</ItemTitle>
+                </ItemText>
+              </Item>
+            ))}
           </List>
-        </Container> */}
-        <Heading>Coming Soon...</Heading>
+        </Container>
 
       </Wrapper>
     </>
