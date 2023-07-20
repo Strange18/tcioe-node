@@ -17,8 +17,8 @@ const fetchData = async (token) => {
 const Page = () => {
   const [accessToken, setAccessToken] = useState(null);
   const [keyOfficials, setKeyOfficials] = useState([]);
-
   useEffect(() => {
+    console.log(process.env.NEXT_PUBLIC_USERNAME);
     const authenticate = async () => {
       const res = await fetch("https://notices.tcioe.edu.np/api/token/", {
         method: "POST",
@@ -26,8 +26,8 @@ const Page = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: "admin",
-          password: "suman",
+          username: process.env.NEXT_PUBLIC_USERNAME,
+          password: process.env.NEXT_PUBLIC_PASSWORD,
         }),
       });
       const { access, refresh } = await res.json();
