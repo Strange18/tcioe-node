@@ -108,12 +108,11 @@ const Heading = styled.div`
     font-size: 18px;
   }
 `;
-const Links = styled(Link)`
+const Links = styled.a`
   text-decoration: none;
   font-size: 18px;
   color: #949494;
   line-height: 1.3rem;
-  width: 50px;
   @media (max-width: 950px) {
     font-size: 16px;
   }
@@ -192,6 +191,7 @@ const FooterComponent = () => {
           <Links href="/resources">Resources</Links>
           <Links href="/notices">Notices</Links>
           <Links href="/campusmap">Campus Map</Links>
+          <Links href="/phone">Phone Directory</Links>
         </QuickLinks>
         <Contact>
           <Heading>Contact</Heading>
@@ -213,7 +213,7 @@ const FooterComponent = () => {
               alt="icon"
               color="#ffffff"
             />
-            <ContactText>info@tcioe.edu.np</ContactText>
+            <ContactText><a href="mailto: info@tcioe.edu.np">info@tcioe.edu.np</a></ContactText>
           </ContactItem>
           <ContactItem>
             <Image
@@ -223,7 +223,7 @@ const FooterComponent = () => {
               alt="icon"
               color="#ffffff"
             />
-            <ContactText>Thapathali, Nepal</ContactText>
+            <ContactText><a href="https://goo.gl/maps/gEUHf6kqwdPoWe488" target="_blank">Thapathali, Nepal</a></ContactText>
           </ContactItem>
         </Contact>
       </Container>
