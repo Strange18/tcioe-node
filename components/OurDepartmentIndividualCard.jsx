@@ -43,13 +43,17 @@ const Subtext = styled('p')`
 `
 
 const OurDepartmentIndividualCard = ({ content }) => {
-  return (
-    <Container>
-        <Heading>{ content.title }</Heading>
-        <Subtext>{ content.subtitle }</Subtext>
-        {/* read more section and buttons ? */}
-    </Container>
-  )
+    return (
+        <Container>
+            {/* link containing content.link */}
+            <a href={content.link}>
+                <Heading>{content.title}</Heading>
+                <Subtext>{content.subtitle}</Subtext>
+                {/* read more section and buttons ? */}
+            </a>
+
+        </Container>
+    )
 }
 
 export default OurDepartmentIndividualCard

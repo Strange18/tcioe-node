@@ -108,7 +108,7 @@ const Heading = styled.div`
     font-size: 18px;
   }
 `;
-const Links = styled(Link)`
+const Links = styled.a`
   text-decoration: none;
   font-size: 18px;
   color: #949494;
@@ -213,7 +213,7 @@ const FooterComponent = () => {
               alt="icon"
               color="#ffffff"
             />
-            <ContactText>info@tcioe.edu.np</ContactText>
+            <ContactText><a href="mailto: info@tcioe.edu.np">info@tcioe.edu.np</a></ContactText>
           </ContactItem>
           <ContactItem>
             <Image
@@ -223,7 +223,7 @@ const FooterComponent = () => {
               alt="icon"
               color="#ffffff"
             />
-            <ContactText>Thapathali, Nepal</ContactText>
+            <ContactText><a href="https://goo.gl/maps/gEUHf6kqwdPoWe488" target="_blank">Thapathali, Nepal</a></ContactText>
           </ContactItem>
         </Contact>
       </Container>
