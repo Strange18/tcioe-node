@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Image from 'next/legacy/image'
 
 const Container = styled.div`
-    height: 350px;
+    height: 370px;
     min-width: 600px;
     background-color: #fff;
     padding: 3rem;
