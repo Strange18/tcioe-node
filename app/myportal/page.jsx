@@ -2,6 +2,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import SubNavBar from "@/components/SubNavBar";
 
 const PageContainer = styled.div`
   display: flex;

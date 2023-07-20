@@ -1,23 +1,24 @@
 import FooterComponent from "@/components/FooterComponent";
 import HeaderComponent from "@/components/HeaderComponent";
 import { menuItems } from "@/utils/menuItems";
+import Head from "next/head";
+import SubNavBar from "@/components/SubNavBar";
 
 export const metadata = {
   title: "My Portal",
-  description: "My Portal",
+  description: "Student Portal",
 };
 
-export default function RootLayout({ children }) {
+export default function root({ children }) {
   return (
     <>
-      <head>
+      <Head>
         <title>{metadata.title}</title>
         <meta name="description" content={metadata.description} />
-      </head>
-      <body>
-        <HeaderComponent menuItems={menuItems} />
-        <main>{children}</main>
-      </body>
+      </Head>
+      <SubNavBar />
+      <HeaderComponent menuItems={menuItems} />
+      {children}
     </>
   );
 }

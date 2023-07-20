@@ -1,6 +1,6 @@
 import FooterComponent from "@/components/FooterComponent";
 import HeaderComponent from "@/components/HeaderComponent";
-import { menuItems } from "@/utils/departmentmenuitems_doa";
+import { menuItems } from "@/utils/menuItems";
 
 export const metadata = {
   title: "Department of Electronics and Computer Engineering",
