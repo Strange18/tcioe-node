@@ -249,7 +249,7 @@ export const menuItems = [
         submenu: [
           {
             title: "AMESIN",
-            url: "/campuslife/clubs/amesin",
+            url: "/campuslife/student_club/AMESIN",
           },
           {
             title: "ASIS",
@@ -257,7 +257,7 @@ export const menuItems = [
           },
           {
             title: "CESS",
-            url: "/campuslife/clubs/cess",
+            url: "/campuslife/student_club/CESS",
           },
           {
             title: "ECAST",
