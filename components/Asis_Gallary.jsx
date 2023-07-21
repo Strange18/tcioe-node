@@ -19,10 +19,6 @@ import asis12 from "/assets/campuslife/ASIS/asis12.jpg";
 import asis13 from "/assets/campuslife/ASIS/asis13.jpg";
 
 
-
-
-
-
 const HeadingText = styled("h1")`
   font-size: 26px;
   color: #090c4c;
