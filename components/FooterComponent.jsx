@@ -187,8 +187,8 @@ const FooterComponent = () => {
         <QuickLinks>
           <Heading>Quick Links</Heading>
           <Links href="/about">About</Links>
-          <Links href="/admission">Admission</Links>
-          <Links href="/resources">Resources</Links>
+          <Links href="https://exam.ioe.edu.np/" target="_blank">Examination Control Division</Links>
+          <Links href="/resources/download">Downloads</Links>
           <Links href="/notices">Notices</Links>
           <Links href="/campusmap">Campus Map</Links>
           <Links href="/phone">Phone Directory</Links>
@@ -242,7 +242,7 @@ const FooterComponent = () => {
             />
           </Link>
         </SocialMedia>
-        <Copyright>Copyright © 2023 Thapathali campus </Copyright>
+        <Copyright>Copyright © 2023 IOE, Thapathali Campus </Copyright>
         <RandComponent></RandComponent>
       </BottomSection>
 
