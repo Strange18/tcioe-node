@@ -187,7 +187,7 @@ const FooterComponent = () => {
         <QuickLinks>
           <Heading>Quick Links</Heading>
           <Links href="/about">About</Links>
-          <Links href="/admission">Admission</Links>
+          <Links href="https://exam.ioe.edu.np/">Examination Control Division</Links>
           <Links href="/resources/download">Downloads</Links>
           <Links href="/notices">Notices</Links>
           <Links href="/campusmap">Campus Map</Links>
