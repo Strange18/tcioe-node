@@ -157,10 +157,6 @@ const Ellipsis = styled.li`
   color: #8a8a8a;
 `;
 
-const extractTitleWithoutNumbers = (title) => {
-    return title.replace(/[\d_\-]+/g, '');
-  };
-
 
 const Page = () => {
   const [downloads, setDownloads] = useState([]);
@@ -210,7 +206,7 @@ const Page = () => {
                         isSingleOrDoubleNotice={currentDownloads.length <= 2}
                       >
                         <ItemText>
-                          <ItemTitle>{extractTitleWithoutNumbers(downloads.title)}</ItemTitle>
+                          <ItemTitle>{downloads.title}</ItemTitle>
                         </ItemText>
                       </Item>
 
@@ -225,7 +221,7 @@ const Page = () => {
                         key={downloads.id}
                       >
                         <ItemText>
-                        <ItemTitle>{extractTitleWithoutNumbers(downloads.title)}</ItemTitle>
+                        <ItemTitle>{downloads.title}</ItemTitle>
                         </ItemText>
                       </Item>
                       
