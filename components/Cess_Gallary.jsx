@@ -30,9 +30,6 @@ import cess23 from "/assets/campuslife/CESS/cess23.jpeg";
 import cess24 from "/assets/campuslife/CESS/cess24.jpeg";
 import cess25 from "/assets/campuslife/CESS/cess25.jpeg";
 
-
-
-
 const HeadingText = styled("h1")`
   font-size: 26px;
   color: #090c4c;
@@ -90,12 +87,12 @@ const Cess_Gallary = ({ title, description }) => {
       image_src: cess2,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
-   {
+    {
       id: 3,
-      image_src:cess3,
+      image_src: cess3,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    }, 
-    
+    },
+
     {
       id: 4,
       image_src: cess4,
@@ -103,7 +100,7 @@ const Cess_Gallary = ({ title, description }) => {
     },
     {
       id: 5,
-      image_src:cess5,
+      image_src: cess5,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
@@ -112,100 +109,98 @@ const Cess_Gallary = ({ title, description }) => {
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
-        id: 7,
-        image_src: cess7,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 8,
-        image_src: cess8,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      
-      {
-        id: 9,
-        image_src:cess9,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      
-      {
-        id: 10,
-        image_src: cess10,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 11,
-        image_src: cess11,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 12,
-        image_src: cess12,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 13,
-        image_src: cess14,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 14,
-        image_src: cess15,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 15,
-        image_src: cess16,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      
-      {
-        id: 16,
-        image_src: cess17,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 17,
-        image_src: cess18,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 18,
-        image_src: cess19,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 19,
-        image_src: cess20,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 20,
-        image_src: cess21,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 21,
-        image_src: cess22,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 22,
-        image_src: cess23,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 23,
-        image_src: cess24,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 24,
-        image_src: cess25,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      
-      
+      id: 7,
+      image_src: cess7,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 8,
+      image_src: cess8,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+
+    {
+      id: 9,
+      image_src: cess9,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+
+    {
+      id: 10,
+      image_src: cess10,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 11,
+      image_src: cess11,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 12,
+      image_src: cess12,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 13,
+      image_src: cess14,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 14,
+      image_src: cess15,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 15,
+      image_src: cess16,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+
+    {
+      id: 16,
+      image_src: cess17,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 17,
+      image_src: cess18,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 18,
+      image_src: cess19,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 19,
+      image_src: cess20,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 20,
+      image_src: cess21,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 21,
+      image_src: cess22,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 22,
+      image_src: cess23,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 23,
+      image_src: cess24,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 24,
+      image_src: cess25,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
   ];
   return (
     <>
