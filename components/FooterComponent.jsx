@@ -242,7 +242,7 @@ const FooterComponent = () => {
             />
           </Link>
         </SocialMedia>
-        <Copyright>Copyright © 2023 Thapathali campus </Copyright>
+        <Copyright>Copyright © 2023 IOE, Thapathali Campus </Copyright>
         <RandComponent></RandComponent>
       </BottomSection>
 
