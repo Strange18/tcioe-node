@@ -69,7 +69,7 @@ export const Heading = styled.h1`
   gap: 30px;
 
   
-  }
+}
 
   @media (max-width: 768px) {
     /* Hide border for small screen devices */
