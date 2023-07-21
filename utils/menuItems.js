@@ -253,7 +253,7 @@ export const menuItems = [
           },
           {
             title: "ASIS",
-            url: "/campuslife/clubs/asis",
+            url: "/campuslife/student_club/ASIS",
           },
           {
             title: "CESS",
@@ -268,8 +268,8 @@ export const menuItems = [
             url: "/campuslife/student_club/RAC",
           },
           {
-            title: "SOIESS",
-            url: "/campuslife/clubs/soiess",
+            title: "SOIES",
+            url: "/campuslife/student_club/SOIES",
           },
           {
             title: "TENSOR",
