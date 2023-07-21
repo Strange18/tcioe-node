@@ -17,6 +17,7 @@ const Container = styled('div')`
     &:hover {
         box-shadow: 0px -131px 57px 14px rgba(114,119,255,0.46) inset; 
         cursor: pointer;
+        transition: 0.5s ease;
     }
 `
 
@@ -25,7 +26,6 @@ const Heading = styled('h1')`
     font-weight: 700;
     color: #fff;
 
-    max-width: 40%;
     text-align: center;
 
     ${Container}:hover & {
