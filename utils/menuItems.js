@@ -208,7 +208,7 @@ export const menuItems = [
         ],
       },
       {
-        title: "Download",
+        title: "Downloads",
         url: "/resources/download",
       },
       {
