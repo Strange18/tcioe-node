@@ -62,7 +62,7 @@ const GridWrapper = styled("div")`
   }
 `;
 
-const RacGallary = ({ title, description }) => {
+const Ecast_gallary = ({ title, description }) => {
   const images_api = [
     {
       id: 1,
@@ -126,4 +126,4 @@ const RacGallary = ({ title, description }) => {
   );
 };
 
-export default RacGallary;
+export default Ecast_gallary;

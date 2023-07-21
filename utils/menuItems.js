@@ -208,7 +208,7 @@ export const menuItems = [
         ],
       },
       {
-        title: "Download",
+        title: "Downloads",
         url: "/resources/download",
       },
       {
@@ -249,7 +249,7 @@ export const menuItems = [
         submenu: [
           {
             title: "AMESIN",
-            url: "/campuslife/clubs/amesin",
+            url: "/campuslife/student_club/AMESIN",
           },
           {
             title: "ASIS",
@@ -257,7 +257,7 @@ export const menuItems = [
           },
           {
             title: "CESS",
-            url: "/campuslife/clubs/cess",
+            url: "/campuslife/student_club/CESS",
           },
           {
             title: "ECAST",
@@ -273,7 +273,7 @@ export const menuItems = [
           },
           {
             title: "TENSOR",
-            url: "/campuslife/clubs/tensor",
+            url: "/campuslife/student_club/TENSOR",
           },
         ],
       },
