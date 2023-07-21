@@ -44,12 +44,12 @@ const SubNavBar = () => {
             <span className={styles.link}>Alumni</span>
           </Link>
         </div>
-        <div>
+        {/* <div>
           <Link href="https://mail.google.com" target="_blank">
             <AiOutlineMail className={styles.icon} />
             <span className={styles.link}>Check Mail</span>
           </Link>
-        </div>
+        </div> */}
         <div>
           <Link href="/myportal">
             <FaUserGraduate className={styles.icon} />
