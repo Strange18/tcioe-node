@@ -253,7 +253,7 @@ export const menuItems = [
           },
           {
             title: "ASIS",
-            url: "/campuslife/clubs/asis",
+            url: "/campuslife/student_club/ASIS",
           },
           {
             title: "CESS",
