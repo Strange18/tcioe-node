@@ -257,7 +257,7 @@ export const menuItems = [
           },
           {
             title: "CESS",
-            url: "/campuslife/clubs/cess",
+            url: "/campuslife/student_club/CESS",
           },
           {
             title: "ECAST",
