@@ -68,19 +68,7 @@ export const Heading = styled.h1`
   position: relative;
   gap: 30px;
 
-  /* Add border styles for large screen devices */
-  &::before {
-    content: "";
-    position: absolute;
-    margin-left: 5px;
-    top: 50%;
-    left: calc(
-      9% - 1px
-    ); /* Adjust the value to position the border closer or farther from the heading */
-    transform: translateY(-50%);
-    height: 100%; /* Adjust the height to control the length of the border line */
-    width: 4px; /* Adjust the width to control the thickness of the border line */
-    background-color: #7177ff;
+  
   }
 
   @media (max-width: 768px) {
