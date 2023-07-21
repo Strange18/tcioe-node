@@ -273,7 +273,7 @@ export const menuItems = [
           },
           {
             title: "TENSOR",
-            url: "/campuslife/clubs/tensor",
+            url: "/campuslife/student_club/TENSOR",
           },
         ],
       },
