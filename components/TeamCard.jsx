@@ -13,7 +13,7 @@ const CardWrapper = styled.section`
   margin-top: 10em;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-
+  box-shadow: 0 4px 4px -4px gray;
   &:hover {
     box-shadow: 0 4px 4px -4px gray;
     scale: 1.1;
@@ -46,11 +46,10 @@ const CardInfo = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
-  box-shadow: 0 4px 4px -4px gray;
   gap: 0.4em;
   justify-content: center;
   padding-bottom: 1.5em;
-  height: 95px;
+  // height: 95px;
 `;
 
 const CardInfoWithoutImg = styled.section`
@@ -74,7 +73,7 @@ const Designation = styled.h4`
   font-weight: 600;
   font-size: 1rem;
   text-align: center;
-  width: 90%;
+  width: 70%;
   margin: auto;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -86,7 +85,20 @@ const Email = styled.h4`
   text-align: center;
   color: #7177ff;
 `;
+
+const Department = styled.h3`
+  color: #777;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-align: center;
+  width: 70%;
+  margin: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
+`;
+
 const TeamCard = ({ detail }) => {
+  console.log(detail);
   const { photo } = detail;
   const modifiedPhoto = photo
     ? photo.replace(
@@ -106,7 +118,12 @@ const TeamCard = ({ detail }) => {
           </CardImg>
           <CardInfo>
             <Title>{detail.name}</Title>
-            <Designation>{detail.staff_designation}</Designation>
+            {<Designation>{detail.staff_designation}</Designation>}
+            {(detail.staff_designation == "Head of Department" ||
+              detail.staff_designation == "Deputy Head of Department" ||
+              detail.staff_designation == "MSc. Coordinator") && (
+              <Department>{detail.department}</Department>
+            )}
             {detail.email && <Email>{detail.email}</Email>}
           </CardInfo>
         </>
