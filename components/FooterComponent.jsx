@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Image from "next/legacy/image";
 import Link from "next/link";
 
-import logo from "@/assets/logo.svg";
+import logo from "@/assets/logo.png";
 import footervector from "@/assets/footerVector.png";
 import call from "@/assets/call.svg";
 import mail from "@/assets/mail.svg";
@@ -63,6 +63,7 @@ const Logo = styled.div`
 const LogoTextContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 3rem;
 `;
 const LogoTextsub = styled.div`
   font-size: 20px;
@@ -175,7 +176,7 @@ const FooterComponent = () => {
       <Container>
         <LogoContainer>
           <Logo>
-            <Image src={logo} layout="fill" objectFit="contain" alt="" />
+            <Image src={logo} layout="fixed" objectFit="contain" alt="" height={120} width={130}/>
           </Logo>
           <LogoTextContainer>
             <LogoTextsub>Institute of Engineering</LogoTextsub>
