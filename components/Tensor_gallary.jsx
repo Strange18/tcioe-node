@@ -5,21 +5,14 @@ import styled from "styled-components";
 import CampusImageIndividual from "./CampusImageIndividual";
 
 import tensor from "/assets/campuslife/Tensor/tensor.jpeg";
-import tensor1 from "/assets/campuslife/Tensor/tensor1.jpeg";
-import tensor2 from "/assets/campuslife/Tensor/tensor2.jpeg";
-import tensor4 from "/assets/campuslife/Tensor/tensor4.jpeg";
+import tensor2 from "/assets/campuslife/Tensor/tensor2.jpg";
+import tensor3 from "/assets/campuslife/Tensor/tensor3.jpeg";
+import tensor4 from "/assets/campuslife/Tensor/tensor4.jpg";
+import tensor5 from "/assets/campuslife/Tensor/tensor5.jpeg";
 import tensor6 from "/assets/campuslife/Tensor/tensor6.jpeg";
-import tensor7 from "/assets/campuslife/Tensor/tensor7.jpeg";
-import tensor8 from "/assets/campuslife/Tensor/tensor8.jpeg";
-import tensor9 from "/assets/campuslife/Tensor/tensor9.jpeg";
-import tensor10 from "/assets/campuslife/Tensor/tensor10.jpeg";
-import tensor11 from "/assets/campuslife/Tensor/tensor11.jpeg";
-import tensor12 from "/assets/campuslife/Tensor/tensor12.jpeg";
-import tensor13 from "/assets/campuslife/Tensor/tensor13.jpeg";
-import tensor14 from "/assets/campuslife/Tensor/tensor14.jpeg";
-import tensor15 from "/assets/campuslife/Tensor/tensor15.jpeg";
-
-
+import tensor7 from "/assets/campuslife/Tensor/tensor7.jpg";
+import tensor8 from "/assets/campuslife/Tensor/tensor8.jpg";
+import tensor9 from "/assets/campuslife/Tensor/tensor9.jpg";
 
 
 
@@ -77,74 +70,45 @@ const Tensor_gallary = ({ title, description }) => {
     },
     {
       id: 2,
-      image_src: tensor1,
+      image_src: tensor2,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
    {
-      id: 4,
-      image_src: tensor2,
+      id: 3,
+      image_src: tensor3,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     }, 
     
     {
-      id: 6,
+      id: 4,
       image_src: tensor4,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
-      id: 8,
+      id: 5,
+      image_src: tensor5,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 6,
       image_src: tensor6,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
-      id: 9,
+      id: 7,
       image_src: tensor7,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
-        id: 10,
-        image_src: tensor8,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 11,
-        image_src: tensor9,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      
-      {
-        id: 12,
-        image_src:tensor10,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      
-      {
-        id: 14,
-        image_src: tensor11,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 15,
-        image_src: tensor12,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 16,
-        image_src: tensor13,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 17,
-        image_src: tensor14,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 18,
-        image_src: tensor15,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      
-      
+      id: 8,
+      image_src: tensor8,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 9,
+      image_src: tensor9,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
       
   ];
   return (
