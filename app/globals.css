@@ -94,7 +94,7 @@ button span {
     0 4px 6px -2px rgba(71, 63, 79, 0.16);
   font-size: 0.875rem;
   z-index: 9999;
-  min-width: 10rem;
+  min-width: 12rem;
   padding: 0.5rem 0;
   list-style: none;
   background-color: #fff;
@@ -202,10 +202,10 @@ button span {
     overflow: scroll;
     width: 100%;
     background-color: white;
-
     flex-direction: column-reverse;
     justify-content: center;
     gap: 1rem;
+   
   }
 
   .menus {
