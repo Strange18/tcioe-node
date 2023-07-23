@@ -75,7 +75,7 @@ const AboutThapathaliComponent = () => {
             electronics & communication engineering, mechanical engineering,
             architecture and automobile engineering and master degree program in
             earthquake engineering.{" "}
-            <Link href="/about" className="text-sm text-[#4c7fbc]">
+            <Link href="/about" className="text-m text-[#4c7fbc]">
               &nbsp;Read More
             </Link>
           </BodyText>

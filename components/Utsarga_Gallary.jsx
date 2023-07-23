@@ -3,25 +3,27 @@ import React from "react";
 import { BodyText } from "./AboutThapathaliComponent";
 import styled from "styled-components";
 import CampusImageIndividual from "./CampusImageIndividual";
-import rac1 from "/assets/campuslife/RAC/rac1.jpeg";
-// import rac2 from "/assets/campuslife/RAC/rac2.jpeg";
-import rac4 from "/assets/campuslife/RAC/rac4.jpeg"; 
-import rac5 from "/assets/campuslife/RAC/rac5.jpeg";
-import rac6 from "/assets/campuslife/RAC/rac6.jpeg";
-import rac7 from "/assets/campuslife/RAC/rac7.jpeg";
-import rac8 from "/assets/campuslife/RAC/rac8.jpeg";
-import rac9 from "/assets/campuslife/RAC/rac9.jpeg";
-import rac10 from "/assets/campuslife/RAC/rac10.jpeg";
-import rac11 from "/assets/campuslife/RAC/rac11.jpeg";
-import rac from "/assets/campuslife/RAC/rac.jpeg";
-// import rac12 from "/assets/campuslife/RAC/rac12.jpeg";
-import rac14 from "/assets/campuslife/RAC/rac14.jpeg";
-import rac15 from "/assets/campuslife/RAC/rac15.jpeg";
-import rac16 from "/assets/campuslife/RAC/rac16.jpeg";
-import rac17 from "/assets/campuslife/RAC/rac17.jpeg";
-import rac18 from "/assets/campuslife/RAC/rac18.jpg";
-import rac19 from "/assets/campuslife/RAC/rac19.jpeg";
-import rac20 from "/assets/campuslife/RAC/rac20.jpeg";
+
+import utsarga1 from "/assets/campuslife/Utsarga/utsarga1.jpg";
+import utsarga2 from "/assets/campuslife/Utsarga/utsarga2.jpg";
+import utsarga3 from "/assets/campuslife/Utsarga/utsarga3.jpg";
+import utsarga4 from "/assets/campuslife/Utsarga/utsarga4.jpg";
+import utsarga5 from "/assets/campuslife/Utsarga/utsarga5.jpg";
+import utsarga6 from "/assets/campuslife/Utsarga/utsarga6.jpg";
+import utsarga7 from "/assets/campuslife/Utsarga/utsarga7.jpg";
+import utsarga8 from "/assets/campuslife/Utsarga/utsarga8.jpg";
+import utsarga9 from "/assets/campuslife/Utsarga/utsarga9.jpg";
+import utsarga10 from "/assets/campuslife/Utsarga/utsarga10.jpg";
+import utsarga11 from "/assets/campuslife/Utsarga/utsarga11.jpg";
+import utsarga12 from "/assets/campuslife/Utsarga/utsarga12.jpg";
+import utsarga13 from "/assets/campuslife/Utsarga/utsarga13.jpg";
+import utsarga14 from "/assets/campuslife/Utsarga/utsarga14.jpg";
+import utsarga15 from "/assets/campuslife/Utsarga/utsarga15.jpg";
+import utsarga16 from "/assets/campuslife/Utsarga/utsarga16.jpg";
+import utsarga17 from "/assets/campuslife/Utsarga/utsarga17.jpg";
+
+
+
 
 
 const HeadingText = styled("h1")`
@@ -69,99 +71,96 @@ const GridWrapper = styled("div")`
   }
 `;
 
-const RacGallary = ({ title, description }) => {
+const Utsarga_Gallary = ({ title, description }) => {
   const images_api = [
     {
       id: 1,
-      image_src: rac1,
+      image_src: utsarga1,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 2,
+      image_src: utsarga2,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
    {
-      id: 4,
-      image_src: rac9,
+      id: 3,
+      image_src:utsarga3,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     }, 
+    
+    {
+      id: 4,
+      image_src: utsarga4,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
     {
       id: 5,
-      image_src: rac5,
+      image_src:utsarga5,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
       id: 6,
-      image_src: rac6,
+      image_src: utsarga6,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
-      id: 7,
-      image_src: rac7,
-      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
-    {
-      id: 8,
-      image_src: rac8,
-      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
-    {
-      id: 9,
-      image_src: rac4,
-      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
-    {
+        id: 7,
+        image_src: utsarga7,
+        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      {
+        id: 8,
+        image_src: utsarga8,
+        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      
+      {
+        id: 9,
+        image_src:utsarga9,
+        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
+      
+      {
         id: 10,
-        image_src: rac10,
+        image_src: utsarga10,
         image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
         id: 11,
-        image_src: rac11,
+        image_src: utsarga11,
         image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
-      
       {
         id: 12,
-        image_src: rac,
+        image_src: utsarga12,
         image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
-      
+      {
+        id: 13,
+        image_src: utsarga13,
+        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      },
       {
         id: 14,
-        image_src: rac14,
+        image_src: utsarga14,
         image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
         id: 15,
-        image_src: rac15,
+        image_src: utsarga15,
         image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
         id: 16,
-        image_src: rac16,
+        image_src: utsarga16,
         image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
         id: 17,
-        image_src: rac17,
+        image_src: utsarga17,
         image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 18,
-        image_src: rac18,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 19,
-        image_src: rac19,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 20,
-        image_src: rac20,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      
-       
-      
-      
+      }
   ];
   return (
     <>
@@ -179,4 +178,4 @@ const RacGallary = ({ title, description }) => {
   );
 };
 
-export default RacGallary;
+export default Utsarga_Gallary;

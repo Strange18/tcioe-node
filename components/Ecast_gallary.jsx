@@ -4,15 +4,16 @@ import { BodyText } from "./AboutThapathaliComponent";
 import styled from "styled-components";
 import CampusImageIndividual from "./CampusImageIndividual";
 
-import ecast from "/assets/campuslife/ECAST/ecast.jpg";
+import ecast from "/assets/campuslife/ECAST/ecastLogo.png";
 import ecast1 from "/assets/campuslife/ECAST/ecast1.png";
 import ecast2 from "/assets/campuslife/ECAST/ecast2.jpg";
 import ecast3 from "/assets/campuslife/ECAST/ecast3.jpg";
 import ecast4 from "/assets/campuslife/ECAST/ecast4.jpg";
-import ecast5 from "/assets/campuslife/ECAST/ecast5.jpg";
 import ecast6 from "/assets/campuslife/ECAST/ecast6.jpg";
 import ecast7 from "/assets/campuslife/ECAST/ecast7.jpg";
 import ecast8 from "/assets/campuslife/ECAST/ecast8.jpg";
+import ecast9 from "/assets/campuslife/ECAST/ecast9.jpg";
+import ecast10 from "/assets/campuslife/ECAST/ecast10.jpg";
 
 
 
@@ -66,12 +67,12 @@ const Ecast_gallary = ({ title, description }) => {
   const images_api = [
     {
       id: 1,
-      image_src: ecast,
+      image_src: ecast1,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
       id: 2,
-      image_src: ecast1,
+      image_src: ecast10,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
    {
@@ -91,7 +92,7 @@ const Ecast_gallary = ({ title, description }) => {
     },
     {
       id: 7,
-      image_src: ecast5,
+      image_src: ecast9,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {

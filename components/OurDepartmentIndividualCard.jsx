@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const Container = styled('div')`
     width: 100%;
-    min-height: 250px;
+    min-height: 255px;
     border: 1px solid #fff;
     padding: 24px;
 
