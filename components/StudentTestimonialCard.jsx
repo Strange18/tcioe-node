@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import Image from 'next/legacy/image'
 
 const Container = styled.div`
-    height: 400px;
-    min-width: 600px;
+    max-height: 400px;
+    min-width: 580px;
     background-color: #fff;
     padding: 3rem;
     border: 5px solid #DBDEE7;
@@ -17,9 +17,10 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    margin: 0 1.5rem;
 
     @media(max-width:950px){
-        height:450px;
+        min-height:500px;
         min-width:350px;
         padding: 1px;
         // color:red;

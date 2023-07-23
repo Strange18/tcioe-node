@@ -4,7 +4,7 @@ import { BodyText } from "./AboutThapathaliComponent";
 import styled from "styled-components";
 import CampusImageIndividual from "./CampusImageIndividual";
 import rac1 from "/assets/campuslife/RAC/rac1.jpeg";
-import rac2 from "/assets/campuslife/RAC/rac2.jpeg";
+// import rac2 from "/assets/campuslife/RAC/rac2.jpeg";
 import rac4 from "/assets/campuslife/RAC/rac4.jpeg"; 
 import rac5 from "/assets/campuslife/RAC/rac5.jpeg";
 import rac6 from "/assets/campuslife/RAC/rac6.jpeg";
@@ -14,7 +14,7 @@ import rac9 from "/assets/campuslife/RAC/rac9.jpeg";
 import rac10 from "/assets/campuslife/RAC/rac10.jpeg";
 import rac11 from "/assets/campuslife/RAC/rac11.jpeg";
 import rac from "/assets/campuslife/RAC/rac.jpeg";
-import rac12 from "/assets/campuslife/RAC/rac12.jpeg";
+// import rac12 from "/assets/campuslife/RAC/rac12.jpeg";
 import rac14 from "/assets/campuslife/RAC/rac14.jpeg";
 import rac15 from "/assets/campuslife/RAC/rac15.jpeg";
 import rac16 from "/assets/campuslife/RAC/rac16.jpeg";
@@ -76,14 +76,9 @@ const RacGallary = ({ title, description }) => {
       image_src: rac1,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
-    {
-      id: 2,
-      image_src: rac2,
-      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
    {
       id: 4,
-      image_src: rac4,
+      image_src: rac9,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     }, 
     {
@@ -108,7 +103,7 @@ const RacGallary = ({ title, description }) => {
     },
     {
       id: 9,
-      image_src: rac9,
+      image_src: rac4,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {

@@ -75,13 +75,8 @@ const GridWrapper = styled("div")`
 const Amesin_gallary = ({ title, description }) => {
   const images_api = [
     {
-      id: 1,
-      image_src: amesin1,
-      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
-    {
       id: 2,
-      image_src: amesin2,
+      image_src: amesin6,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
    {
@@ -96,22 +91,17 @@ const Amesin_gallary = ({ title, description }) => {
     },
     {
       id: 5,
-      image_src: amesin5,
+      image_src: amesin2,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
       id: 6,
-      image_src: amesin6,
+      image_src: amesin5,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
       id: 7,
       image_src: amesin7,
-      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
-    {
-      id: 8,
-      image_src: amesin8,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {

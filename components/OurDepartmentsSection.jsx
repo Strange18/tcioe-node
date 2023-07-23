@@ -6,6 +6,7 @@ import bg from "@/assets/OurDepartmentsGridBackground.png";
 
 export const H1 = styled("h1")`
   font-size: 26px;
+  font-weight: 700;
   color: #090c4c;
   text-align: center;
   margin-top: 144px;
@@ -75,7 +76,7 @@ const OurDepartmentsSection = () => {
 
   return (
     <>
-      <H1>Our departments</H1>
+      <H1>Our Departments</H1>
       <ContainerCentered
         style={{ backgroundImage: `url(${bg.src})`, objectFit: "cover" }}
       >
