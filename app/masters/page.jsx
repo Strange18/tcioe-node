@@ -39,7 +39,7 @@ const Page = () => {
       <div>
         <HeroComponent img={hero} />
         <ProgramsIntroComponent
-          title="Masters Degree Majors and Programs"
+          title="Master's Degree Majors and Programs"
           description="
           Our master's programs, including the M.Sc. in 
           Earthquake Engineering, M.Sc. in Mechanical 

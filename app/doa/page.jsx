@@ -46,7 +46,7 @@ const Page = () => {
   return (
     <PageContainer>
       <ContentContainer>
-        <Heading><Emoji>🚧</Emoji>Work in Progress<Emoji>🚧</Emoji></Heading>
+        <Heading><Emoji>🚧</Emoji>Work in Progress <Emoji>🚧</Emoji></Heading>
         <Subheading>This page is under construction. Check back soon!</Subheading>
       </ContentContainer>
     </PageContainer>

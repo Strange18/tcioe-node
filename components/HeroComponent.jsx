@@ -8,7 +8,7 @@ const Hero = styled.div`
     position: relative;
     /* top:80px; */
     width: 100%;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 55px);
     /* border: 1px solid #000000; */
 `
 

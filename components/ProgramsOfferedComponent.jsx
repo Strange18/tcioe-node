@@ -2,7 +2,6 @@
 import styled from "styled-components";
 import Image from 'next/legacy/image'
 
-import Thapathali from "../assets/Thapathali.png";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -24,8 +23,8 @@ const Header = styled.div`
   flex-direction: column;
   gap: 8px;
   margin-bottom: 0px;
-  /* justify-content: center; */
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
 `;
 const Title = styled.div`
   font-size: 2rem;
@@ -42,9 +41,9 @@ const Line = styled.div`
 
 const Container = styled.div`
   width: 100%;
-  min-height: 525px;
+  min-height: 400px;
   display: flex;
-  flex-direction: ${(props) => (props.index === 1 ? "row" : "row-reverse")};
+  flex-direction: ${(props) => (props.index %2 === 0 ? "row-reverse" : "row")};
   gap: 32px;
   justify-content: space-between;
   padding: 0px 64px 12px 64px;
@@ -99,8 +98,8 @@ const ProgramsOfferedComponent = ({ programs }) => {
     <>
       <Wrapper>
         <Header>
-          <Title>Programs offered</Title>
-          <Line width={"200px"} />
+          <Title>Programs Offered</Title>
+          <Line width={"260px"} />
         </Header>
         {programs.map((program, index) => {
           return (

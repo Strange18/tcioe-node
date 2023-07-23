@@ -9,10 +9,11 @@ import HeaderComponent from "@/components/HeaderComponent";
 
 const Wrapper = styled.div`
   width: 100%;
+  min-height: 552px;
   padding: 16px 64px 0 64px;
   display: flex;
   flex-direction: column;
-  gap: 0px;
+  gap: 16px;
   @media (max-width: 768px) {
     padding: 16px 12px 0 12px;
   }
@@ -23,7 +24,7 @@ const Header = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 24px;
+  margin: 24px 0;
 `;
 const Title = styled.div`
   font-size: 2rem;
@@ -42,6 +43,7 @@ const Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 24px;
   height: 40vh;
   @media (max-width: 958px) {
     flex-direction: column-reverse;
