@@ -14,9 +14,9 @@ import asis7 from "/assets/campuslife/ASIS/asis7.jpg";
 import asis8 from "/assets/campuslife/ASIS/asis8.jpg";
 import asis9 from "/assets/campuslife/ASIS/asis9.jpg";
 import asis10 from "/assets/campuslife/ASIS/asis10.jpg";
-import asis11 from "/assets/campuslife/ASIS/asis11.jpg";
-import asis12 from "/assets/campuslife/ASIS/asis12.jpg";
-import asis13 from "/assets/campuslife/ASIS/asis13.jpg";
+import asis14 from "/assets/campuslife/ASIS/asis14.jpg";
+import asis15 from "/assets/campuslife/ASIS/asis15.jpg";
+// import asis13 from "/assets/campuslife/ASIS/asis13.jpg";
 
 
 const HeadingText = styled("h1")`
@@ -119,16 +119,20 @@ const Asis_Gallary = ({ title, description }) => {
       
       {
         id: 12,
-        image_src: asis10,
+        image_src: asis15,
         image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       
       {
         id: 14,
-        image_src: asis11,
+        image_src: asis14,
         image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
-      
+      {
+        id: 15,
+        image_src: asis10,
+        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      }
       
     
       

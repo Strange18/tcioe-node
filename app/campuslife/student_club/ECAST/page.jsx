@@ -38,6 +38,7 @@ const page = () => {
         description={
           "Witness the Technological Marvels: Our ECAST Gallery!"
         }
+        content={ecast9}
       />
     </>
   );
