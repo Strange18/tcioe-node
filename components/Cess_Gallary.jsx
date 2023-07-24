@@ -54,6 +54,7 @@ const SubText = styled(BodyText)`
 const Container = styled("div")`
   width: 90vw;
   margin: 26px auto;
+  padding-bottom: 32px;
 `;
 
 const GridWrapper = styled("div")`

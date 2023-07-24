@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import HeroComponent from "@/components/HeroComponent";
-import CampusChiefComponent from "@/components/CampusChiefComponent";
 import ProgramsOfferedComponent from "@/components/ProgramsOfferedComponent";
 
 //paxi backend bata head_data fetch garera pathaune
@@ -19,24 +18,24 @@ import hero from "@/assets/program.png";
 const programs_data = [
   {
     id: 1,
+    name: "Bachelor of Civil Engineering",
+    description:
+      "Our program provides students with a profound understanding of civil engineering principles. Taught by experienced faculty, the program is unique in its comprehensive approach to structural, geotechnical, and environmental engineering. The program follows the curriculum of the Institute of Engineering. Upon successful completion, students receive certificates from TU.",
+    image: civil,
+  },
+  {
+    id: 2,
     name: "Bachelor of Computer Engineering",
     description:
       "In our program, students learn from experienced faculty and get updated on the latest developments in Information Technology and Computer Engineering through special lectures. This program stands out for its emphasis on blending theoretical knowledge with real-world applications. Academic quality is maintained by the university, and successful students receive their certificates from TU.",
     image: computer,
   },
   {
-    id: 2,
+    id: 3,
     name: "Bachelor of Electronics and Communication Engineering",
     description:
       "Our four-year program offers students the chance to learn from qualified faculty, with an emphasis on the latest developments in Information Communication Technology and Electronics. This program is unique in its integrated approach to Electronics and Communication, preparing students for diverse career paths. Academic matters are overseen by the university, and TU awards certificates upon successful program completion.",
     image: electronics,
-  },
-  {
-    id: 3,
-    name: "Bachelor of Architecture",
-    description:
-      "Our five-year program offers in-depth theoretical and practical learning in Architecture and Urban Planning. What sets this program apart is its focus on sustainable and future-forward design principles. Taught by experienced faculty, the program adheres to the Institute of Engineering's curriculum. Successful students receive certificates from TU.",
-    image: architecture,
   },
   {
     id: 4,
@@ -61,10 +60,10 @@ const programs_data = [
   },
   {
     id: 7,
-    name: "Bachelor of Civil Engineering",
+    name: "Bachelor of Architecture",
     description:
-      "Our program provides students with a profound understanding of civil engineering principles. Taught by experienced faculty, the program is unique in its comprehensive approach to structural, geotechnical, and environmental engineering. The program follows the curriculum of the Institute of Engineering. Upon successful completion, students receive certificates from TU.",
-    image: civil,
+      "Our five-year program offers in-depth theoretical and practical learning in Architecture and Urban Planning. What sets this program apart is its focus on sustainable and future-forward design principles. Taught by experienced faculty, the program adheres to the Institute of Engineering's curriculum. Successful students receive certificates from TU.",
+    image: architecture,
   },
 ];
 const Page = () => {
@@ -73,7 +72,7 @@ const Page = () => {
       <div>
         <HeroComponent img={hero} />
         <ProgramsIntroComponent
-          title="Bachelor Degree Majors and Programs"
+          title="Bachelor's Degree Majors and Programs"
           description="
           Our bachelor's programs are designed to provide students with a 
           deep understanding of engineering principles, while also promoting 
