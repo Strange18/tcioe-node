@@ -8,7 +8,8 @@ const StyledImage = styled(Image)`
   width: 100%;
   height: auto;
   max-height: 70vh;
-  padding: 20px;
+  padding: 32px;
+  margin-bottom: 32px;
  
   border-radius: 8px;
   object-fit: contain;
@@ -56,8 +57,8 @@ const Header = styled.div`
   flex-direction: column;
   gap: 8px;
   margin-bottom: 0px;
-  /* justify-content: center; */
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
 `;
 const Page = () => {
   return (
@@ -67,7 +68,7 @@ const Page = () => {
     <Wrapper>
         <Header>
           <Title>Organization Chart</Title>
-          <Line width={"160px"} />
+          <Line width={"270px"} />
         </Header>
         </Wrapper>
       <StyledImage src={orgChart} alt="organization chart" />

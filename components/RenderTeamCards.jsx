@@ -49,7 +49,7 @@ export const RenderTeamCards = ({ Members, title }) => {
             return <TeamCard key={index} detail={member} />;
           })
         ) : (
-          <h1>Data is being updated</h1>
+          <h1>Loading Data...</h1>
         )}
       </CardsContainer>
     </Wrapper>

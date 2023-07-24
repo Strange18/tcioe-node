@@ -13,6 +13,7 @@ import tensor6 from "/assets/campuslife/Tensor/tensor6.jpeg";
 import tensor7 from "/assets/campuslife/Tensor/tensor7.jpg";
 import tensor8 from "/assets/campuslife/Tensor/tensor8.jpg";
 import tensor9 from "/assets/campuslife/Tensor/tensor9.jpg";
+import tensor10 from "/assets/campuslife/Tensor/tensor10.jpg";
 
 
 
@@ -40,6 +41,7 @@ const SubText = styled(BodyText)`
 const Container = styled("div")`
   width: 90vw;
   margin: 26px auto;
+  padding-bottom: 32px;
 `;
 
 const GridWrapper = styled("div")`
@@ -65,7 +67,7 @@ const Tensor_gallary = ({ title, description }) => {
   const images_api = [
     {
       id: 1,
-      image_src: tensor,
+      image_src: tensor10,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
