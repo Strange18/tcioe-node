@@ -27,7 +27,7 @@ import soies21 from "/assets/campuslife/SOIES/soies21.jpeg";
 import soies22 from "/assets/campuslife/SOIES/soies22.jpeg";
 import soies23 from "/assets/campuslife/SOIES/soies23.jpeg";
 import soies24 from "/assets/campuslife/SOIES/soies24.jpeg";
-import soies25 from "/assets/campuslife/SOIES/soies26.jpeg";
+import soies25 from "/assets/campuslife/SOIES/soies25.jpeg";
 import soies26 from "/assets/campuslife/SOIES/soies26.jpeg";
 import soies27 from "/assets/campuslife/SOIES/soies27.jpeg";
 import soies28 from "/assets/campuslife/SOIES/soies28.jpeg";
@@ -62,6 +62,7 @@ const SubText = styled(BodyText)`
 const Container = styled("div")`
   width: 90vw;
   margin: 26px auto;
+  padding-bottom: 32px;
 `;
 
 const GridWrapper = styled("div")`
@@ -183,7 +184,6 @@ const Soies_Gallary = ({ title, description }) => {
         image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       
-    
       {
         id: 20,
         image_src: soies20,
@@ -200,11 +200,6 @@ const Soies_Gallary = ({ title, description }) => {
         image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {
-        id: 23,
-        image_src: soies23,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
         id: 24,
         image_src: soies24,
         image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -217,11 +212,6 @@ const Soies_Gallary = ({ title, description }) => {
       {
         id: 26,
         image_src: soies26,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 27,
-        image_src: soies27,
         image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
       {

@@ -60,8 +60,7 @@ export const NavigationButtonContainer = styled.div`
 
 export const Heading = styled.h1`
   margin: 25px;
-
-  font-family: sans-serif;
+  font-size: 32px;
   display: flex;
   align-items: center;
   color: #333333;
@@ -93,7 +92,7 @@ export const Dropdown = styled.select`
   cursor: pointer;
 
   &:hover {
-    color: #000000;
+    color: #010101;
   }
 
   &:focus {

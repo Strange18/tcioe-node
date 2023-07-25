@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const Container = styled.div`
   width: 100%;
   overflow-x: auto;
+  margin: 32px 0;
 `;
 
 const Table = styled.table`
@@ -19,6 +20,14 @@ const TableHead = styled.thead`
 const TableRow = styled.tr`
   &:nth-child(even) {
     background-color: #f2f2f2;
+  }
+`;
+
+const TableRowTotal = styled.tr`
+  &:nth-child(even) {
+    background-color: #f2f2f2;
+    font-weight: 600;
+    color: #090c4c;
   }
 `;
 
@@ -110,13 +119,13 @@ const ResponsiveTable = () => {
             <TableData>-</TableData>
             <TableData>48</TableData>
           </TableRow>
-          <TableRow>
+          <TableRowTotal>
             <ProgramData>B.E. Total</ProgramData>
             <TableData>108</TableData>
             <TableData>324</TableData>
             <TableData>-</TableData>
             <TableData>480</TableData>
-          </TableRow>
+          </TableRowTotal>
           <TableRow>
             <ProgramData>M.Sc. in Earthquake Engineering (MSEQE)</ProgramData>
             <TableData>5</TableData>
@@ -143,13 +152,13 @@ const ResponsiveTable = () => {
             <TableData>8</TableData>
             <TableData>20</TableData>
           </TableRow>
-          <TableRow>
+          <TableRowTotal>
             <ProgramData>M.Sc. Total</ProgramData>
             <TableData>15</TableData>
             <TableData>21</TableData>
             <TableData>24</TableData>
             <TableData>60</TableData>
-          </TableRow>
+          </TableRowTotal>
         </tbody>
       </Table>
     </Container>

@@ -11,7 +11,6 @@ import Image from "next/image";
 
 const ImgDiv = tw.div`
   p-8
-
 `;
 
 const CampusMap = () => {
@@ -22,8 +21,8 @@ const CampusMap = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen pt-2">
-      <h1 className="text-4xl mb-6">Campus Map</h1>
+    <div className="flex flex-col items-center justify-center min-h-screen pt-2 pb-8">
+      <h1 className="text-4xl m-6">Campus Map</h1>
 
       <button
         className="mb-6 px-6 py-2 bg-blue-500 text-white rounded"

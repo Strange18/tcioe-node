@@ -5,7 +5,7 @@ import styled from "styled-components";
 import CampusImageIndividual from "./CampusImageIndividual";
 
 import cess1 from "/assets/campuslife/CESS/cess1.jpeg";
-import cess2 from "/assets/campuslife/CESS/cess2.jpeg";
+import cess2 from "/assets/campuslife/CESS/cess2.jpg";
 import cess3 from "/assets/campuslife/CESS/cess3.jpeg";
 import cess4 from "/assets/campuslife/CESS/cess4.jpeg";
 import cess5 from "/assets/campuslife/CESS/cess5.jpeg";
@@ -54,6 +54,7 @@ const SubText = styled(BodyText)`
 const Container = styled("div")`
   width: 90vw;
   margin: 26px auto;
+  padding-bottom: 32px;
 `;
 
 const GridWrapper = styled("div")`
@@ -125,21 +126,21 @@ const Cess_Gallary = ({ title, description }) => {
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
 
-    {
-      id: 10,
-      image_src: cess10,
-      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
+    // {
+    //   id: 10,
+    //   image_src: cess10,
+    //   image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    // },
     {
       id: 11,
       image_src: cess11,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
-    {
-      id: 12,
-      image_src: cess12,
-      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
+    // {
+    //   id: 12,
+    //   image_src: cess12,
+    //   image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    // },
     {
       id: 13,
       image_src: cess14,
@@ -161,11 +162,11 @@ const Cess_Gallary = ({ title, description }) => {
       image_src: cess17,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
-    {
-      id: 17,
-      image_src: cess18,
-      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
+    // {
+    //   id: 17,
+    //   image_src: cess18,
+    //   image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    // },
     {
       id: 18,
       image_src: cess19,

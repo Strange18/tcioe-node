@@ -550,7 +550,7 @@ const Page = () => {
       <Wrapper>
         <Header>
           <Title>Notices</Title>
-          <Line width={"100px"} />
+          <Line width={"110px"} />
         </Header>
         <Container>
           {noticesNotFound ? (
