@@ -15,9 +15,9 @@ const Hero = styled.div`
 const HeroVideoContainer = styled.div`
     width: 100%;
     height: 100%;
-    box-shadow: 0px 81px 65px -19px rgba(255,255,255,1) inset;
--webkit-box-shadow: 0px 81px 65px -10px rgba(255,255,255,1) inset;
--moz-box-shadow: 0px 81px 65px -19px rgba(255,255,255,1) inset;
+//     box-shadow: 0px 81px 65px -19px rgba(255,255,255,1) inset;
+// -webkit-box-shadow: 0px 81px 65px -10px rgba(255,255,255,1) inset;
+// -moz-box-shadow: 0px 81px 65px -19px rgba(255,255,255,1) inset;
 
 `
 const HeroVideo = styled(Image)`
