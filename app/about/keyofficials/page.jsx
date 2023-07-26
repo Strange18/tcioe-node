@@ -1,6 +1,7 @@
 "use client";
 import { RenderTeamCards } from "@/components/RenderTeamCards";
 import React, { useEffect, useState } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const fetchData = async () => {
   const res = await fetch(
@@ -10,14 +11,18 @@ const fetchData = async () => {
   return data;
 };
 const Page = () => {
+  const [loading, setLoading] = useState(true);
   const [keyOfficials, setKeyOfficials] = useState([]);
   useEffect(() => {
     const getData = async () => {
+      setLoading(true);
       const data = await fetchData();
       setKeyOfficials(data);
+      setLoading(false);
     };
     getData();
   }, []);
+
   let campusChief = keyOfficials.slice(0, 1);
   let assistantCampusChief = keyOfficials.slice(1, 4);
   let hod = keyOfficials.slice(4, 10);
@@ -27,12 +32,20 @@ const Page = () => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <RenderTeamCards title="Campus Officials" Members={campusChief} />
-      <RenderTeamCards title="" Members={assistantCampusChief} />
-      <RenderTeamCards title="" Members={hod} />
-      <RenderTeamCards title="" Members={dhod} />
-      <RenderTeamCards title="" Members={msc} />
-      <RenderTeamCards title="" Members={heads} />
+      {loading ? (
+        <div className="h-[100vh] flex justify-center items-center">
+          <ClipLoader color={"#7177ff"} loading={loading} size={100} />
+        </div>
+      ) : (
+        <>
+          <RenderTeamCards title="Campus Officials" Members={campusChief} />
+          <RenderTeamCards title="" Members={assistantCampusChief} />
+          <RenderTeamCards title="" Members={hod} />
+          <RenderTeamCards title="" Members={dhod} />
+          <RenderTeamCards title="" Members={msc} />
+          <RenderTeamCards title="" Members={heads} />
+        </>
+      )}
     </div>
   );
 };
