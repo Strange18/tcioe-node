@@ -28,6 +28,10 @@ const Container = styled.div`
     flex-direction: column-reverse;
     gap: 0px;
   }
+
+  @media (max-width: 518px) {
+    margin-top: -3rem;
+  }
 `;
 const LeftContainer = styled.div`
   flex: 3;
@@ -43,6 +47,7 @@ const Heading = styled.div`
   @media (max-width: 950px) {
     text-align: center;
   }
+
 `;
 const BodyText = styled.div`
   font-size: 18px;
@@ -67,21 +72,28 @@ const Readless = styled.a`
   text-decoration: none;
   cursor: pointer;
   margin-top: -1rem;
+  
 `;
 
 const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
+
+  
 `;
 const CampusChiefName = styled.div`
   font-size: 18px;
   font-weight: 600;
   color: #0d1392;
+
+  
 `;
 const CampusChiefPost = styled.div`
   padding-top: 8px;
   font-size: 14px;
   color: #292929;
+
+
 `;
 
 const RightContainer = styled.div`
