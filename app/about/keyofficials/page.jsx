@@ -19,12 +19,21 @@ const Page = () => {
     getData();
   }, []);
   let campusChief = keyOfficials.slice(0, 1);
-  let members = keyOfficials.slice(1, -1);
+  let assistantCampusChief = keyOfficials.slice(1, 4);
+  let hod = keyOfficials.slice(4, 10);
+  let dhod = keyOfficials.slice(10, 16);
+  let msc = keyOfficials.slice(16, 19);
+  let heads = keyOfficials.slice(19, 25);
+
   return (
-    <>
+    <div className="flex flex-col justify-center items-center">
       <RenderTeamCards title="Campus Officials" Members={campusChief} />
-      <RenderTeamCards title="" Members={members} />
-    </>
+      <RenderTeamCards title="" Members={assistantCampusChief} />
+      <RenderTeamCards title="" Members={hod} />
+      <RenderTeamCards title="" Members={dhod} />
+      <RenderTeamCards title="" Members={msc} />
+      <RenderTeamCards title="" Members={heads} />
+    </div>
   );
 };
 
