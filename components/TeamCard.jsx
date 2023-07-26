@@ -8,7 +8,7 @@ const CardWrapper = styled.section`
   display: flex;
   flex-direction: column;
   border: 1px solid lightgrey;
-  min-width: 300px;
+  width: 300px;
   border-top: 0px;
   margin-top: 10em;
   cursor: pointer;
