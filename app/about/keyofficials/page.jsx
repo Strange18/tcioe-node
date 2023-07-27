@@ -3,7 +3,6 @@ import { RenderTeamCards } from "@/components/RenderTeamCards";
 import { RenderUnitHeadComponent } from "@/components/RenderUnitHeadComponent";
 import React, { useEffect, useState } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
-
 const fetchData = async () => {
   const res = await fetch(
     "https://notices.tcioe.edu.np/api/department/staffmembers/"
@@ -23,7 +22,6 @@ const Page = () => {
     };
     getData();
   }, []);
-
   let campusChief = keyOfficials.slice(0, 1);
   let assistantCampusChief = keyOfficials.slice(1, 4);
   let hod = keyOfficials.slice(4, 10);
@@ -31,7 +29,6 @@ const Page = () => {
   let msc = keyOfficials.slice(16, 19);
   let unithead = keyOfficials.slice(19, 23);
   let sectionheads = keyOfficials.slice(23, 25);
-
   return (
     <div className="flex flex-col justify-center items-center">
       {loading ? (
