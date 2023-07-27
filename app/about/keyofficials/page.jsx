@@ -1,5 +1,6 @@
 "use client";
 import { RenderTeamCards } from "@/components/RenderTeamCards";
+import { RenderUnitHeadComponent } from "@/components/RenderUnitHeadComponent";
 import React, { useEffect, useState } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 
@@ -28,7 +29,8 @@ const Page = () => {
   let hod = keyOfficials.slice(4, 10);
   let dhod = keyOfficials.slice(10, 16);
   let msc = keyOfficials.slice(16, 19);
-  let heads = keyOfficials.slice(19, 25);
+  let unithead = keyOfficials.slice(19, 23);
+  let sectionheads = keyOfficials.slice(23, 25);
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -43,7 +45,8 @@ const Page = () => {
           <RenderTeamCards title="" Members={hod} />
           <RenderTeamCards title="" Members={dhod} />
           <RenderTeamCards title="" Members={msc} />
-          <RenderTeamCards title="" Members={heads} />
+          <RenderUnitHeadComponent Members={unithead} />
+          <RenderTeamCards title="" Members={sectionheads} />
         </>
       )}
     </div>
