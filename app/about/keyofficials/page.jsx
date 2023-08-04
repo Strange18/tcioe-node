@@ -29,6 +29,11 @@ const Page = () => {
   let msc = keyOfficials.slice(16, 19);
   let unithead = keyOfficials.slice(19, 23);
   let sectionheads = keyOfficials.slice(23, 25);
+  let administrative = [];
+  administrative.push(keyOfficials[25]);
+  administrative.push(keyOfficials[26]);
+  administrative.push(keyOfficials[29]);
+  console.log(administrative);
   return (
     <div className="flex flex-col justify-center items-center">
       {loading ? (
@@ -44,6 +49,7 @@ const Page = () => {
           <RenderTeamCards title="" Members={msc} />
           <RenderUnitHeadComponent Members={unithead} />
           <RenderTeamCards title="" Members={sectionheads} />
+          <RenderTeamCards title="" Members={administrative} />
         </>
       )}
     </div>
