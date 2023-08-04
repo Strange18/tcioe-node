@@ -8,6 +8,7 @@ import HeaderComponent from "@/components/HeaderComponent";
 
 const Wrapper = styled.div`
   width: 100%;
+  min-height: 552px;
   padding: 16px 64px 0 64px;
   display: flex;
   flex-direction: column;
@@ -23,7 +24,7 @@ const Header = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 24px;
+  margin: 24px 0;
 `;
 const Title = styled.div`
   font-size: 2rem;

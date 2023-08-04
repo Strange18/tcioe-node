@@ -86,24 +86,24 @@ const Scholarship = () => {
               </THEAD>
               <tbody>
                 <TR>
-                  <TD>BIE,BEI,BCT,BAR,BME</TD>
+                  <TD>BIE, BEI, BCT, BAR, BME</TD>
                   <TD rowSpan={2}>Regular</TD>
                   <TD>11025/-</TD>
                   <TD></TD>
                 </TR>
                 <TR>
-                  <TD>BIE,BAM</TD>
+                  <TD>BIE, BAM</TD>
                   <TD>15025/-</TD>
                   <TD></TD>
                 </TR>
                 <TR>
-                  <TD>BIE,BEI,BCT,BAR,BME</TD>
+                  <TD>BIE, BEI, BCT, BAR, BME</TD>
                   <TD rowSpan={2}>Full Fee</TD>
                   <TD>74400/-</TD>
                   <TD></TD>
                 </TR>
                 <TR>
-                  <TD>BIE,BAM</TD>
+                  <TD>BIE, BAM</TD>
                   <TD>82400/-</TD>
                   <TD></TD>
                 </TR>
@@ -122,7 +122,7 @@ const Scholarship = () => {
               </THEAD>
               <tbody>
                 <TR>
-                  <TD>MSDEM,MSIISE,MSEQE</TD>
+                  <TD>MSDEM, MSIISE, MSEQE</TD>
                   <TD>21355/-</TD>
                   <TD>46855/-</TD>
                   <TD>54175/-</TD>

@@ -83,7 +83,7 @@ const LogoText = styled.div`
   }
 `;
 const Description = styled.div`
-  font-size: 15px;
+  font-size: 14px;
   color: #b0b0b0;
 `;
 
@@ -189,7 +189,7 @@ const FooterComponent = () => {
           <LogoTextContainer>
             <LogoTextsub>Institute of Engineering</LogoTextsub>
             <LogoText>Thapathali Campus</LogoText>
-            <Description> Quality education since 1930 A.D.</Description>
+            <Description> Quality Education Since 1930 A.D.</Description>
           </LogoTextContainer>
         </LogoContainer>
 

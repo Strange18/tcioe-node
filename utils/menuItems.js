@@ -82,11 +82,11 @@ export const menuItems = [
         url: "",
         submenu: [
           {
-            title: "Bachelors Degree Programs",
+            title: "Bachelor's Degree Programs",
             url: "/bachelors",
           },
           {
-            title: "Masters Degree Programs",
+            title: "Master's Degree Programs",
             url: "/masters",
           },
         ],

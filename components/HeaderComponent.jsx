@@ -16,7 +16,7 @@ const Header = styled("header")`
   align-items: center;
   background-color: #fff;
   z-index: 100;
-
+  box-shadow: 0 2px 2px rgba(0,0,0,0.15);
   position: sticky;
   top: 0;
 `;
