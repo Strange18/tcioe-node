@@ -32,21 +32,21 @@ const page = () => {
       <MissionsComponent
         mission={{
           heading: "Mission",
-          title: "Fostering Innovation in Engineering Education",
+          title: "Empowering Engineers for Real-World Impact",
           description:
-            "We aim to provide a comprehensive education that encourages every student to excel in the field of engineering. Our mission is to foster innovation, critical thinking, and a passion for technology in our students to drive societal progress.",
+            "We aim to provide a transformative educational experience, cultivate innovation and research, and produce highly skilled engineers capable of solving real-world problems and contributing to the advancement of society.",
         }}
         vision={{
           heading: "Vision",
-          title: "Leading the Future of Engineering",
+          title: "Global Engineering Excellence",
           description:
-            "Our vision is to be at the forefront of engineering education and research. We aspire to create a vibrant learning environment that nurtures future leaders and innovators, contributing to the advancement of society and industry.",
+            "Our vision is to be a leading engineering campus globally recognized for academic excellence, research, innovation, and societal impact.",
         }}
         values={{
           heading: "Values",
-          title: "Excellence, Integrity, Collaboration Define Us",
+          title: "Excellence, Innovation, Integrity, Inclusivity and Sustainability",
           description:
-            "We uphold the principles of academic integrity, commitment to excellence, and collaborative learning. Our values inspire us to create a supportive community where all members are encouraged to contribute their unique skills and perspectives.",
+            "We uphold the principles of Excellence: Striving for the highest standards in teaching, research, and student development; Innovation: Encouraging creativity, entrepreneurship, and interdisciplinary collaboration; Integrity: Upholding ethical behavior, honesty, and accountability; Inclusivity: Fostering a diverse and inclusive community that respects the values of all individuals; and Sustainability: Promoting environmentally conscious practices and solutions.",
         }}
       />
     </div>
