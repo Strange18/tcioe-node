@@ -54,7 +54,7 @@ const Header = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 24px;
+  margin: 24px 0;
 `;
 const Title = styled.div`
   font-size: 2rem;

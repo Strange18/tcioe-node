@@ -32,7 +32,7 @@ const Heading = styled.div`
 export const BodyText = styled.div`
     font-size: 18px;
     color: #8A8A8A;
-    line-height: 2rem;
+    line-height: 4rem;
     text-align: justify;
 `
 
@@ -41,7 +41,7 @@ const Scholarship = () => {
         <>
             <Container>
                 <RightContainer>
-                    <Heading>Scholarships systems</Heading>
+                    <Heading>Scholarships Systems</Heading>
                     <BodyText>
                         <ol>
                             <li>

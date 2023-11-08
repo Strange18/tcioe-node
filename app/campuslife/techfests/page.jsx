@@ -1,7 +1,7 @@
 import React from "react";
+import utsarga from "/assets/campuslife/Utsarga/utsarga.png";
+import Utsarga_Gallary from "@/components/Utsarga_Gallary";
 import PujaComponent from "@/components/CampusLife/PujaComponent";
-import utsarga from "/assets/campuslife/utsarga.png";
-import CampusImageGallery from "@/components/CampusImageGallery";
 
 const page = () => {
   const text = [
@@ -17,7 +17,7 @@ const page = () => {
         img={utsarga}
         title="Utsarga"
       />
-      <CampusImageGallery
+      <Utsarga_Gallary
         title={"Campus Techfests"}
         description={
           "Venture into the world of innovation and technology. Experience the exhilarating Techfest at Thapathali Campus!"

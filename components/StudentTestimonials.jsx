@@ -31,22 +31,23 @@ const Wrapper = styled.div`
 
 const H1 = styled.h1`
   font-size: 26px;
+  font-weight: 700;
   color: #fff;
   text-align: center;
   margin: 24px 0;
 `;
 
 const IconContainer = styled("div")`
-  height: 135px;
-  width: 185px;
+  height: 120px;
+  width: 120px;
   z-index: 10;
   position: absolute;
   right: 20px;
   top: 0px;
 
   @media (max-width: 950px) {
-    height: 20px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
   }
 `;
 const Icon = styled.div`
@@ -80,7 +81,7 @@ export const CarouserContainer = styled("div")`
   position: relative;
   overflow: hidden;
   margin-bottom: 32px;
-  height: 400px;
+  height: 425px;
 
   @media (max-width: 950px) {
     height: 600px;
@@ -90,6 +91,7 @@ export const CarouserContainer = styled("div")`
 
 export const CarouserContainerInner = styled("div")`
   display: flex;
+  padding-bottom: 16px;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   -ms-overflow-style: none;
