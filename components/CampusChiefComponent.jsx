@@ -90,8 +90,9 @@ const CampusChiefName = styled.div`
 `;
 const CampusChiefPost = styled.div`
   padding-top: 8px;
-  font-size: 14px;
+  font-size: 17px;
   color: #292929;
+  margin-left:18px;
 
 
 `;
@@ -138,7 +139,7 @@ const CampusChiefComponent = ({ post, name, photo, message }) => {
           )}
           <PostContainer>
             <CampusChiefName>{name}</CampusChiefName>
-            <CampusChiefPost>{post}, TCIOE</CampusChiefPost>
+            <CampusChiefPost>{post}</CampusChiefPost>
           </PostContainer>
         </LeftContainer>
         <RightContainer>
