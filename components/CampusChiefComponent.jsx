@@ -90,7 +90,7 @@ const CampusChiefName = styled.div`
 `;
 const CampusChiefPost = styled.div`
   padding-top: 8px;
-  font-size: 16px;
+  font-size: 15px;
   color: #292929;
 
 
