@@ -59,6 +59,7 @@ const List = styled.div`
   flex-direction: column;
   gap: 18px;
   overflow-y: auto;
+  box-sizing:border-box;
 `;
 
 const Buttoned = styled.button`
