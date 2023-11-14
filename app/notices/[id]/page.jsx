@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { menuItems } from '@/utils/menuItems';
 import HeaderComponent from '@/components/HeaderComponent';
-import { useRouter } from 'next/router'
-import { Suspense } from 'react';
 
 
 const Wrapper = styled.div`
@@ -55,6 +53,7 @@ const Container = styled.div`
     height: 80vh;
     /* border: 1px solid #575757; */
     background-color: #E9E9E9;
+    color:#000;
     padding:0;
 
     embed{
@@ -71,9 +70,8 @@ const Container = styled.div`
 `
 
 const page = ({ params }) => {
-    // const router = useRouter()
-    // console.log(router)
-    // console.log("params", params)
+
+    const [file, setFile] = useState("");
     const [notice, setNotice] = useState([]);
 
     useEffect(() => {
@@ -81,34 +79,37 @@ const page = ({ params }) => {
             const query = await fetch(`https://notices.tcioe.edu.np/api/notice/notices/${params.id}`);
             const response = await query.json();
             // console.log("Response from api", response);
-            if(response){
-                const file=response.download_file.split("/")[5]
-                // console.log("download",response.download_file)
-                // console.log("file",response.download_file.split("/"))
-                // console.log("decodedd",decodeURI(file))
-                console.log(decodeURI(file))
-                setNotice(decodeURI(file));
+            if (response) {
+                const file_ = response.download_file.split("/")[5]
+                // console.log("response", response)
+                setNotice(response);
+                setFile(decodeURI(file_));
             }
         }
         getData();
     }, [])
-    
-    
-    
+
+
+
 
     return (
         <>
             <HeaderComponent menuItems={menuItems} />
             <Wrapper>
                 <Header>
-                    <Title>{ notice.title }</Title>
+                    <Title>{notice.title}</Title>
                     <Line />
                 </Header>
+
                 <Container>
-                
-                    <embed is="x-frame-bypass" src={`https://notices.tcioe.edu.np/media/files/${notice}`} type="application/pdf"></embed>
-                   {/* <embed src={"https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"} type="application/pdf"></embed> */}
-                    
+
+                    {file && (
+                        <embed src={`https://notices.tcioe.edu.np/media/files/${file}`} />
+                    )}
+
+                    {console.log("notice", `https://notices.tcioe.edu.np/media/files/${file}`)}
+
+
                 </Container>
             </Wrapper>
         </>
