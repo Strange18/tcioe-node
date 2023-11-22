@@ -1,56 +1,38 @@
-"use client"
+import UnionComponent from "@/components/CampusLife/UnionComponent";
 
-import React from 'react';
-import styled from 'styled-components';
+export default function Page() {
+  const unionMembers = [
+    { name: "Pushkar Bikram Shahi", position: "President" },
+    { name: "Shrawan Ojha", position: "Vice President" },
+    { name: "Raj Kumar Dhakal", position: "Secretary" },
+    { name: "Milan Chaulagain", position: "Joint Secretary" },
+    { name: "Mahesh Banjade", position: "Treasurer" },
+    { name: "Ambika Joshi", position: "Member" },
+    { name: "Prahlad Khadka", position: "Member" },
+    { name: "Prerana Bhandari", position: "Member" },
+    { name: "Om Prakash Negi", position: "Member" },
+    { name: "Rupak Pokhrel", position: "Member" },
+    { name: "Rajiv Adhikari", position: "Member" },
+    { name: "Arun Babu Mahto", position: "Member" },
+    { name: "Anjana Pokhrel", position: "Member" },
+    { name: "Navin Gautam", position: "Member" },
+    { name: "Hukum Rawal", position: "Member" },
+    { name: "Shishir Sapkota", position: "Member" },
+    { name: "Pragati Khanal", position: "Member" },
+    { name: "Gokarn Kuwar", position: "Member" },
+    { name: "Anish Sakha", position: "Member" },
+  ];
 
-const PageContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  background-color: #f0f0f0;
-`;
+  const title = "Free Student Union";
 
-const ContentContainer = styled.div`
-  max-width: 800px;
-  padding: 2rem;
-  border-radius: 8px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 768px) {
-    padding: 1rem;
-  }
-`;
-
-const Heading = styled.h1`
-  text-align: center;
-  font-size: 3rem;
-  margin-bottom: 2rem;
-  color: #20068E;
-`;
-
-const Subheading = styled.h2`
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: #333;
-`;
-
-const Emoji = styled.span`
-  font-size: 2rem;
-  margin-right: 1rem;
-`;
-
-const Page = () => {
+  const description = `The Free Student Union election at Thapathali Campus is a vital process where all students can vote for their chosen representatives. The elected committee advocates for students' rights, professional growth, and other important issues. Candidates are carefully nominated, and elections are conducted through secret ballots to ensure transparency. The committee collaborates with campus management to enhance the overall campus environment, making it a hub of student empowerment and active democracy.`;
+  const tabletitle = `Free Student Union Executives, Thapathali Campus Unit`;
   return (
-    <PageContainer>
-      <ContentContainer>
-        <Heading><Emoji>🚧</Emoji>Work in Progress <Emoji>🚧</Emoji></Heading>
-        <Subheading>This page is under construction. Check back soon!</Subheading>
-      </ContentContainer>
-    </PageContainer>
+    <UnionComponent
+      title={title}
+      description={description}
+      members={unionMembers}
+      tabletitle={tabletitle}
+    />
   );
-};
-
-export default Page;
+}
