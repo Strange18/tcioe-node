@@ -379,12 +379,14 @@ const page = ({ params }) => {
                 )}
               </p>
             ))}
+
       <LoadMore showButton={showViewMoreButton}>
         {!showAllNotices && (
           <button onClick={loadAllNotices}>View More</button>
         )}
         <FaArrowDown />
       </LoadMore>
+
           </Scrollable>
         </LatestTrends>
       </Wrapper>
