@@ -176,7 +176,7 @@ const PubDate = styled.div`
 `;
 
 const Scrollable = styled.div`
-  max-height: 600px;
+  max-height: 560px;
   overflow-y: auto;
 
   &::-webkit-scrollbar {
@@ -186,10 +186,18 @@ const Scrollable = styled.div`
   &::-webkit-scrollbar-thumb {
     background-color: transparent;
   }
+
+  // @media (max-width: 430px) {
+  //   max-height: 650px;
+  // }
+
+  @media (max-width: 430px) {
+    max-height: 493px;
+  }
 `;
 
 const LoadMore = styled.div`
-  display: flex;
+  display: ${(props) => (props.showButton ? 'flex' : 'none')};
   align-items: center;
   gap: 5px;
   border: 2px solid green;
@@ -249,6 +257,7 @@ const page = ({ params }) => {
   const [latestNotices, setLatestNotices] = useState([]);
   const [showAllNotices, setShowAllNotices] = useState(false);
   const [allNotices, setAllNotices] = useState([]);
+  const [showViewMoreButton, setShowViewMoreButton] = useState(true);
 
   const loadAllNotices = async () => {
     const query = await fetch(
@@ -257,6 +266,7 @@ const page = ({ params }) => {
     const response = await query.json();
     setAllNotices(response);
     setShowAllNotices(true);
+    setShowViewMoreButton(false);
   };
 
   const displayNotices = showAllNotices
@@ -369,12 +379,12 @@ const page = ({ params }) => {
                 )}
               </p>
             ))}
-            <LoadMore>
-              {!showAllNotices && (
-                <button onClick={loadAllNotices}>View More</button>
-              )}
-              <FaArrowDown />
-            </LoadMore>
+      <LoadMore showButton={showViewMoreButton}>
+        {!showAllNotices && (
+          <button onClick={loadAllNotices}>View More</button>
+        )}
+        <FaArrowDown />
+      </LoadMore>
           </Scrollable>
         </LatestTrends>
       </Wrapper>
