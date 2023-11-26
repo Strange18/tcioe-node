@@ -142,7 +142,7 @@ const NoticeInfo = styled.div`
 const NoticeListTitle = styled.div`
   font-weight: bold;
   a:hover {
-    color: red;
+    color: rgb(217, 2, 42);
   }
 `;
 
@@ -297,6 +297,20 @@ const page = ({ params }) => {
     ? allNotices
     : latestNotices.slice(0, 10);
 
+    const handleNoticeTitleClick = async (latestNoticeId) => {
+      const query = await fetch(`https://notices.tcioe.edu.np/api/notice/notices/${latestNoticeId}`);
+      const response = await query.json();
+      if (response) {
+        const file_ = response.download_file.split("/")[5];
+        setNotice(response);
+        setFile(decodeURI(file_));
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+    };
+
   useEffect(() => {
     const getData = async () => {
       const query = await fetch(
@@ -343,11 +357,6 @@ const page = ({ params }) => {
                 </NoticeTypeTitle>
               )}
               </TitleInfo>
-              {/* {notice.notice_category && (
-                <NoticePubDate>
-                  {notice.notice_category.notice_type}
-                </NoticePubDate>
-              )} */}
               <Line />
               <DateInfo>
               <SlCalender />
@@ -364,8 +373,6 @@ const page = ({ params }) => {
     frameBorder="0"
   />
 )}
-
-            {/* {console.log("notice", `https://notices.tcioe.edu.np/media/files/${file}`)} */}
           </Container>
         </WholeContainer>
         <LatestTrends>
@@ -374,58 +381,39 @@ const page = ({ params }) => {
           <Scrollable>
             {displayNotices.map((latestNotice) => (
               <p key={latestNotice.id}>
-                  <ListNotices>
-                    <NoticeInfo>
-                      <NoticeType
-                        data={latestNotice.notice_category.notice_type}
-                      >
-                        {latestNotice.notice_category.notice_type}
-                      </NoticeType>
-                      <PubDate>{latestNotice.published_date}</PubDate>
-                    </NoticeInfo>
-                    <NoticeListTitle
-                  style={{
-                    color:
-                      latestNotice.id === notice.id
-                        ? "rgb(15, 173, 236)"
-                        : "black",
-                  }}
-                >
-                      <a
-                        style={{
-                          cursor: "pointer",
-                        }}
-                        onClick={async () => {
-                          const query = await fetch(
-                            `https://notices.tcioe.edu.np/api/notice/notices/${latestNotice.id}`
-                          );
-                          const response = await query.json();
-                          if (response) {
-                            const file_ = response.download_file.split("/")[5];
-                            setNotice(response);
-                            setFile(decodeURI(file_));
-                          }
-                        }}
-                      >
-                        {latestNotice.title}
-                      </a>
-                    </NoticeListTitle>
-                    <WholeUnderline />
-                  </ListNotices>
+                <ListNotices>
+                  <NoticeInfo>
+                    <NoticeType data={latestNotice.notice_category.notice_type}>
+                      {latestNotice.notice_category.notice_type}
+                    </NoticeType>
+                    <PubDate>{latestNotice.published_date}</PubDate>
+                  </NoticeInfo>
+                  <NoticeListTitle
+                    style={{
+                      color: latestNotice.id === notice.id ? "red" : "black",
+                    }}
+                  >
+                    <a
+                      style={{ cursor: "pointer" }}
+                      onClick={() => handleNoticeTitleClick(latestNotice.id)}
+                    >
+                      {latestNotice.title}
+                    </a>
+                  </NoticeListTitle>
+                  <WholeUnderline />
+                </ListNotices>
               </p>
             ))}
-
-      <LoadMore showButton={showViewMoreButton}>
-        {!showAllNotices && (
-          <button onClick={loadAllNotices}><FaArrowDown /></button>
-        )}
-      </LoadMore>
-
-      {checkButton && (
+            <LoadMore showButton={showViewMoreButton}>
+              {!showAllNotices && (
+                <button onClick={loadAllNotices}><FaArrowDown /></button>
+              )}
+            </LoadMore>
+            {checkButton && (
               <LoadLess>
                 <button onClick={hidePartialNotices}><FaArrowUp /></button>
-            </LoadLess>
-      )}
+              </LoadLess>
+            )}
           </Scrollable>
         </LatestTrends>
       </Wrapper>
