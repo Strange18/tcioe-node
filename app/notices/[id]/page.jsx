@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { menuItems } from "@/utils/menuItems";
 import HeaderComponent from "@/components/HeaderComponent";
-import { FaArrowDown } from "react-icons/fa";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { SlCalender } from "react-icons/sl";
 // import { useRouter } from 'next/router'
 // import { Suspense } from 'react';
@@ -187,10 +187,6 @@ const Scrollable = styled.div`
     background-color: transparent;
   }
 
-  // @media (max-width: 430px) {
-  //   max-height: 650px;
-  // }
-
   @media (max-width: 430px) {
     max-height: 493px;
   }
@@ -206,6 +202,22 @@ const LoadMore = styled.div`
   padding: 3px 10px;
   color: white;
   background: green;
+`;
+
+const LoadLess = styled.div`
+display: flex;
+align-items: center;
+gap: 5px;
+border: 2px solid rgb(248, 70, 70);
+border-radius: 4px;
+float: right;
+padding: 3px 10px;
+color: white;
+background: rgb(248, 70, 70);
+
+button {
+  padding: 5px 8px;
+}
 `;
 
 const TitleInfo = styled.div`
@@ -258,6 +270,7 @@ const page = ({ params }) => {
   const [showAllNotices, setShowAllNotices] = useState(false);
   const [allNotices, setAllNotices] = useState([]);
   const [showViewMoreButton, setShowViewMoreButton] = useState(true);
+  const [checkButton, setCheckButton] = useState(false);
 
   const loadAllNotices = async () => {
     const query = await fetch(
@@ -267,7 +280,14 @@ const page = ({ params }) => {
     setAllNotices(response);
     setShowAllNotices(true);
     setShowViewMoreButton(false);
+    setCheckButton(true);
   };
+
+  const hidePartialNotices = () => {
+    setShowAllNotices(false);
+    setShowViewMoreButton(true);
+    setCheckButton(false);
+  }
 
   const displayNotices = showAllNotices
     ? allNotices
@@ -379,12 +399,19 @@ const page = ({ params }) => {
                 )}
               </p>
             ))}
+
       <LoadMore showButton={showViewMoreButton}>
         {!showAllNotices && (
           <button onClick={loadAllNotices}>View More</button>
         )}
         <FaArrowDown />
       </LoadMore>
+
+      {checkButton && (
+              <LoadLess>
+                <button onClick={hidePartialNotices}><FaArrowUp /></button>
+            </LoadLess>
+      )}
           </Scrollable>
         </LatestTrends>
       </Wrapper>
