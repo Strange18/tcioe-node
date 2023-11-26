@@ -202,6 +202,10 @@ const LoadMore = styled.div`
   padding: 3px 10px;
   color: white;
   background: green;
+
+  button {
+    padding: 5px 8px;
+  }
 `;
 
 const LoadLess = styled.div`
@@ -351,9 +355,15 @@ const page = ({ params }) => {
               </DateInfo>
           </Header>
           <Container>
-            {file && (
-              <embed src={`https://notices.tcioe.edu.np/media/files/${file}`} />
-            )}
+          {file && (
+  <iframe
+    title="Embedded PDF"
+    src={`https://notices.tcioe.edu.np/media/files/${file}`}
+    width="100%"
+    height="100%"
+    frameBorder="0"
+  />
+)}
 
             {/* {console.log("notice", `https://notices.tcioe.edu.np/media/files/${file}`)} */}
           </Container>
@@ -364,7 +374,6 @@ const page = ({ params }) => {
           <Scrollable>
             {displayNotices.map((latestNotice) => (
               <p key={latestNotice.id}>
-                {notice.id !== latestNotice.id && (
                   <ListNotices>
                     <NoticeInfo>
                       <NoticeType
@@ -374,7 +383,14 @@ const page = ({ params }) => {
                       </NoticeType>
                       <PubDate>{latestNotice.published_date}</PubDate>
                     </NoticeInfo>
-                    <NoticeListTitle>
+                    <NoticeListTitle
+                  style={{
+                    color:
+                      latestNotice.id === notice.id
+                        ? "rgb(15, 173, 236)"
+                        : "black",
+                  }}
+                >
                       <a
                         style={{
                           cursor: "pointer",
@@ -396,15 +412,13 @@ const page = ({ params }) => {
                     </NoticeListTitle>
                     <WholeUnderline />
                   </ListNotices>
-                )}
               </p>
             ))}
 
       <LoadMore showButton={showViewMoreButton}>
         {!showAllNotices && (
-          <button onClick={loadAllNotices}>View More</button>
+          <button onClick={loadAllNotices}><FaArrowDown /></button>
         )}
-        <FaArrowDown />
       </LoadMore>
 
       {checkButton && (
