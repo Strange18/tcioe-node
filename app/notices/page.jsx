@@ -59,6 +59,7 @@ const List = styled.div`
   flex-direction: column;
   gap: 18px;
   overflow-y: auto;
+  box-sizing:border-box;
 `;
 
 const Buttoned = styled.button`
@@ -428,7 +429,7 @@ const Page = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => {};
+    const fetchData = async () => { };
 
     // Check if both start date and end date have values
     if (startDate && endDate) {
@@ -565,7 +566,7 @@ const Page = () => {
                         href={`https://notices.tcioe.edu.np/media/files/${
                           notice.download_file.split("/")[5]
                         }`}
-                        target="_blank"
+                        // target="_blank"
                         key={notice.id}
                         isSingleOrDoubleNotice={currentNotices.length <= 2}
                         // isLastItem={index === currentNotices.length - 1}
@@ -629,10 +630,11 @@ const Page = () => {
                     ))
                   : currentNotices.map((notice) => (
                       <Item
-                        href={`https://notices.tcioe.edu.np/media/files/${
-                          notice.download_file.split("/")[5]
-                        }`}
-                        target="_blank"
+                        // href={`https://notices.tcioe.edu.np/media/files/${
+                        //   notice.download_file.split("/")[5]
+                        // }`}
+                        href={`/notices/${notice.id}`}
+                        // target="_blank"
                         key={notice.id}
                       >
                         <ItemDate>
