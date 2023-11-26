@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { menuItems } from "@/utils/menuItems";
 import HeaderComponent from "@/components/HeaderComponent";
@@ -275,6 +275,7 @@ const page = ({ params }) => {
   const [allNotices, setAllNotices] = useState([]);
   const [showViewMoreButton, setShowViewMoreButton] = useState(true);
   const [checkButton, setCheckButton] = useState(false);
+  const scrollableRef = useRef(null);
 
   const loadAllNotices = async () => {
     const query = await fetch(
@@ -288,9 +289,21 @@ const page = ({ params }) => {
   };
 
   const hidePartialNotices = () => {
-    setShowAllNotices(false);
-    setShowViewMoreButton(true);
-    setCheckButton(false);
+    // setShowAllNotices(false);
+    // setShowViewMoreButton(true);
+    // setCheckButton(false);
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+    if (scrollableRef.current) {
+      scrollableRef.current.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
   }
 
   const displayNotices = showAllNotices
@@ -378,7 +391,7 @@ const page = ({ params }) => {
         <LatestTrends>
           <h1>Latest Notices</h1>
           <UnderLine />
-          <Scrollable>
+          <Scrollable ref={scrollableRef}>
             {displayNotices.map((latestNotice) => (
               <p key={latestNotice.id}>
                 <ListNotices>
