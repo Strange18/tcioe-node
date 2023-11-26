@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { menuItems } from "@/utils/menuItems";
 import HeaderComponent from "@/components/HeaderComponent";
-import { FaArrowDown, FaArrowUp } from "react-icons/fa";
+import { FaArrowDown, FaArrowUp  } from "react-icons/fa";
 import { SlCalender } from "react-icons/sl";
 // import { useRouter } from 'next/router'
 // import { Suspense } from 'react';
