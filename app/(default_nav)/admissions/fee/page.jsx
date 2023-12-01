@@ -1,6 +1,7 @@
 "use client"
 import styled from 'styled-components';
-import IntakeTableComponent from './IntakeTableComponent';
+import MSCFeeStructureTableComponent from './MSCFeeStructureTableComponent';
+import BEFeeStructureTableComponent from './BEFeeStructureTableComponent';
 
 const Container = styled.div`
   width: 100%;
@@ -68,13 +69,14 @@ export const sm = styled.p`
   font-size: 8px;
 `;
 
-const Scholarship = () => {
+const FeeStructure = () => {
   return (
     <>
       <Container>
         <RightContainer>
-          <Heading>Admission and Semester Fee Structure</Heading>
+          <Heading>B.E./B.Arch. Fee Structure</Heading>
           <BodyText>
+
             <TABLE>
               <THEAD>
                 <TR>
@@ -109,31 +111,16 @@ const Scholarship = () => {
                 </TR>
               </tbody>
             </TABLE>
-
-            <TABLE>
-              <THEAD>
-                <TR>
-                  <TH>M.Sc. Programs</TH>
-                  <TH>Regular</TH>
-                  <TH>Full Fee</TH>
-                  <TH>Sponsor</TH>
-                  <TH>Foreign</TH>
-                </TR>
-              </THEAD>
-              <tbody>
-                <TR>
-                  <TD>MSDEM, MSIISE, MSEQE</TD>
-                  <TD>21355/-</TD>
-                  <TD>46855/-</TD>
-                  <TD>54175/-</TD>
-                  <TD>$2,060</TD>
-                </TR>
-              </tbody>
-            </TABLE>
           </BodyText>
+
           <BodyText>
-            <Heading>Annual Intake</Heading>
-            <IntakeTableComponent />
+            <Heading>B.E. Fee Table 2</Heading>
+            <BEFeeStructureTableComponent />
+          </BodyText>
+
+          <BodyText>
+          <Heading>MSC Fee Structure</Heading>
+            <MSCFeeStructureTableComponent />
           </BodyText>
         </RightContainer>
       </Container>
@@ -141,4 +128,4 @@ const Scholarship = () => {
   );
 };
 
-export default Scholarship;
+export default FeeStructure;
