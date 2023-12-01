@@ -54,7 +54,7 @@ const NoteHeading = styled.div`
 `;
 
 const NoteText = styled.div`
-  font-size: 16px;
+  font-size: 18px;
   color: #8a8a8a;
   line-height: 1.8rem;
 
