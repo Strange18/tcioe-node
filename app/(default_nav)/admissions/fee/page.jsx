@@ -74,47 +74,8 @@ const FeeStructure = () => {
     <>
       <Container>
         <RightContainer>
-          <Heading>B.E./B.Arch. Fee Structure</Heading>
           <BodyText>
-
-            <TABLE>
-              <THEAD>
-                <TR>
-                  <TH>B.E. Programs</TH>
-                  <TH></TH>
-                  <TH>Admission</TH>
-                  <TH>Semester</TH>
-                </TR>
-              </THEAD>
-              <tbody>
-                <TR>
-                  <TD>BIE, BEI, BCT, BAR, BME</TD>
-                  <TD rowSpan={2}>Regular</TD>
-                  <TD>11025/-</TD>
-                  <TD></TD>
-                </TR>
-                <TR>
-                  <TD>BIE, BAM</TD>
-                  <TD>15025/-</TD>
-                  <TD></TD>
-                </TR>
-                <TR>
-                  <TD>BIE, BEI, BCT, BAR, BME</TD>
-                  <TD rowSpan={2}>Full Fee</TD>
-                  <TD>74400/-</TD>
-                  <TD></TD>
-                </TR>
-                <TR>
-                  <TD>BIE, BAM</TD>
-                  <TD>82400/-</TD>
-                  <TD></TD>
-                </TR>
-              </tbody>
-            </TABLE>
-          </BodyText>
-
-          <BodyText>
-            <Heading>B.E. Fee Table 2</Heading>
+            <Heading>B.E./B.Arch. Fee Structure</Heading>
             <BEFeeStructureTableComponent />
           </BodyText>
 
