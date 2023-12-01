@@ -1,4 +1,5 @@
 "use client"
+
 import styled from 'styled-components';
 import MSCFeeStructureTableComponent from './MSCFeeStructureTableComponent';
 import BEFeeStructureTableComponent from './BEFeeStructureTableComponent';
@@ -22,7 +23,6 @@ const RightContainer = styled.div`
   flex-direction: column;
   gap: 24px;
   padding: 75px 0 0px 0;
-  max-width: 800px;
   overflow-x: auto;
   margin: 20px auto;
 `;
