@@ -1,6 +1,8 @@
 "use client"
+
 import styled from 'styled-components';
-import IntakeTableComponent from './IntakeTableComponent';
+import MSCFeeStructureTableComponent from './MSCFeeStructureTableComponent';
+import BEFeeStructureTableComponent from './BEFeeStructureTableComponent';
 
 const Container = styled.div`
   width: 100%;
@@ -21,7 +23,6 @@ const RightContainer = styled.div`
   flex-direction: column;
   gap: 24px;
   padding: 75px 0 0px 0;
-  max-width: 800px;
   overflow-x: auto;
   margin: 20px auto;
 `;
@@ -31,114 +32,103 @@ const Heading = styled.div`
   font-weight: 700;
   color: #090c4c;
   text-align: center;
+  margin-bottom: 20px;
 `;
 
-export const BodyText = styled.div`
+const BodyText = styled.div`
   font-size: 18px;
   color: #8a8a8a;
   line-height: 2rem;
   text-align: justify;
 `;
 
-export const TABLE = styled.table`
-  width: 100%;
-  table-layout: fixed;
+const NoteContainer = styled.div`
+  margin-top: 30px;
 `;
 
-export const TH = styled.th`
-  padding: 10px;
-  text-align: center;
-  word-wrap: break-word;
+const NoteHeading = styled.div`
+  font-size: 20px;
+  font-weight: 600;
+  color: #090c4c;
+  margin-bottom: 10px;
 `;
 
-export const TD = styled.td`
-  padding: 10px;
-  text-align: center;
-  word-wrap: break-word;
+const NoteText = styled.div`
+  font-size: 18px;
+  color: #8a8a8a;
+  line-height: 1.8rem;
+
+  p {
+    margin-bottom: 10px;
+  }
 `;
-
-export const TR = styled.tr``;
-
-export const THEAD = styled.thead`
-  background-color: #090c4c;
-  color: white;
-`;
-
-export const sm = styled.p`
-  font-size: 8px;
-`;
-
-const Scholarship = () => {
+const FeeStructure = () => {
   return (
     <>
       <Container>
         <RightContainer>
-          <Heading>Admission and Semester Fee Structure</Heading>
           <BodyText>
-            <TABLE>
-              <THEAD>
-                <TR>
-                  <TH>B.E. Programs</TH>
-                  <TH></TH>
-                  <TH>Admission</TH>
-                  <TH>Semester</TH>
-                </TR>
-              </THEAD>
-              <tbody>
-                <TR>
-                  <TD>BIE, BEI, BCT, BAR, BME</TD>
-                  <TD rowSpan={2}>Regular</TD>
-                  <TD>11025/-</TD>
-                  <TD></TD>
-                </TR>
-                <TR>
-                  <TD>BIE, BAM</TD>
-                  <TD>15025/-</TD>
-                  <TD></TD>
-                </TR>
-                <TR>
-                  <TD>BIE, BEI, BCT, BAR, BME</TD>
-                  <TD rowSpan={2}>Full Fee</TD>
-                  <TD>74400/-</TD>
-                  <TD></TD>
-                </TR>
-                <TR>
-                  <TD>BIE, BAM</TD>
-                  <TD>82400/-</TD>
-                  <TD></TD>
-                </TR>
-              </tbody>
-            </TABLE>
+            <Heading>B.E./B.Arch. Fee Structure</Heading>
+            <NoteContainer>
+              <NoteText>
+                Fee Details of Undergraduate (B.E./B.Arch.) Level for Academic Year 2080/081
+                <br />
+                In accordance with the decision of IOE, Implementation Committee on 21st, Ashoj, 2080 B.S.
+              </NoteText>
+            </NoteContainer>
+            <BEFeeStructureTableComponent />
+          </BodyText>
 
-            <TABLE>
-              <THEAD>
-                <TR>
-                  <TH>M.Sc. Programs</TH>
-                  <TH>Regular</TH>
-                  <TH>Full Fee</TH>
-                  <TH>Sponsor</TH>
-                  <TH>Foreign</TH>
-                </TR>
-              </THEAD>
-              <tbody>
-                <TR>
-                  <TD>MSDEM, MSIISE, MSEQE</TD>
-                  <TD>21355/-</TD>
-                  <TD>46855/-</TD>
-                  <TD>54175/-</TD>
-                  <TD>$2,060</TD>
-                </TR>
-              </tbody>
-            </TABLE>
-          </BodyText>
           <BodyText>
-            <Heading>Annual Intake</Heading>
-            <IntakeTableComponent />
+            <Heading>MSC Fee Structure</Heading>
+            <MSCFeeStructureTableComponent />
           </BodyText>
+
+          <NoteContainer>
+            <NoteHeading>Notes</NoteHeading>
+            <NoteText>
+              <p>
+                1. The tuition fee, examination fee, campus operations, and infrastructure development will be increased by 7% annually from next year, considering inflation, to reduce the impact of poverty and establish financial stability.
+              </p>
+              <p>
+                2. All funds collected under the category of Campus Operations and Infrastructure Development shall be deposited into the Campus Reserve Fund. This fund can be utilized for both Current and Capital Expenditure as deemed necessary by the College.
+              </p>
+              <p>
+                3. The Campus Deposit Fee will be refunded upon completion of the course, with any applicable fees deducted.
+              </p>
+              <p>
+                4. For courses spanning more than 8 semesters, additional fees will be applied accordingly.
+              </p>
+              <p>
+                * T.U. Registration Charges will only be applied to those who haven't registered in T.U. before, as follows:
+              </p>
+              <p>
+                &gt; - Students who have passed examinations in Nepal: NRs. 500
+              </p>
+              <p>
+                &gt; - Students who have passed examinations outside of Nepal: NRs. 1000
+              </p>
+              <p>
+                &gt; Any additional fees charged by T.U. beyond those mentioned above may be added.
+              </p>
+              <p>
+                &gt; The tuition fee for the Sponsored Quota (as provisioned in the first point of Section 6.4 in the IOE Bulletin) is 30% higher than that of the Personal Full Fee Program.
+              </p>
+              <p>
+                &gt; The fee associated with any educational activities besides those mentioned in the curriculum, such as additional subjects, educational visits, additional practical classes, etc., is to be borne by the students only.
+              </p>
+              <p>
+                &gt; The registration fee for the Nepal Engineering Council is to be borne by the students themselves.
+              </p>
+              {/* Add other note points as per your content */}
+              {/* Adjust the formatting and styles as needed */}
+            </NoteText>
+          </NoteContainer>
+
         </RightContainer>
       </Container>
     </>
   );
 };
 
-export default Scholarship;
+export default FeeStructure;
