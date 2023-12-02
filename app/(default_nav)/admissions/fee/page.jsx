@@ -62,6 +62,12 @@ const NoteText = styled.div`
     margin-bottom: 10px;
   }
 `;
+
+const FadedParagraph = styled.p`
+  color: #a9a9a9;
+  font-size: 14px;
+  margin-top: -10px;
+`;
 const FeeStructure = () => {
   return (
     <>
@@ -71,9 +77,10 @@ const FeeStructure = () => {
             <Heading>B.E./B.Arch. Fee Structure</Heading>
             <NoteContainer>
               <NoteText>
-                Fee Details of Undergraduate (B.E./B.Arch.) Level for Academic Year 2080/081
-                <br />
-                In accordance with the decision of IOE, Implementation Committee on 21st, Ashoj, 2080 B.S.
+                <b>Fee Details of Undergraduate (B.E./B.Arch.) Level for Academic Year 2080/081</b>
+                <FadedParagraph>
+                  (In accordance with the decision of IOE, Implementation Committee on 21st, Ashoj, 2080 B.S.)
+                </FadedParagraph>
               </NoteText>
             </NoteContainer>
             <BEFeeStructureTableComponent />
@@ -103,10 +110,10 @@ const FeeStructure = () => {
                 * T.U. Registration Charges will only be applied to those who haven't registered in T.U. before, as follows:
               </p>
               <p>
-                &gt; - Students who have passed examinations in Nepal: NRs. 500
+                &gt; Students who have passed examinations in Nepal: NRs. 500
               </p>
               <p>
-                &gt; - Students who have passed examinations outside of Nepal: NRs. 1000
+                &gt; Students who have passed examinations outside of Nepal: NRs. 1000
               </p>
               <p>
                 &gt; Any additional fees charged by T.U. beyond those mentioned above may be added.
@@ -120,8 +127,6 @@ const FeeStructure = () => {
               <p>
                 &gt; The registration fee for the Nepal Engineering Council is to be borne by the students themselves.
               </p>
-              {/* Add other note points as per your content */}
-              {/* Adjust the formatting and styles as needed */}
             </NoteText>
           </NoteContainer>
 
