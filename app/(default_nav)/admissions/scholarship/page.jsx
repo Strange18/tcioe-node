@@ -96,7 +96,8 @@ const FadedOrderedList = styled.ol`
 `;
 
 const OrderedListLetter = styled.ol`
-  li {
+  // select only the children of the ordered list
+  > li {
     list-style-type: lower-alpha;
   }
 `;

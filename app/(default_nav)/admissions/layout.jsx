@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 const StyledParagraph = styled.div`
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   color: #fff;
   background-color: #090C4C;
@@ -19,7 +19,7 @@ const StyledParagraph = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: inline-block;
   position: relative;
-  min-width: 40%;
+  min-width: 30%;
   text-align: center;
   margin: 0 auto;
 `;
@@ -34,6 +34,20 @@ const VerticalLine = styled.div`
   border-radius: 8px 8px 8px 8px;
 `;
 
+const DisclamerParagraph = styled.div`
+  font-size: 14px;
+  font-weight: bold;
+  color: #090C4C;
+  padding: 15px;
+  border-radius: 8px 15px 15px 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  position: relative;
+  min-width: 30%;
+  text-align: center;
+  margin: 0 auto;
+`;
+
 export default function AdmissionsLayout({ children }) {
   return (
     <>
@@ -43,6 +57,9 @@ export default function AdmissionsLayout({ children }) {
           <VerticalLine></VerticalLine>
           <a href="/notices/dc5e5f7a-1829-45c6-a76f-d0538d4e2592" target="_blank">BE/BArch Entrance/Admission Booklet 2080</a>
         </StyledParagraph>
+        <DisclamerParagraph>
+          Disclamer: The information in this page is an unofficial translation of the IOE Entrance/Admission Booklet 2080. The official document is available at the link above.
+        </DisclamerParagraph>
       </Container>
     </>
   );
