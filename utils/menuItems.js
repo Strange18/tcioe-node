@@ -140,6 +140,10 @@ export const menuItems = [
         url: "/admissions/fee",
       },
       {
+        title: "Annual Intake",
+        url: "/admissions/intake"
+      },
+      {
         title: "Scholarship Schemes and Quotas",
         url: "/admissions/scholarship",
       },
