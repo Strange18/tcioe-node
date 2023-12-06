@@ -16,28 +16,62 @@ export const menuItems = [
         url: "/about/keyofficials",
       },
       {
-        title: "Campus Units and Sections",
+        title: "Campus Sections",
+        url: "/about/sections",
+        submenu: [
+          {
+            title: "Financial Administration Section",
+            url: "/about/sections/financialAdministration",
+          },
+          {
+            title: "Planning Section",
+            url: "/about/sections/planning",
+          },
+          {
+            title: "General Administration Section",
+            url: "/about/sections/generalAdministration",
+          },
+          {
+            title: "Personnel Administration Section",
+            url: "/about/sections/personnelAdministration",
+          },
+          {
+            title: "Academic Administration and Examination Section",
+            url: "/about/sections/academicAdministrationExamination ",
+          },
+          {
+            title: "Store Section",
+            url: "/about/sections/store",
+          },
+          {
+            title: "Library Section",
+            url: "/about/sections/library",
+          },
+          {
+            title: "Facilities Section",
+            url: "/about/sections/facilities",
+          },
+        ],
+      },
+      {
+        title: "Campus Units",
         url: "/about/units",
         submenu: [
           {
-            title: "Examination Section",
-            url: "/about/units/examination",
-          },
-          {
-            title: "Administrative Section",
-            url: "/about/units/administrative",
-          },
-          {
-            title: "Education Management Information System Unit",
+            title: "Educational Management Information System (EMIS) Unit",
             url: "/about/units/emis",
+          },
+          {
+            title: "Research & Development (R & D) Unit",
+            url: "/about/units/research",
           },
           {
             title: "Consultancy Services Unit",
             url: "/about/units/consultancy",
           },
           {
-            title: "Research and Development Unit",
-            url: "/about/units/research",
+            title: "Material Testing Laboratory",
+            url: "/about/units/materiallab",
           },
         ],
       },
@@ -100,10 +134,6 @@ export const menuItems = [
             url: "/energylab",
           },
           {
-            title: "Material Testing Lab",
-            url: "/materiallab",
-          },
-          {
             title: "Workshop Arena",
             url: "/workshop",
           },
@@ -141,7 +171,7 @@ export const menuItems = [
       },
       {
         title: "Annual Intake",
-        url: "/admissions/intake"
+        url: "/admissions/intake",
       },
       {
         title: "Scholarship Schemes and Quotas",
