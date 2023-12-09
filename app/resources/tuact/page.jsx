@@ -58,7 +58,7 @@ const List = styled.div`
 const Item = styled(Link)`
   text-decoration: none;
   width: 100%;
-  height: 120px;
+  height: 80px; /* Adjust the height to make it smaller */
   background-color: #f0efef;
   border-radius: 12px;
   padding: 1rem;
@@ -67,10 +67,16 @@ const Item = styled(Link)`
   align-items: center;
   gap: 18px;
   transition: 0.2s ease-in-out;
+  cursor: pointer; /* Add cursor pointer for better UX */
 
   &:hover {
     background-color: #e6e6e6;
-    scale: 1.02;
+    transform: scale(1.02); /* Fix the typo 'scale' to 'transform' */
+  }
+
+  &:active {
+    background-color: #f97a00; /* Change background color on click */
+    color: white; /* Change text color on click */
   }
 `;
 
@@ -83,7 +89,7 @@ const ItemText = styled.div`
 `;
 const ItemTitle = styled.div`
   font-size: 1.2rem;
-  color: #181b57;
+  color: ${(props) => (props.clicked ? "#f97a00" : "#181b57")}; /* Change text color based on click state */
   font-weight: bold;
   width: 100%;
   overflow: hidden;
@@ -94,31 +100,36 @@ const ItemTitle = styled.div`
 `;
 
 const extractTitleWithoutNumbers = (title) => {
-  return title.replace(/[\d_\-]+/g, '');
+  return title.replace(/[\d_\-]+/g, "");
 };
 
-const page = () => {
+const Page = () => {
   const [data, setData] = useState([]);
+  const [clickedItemId, setClickedItemId] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://notices.tcioe.edu.np/api/resources/');
+        const response = await fetch("https://notices.tcioe.edu.np/api/report/");
         const jsonData = await response.json();
         setData(jsonData);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
   }, []);
 
-  const filteredData1 = data.filter(item => item.title.startsWith("1_"));
-  const filteredData2 = data.filter(item => item.title.startsWith("2_"));
-  const filteredData3 = data.filter(item => item.title.startsWith("3_"));
-  const filteredData4 = data.filter(item => item.title.startsWith("4_"));
-  const filteredData5 = data.filter(item => item.title.startsWith("5_"));
+  const handleItemClick = (itemId) => {
+    setClickedItemId(itemId);
+  };
+
+  const filteredData1 = data.filter((item) => item.title.startsWith("1_"));
+  const filteredData2 = data.filter((item) => item.title.startsWith("2_"));
+  const filteredData3 = data.filter((item) => item.title.startsWith("3_"));
+  const filteredData4 = data.filter((item) => item.title.startsWith("4_"));
+  const filteredData5 = data.filter((item) => item.title.startsWith("5_"));
 
   return (
     <>
@@ -130,10 +141,17 @@ const page = () => {
         </Header>
         <Container>
           <List>
-          {filteredData1.map(item => (
-              <Item href={item.file} target="_blank" key={item.id}>
+            {filteredData1.map((item) => (
+              <Item
+                href={item.file}
+                target="_blank"
+                key={item.id}
+                onClick={() => handleItemClick(item.id)}
+              >
                 <ItemText>
-                  <ItemTitle>{extractTitleWithoutNumbers(item.title)}</ItemTitle>
+                  <ItemTitle clicked={clickedItemId === item.id}>
+                    {extractTitleWithoutNumbers(item.title)}
+                  </ItemTitle>
                 </ItemText>
               </Item>
             ))}
@@ -146,10 +164,17 @@ const page = () => {
         </Header>
         <Container>
           <List>
-          {filteredData2.map(item => (
-              <Item href={item.file} target="_blank" key={item.id}>
+            {filteredData2.map((item) => (
+              <Item
+                href={item.file}
+                target="_blank"
+                key={item.id}
+                onClick={() => handleItemClick(item.id)}
+              >
                 <ItemText>
-                <ItemTitle>{extractTitleWithoutNumbers(item.title)}</ItemTitle>
+                  <ItemTitle clicked={clickedItemId === item.id}>
+                    {extractTitleWithoutNumbers(item.title)}
+                  </ItemTitle>
                 </ItemText>
               </Item>
             ))}
@@ -162,10 +187,17 @@ const page = () => {
         </Header>
         <Container>
           <List>
-          {filteredData3.map(item => (
-              <Item href={item.file} target="_blank" key={item.id}>
+            {filteredData3.map((item) => (
+              <Item
+                href={item.file}
+                target="_blank"
+                key={item.id}
+                onClick={() => handleItemClick(item.id)}
+              >
                 <ItemText>
-                <ItemTitle>{extractTitleWithoutNumbers(item.title)}</ItemTitle>
+                  <ItemTitle clicked={clickedItemId === item.id}>
+                    {extractTitleWithoutNumbers(item.title)}
+                  </ItemTitle>
                 </ItemText>
               </Item>
             ))}
@@ -178,10 +210,17 @@ const page = () => {
         </Header>
         <Container>
           <List>
-          {filteredData4.map(item => (
-              <Item href={item.file} target="_blank" key={item.id}>
+            {filteredData4.map((item) => (
+              <Item
+                href={item.file}
+                target="_blank"
+                key={item.id}
+                onClick={() => handleItemClick(item.id)}
+              >
                 <ItemText>
-                <ItemTitle>{extractTitleWithoutNumbers(item.title)}</ItemTitle>
+                  <ItemTitle clicked={clickedItemId === item.id}>
+                    {extractTitleWithoutNumbers(item.title)}
+                  </ItemTitle>
                 </ItemText>
               </Item>
             ))}
@@ -194,18 +233,25 @@ const page = () => {
         </Header>
         <Container>
           <List>
-          {filteredData5.map(item => (
-              <Item href={item.file} target="_blank" key={item.id}>
+            {filteredData5.map((item) => (
+              <Item
+                href={item.file}
+                target="_blank"
+                key={item.id}
+                onClick={() => handleItemClick(item.id)}
+              >
                 <ItemText>
-                <ItemTitle>{extractTitleWithoutNumbers(item.title)}</ItemTitle>
+                  <ItemTitle clicked={clickedItemId === item.id}>
+                    {extractTitleWithoutNumbers(item.title)}
+                  </ItemTitle>
                 </ItemText>
               </Item>
             ))}
           </List>
         </Container>
-
       </Wrapper>
     </>
   );
 };
-export default page;
+
+export default Page;
