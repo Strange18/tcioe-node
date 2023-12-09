@@ -53,7 +53,7 @@ const Container = styled.div`
   }
 `;
 
-const CalendarsContainer = styled.div`
+const ReportsContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -68,7 +68,7 @@ const CalendarsContainer = styled.div`
   }
 `;
 
-const CalendarCard = styled.div`
+const ReportCard = styled.div`
   cursor: pointer;
   height: 60px;
   background-color: #ecf0f1;
@@ -145,62 +145,53 @@ const StyledPage = styled.div`
 `;
 
 const Page = () => {
-  const [calendars, setCalendars] = useState([]);
-  const [selectedCalendar, setSelectedCalendar] = useState(null);
+  const [reports, setReports] = useState([]);
+  const [selectedReport, setSelectedReport] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://notices.tcioe.edu.np/api/calendar/");
+        const response = await fetch("https://notices.tcioe.edu.np/api/report/");
         const data = await response.json();
 
-        const MscCalendars = data.filter(
-          (calendar) => calendar.slug === "msc-academic-calendar-2079-2080"
-        );
+        const OtherReports = data.filter(report => report.type === "bc79aa01-6e9b-4e8b-a0db-21c499941757");
 
-        const sortedCalendars = MscCalendars.sort((a, b) => {
-          return new Date(b.created_at) - new Date(a.created_at);
-        });
-
-        setCalendars(sortedCalendars);
-
-        if (sortedCalendars.length > 0) {
-          setSelectedCalendar(sortedCalendars[0]);
+        if (OtherReports.length > 0) {
+          setSelectedReport(OtherReports[0]);
         }
+
+        setReports(OtherReports);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, []); 
 
-  const handleCardClick = (calendar) => {
-    setSelectedCalendar(calendar);
+  const handleCardClick = (report) => {
+    setSelectedReport(report);
   };
 
   return (
     <Wrapper>
-      <h1>B.E./BArch. Academic Calendars</h1>
+      <h1>Other Reports</h1>
       <Container>
-        <CalendarsContainer>
-          {calendars.map((calendar) => (
-            <CalendarCard
-              key={calendar.id}
-              onClick={() => handleCardClick(calendar)}
-            >
+        <ReportsContainer>
+          {reports.map((report) => (
+            <ReportCard key={report.id} onClick={() => handleCardClick(report)}>
               <ItemText>
-                <ItemTitle isSelected={calendar === selectedCalendar}>{calendar.title}</ItemTitle>
+                <ItemTitle isSelected={report === selectedReport}>{report.title}</ItemTitle>
               </ItemText>
-            </CalendarCard>
+            </ReportCard>
           ))}
-        </CalendarsContainer>
+        </ReportsContainer>
         <EmbeddedContainer>
-          {selectedCalendar && (
+          {selectedReport && (
             <>
               <EmbeddedIframe
-                title={selectedCalendar.title}
-                src={selectedCalendar.calendar_pdf}
+                title={selectedReport.title}
+                src={selectedReport.file}
                 frameBorder="0"
                 allowFullScreen
               />

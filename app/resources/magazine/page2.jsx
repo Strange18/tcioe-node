@@ -1,23 +1,23 @@
-"use client"
-import { useState, useEffect } from "react";
+// MagazineInterface.jsx
+import React from "react";
 import styled from "styled-components";
-import HeaderComponent from "@/components/HeaderComponent";
-import { menuItems } from "@/utils/menuItems";
 
-const Wrapper = styled.div`
+const InterfaceWrapper = styled.div`
   width: 100%;
   min-height: 552px;
   padding: 16px 24px 0 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  position: relative;
 
   h1 {
-    font-size: 2rem;
+    font-size: 1.8rem; /* Reduced font size */
     color: #2c3e50;
     font-weight: bold;
     text-decoration: none;
     margin-bottom: 16px;
+    margin-top: 40px;
     position: relative;
   }
 
@@ -41,6 +41,25 @@ const Wrapper = styled.div`
   }
 `;
 
+const BackButton = styled.button`
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 8px;
+  background-color: #7177ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #7177ff;
+    transform: scale(1.1);
+  }
+`;
+
 const Container = styled.div`
   width: 100%;
   display: flex;
@@ -53,7 +72,7 @@ const Container = styled.div`
   }
 `;
 
-const CalendarsContainer = styled.div`
+const ReportsContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -68,7 +87,7 @@ const CalendarsContainer = styled.div`
   }
 `;
 
-const CalendarCard = styled.div`
+const ReportCard = styled.div`
   cursor: pointer;
   height: 60px;
   background-color: #ecf0f1;
@@ -104,6 +123,7 @@ const ItemTitle = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  
   color: ${props => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
 
   @media (max-width: 768px) {
@@ -114,7 +134,8 @@ const ItemTitle = styled.div`
 const EmbeddedContainer = styled.div`
   flex: 3;
   max-width: 1000px;
-  margin-top: -16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
   align-self: flex-start;
 
   @media (max-width: 768px) {
@@ -135,88 +156,30 @@ const EmbeddedIframe = styled.iframe`
   }
 `;
 
-const StyledPage = styled.div`
-  background-color: #f7f7f7;
-  padding-bottom: 16px;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`;
-
-const Page = () => {
-  const [calendars, setCalendars] = useState([]);
-  const [selectedCalendar, setSelectedCalendar] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://notices.tcioe.edu.np/api/calendar/");
-        const data = await response.json();
-
-        const MscCalendars = data.filter(
-          (calendar) => calendar.slug === "msc-academic-calendar-2079-2080"
-        );
-
-        const sortedCalendars = MscCalendars.sort((a, b) => {
-          return new Date(b.created_at) - new Date(a.created_at);
-        });
-
-        setCalendars(sortedCalendars);
-
-        if (sortedCalendars.length > 0) {
-          setSelectedCalendar(sortedCalendars[0]);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const handleCardClick = (calendar) => {
-    setSelectedCalendar(calendar);
-  };
-
+const MagazineInterface = ({ magazineData, onClose }) => {
   return (
-    <Wrapper>
-      <h1>B.E./BArch. Academic Calendars</h1>
+    <InterfaceWrapper>
+      <BackButton onClick={onClose}>{"<"}</BackButton>
+      <h1>{magazineData.slug === "industrial-vision-vol8-2022" ? "Industrial Vision" : "Shilpa Magazine"}</h1>
       <Container>
-        <CalendarsContainer>
-          {calendars.map((calendar) => (
-            <CalendarCard
-              key={calendar.id}
-              onClick={() => handleCardClick(calendar)}
-            >
-              <ItemText>
-                <ItemTitle isSelected={calendar === selectedCalendar}>{calendar.title}</ItemTitle>
-              </ItemText>
-            </CalendarCard>
-          ))}
-        </CalendarsContainer>
+        <ReportsContainer>
+          <ReportCard>
+            <ItemText>
+              <ItemTitle>{magazineData.title}</ItemTitle>
+            </ItemText>
+          </ReportCard>
+        </ReportsContainer>
         <EmbeddedContainer>
-          {selectedCalendar && (
-            <>
-              <EmbeddedIframe
-                title={selectedCalendar.title}
-                src={selectedCalendar.calendar_pdf}
-                frameBorder="0"
-                allowFullScreen
-              />
-            </>
-          )}
+          <EmbeddedIframe
+            title={magazineData.title}
+            src={magazineData.file}
+            frameBorder="0"
+            allowFullScreen
+          />
         </EmbeddedContainer>
       </Container>
-    </Wrapper>
+    </InterfaceWrapper>
   );
 };
 
-const App = () => (
-  <StyledPage>
-    <HeaderComponent menuItems={menuItems} />
-    <Page />
-  </StyledPage>
-);
-
-export default App;
+export default MagazineInterface;

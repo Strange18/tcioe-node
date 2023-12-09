@@ -175,10 +175,7 @@ export const menuItems = [
         title: "Campus Reports",
         url: "",
         submenu: [
-          {
-            title: "Quality Assurance and Accreditation Report",
-            url: "/resources/reports/qa",
-          },
+          
           {
             title: "Self-Study Report",
             url: "/resources/reports/ssr",
@@ -188,24 +185,15 @@ export const menuItems = [
             url: "/resources/reports/annual",
           },
           {
-            title: "Audit Report",
-            url: "/resources/reports/audit",
+            title: "Other Report",
+            url: "/resources/reports/other",
           },
         ],
       },
       {
         title: "Magazines",
-        url: "",
-        submenu: [
-          {
-            title: "SILPA Magazine",
-            url: "https://fliphtml5.com/lcurg/vfkh/Shilpa%3A_First_Edition/",
-          },
-          {
-            title: "Industrial Vision",
-            url: "https://drive.google.com/file/d/1r_PyskuHbBKP7VEkgg0lWGhBWz2kpzKG/view",
-          },
-        ],
+        url: "/resources/magazine",
+       
       },
       {
         title: "Downloads",

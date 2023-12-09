@@ -1,132 +1,222 @@
-"use client";
+"use client"
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import Link from "next/link";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { menuItems } from "@/utils/menuItems";
 import HeaderComponent from "@/components/HeaderComponent";
+import { menuItems } from "@/utils/menuItems";
 
 const Wrapper = styled.div`
   width: 100%;
   min-height: 552px;
-  padding: 16px 64px 0 64px;
+  padding: 16px 24px 0 24px;
   display: flex;
   flex-direction: column;
-  gap: 0px;
+  gap: 16px;
+
+  h1 {
+    font-size: 2rem;
+    color: #2c3e50;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  h1::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100px;
+    height: 5px;
+    background-color: #f97a00;
+    border-radius: 4px;
+  }
+
   @media (max-width: 768px) {
     padding: 16px 12px 0 12px;
-  }
-`;
 
-const Header = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin: 24px 0;
-`;
-const Title = styled.div`
-  font-size: 2rem;
-  font-weight: bold;
-  /* margin-bottom: 12px; */
-  color: #181b57;
-`;
-const Line = styled.div`
-  height: 4px;
-  width: ${(props) => (props.width ? props.width : "100px")};
-  background-color: #f97a00;
-  border-radius: 6px;
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
 `;
 
 const Container = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 24px;
-  height: 50vh;
-  @media (max-width: 958px) {
-    flex-direction: column-reverse;
+  gap: 16px;
+  align-items: flex-start;
+  flex-direction: column;
+
+  @media (min-width: 769px) {
+    flex-direction: row;
   }
 `;
-const List = styled.div`
-  flex: 3.5;
+
+const CalendarsContainer = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
+  max-width: 600px;
+  margin-top: 16px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 20px;
+    order: 2;
+  }
 `;
-const Item = styled(Link)`
-  text-decoration: none;
-  width: 100%;
-  height: 120px;
-  background-color: #f0efef;
+
+const CalendarCard = styled.div`
+  cursor: pointer;
+  height: 60px;
+  background-color: #ecf0f1;
   border-radius: 12px;
   padding: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 18px;
+  gap: 12px;
   transition: 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    height: 80px;
+  }
 
   &:hover {
-    background-color: #e6e6e6;
-    scale: 1.02;
+    background-color: #d5dbdb;
   }
 `;
 
 const ItemText = styled.div`
-  flex: 5;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 4px;
-  height: 85%;
+  gap: 8px;
 `;
+
 const ItemTitle = styled.div`
   font-size: 1.2rem;
-  color: #181b57;
   font-weight: bold;
-  width: 100%;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: ${props => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
 
-  @media (max-width: 958px) {
+  @media (max-width: 768px) {
     font-size: 1rem;
   }
 `;
-const ItemSubtitle = styled.div`
-  font-size: 0.8rem;
-  color: #8a8a8a;
-  width: 100%;
-  overflow: hidden;
-  @media (max-width: 958px) {
-    font-size: 0.6rem;
+
+const EmbeddedContainer = styled.div`
+  flex: 3;
+  max-width: 1000px;
+  margin-top: -16px;
+  align-self: flex-start;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    order: 1;
   }
 `;
 
-const page = () => {
+const EmbeddedIframe = styled.iframe`
+  width: 100%;
+  height: 500px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    height: 400px;
+  }
+`;
+
+const StyledPage = styled.div`
+  background-color: #f7f7f7;
+  padding-bottom: 16px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+const Page = () => {
+  const [calendars, setCalendars] = useState([]);
+  const [selectedCalendar, setSelectedCalendar] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("https://notices.tcioe.edu.np/api/calendar/");
+        const data = await response.json();
+
+        const beBarchCalendars = data.filter(
+          (calendar) => calendar.slug === "bebarch-academic-calendar"
+        );
+
+        const sortedCalendars = beBarchCalendars.sort((a, b) => {
+          return new Date(b.created_at) - new Date(a.created_at);
+        });
+
+        setCalendars(sortedCalendars);
+
+        if (sortedCalendars.length > 0) {
+          setSelectedCalendar(sortedCalendars[0]);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleCardClick = (calendar) => {
+    setSelectedCalendar(calendar);
+  };
+
   return (
-    <>
-      <HeaderComponent menuItems={menuItems} />
-      <Wrapper>
-        <Header>
-          <Title>B.E./BArch. Academic Calendar</Title>
-          <Line width={"100px"} />
-        </Header>
-        <Container>
-          <List>
-            <Item
-              href="https://notices.tcioe.edu.np/media/files/be_barch-academic-calendar-2080_Dzj9wo0.pdf"
-              target="_blank"
+    <Wrapper>
+      <h1>B.E./BArch. Academic Calendars</h1>
+      <Container>
+        <CalendarsContainer>
+          {calendars.map((calendar) => (
+            <CalendarCard
+              key={calendar.id}
+              onClick={() => handleCardClick(calendar)}
             >
               <ItemText>
-                <ItemTitle>B.E./BArch. Academic Calendar</ItemTitle>
+                <ItemTitle isSelected={calendar === selectedCalendar}>{calendar.title}</ItemTitle>
               </ItemText>
-            </Item>
-          </List>
-        </Container>
-      </Wrapper>
-    </>
+            </CalendarCard>
+          ))}
+        </CalendarsContainer>
+        <EmbeddedContainer>
+          {selectedCalendar && (
+            <>
+              <EmbeddedIframe
+                title={selectedCalendar.title}
+                src={selectedCalendar.calendar_pdf}
+                frameBorder="0"
+                allowFullScreen
+              />
+            </>
+          )}
+        </EmbeddedContainer>
+      </Container>
+    </Wrapper>
   );
 };
-export default page;
+
+const App = () => (
+  <StyledPage>
+    <HeaderComponent menuItems={menuItems} />
+    <Page />
+  </StyledPage>
+);
+
+export default App;
