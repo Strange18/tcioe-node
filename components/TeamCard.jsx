@@ -118,19 +118,19 @@ const TeamCard = ({ detail }) => {
           </CardImg>
           <CardInfo>
             <Title>{detail.name}</Title>
-            {<Designation>{detail.staff_designation}</Designation>}
-            {(detail.staff_designation == "Head of Department" ||
+            {<Designation>{detail.responsibility}</Designation>}
+            {/* {(detail.staff_designation == "Head of Department" ||
               detail.staff_designation == "Deputy Head of Department" ||
               detail.staff_designation == "MSc. Coordinator") && (
               <Department>{detail.department}</Department>
-            )}
+            )} */}
             {detail.email && <Email>{detail.email}</Email>}
           </CardInfo>
         </>
       ) : (
         <CardInfoWithoutImg>
           <Title>{detail.name}</Title>
-          <Designation>{detail.staff_designation}</Designation>
+          <Designation>{detail.responsibility}</Designation>
           {detail.email && (
             <Email>
               <a href={`mailto:${detail.email}`}>{detail.email}</a>

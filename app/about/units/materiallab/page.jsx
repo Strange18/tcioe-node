@@ -1,6 +1,18 @@
+"use client";
+
 import AboutComponent from "../../../(research_facilities)/AboutComponent";
 import Objectives from "@/components/About/Sections/Objective";
 import material_lab_img from "../../../../assets/research_facilities/material_lab.png";
+
+import { RenderTeamCards } from "@/components/RenderTeamCards";
+import { useState, useEffect } from "react";
+const fetchData = async () => {
+  const res = await fetch(
+    "https://notices.tcioe.edu.np/api/department/staffs/search/?department=Material Testing Laboratory Unit"
+  );
+  const data = await res.json();
+  return data;
+};
 
 const data = {
   heading: "Material Testing Laboratory",
@@ -16,6 +28,14 @@ const objectives = [
   "Doing other assigned work related to product testing.",
 ];
 export default function EnergyLab() {
+  const [Officials, setOfficials] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      const data = await fetchData();
+      setOfficials(data);
+    };
+    getData();
+  }, []);
   return (
     <>
       <AboutComponent
@@ -23,10 +43,8 @@ export default function EnergyLab() {
         body_text={data.body_text}
         img={data.img}
       />
-      <Objectives
-        objectives={objectives}
-        section="Material Testing Laboratory"
-      />
+      <Objectives objectives={objectives} section="Main Objectives" />
+      <RenderTeamCards title="Officials" Members={Officials} />
     </>
   );
 }

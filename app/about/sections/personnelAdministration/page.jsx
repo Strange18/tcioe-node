@@ -1,7 +1,18 @@
+"use client";
+
 import Objectives from "@/components/About/Sections/Objective";
 import AboutComponent from "../../../(research_facilities)/AboutComponent";
 
 import administrative_img from "/assets/units/administrative.png";
+import { RenderTeamCards } from "@/components/RenderTeamCards";
+import { useState, useEffect } from "react";
+const fetchData = async () => {
+  const res = await fetch(
+    "https://notices.tcioe.edu.np/api/department/staffs/search/?department=Personnel Administration Section"
+  );
+  const data = await res.json();
+  return data;
+};
 const data = {
   heading: "Personnel Administration Section",
   body_text: `The administration section at Thapathali Campus oversees various departments and activities, including general administration, finance, academics, examinations, facilities management, and stores. Its main goal is to ensure efficient operations by monitoring staff and student activities, enforcing policies, and managing resources effectively. Additionally, it coordinates events, programs, and partnerships to support campus objectives. The section is divided into Personnel Administration, responsible for staff and faculty records and recruitment, and General Administration, which maintains campus facilities and resources while ensuring compliance with regulations. Effective record-keeping ensures systematic operations aligned with Tribhuvan University's standards.
@@ -20,6 +31,14 @@ const objectives = [
   "T.U. Acts, rules , regulations as directed by the campus head Carrying out other duties and responsibilities.",
 ];
 export default function page() {
+  const [Officials, setOfficials] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      const data = await fetchData();
+      setOfficials(data);
+    };
+    getData();
+  }, []);
   return (
     <>
       <AboutComponent
@@ -29,8 +48,10 @@ export default function page() {
       />
       <Objectives
         objectives={objectives}
-        section={"Personnel Administration Section"}
+        section="Roles Responsibilties and Rights
+        "
       />
+      <RenderTeamCards title="Officials" Members={Officials} />
     </>
   );
 }

@@ -1,6 +1,18 @@
+"use client";
+
 import AboutComponent from "../../../(research_facilities)/AboutComponent";
 import Objectives from "@/components/About/Sections/Objective";
 import rdunit_img from "/assets/units/rdunit.png";
+
+import { RenderTeamCards } from "@/components/RenderTeamCards";
+import { useState, useEffect } from "react";
+const fetchData = async () => {
+  const res = await fetch(
+    "https://notices.tcioe.edu.np/api/department/staffs/search/?department=Research and Development Unit"
+  );
+  const data = await res.json();
+  return data;
+};
 
 const data = {
   heading: "Research and Development Unit",
@@ -17,6 +29,14 @@ const objectives = [
   "To do other assigned work related to R&D.",
 ];
 export default function page() {
+  const [Officials, setOfficials] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      const data = await fetchData();
+      setOfficials(data);
+    };
+    getData();
+  }, []);
   return (
     <>
       <AboutComponent
@@ -24,10 +44,8 @@ export default function page() {
         body_text={data.body_text}
         img={data.img}
       />
-      <Objectives
-        objectives={objectives}
-        section="Research and Development Unit"
-      />
+      <Objectives objectives={objectives} section="Main Objectives" />
+      <RenderTeamCards title="Officials" Members={Officials} />
     </>
   );
 }
