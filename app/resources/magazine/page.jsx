@@ -6,7 +6,6 @@ import { menuItems } from "@/utils/menuItems";
 import HeaderComponent from "@/components/HeaderComponent";
 import MagazineInterface from "./page2";
 
-// Styled components for MagazinePage
 const MagazinePageWrapper = styled.div`
   padding: 16px;
   text-align: center;

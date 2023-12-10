@@ -181,7 +181,7 @@ const Page = () => {
 
   return (
     <Wrapper>
-      <h1>B.E./BArch. Academic Calendars</h1>
+      <h1>M.Sc. Academic Calendars</h1>
       <Container>
         <CalendarsContainer>
           {calendars.map((calendar) => (
