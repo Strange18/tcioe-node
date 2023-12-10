@@ -15,11 +15,12 @@ const fetchData = async () => {
   const data = await res.json();
   return data;
 };
-const data = {
-  heading: "Library Section",
-  body_text: `The administration section at Thapathali Campus oversees various departments and activities, including general administration, finance, academics, examinations, facilities management, and stores. Its main goal is to ensure efficient operations by monitoring staff and student activities, enforcing policies, and managing resources effectively. Additionally, it coordinates events, programs, and partnerships to support campus objectives. The section is divided into Personnel Administration, responsible for staff and faculty records and recruitment, and General Administration, which maintains campus facilities and resources while ensuring compliance with regulations. Effective record-keeping ensures systematic operations aligned with Tribhuvan University's standards.
-  `,
-  img: administrative_img,
+const fetchImage = async () => {
+  const res = await fetch(
+    "https://notices.tcioe.edu.np/api/image-search/?image_id=17"
+  );
+  const data = await res.json();
+  return data[0].image;
 };
 
 const objectives = [
@@ -36,10 +37,19 @@ const objectives = [
   "Carry out other duties and responsibilities as directed by the campus head according to Tri.V. Acts, rules, and regulations.",
 ];
 export default function page() {
+  const [img, setImg] = useState([]);
+  const data = {
+    heading: "Library Section",
+    body_text: `The administration section at Thapathali Campus oversees various departments and activities, including general administration, finance, academics, examinations, facilities management, and stores. Its main goal is to ensure efficient operations by monitoring staff and student activities, enforcing policies, and managing resources effectively. Additionally, it coordinates events, programs, and partnerships to support campus objectives. The section is divided into Personnel Administration, responsible for staff and faculty records and recruitment, and General Administration, which maintains campus facilities and resources while ensuring compliance with regulations. Effective record-keeping ensures systematic operations aligned with Tribhuvan University's standards.
+    `,
+    img: img,
+  };
   const [Officials, setOfficials] = useState([]);
   useEffect(() => {
     const getData = async () => {
       const data = await fetchData();
+      const imageData = await fetchImage();
+      setImg(imageData);
       setOfficials(data);
     };
     getData();

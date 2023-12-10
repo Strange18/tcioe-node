@@ -13,12 +13,14 @@ const fetchData = async () => {
   const data = await res.json();
   return data;
 };
-const data = {
-  heading: "Personnel Administration Section",
-  body_text: `The administration section at Thapathali Campus oversees various departments and activities, including general administration, finance, academics, examinations, facilities management, and stores. Its main goal is to ensure efficient operations by monitoring staff and student activities, enforcing policies, and managing resources effectively. Additionally, it coordinates events, programs, and partnerships to support campus objectives. The section is divided into Personnel Administration, responsible for staff and faculty records and recruitment, and General Administration, which maintains campus facilities and resources while ensuring compliance with regulations. Effective record-keeping ensures systematic operations aligned with Tribhuvan University's standards.
-  `,
-  img: administrative_img,
+const fetchImage = async () => {
+  const res = await fetch(
+    "https://notices.tcioe.edu.np/api/image-search/?image_id=14"
+  );
+  const data = await res.json();
+  return data[0].image;
 };
+
 const objectives = [
   "Prepare the monthly attendance report of the teachers and staff working in the campus and send it to the financial administration branch for salary and daily incentive allowance.",
   "Taking down the leave details of the teaching staff , verifying whether there is leave or not and keeping records of it.",
@@ -31,10 +33,19 @@ const objectives = [
   "T.U. Acts, rules , regulations as directed by the campus head Carrying out other duties and responsibilities.",
 ];
 export default function page() {
+  const [img, setImg] = useState([]);
+  const data = {
+    heading: "Personnel Administration Section",
+    body_text: `The administration section at Thapathali Campus oversees various departments and activities, including general administration, finance, academics, examinations, facilities management, and stores. Its main goal is to ensure efficient operations by monitoring staff and student activities, enforcing policies, and managing resources effectively. Additionally, it coordinates events, programs, and partnerships to support campus objectives. The section is divided into Personnel Administration, responsible for staff and faculty records and recruitment, and General Administration, which maintains campus facilities and resources while ensuring compliance with regulations. Effective record-keeping ensures systematic operations aligned with Tribhuvan University's standards.
+    `,
+    img: img,
+  };
   const [Officials, setOfficials] = useState([]);
   useEffect(() => {
     const getData = async () => {
       const data = await fetchData();
+      const imageData = await fetchImage();
+      setImg(imageData);
       setOfficials(data);
     };
     getData();
