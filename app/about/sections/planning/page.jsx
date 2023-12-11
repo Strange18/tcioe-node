@@ -57,7 +57,7 @@ export default function page() {
       />
       <Objectives
         objectives={objectives}
-        section="Roles Responsibilties and Rights
+        section="Roles, Responsibilties and Rights
 "
       />
       <RenderTeamCards title="Officials" Members={Officials} />

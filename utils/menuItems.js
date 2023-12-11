@@ -20,7 +20,7 @@ export const menuItems = [
         url: "/about/sections",
         submenu: [
           {
-            title: "Financial Administration Section",
+            title: "Financial Administration",
             url: "/about/sections/financialAdministration",
           },
           {
@@ -28,11 +28,11 @@ export const menuItems = [
             url: "/about/sections/planning",
           },
           {
-            title: "General Administration Section",
+            title: "General Administration",
             url: "/about/sections/generalAdministration",
           },
           {
-            title: "Personnel Administration Section",
+            title: "Personnel Administration",
             url: "/about/sections/personnelAdministration",
           },
           {
@@ -201,10 +201,6 @@ export const menuItems = [
           },
         ],
       },
-      // {
-      //   title: "Journal Publications",
-      //   url: "/resources/journals",
-      // },
       {
         title: "Campus Reports",
         url: "",
@@ -325,30 +321,4 @@ export const menuItems = [
       },
     ],
   },
-  // {
-  //   title: "Careers",
-  //   url: "",
-  //   submenu: [
-  //     {
-  //       title: "Full-time and Part-time Faculty Positions",
-  //       url: "/careers/faculty",
-  //     },
-  //     {
-  //       title: "Non-Teaching Vacancies",
-  //       url: "/careers/non-teaching",
-  //     },
-  //     {
-  //       title: "Research Openings",
-  //       url: "/careers/research",
-  //     },
-  //     {
-  //       title: "Project Opportunities",
-  //       url: "/careers/projects",
-  //     },
-  //     {
-  //       title: "Career Fairs / Job Exhibitions",
-  //       url: "/careers/fairs",
-  //     },
-  //   ],
-  // },
 ];

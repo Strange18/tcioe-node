@@ -1,6 +1,6 @@
-"use client"
-import React, { useState, useEffect, useRef } from 'react';
-import DropDownMenu from './DropDownMenu';
+"use client";
+import React, { useState, useEffect, useRef } from "react";
+import DropDownMenu from "./DropDownMenu";
 
 const NavBarMenuItems = ({ items, depthLevel }) => {
   const [dropdown, setDropdown] = useState(false);
@@ -25,8 +25,12 @@ const NavBarMenuItems = ({ items, depthLevel }) => {
       {items.submenu ? (
         <>
           <button type="button" aria-haspopup="menu">
-            {items.title}{' '}
-            {depthLevel > 0 ? <span>&#x25b6;</span> : <span className="arrow" />}
+            {items.title}{" "}
+            {depthLevel > 0 ? (
+              <span>&#x25b6;</span>
+            ) : (
+              <span className="arrow" />
+            )}
           </button>
           {dropdown && (
             <DropDownMenu
@@ -40,7 +44,19 @@ const NavBarMenuItems = ({ items, depthLevel }) => {
           )}
         </>
       ) : (
-        <a href={items.url} target={items.title === "SILPA Magazine" || items.title === "Industrial Vision" || items.title==="B.E./B.Arch. Admission" || items.title==="M.Sc. Admission"  ? "_blank" : "_self"}>{items.title}</a>
+        <a
+          href={items.url}
+          target={
+            items.title === "SILPA Magazine" ||
+            items.title === "Industrial Vision" ||
+            items.title === "B.E./B.Arch. Admission" ||
+            items.title === "M.Sc. Admission"
+              ? "_blank"
+              : "_self"
+          }
+        >
+          {items.title}
+        </a>
       )}
     </li>
   );
