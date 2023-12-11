@@ -36,7 +36,14 @@ export default function page() {
   const [img, setImg] = useState([]);
   const data = {
     heading: "Personnel Administration Section",
-    body_text: `The administration section at Thapathali Campus oversees various departments and activities, including general administration, finance, academics, examinations, facilities management, and stores. Its main goal is to ensure efficient operations by monitoring staff and student activities, enforcing policies, and managing resources effectively. Additionally, it coordinates events, programs, and partnerships to support campus objectives. The section is divided into Personnel Administration, responsible for staff and faculty records and recruitment, and General Administration, which maintains campus facilities and resources while ensuring compliance with regulations. Effective record-keeping ensures systematic operations aligned with Tribhuvan University's standards.
+    body_text: `The Personnel Administration section of the Thapathali Campus is responsible for
+    maintaining records and monitoring the activities of staff and faculty members. This includes
+    maintaining daily attendance records, analyzing faculty performance for potential promotion, and
+    overseeing the recruitment of new staff members. The section is also responsible for monitoring
+    the performance of individual staff and faculty members from their recruitment to their retirement
+    or resignation. In addition, the personnel administration section houses applications from different
+    institutions and organizations that are addressed to Thapathali Campus and provides access to any
+    applications that need to be processed by the campus for other institutions.
     `,
     img: img,
   };
