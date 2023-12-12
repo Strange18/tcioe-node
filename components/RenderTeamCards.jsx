@@ -40,7 +40,7 @@ export const RenderTeamCards = ({ Members, title }) => {
       {title && (
         <div className="flex flex-col gap-2">
           <Title>{title}</Title>
-          <div className="w-40 h-[6px] bg-[#7177ff] md:w-32 md:h-[5px] sm:w-10"></div>
+          <div className="w-40 h-[6px] bg-[#f97a01] md:w-32 md:h-[5px] sm:w-10"></div>
         </div>
       )}
       <CardsContainer>

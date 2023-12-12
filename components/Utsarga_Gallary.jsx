@@ -22,10 +22,6 @@ import utsarga15 from "/assets/campuslife/Utsarga/utsarga15.jpg";
 import utsarga16 from "/assets/campuslife/Utsarga/utsarga16.jpg";
 import utsarga17 from "/assets/campuslife/Utsarga/utsarga17.jpg";
 
-
-
-
-
 const HeadingText = styled("h1")`
   font-size: 26px;
   color: #090c4c;
@@ -84,12 +80,12 @@ const Utsarga_Gallary = ({ title, description }) => {
       image_src: utsarga2,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
-   {
+    {
       id: 3,
-      image_src:utsarga3,
+      image_src: utsarga3,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    }, 
-    
+    },
+
     {
       id: 4,
       image_src: utsarga4,
@@ -97,7 +93,7 @@ const Utsarga_Gallary = ({ title, description }) => {
     },
     {
       id: 5,
-      image_src:utsarga5,
+      image_src: utsarga5,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
@@ -106,62 +102,62 @@ const Utsarga_Gallary = ({ title, description }) => {
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
-        id: 7,
-        image_src: utsarga7,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 8,
-        image_src: utsarga8,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      
-      {
-        id: 9,
-        image_src:utsarga9,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      
-      {
-        id: 10,
-        image_src: utsarga10,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 11,
-        image_src: utsarga11,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 12,
-        image_src: utsarga12,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 13,
-        image_src: utsarga13,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 14,
-        image_src: utsarga14,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 15,
-        image_src: utsarga15,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 16,
-        image_src: utsarga16,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
-      {
-        id: 17,
-        image_src: utsarga17,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      }
+      id: 7,
+      image_src: utsarga7,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 8,
+      image_src: utsarga8,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+
+    {
+      id: 9,
+      image_src: utsarga9,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+
+    {
+      id: 10,
+      image_src: utsarga10,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 11,
+      image_src: utsarga11,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 12,
+      image_src: utsarga12,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 13,
+      image_src: utsarga13,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 14,
+      image_src: utsarga14,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 15,
+      image_src: utsarga15,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 16,
+      image_src: utsarga16,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+      id: 17,
+      image_src: utsarga17,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
   ];
   return (
     <>
