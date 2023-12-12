@@ -155,7 +155,7 @@ const Page = () => {
         const data = await response.json();
 
         const MscCalendars = data.filter(
-          (calendar) => calendar.slug === "msc-academic-calendar-2079-2080"
+          (calendar) => calendar.calendar_level === "Masters in Engineering"
         );
 
         const sortedCalendars = MscCalendars.sort((a, b) => {

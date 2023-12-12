@@ -155,7 +155,7 @@ const Page = () => {
         const data = await response.json();
 
         const beBarchCalendars = data.filter(
-          (calendar) => calendar.slug === "bebarch-academic-calendar"
+          (calendar) => calendar.calendar_level === "Bachelors in Engineering"
         );
 
         const sortedCalendars = beBarchCalendars.sort((a, b) => {

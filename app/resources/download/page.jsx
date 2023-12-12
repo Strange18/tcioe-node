@@ -1,11 +1,9 @@
-// Import necessary libraries
 "use client";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import HeaderComponent from "@/components/HeaderComponent";
 import { menuItems } from "@/utils/menuItems";
 
-// Styled components
 const Wrapper = styled.div`
   width: 100%;
   min-height: 552px;
@@ -148,7 +146,6 @@ const StyledPage = styled.div`
   }
 `;
 
-// Main component
 const Page = () => {
   const [downloads, setDownloads] = useState([]);
   const [selectedDownload, setSelectedDownload] = useState(null);
@@ -159,15 +156,12 @@ const Page = () => {
         const response = await fetch("https://notices.tcioe.edu.np/api/resource-search/?editable=True");
         const data = await response.json();
 
-        // Sort downloads by created_at in descending order
         const sortedDownloads = data.sort((a, b) => {
           return new Date(b.created_at) - new Date(a.created_at);
         });
 
-        // Clear existing downloads and add the new downloads
         setDownloads(sortedDownloads);
 
-        // Set the first download as the selected download by default
         if (sortedDownloads.length > 0) {
           setSelectedDownload(sortedDownloads[0]);
         }
@@ -213,7 +207,6 @@ const Page = () => {
   );
 };
 
-// App component
 const App = () => (
   <StyledPage>
     <HeaderComponent menuItems={menuItems} />
@@ -221,5 +214,4 @@ const App = () => (
   </StyledPage>
 );
 
-// Export the main component
 export default App;

@@ -1,4 +1,3 @@
-// Import necessary libraries and components
 "use client";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
@@ -138,7 +137,6 @@ const ViewButton = styled.a`
   }
 `;
 
-// Main MagazinePage component
 const MagazinePage = () => {
   const [magazines, setMagazines] = useState([]);
   const [selectedMagazine, setSelectedMagazine] = useState(null);
@@ -158,7 +156,7 @@ const MagazinePage = () => {
         const data = await response.json();
 
         const filteredMagazines = data.filter(
-          (magazine) => magazine.slug === "industrial-vision-vol8-2022" || magazine.slug === "shilpa-1st-edition-2023"
+          (magazine) => magazine.type === "7d02fa6b-cc7d-466b-aa11-19adcbe64216" || magazine.type === "ae68d10e-f681-4a99-ada5-101eabb2c9c1"
         );
 
         setMagazines(filteredMagazines);
