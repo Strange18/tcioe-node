@@ -128,7 +128,7 @@ const IframeContainer = styled.div`
     height: ${(props) => (props.clicked ? "50vh" : "0")};
     margin-top: 16px;
     border-radius:10px;
-    left: 0; /* Reset left position for small screens */
+    left: 0; 
   }
 `;
 
@@ -165,7 +165,6 @@ const Page = () => {
         const jsonData = await response.json();
         setData(jsonData);
 
-        // Set the first item to be clicked by default for large screens
         if (window.innerWidth > 768 && jsonData.length > 0) {
           const firstItemId = jsonData.find((item) =>
             item.title.startsWith("1_")
@@ -183,11 +182,9 @@ const Page = () => {
   const handleItemClick = (itemId) => {
     setClickedItemId(itemId);
 
-    // Scroll to the top on small screens
     if (window.innerWidth <= 768) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      // Scroll to the position of the container on large screens
       const container = document.getElementById(`container-${itemId}`);
       if (container) {
         const containerPosition = container.offsetTop;
@@ -200,21 +197,22 @@ const Page = () => {
     <>
       <HeaderComponent menuItems={menuItems} />
       <Wrapper>
-        <IframeContainer clicked={clickedItemId}>
-          {window.innerWidth > 768 && (
-            <CloseButton onClick={() => setClickedItemId(null)}>
-              Close
-            </CloseButton>
-          )}
-          {clickedItemId && (
-            <iframe
-              src={data.find((item) => item.id === clickedItemId)?.file}
-              width="100%"
-              height="100%"
-              frameBorder="0"
-            />
-          )}
-        </IframeContainer>
+      <IframeContainer clicked={clickedItemId}>
+  {typeof window !== 'undefined' && window.innerWidth > 768 && (
+    <CloseButton onClick={() => setClickedItemId(null)}>
+      Close
+    </CloseButton>
+  )}
+  {clickedItemId && (
+    <iframe
+      src={data.find((item) => item.id === clickedItemId)?.file}
+      width="100%"
+      height="100%"
+      frameBorder="0"
+    />
+  )}
+</IframeContainer>
+
 
         <Header>
           <Title>ऐन</Title>
@@ -240,7 +238,6 @@ const Page = () => {
           </List>
         </Container>
 
-        {/* नियम Section */}
         <Header>
           <Title>नियम</Title>
           <Line width={"100px"} />
@@ -265,7 +262,6 @@ const Page = () => {
           </List>
         </Container>
 
-        {/* विनियम Section */}
         <Header>
           <Title>विनियम</Title>
           <Line width={"100px"} />
@@ -290,8 +286,6 @@ const Page = () => {
           </List>
         </Container>
 
-        {/* कार्यविधि Section */}
-        <Header>
           <Title>कार्यविधि</Title>
           <Line width={"100px"} />
         </Header>
@@ -315,7 +309,6 @@ const Page = () => {
           </List>
         </Container>
 
-        {/* निर्देशिका Section */}
         <Header>
           <Title>निर्देशिका</Title>
           <Line width={"100px"} />
