@@ -286,7 +286,6 @@ const Page = () => {
           </List>
         </Container>
 
-        <Header>
           <Title>कार्यविधि</Title>
           <Line width={"100px"} />
         </Header>
