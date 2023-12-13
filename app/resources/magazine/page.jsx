@@ -182,10 +182,10 @@ const MagazinePage = () => {
           <MagazineList>
             {magazines.map((magazine) => (
               <MagazineCard key={magazine.id}>
-                <MagazineImage src={magazine.slug === "industrial-vision-vol8-2022" ? "/industrial.jpeg" : "/shilpa.jpeg"} alt={magazine.title} />
+                <MagazineImage src={magazine.type === "7d02fa6b-cc7d-466b-aa11-19adcbe64216" ? "/industrial.jpeg" : "/shilpa.jpeg"} alt={magazine.title} />
                 <MagazineInfo>
-                  <MagazineName>{magazine.slug === "industrial-vision-vol8-2022" ? "Industrial Vision" : "Shilpa Magazine"}</MagazineName>
-                  <MagazineDescription>{magazine.slug === "industrial-vision-vol8-2022"
+                  <MagazineName>{magazine.type === "7d02fa6b-cc7d-466b-aa11-19adcbe64216" ? "Industrial Vision" : "Shilpa Magazine"}</MagazineName>
+                  <MagazineDescription>{magazine.type === "7d02fa6b-cc7d-466b-aa11-19adcbe64216"
                     ? "Industrial Vision is an annual magazine published by the Society of Industrial Engineering Students - Nepal. The magazine discovers the latest industrial breakthroughs and innovations by exploring the dynamic field of Industrial Engineering."
                     : "SHILPA, ASIS's yearly magazine, showcases the world of architecture at Thapathali Campus. It unfolds a collection of articles, insights, activities, and stories, beautifully narrated by the students of architecture themselves."
                   }</MagazineDescription>
