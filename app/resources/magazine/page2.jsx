@@ -1,23 +1,22 @@
-"use client"
-import { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import HeaderComponent from "@/components/HeaderComponent";
-import { menuItems } from "@/utils/menuItems";
 
-const Wrapper = styled.div`
+const InterfaceWrapper = styled.div`
   width: 100%;
   min-height: 552px;
   padding: 16px 24px 0 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  position: relative;
 
   h1 {
-    font-size: 2rem;
+    font-size: 1.8rem; /* Reduced font size */
     color: #2c3e50;
     font-weight: bold;
     text-decoration: none;
     margin-bottom: 16px;
+    margin-top: 40px;
     position: relative;
   }
 
@@ -38,6 +37,25 @@ const Wrapper = styled.div`
     h1 {
       font-size: 1.5rem;
     }
+  }
+`;
+
+const BackButton = styled.button`
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 8px;
+  background-color: #7177ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #7177ff;
+    transform: scale(1.1);
   }
 `;
 
@@ -104,6 +122,7 @@ const ItemTitle = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  
   color: ${props => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
 
   @media (max-width: 768px) {
@@ -114,7 +133,8 @@ const ItemTitle = styled.div`
 const EmbeddedContainer = styled.div`
   flex: 3;
   max-width: 1000px;
-  margin-top: -16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
   align-self: flex-start;
 
   @media (max-width: 768px) {
@@ -135,81 +155,30 @@ const EmbeddedIframe = styled.iframe`
   }
 `;
 
-const StyledPage = styled.div`
-  background-color: #f7f7f7;
-  padding-bottom: 16px;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`;
-
-const Page = () => {
-  const [reports, setReports] = useState([]);
-  const [selectedReport, setSelectedReport] = useState(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("https://notices.tcioe.edu.np/api/report/");
-        const data = await response.json();
-
-        
-        const selfStudyReports = data.filter(report => report.type === "8436a4bf-2406-4d66-bd34-a37def2f4ddb");
-
-        
-        if (selfStudyReports.length > 0) {
-          setSelectedReport(selfStudyReports[0]);
-        }
-
-        setReports(selfStudyReports);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const handleCardClick = (report) => {
-    setSelectedReport(report);
-  };
-
+const MagazineInterface = ({ magazineData, onClose }) => {
   return (
-    <Wrapper>
-      <h1>Self Study Reports</h1>
+    <InterfaceWrapper>
+      <BackButton onClick={onClose}>{"<"}</BackButton>
+      <h1>{magazineData.slug === "industrial-vision-vol8-2022" ? "Industrial Vision" : "Shilpa Magazine"}</h1>
       <Container>
         <ReportsContainer>
-          {reports.map((report) => (
-            <ReportCard key={report.id} onClick={() => handleCardClick(report)}>
-              <ItemText>
-                <ItemTitle isSelected={report === selectedReport}>{report.title}</ItemTitle>
-              </ItemText>
-            </ReportCard>
-          ))}
+          <ReportCard>
+            <ItemText>
+              <ItemTitle>{magazineData.title}</ItemTitle>
+            </ItemText>
+          </ReportCard>
         </ReportsContainer>
         <EmbeddedContainer>
-          {selectedReport && (
-            <>
-              <EmbeddedIframe
-                title={selectedReport.title}
-                src={selectedReport.file}
-                frameBorder="0"
-                allowFullScreen
-              />
-            </>
-          )}
+          <EmbeddedIframe
+            title={magazineData.title}
+            src={magazineData.file}
+            frameBorder="0"
+            allowFullScreen
+          />
         </EmbeddedContainer>
       </Container>
-    </Wrapper>
+    </InterfaceWrapper>
   );
 };
 
-const App = () => (
-  <StyledPage>
-    <HeaderComponent menuItems={menuItems} />
-    <Page />
-  </StyledPage>
-);
-
-export default App;
+export default MagazineInterface;

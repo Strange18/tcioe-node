@@ -1,15 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import Link from "next/link";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { menuItems } from "@/utils/menuItems";
 import HeaderComponent from "@/components/HeaderComponent";
+import { menuItems } from "@/utils/menuItems";
 
 const Wrapper = styled.div`
   width: 100%;
-  padding: 16px 64px 0 64px;
+  padding: 16px 32px 0 32px;
   display: flex;
   flex-direction: column;
   gap: 0px;
@@ -26,12 +23,18 @@ const Header = styled.div`
   gap: 8px;
   margin: 24px 0;
 `;
+
 const Title = styled.div`
   font-size: 2rem;
   font-weight: bold;
   color: #181b57;
   margin-top: 1.5rem;
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+  }
 `;
+
 const Line = styled.div`
   height: 4px;
   width: ${(props) => (props.width ? props.width : "100px")};
@@ -42,23 +45,26 @@ const Line = styled.div`
 const Container = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 24px;
-  @media (max-width: 958px) {
-    flex-direction: column-reverse;
+  flex-direction: column-reverse;
+
+  @media (min-width: 958px) {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+    margin-right: 32px;
   }
 `;
+
 const List = styled.div`
-  flex: 3.5;
+  flex: 3;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 `;
-const Item = styled(Link)`
-  text-decoration: none;
+
+const Item = styled.div`
   width: 100%;
-  height: 120px;
+  max-width: 400px;
   background-color: #f0efef;
   border-radius: 12px;
   padding: 1rem;
@@ -67,10 +73,16 @@ const Item = styled(Link)`
   align-items: center;
   gap: 18px;
   transition: 0.2s ease-in-out;
+  cursor: pointer;
 
   &:hover {
     background-color: #e6e6e6;
-    scale: 1.02;
+    transform: scale(1.02);
+  }
+
+  &:active {
+    background-color: #f97a00;
+    color: white;
   }
 `;
 
@@ -79,133 +91,257 @@ const ItemText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 4px;
+  gap: 2px;
 `;
+
 const ItemTitle = styled.div`
-  font-size: 1.2rem;
-  color: #181b57;
+  font-size: 1rem;
+  color: ${(props) => (props.clicked ? "#f97a00" : "#181b57")};
   font-weight: bold;
   width: 100%;
   overflow: hidden;
+  white-space: normal;
+  text-align: center;
+  max-height: 100px;
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    max-height: 80px;
+  }
+`;
 
-  @media (max-width: 958px) {
-    font-size: 1rem;
+const IframeContainer = styled.div`
+  position: fixed;
+  top: 150px;
+  left: 35%;
+  width: 60%;
+  height: ${(props) => (props.clicked ? "70vh" : "0")};
+  border: none;
+  overflow-y: auto;
+  transition: height 0.3s ease;
+  border-radius:15px;
+
+  @media (max-width: 768px) {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: ${(props) => (props.clicked ? "50vh" : "0")};
+    margin-top: 16px;
+    border-radius:10px;
+    left: 0; /* Reset left position for small screens */
+  }
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #f97a00;
+  color: white;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  border-radius:5px;
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
 const extractTitleWithoutNumbers = (title) => {
-  return title.replace(/[\d_\-]+/g, '');
+  return title.replace(/[\d_\-]+/g, "");
 };
 
-const page = () => {
+const Page = () => {
   const [data, setData] = useState([]);
+  const [clickedItemId, setClickedItemId] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://notices.tcioe.edu.np/api/resources/');
+        const response = await fetch(
+          "https://notices.tcioe.edu.np/api/report/"
+        );
         const jsonData = await response.json();
         setData(jsonData);
+
+        // Set the first item to be clicked by default for large screens
+        if (window.innerWidth > 768 && jsonData.length > 0) {
+          const firstItemId = jsonData.find((item) =>
+            item.title.startsWith("1_")
+          )?.id;
+          setClickedItemId(firstItemId || null);
+        }
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
   }, []);
 
-  const filteredData1 = data.filter(item => item.title.startsWith("1_"));
-  const filteredData2 = data.filter(item => item.title.startsWith("2_"));
-  const filteredData3 = data.filter(item => item.title.startsWith("3_"));
-  const filteredData4 = data.filter(item => item.title.startsWith("4_"));
-  const filteredData5 = data.filter(item => item.title.startsWith("5_"));
+  const handleItemClick = (itemId) => {
+    setClickedItemId(itemId);
+
+    // Scroll to the top on small screens
+    if (window.innerWidth <= 768) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      // Scroll to the position of the container on large screens
+      const container = document.getElementById(`container-${itemId}`);
+      if (container) {
+        const containerPosition = container.offsetTop;
+        window.scrollTo({ top: containerPosition, behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <>
       <HeaderComponent menuItems={menuItems} />
       <Wrapper>
+        <IframeContainer clicked={clickedItemId}>
+          {window.innerWidth > 768 && (
+            <CloseButton onClick={() => setClickedItemId(null)}>
+              Close
+            </CloseButton>
+          )}
+          {clickedItemId && (
+            <iframe
+              src={data.find((item) => item.id === clickedItemId)?.file}
+              width="100%"
+              height="100%"
+              frameBorder="0"
+            />
+          )}
+        </IframeContainer>
+
         <Header>
           <Title>ऐन</Title>
           <Line width={"100px"} />
         </Header>
         <Container>
           <List>
-          {filteredData1.map(item => (
-              <Item href={item.file} target="_blank" key={item.id}>
-                <ItemText>
-                  <ItemTitle>{extractTitleWithoutNumbers(item.title)}</ItemTitle>
-                </ItemText>
-              </Item>
-            ))}
+            {data
+              .filter((item) => item.title.startsWith("1_"))
+              .map((item) => (
+                <Item
+                  key={item.id}
+                  onClick={() => handleItemClick(item.id)}
+                  id={`container-${item.id}`}
+                >
+                  <ItemText>
+                    <ItemTitle clicked={clickedItemId === item.id}>
+                      {extractTitleWithoutNumbers(item.title)}
+                    </ItemTitle>
+                  </ItemText>
+                </Item>
+              ))}
           </List>
         </Container>
 
+        {/* नियम Section */}
         <Header>
           <Title>नियम</Title>
           <Line width={"100px"} />
         </Header>
         <Container>
           <List>
-          {filteredData2.map(item => (
-              <Item href={item.file} target="_blank" key={item.id}>
-                <ItemText>
-                <ItemTitle>{extractTitleWithoutNumbers(item.title)}</ItemTitle>
-                </ItemText>
-              </Item>
-            ))}
+            {data
+              .filter((item) => item.title.startsWith("2_"))
+              .map((item) => (
+                <Item
+                  key={item.id}
+                  onClick={() => handleItemClick(item.id)}
+                  id={`container-${item.id}`}
+                >
+                  <ItemText>
+                    <ItemTitle clicked={clickedItemId === item.id}>
+                      {extractTitleWithoutNumbers(item.title)}
+                    </ItemTitle>
+                  </ItemText>
+                </Item>
+              ))}
           </List>
         </Container>
 
+        {/* विनियम Section */}
         <Header>
           <Title>विनियम</Title>
           <Line width={"100px"} />
         </Header>
         <Container>
           <List>
-          {filteredData3.map(item => (
-              <Item href={item.file} target="_blank" key={item.id}>
-                <ItemText>
-                <ItemTitle>{extractTitleWithoutNumbers(item.title)}</ItemTitle>
-                </ItemText>
-              </Item>
-            ))}
+            {data
+              .filter((item) => item.title.startsWith("3_"))
+              .map((item) => (
+                <Item
+                  key={item.id}
+                  onClick={() => handleItemClick(item.id)}
+                  id={`container-${item.id}`}
+                >
+                  <ItemText>
+                    <ItemTitle clicked={clickedItemId === item.id}>
+                      {extractTitleWithoutNumbers(item.title)}
+                    </ItemTitle>
+                  </ItemText>
+                </Item>
+              ))}
           </List>
         </Container>
 
+        {/* कार्यविधि Section */}
         <Header>
           <Title>कार्यविधि</Title>
           <Line width={"100px"} />
         </Header>
         <Container>
           <List>
-          {filteredData4.map(item => (
-              <Item href={item.file} target="_blank" key={item.id}>
-                <ItemText>
-                <ItemTitle>{extractTitleWithoutNumbers(item.title)}</ItemTitle>
-                </ItemText>
-              </Item>
-            ))}
+            {data
+              .filter((item) => item.title.startsWith("4_"))
+              .map((item) => (
+                <Item
+                  key={item.id}
+                  onClick={() => handleItemClick(item.id)}
+                  id={`container-${item.id}`}
+                >
+                  <ItemText>
+                    <ItemTitle clicked={clickedItemId === item.id}>
+                      {extractTitleWithoutNumbers(item.title)}
+                    </ItemTitle>
+                  </ItemText>
+                </Item>
+              ))}
           </List>
         </Container>
 
+        {/* निर्देशिका Section */}
         <Header>
           <Title>निर्देशिका</Title>
           <Line width={"100px"} />
         </Header>
         <Container>
           <List>
-          {filteredData5.map(item => (
-              <Item href={item.file} target="_blank" key={item.id}>
-                <ItemText>
-                <ItemTitle>{extractTitleWithoutNumbers(item.title)}</ItemTitle>
-                </ItemText>
-              </Item>
-            ))}
+            {data
+              .filter((item) => item.title.startsWith("5_"))
+              .map((item) => (
+                <Item
+                  key={item.id}
+                  onClick={() => handleItemClick(item.id)}
+                  id={`container-${item.id}`}
+                >
+                  <ItemText>
+                    <ItemTitle clicked={clickedItemId === item.id}>
+                      {extractTitleWithoutNumbers(item.title)}
+                    </ItemTitle>
+                  </ItemText>
+                </Item>
+              ))}
           </List>
         </Container>
-
       </Wrapper>
     </>
   );
 };
-export default page;
+
+export default Page;

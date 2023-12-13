@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import HeaderComponent from "@/components/HeaderComponent";
@@ -53,7 +53,7 @@ const Container = styled.div`
   }
 `;
 
-const DownloadsContainer = styled.div`
+const ReportsContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -68,10 +68,10 @@ const DownloadsContainer = styled.div`
   }
 `;
 
-const DownloadItem = styled.a`
+const ReportCard = styled.div`
   cursor: pointer;
   height: 60px;
-  background-color: ${(props) => (props.isSelected ? "transparent" : "#ecf0f1")};
+  background-color: #ecf0f1;
   border-radius: 12px;
   padding: 12px;
   display: flex;
@@ -80,15 +80,13 @@ const DownloadItem = styled.a`
   gap: 12px;
   transition: 0.2s ease-in-out;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-decoration: none;
-  color: ${(props) => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
-
-  &:hover {
-    background-color: ${(props) => (props.isSelected ? "transparent" : "#d5dbdb")};
-  }
 
   @media (max-width: 768px) {
     height: 80px;
+  }
+
+  &:hover {
+    background-color: #d5dbdb;
   }
 `;
 
@@ -106,7 +104,7 @@ const ItemTitle = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: ${(props) => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
+  color: ${props => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
 
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -147,55 +145,53 @@ const StyledPage = styled.div`
 `;
 
 const Page = () => {
-  const [downloads, setDownloads] = useState([]);
-  const [selectedDownload, setSelectedDownload] = useState(null);
+  const [reports, setReports] = useState([]);
+  const [selectedReport, setSelectedReport] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://notices.tcioe.edu.np/api/resource-search/?editable=True");
+        const response = await fetch("https://notices.tcioe.edu.np/api/report/");
         const data = await response.json();
 
-        const sortedDownloads = data.sort((a, b) => {
-          return new Date(b.created_at) - new Date(a.created_at);
-        });
+        const OtherReports = data.filter(report => report.type === "bc79aa01-6e9b-4e8b-a0db-21c499941757");
 
-        setDownloads(sortedDownloads);
-
-        if (sortedDownloads.length > 0) {
-          setSelectedDownload(sortedDownloads[0]);
+        if (OtherReports.length > 0) {
+          setSelectedReport(OtherReports[0]);
         }
+
+        setReports(OtherReports);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, []); 
+
+  const handleCardClick = (report) => {
+    setSelectedReport(report);
+  };
 
   return (
     <Wrapper>
-      <h1>Downloads</h1>
+      <h1>Other Reports</h1>
       <Container>
-        <DownloadsContainer>
-          {downloads.map((download) => (
-            <DownloadItem
-              key={download.id}
-              onClick={() => setSelectedDownload(download)}
-              isSelected={download === selectedDownload}
-            >
+        <ReportsContainer>
+          {reports.map((report) => (
+            <ReportCard key={report.id} onClick={() => handleCardClick(report)}>
               <ItemText>
-                <ItemTitle isSelected={download === selectedDownload}>{download.title}</ItemTitle>
+                <ItemTitle isSelected={report === selectedReport}>{report.title}</ItemTitle>
               </ItemText>
-            </DownloadItem>
+            </ReportCard>
           ))}
-        </DownloadsContainer>
+        </ReportsContainer>
         <EmbeddedContainer>
-          {selectedDownload && (
+          {selectedReport && (
             <>
               <EmbeddedIframe
-                title={selectedDownload.title}
-                src={`https://notices.tcioe.edu.np/media/files/${selectedDownload.file.split("/")[5]}`}
+                title={selectedReport.title}
+                src={selectedReport.file}
                 frameBorder="0"
                 allowFullScreen
               />
