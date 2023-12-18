@@ -59,7 +59,7 @@ const List = styled.div`
   flex-direction: column;
   gap: 18px;
   overflow-y: auto;
-  box-sizing:border-box;
+  box-sizing: border-box;
 `;
 
 const Buttoned = styled.button`
@@ -429,7 +429,7 @@ const Page = () => {
   const [searchKeyword, setSearchKeyword] = useState("");
 
   useEffect(() => {
-    const fetchData = async () => { };
+    const fetchData = async () => {};
 
     // Check if both start date and end date have values
     if (startDate && endDate) {
@@ -860,4 +860,3 @@ const Pagination = ({
 
   return <PaginationContainer>{renderPages()}</PaginationContainer>;
 };
-
