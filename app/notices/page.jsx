@@ -6,7 +6,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { menuItems } from "@/utils/menuItems";
 import HeaderComponent from "@/components/HeaderComponent";
-import { addDays } from "date-fns";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -64,8 +63,8 @@ const List = styled.div`
 
 const Buttoned = styled.button`
   position: absolute;
-  top: -2.8rem;
-  right: -9px;
+  top: -1.7rem;
+  right: -2px;
   color: #f7f4f4;
   border: none;
   border-radius: 4px;
@@ -95,8 +94,8 @@ const Buttoned = styled.button`
 
 const Item = styled(Link)`
   text-decoration: none;
-  width: 100%;
-  height: 130px;
+  width: 98%;
+  height: 100px;
   background-color: #f0efef;
   border-radius: 12px;
   padding: 12px;
@@ -126,39 +125,6 @@ const Item = styled(Link)`
       `}
   }
 `;
-const ItemDate = styled.div`
-  width: 95px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #7177ff;
-  border-radius: 6px;
-`;
-const ItemDateMonth = styled.div`
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #ffffff;
-  @media (max-width: 958px) {
-    font-size: 1rem;
-  }
-`;
-const ItemDateDay = styled.div`
-  font-size: 2rem;
-  font-weight: 600;
-  color: #ffffff;
-
-  @media (max-width: 958px) {
-    font-size: 1.8rem;
-  }
-`;
-
-const ItemDateDates = styled.div`
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #ffffff;
-`;
 
 const ItemText = styled.div`
   flex: 5;
@@ -172,8 +138,13 @@ const ItemTitle = styled.div`
   font-size: 1.2rem;
   color: #181b57;
   font-weight: bold;
-  width: 140%;
+  max-width: 160%;
+  width: 120%;
   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; 
+  -webkit-box-orient: vertical;
 
   @media (max-width: 958px) {
     font-size: 1rem;
@@ -182,20 +153,6 @@ const ItemTitle = styled.div`
   @media (max-width: 400px) {
     width: 180%;
     padding-top: 0.5rem;
-  }
-`;
-const ItemSubtitle = styled.div`
-  font-size: 0.8rem;
-  color: #8a8a8a;
-  width: 140%;
-  overflow: hidden;
-
-  @media (max-width: 958px) {
-    font-size: 0.6rem;
-  }
-
-  @media (max-width: 400px) {
-    width: 180%;
   }
 `;
 
@@ -238,11 +195,11 @@ const SearchLabel = styled.div`
   margin-bottom: 0px;
 `;
 const SearchInput = styled.input`
-  width: 14rem;
+  width: 12.3rem;
   height: 30px;
   border-radius: 6px;
   border: 1px solid #dbdee7;
-  padding: 4px 12px 4px 12px;
+  padding: 17px 12px 17px 12px;
   margin-bottom: 4px;
   font-size: 1rem;
   color: #837d7d;
@@ -251,10 +208,6 @@ const SearchInput = styled.input`
 
   &:focus {
     border: 1px solid #7177ff;
-  }
-
-  @media (max-width: 1100px) {
-    width: 14rem;
   }
 `;
 const DatePickerContainer = styled.div`
@@ -276,6 +229,7 @@ const DatePickerContainer = styled.div`
     }
   }
 `;
+
 const SearchButton = styled.button`
   height: 30px;
   border-radius: 6px;
@@ -299,36 +253,6 @@ const SearchButton = styled.button`
 
 const SameLine = styled.div`
   display: flex;
-`;
-
-const RadioContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  gap: 32px;
-  align-items: center;
-  justify-content: flex-start;
-`;
-const Radio = styled.input`
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-  border: 1px solid #dbdee7;
-  padding: 4px 12px 4px 12px;
-  margin-bottom: 4px;
-  font-size: 1rem;
-  color: #837d7d;
-  outline: none;
-  transition: 0.2s ease-in-out;
-
-  &:focus {
-    border: 1px solid #7177ff;
-  }
-`;
-const RadioLabel = styled.div`
-  font-size: 1rem;
-  color: #647e98;
-  margin-bottom: 0px;
 `;
 
 const PaginationContainer = styled.ul`
@@ -417,10 +341,22 @@ const typedata = [
   },
 ];
 
+const PubDate = styled.div`
+font-weight: bold;
+padding-bottom: 0.5rem;
+
+@media (max-width: 500px) {
+  padding-bottom: 0.3rem;
+}
+`;
+
+const ItemDetails = styled.div`
+`;
+
 const Page = () => {
   const [notices, setNotices] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [noticesPerPage] = useState(10);
+  const [noticesPerPage] = useState(7);
   const [selectedNoticeType, setSelectedNoticeType] = useState("");
   const [noticesNotFound, setNoticesNotFound] = useState(false);
   const [Types, setTypes] = useState([]);
@@ -559,139 +495,35 @@ const Page = () => {
           ) : (
             <NotPag>
               <List>
-                {/* {currentNotices ? ( */}
                 {currentNotices.length <= 1
                   ? currentNotices.map((notice) => (
                       <Item
                         href={`https://notices.tcioe.edu.np/media/files/${
                           notice.download_file.split("/")[5]
                         }`}
-                        // target="_blank"
                         key={notice.id}
                         isSingleOrDoubleNotice={currentNotices.length <= 2}
-                        // isLastItem={index === currentNotices.length - 1}
-                      >
-                        <ItemDate>
-                          <ItemDateMonth>
-                            {Number(notice.published_date.split("-")[1]) === 1
-                              ? "Jan"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                2
-                              ? "Feb"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                3
-                              ? "Mar"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                4
-                              ? "Apr"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                5
-                              ? "May"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                6
-                              ? "Jun"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                7
-                              ? "Jul"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                8
-                              ? "Aug"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                9
-                              ? "Sep"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                10
-                              ? "Oct"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                11
-                              ? "Nov"
-                              : "Dec"}
-                          </ItemDateMonth>
-                          <ItemDateDay>
-                            {notice.published_date.split("-")[2]}
-                          </ItemDateDay>
-                          <ItemDateDates>
-                            {notice.published_date.split("-")[0]}
-                          </ItemDateDates>
-                        </ItemDate>
-                        <ItemText>
-                          <ItemTitle>{notice.title}</ItemTitle>
-                          <ItemSubtitle
-                            dangerouslySetInnerHTML={{
-                              __html: notice.description,
-                            }}
-                          />
-                        </ItemText>
+                      >                      
+                        
                         <ItemTagContainer></ItemTagContainer>
-                        <Buttoned data={notice.notice_category.notice_type}>
-                          {notice.notice_category.notice_type}
-                        </Buttoned>
                       </Item>
                     ))
                   : currentNotices.map((notice) => (
                       <Item
-                        // href={`https://notices.tcioe.edu.np/media/files/${
-                        //   notice.download_file.split("/")[5]
-                        // }`}
                         href={`/notices/${notice.id}`}
-                        // target="_blank"
                         key={notice.id}
                       >
-                        <ItemDate>
-                          <ItemDateMonth>
-                            {Number(notice.published_date.split("-")[1]) === 1
-                              ? "Jan"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                2
-                              ? "Feb"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                3
-                              ? "Mar"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                4
-                              ? "Apr"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                5
-                              ? "May"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                6
-                              ? "Jun"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                7
-                              ? "Jul"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                8
-                              ? "Aug"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                9
-                              ? "Sep"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                10
-                              ? "Oct"
-                              : Number(notice.published_date.split("-")[1]) ===
-                                11
-                              ? "Nov"
-                              : "Dec"}
-                          </ItemDateMonth>
-                          <ItemDateDay>
-                            {notice.published_date.split("-")[2]}
-                          </ItemDateDay>
-                          <ItemDateDates>
-                            {notice.published_date.split("-")[0]}
-                          </ItemDateDates>
-                        </ItemDate>
                         <ItemText>
+                          <PubDate>{notice.published_date}</PubDate>
                           <ItemTitle>{notice.title}</ItemTitle>
-                          <ItemSubtitle
-                            dangerouslySetInnerHTML={{
-                              __html: notice.description,
-                            }}
-                          />
                         </ItemText>
                         <ItemTagContainer></ItemTagContainer>
+                        <ItemDetails>
+                        
                         <Buttoned data={notice.notice_category.notice_type}>
                           {notice.notice_category.notice_type}
                         </Buttoned>
+                        </ItemDetails>
                       </Item>
                     ))}
               </List>
@@ -747,21 +579,6 @@ const Page = () => {
                 dropdownMode="select"
               />
             </DatePickerContainer>
-            {/* <SearchLabel>Type</SearchLabel>
-            {Types.map((item) => (
-              <RadioContainer key={item.id}>
-                <Radio
-                  type="radio"
-                  name="notice_type"
-                  value={item.notice_type}
-                  checked={selectedNoticeType === item.notice_type}
-                  onChange={HandleChange}
-                />
-                <RadioLabel htmlFor={item.notice_type}>
-                  {item.notice_type}
-                </RadioLabel>
-              </RadioContainer>
-            ))} */}
             <SameLine>
               <SearchButton onClick={handleSearch}>Search</SearchButton> &nbsp;
               <SearchButton onClick={handleReset}>Reset</SearchButton>
