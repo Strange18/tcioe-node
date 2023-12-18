@@ -113,16 +113,14 @@ const WholeUnderline = styled.div`
 `;
 
 const Container = styled.div`
+max-width: 57vw;
   height: 95vh;
   color: #000;
   padding: 0;
   margin-bottom: 2rem;
 
-  embed {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    object-fit: cover;
+  @media (max-width: 1200px) {
+    max-width: 90vw;
   }
 
   @media (max-width: 400px) {
@@ -335,22 +333,6 @@ const page = ({ params }) => {
     ? allNotices
     : latestNotices.slice(0, 10);
 
-  const handleNoticeTitleClick = async (latestNoticeId) => {
-    const query = await fetch(
-      `https://notices.tcioe.edu.np/api/notice/notices/${latestNoticeId}`
-    );
-    const response = await query.json();
-    if (response) {
-      const file_ = response.download_file.split("/")[5];
-      setNotice(response);
-      setFile(decodeURI(file_));
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
-  };
-
   useEffect(() => {
     const getData = async () => {
       const query = await fetch(
@@ -441,10 +423,7 @@ const page = ({ params }) => {
                       color: latestNotice.id === notice.id ? "red" : "black",
                     }}
                   >
-                    <a
-                      style={{ cursor: "pointer" }}
-                      onClick={() => handleNoticeTitleClick(latestNotice.id)}
-                    >
+                    <a href={`/notices/${latestNotice.id}`}>
                       {latestNotice.title}
                     </a>
                   </NoticeListTitle>
