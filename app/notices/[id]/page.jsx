@@ -3,13 +3,15 @@ import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { menuItems } from "@/utils/menuItems";
 import HeaderComponent from "@/components/HeaderComponent";
-import { FaArrowDown, FaArrowUp  } from "react-icons/fa";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import { SlCalender } from "react-icons/sl";
+import "pdfcraft/dist/index.es.css";
+import { Viewer } from "pdfcraft";
 // import { useRouter } from 'next/router'
 // import { Suspense } from 'react';
 
 const Wrapper = styled.div`
-  width: 100%;
+  // width: 100%;
   padding: 16px 64px 0 64px;
   display: flex;
   flex-direction: column;
@@ -20,7 +22,7 @@ const Wrapper = styled.div`
   gap: 5rem;
   align-items: start;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1400px) {
     grid-template-columns: 1fr;
   }
 
@@ -29,7 +31,8 @@ const Wrapper = styled.div`
   }
 `;
 
-const WholeContainer = styled.div``;
+const WholeContainer = styled.div`
+`;
 
 const LatestTrends = styled.div`
   padding: 10px;
@@ -59,7 +62,7 @@ const Header = styled.div`
   margin-bottom: 24px;
 `;
 const Title = styled.div`
-display: flex;
+  display: flex;
   font-size: 1.25rem;
   font-weight: bold;
   color: #2f2f2f;
@@ -110,7 +113,6 @@ const WholeUnderline = styled.div`
 `;
 
 const Container = styled.div`
-  // min-width: 100%;
   height: 95vh;
   color: #000;
   padding: 0;
@@ -123,9 +125,8 @@ const Container = styled.div`
     object-fit: cover;
   }
 
-  @media (max-width: 958px) {
-    min-width: 100%;
-    height: 90vh;
+  @media (max-width: 400px) {
+    height: 60vh;
   }
 `;
 
@@ -193,7 +194,7 @@ const Scrollable = styled.div`
 `;
 
 const LoadMore = styled.div`
-  display: ${(props) => (props.showButton ? 'flex' : 'none')};
+  display: ${(props) => (props.showButton ? "flex" : "none")};
   align-items: center;
   gap: 5px;
   border: 2px solid green;
@@ -209,58 +210,82 @@ const LoadMore = styled.div`
 `;
 
 const LoadLess = styled.div`
-display: flex;
-align-items: center;
-gap: 5px;
-border: 2px solid rgb(248, 70, 70);
-border-radius: 4px;
-float: right;
-padding: 3px 10px;
-color: white;
-background: rgb(248, 70, 70);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 2px solid rgb(248, 70, 70);
+  border-radius: 4px;
+  float: right;
+  padding: 3px 10px;
+  color: white;
+  background: rgb(248, 70, 70);
 
-button {
-  padding: 5px 8px;
-}
+  button {
+    padding: 5px 8px;
+  }
 `;
 
 const TitleInfo = styled.div`
-display: flex;
-justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const NoticeTypeTitle = styled.div`
-margin-bottom: 5px;
-border: none;
-border-radius: 4px;
-padding: 4px 8px;
-// font-size: 10px;
-text-align: center;
-align-items: center;
-color: white;
-max-height: 35px;
-background-color: ${(props) =>
-  props.data === "Administration"
-    ? "#0d63b8"
-    : props.data === "Admission"
-    ? "#09c109"
-    : props.data === "Exam"
-    ? "#f43131"
-    : props.data === "Scholarship"
-    ? "#07b5fa"
-    : props.data === "Department"
-    ? "#44a0e1"
-    : props.data === "General"
-    ? "#282727"
-    : "#ef07c4"};
+  margin-bottom: 5px;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  // font-size: 10px;
+  text-align: center;
+  align-items: center;
+  color: white;
+  max-height: 35px;
+  background-color: ${(props) =>
+    props.data === "Administration"
+      ? "#0d63b8"
+      : props.data === "Admission"
+      ? "#09c109"
+      : props.data === "Exam"
+      ? "#f43131"
+      : props.data === "Scholarship"
+      ? "#07b5fa"
+      : props.data === "Department"
+      ? "#44a0e1"
+      : props.data === "General"
+      ? "#282727"
+      : "#ef07c4"};
+
 `;
 
-const DateInfo = styled.div`
-display: flex;
-align-items: center;
-gap: 5px;
-font-weight: bold;
+const LargeScreen = styled.div`
+@media (max-width: 1000px) {
+  display: none;
+}
 `;
+
+const SmallScreen = styled.div`
+
+display: none;
+
+@media (max-width: 1000px) {
+  display: block;
+  padding-left: 2rem;
+}
+`;
+
+
+const DateInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+`;
+
+// const ContainerWidth = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   max-width: 60rem;
+// `;
 
 const NoticePubDate = styled.div``;
 
@@ -301,28 +326,30 @@ const page = ({ params }) => {
     if (scrollableRef.current) {
       scrollableRef.current.scrollTo({
         top: 0,
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
-  }
+  };
 
   const displayNotices = showAllNotices
     ? allNotices
     : latestNotices.slice(0, 10);
 
-    const handleNoticeTitleClick = async (latestNoticeId) => {
-      const query = await fetch(`https://notices.tcioe.edu.np/api/notice/notices/${latestNoticeId}`);
-      const response = await query.json();
-      if (response) {
-        const file_ = response.download_file.split("/")[5];
-        setNotice(response);
-        setFile(decodeURI(file_));
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-      }
-    };
+  const handleNoticeTitleClick = async (latestNoticeId) => {
+    const query = await fetch(
+      `https://notices.tcioe.edu.np/api/notice/notices/${latestNoticeId}`
+    );
+    const response = await query.json();
+    if (response) {
+      const file_ = response.download_file.split("/")[5];
+      setNotice(response);
+      setFile(decodeURI(file_));
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -361,31 +388,39 @@ const page = ({ params }) => {
         <WholeContainer>
           <Header>
             <TitleInfo>
-            <Title>
-              {notice.title}
-            </Title>
-            {notice.notice_category && (
+              <Title>{notice.title}</Title>
+              <LargeScreen>
+              {notice.notice_category && (
                 <NoticeTypeTitle data={notice.notice_category.notice_type}>
                   {notice.notice_category.notice_type}
                 </NoticeTypeTitle>
               )}
-              </TitleInfo>
-              <Line />
-              <DateInfo>
+              </LargeScreen>
+            </TitleInfo>
+            <Line />
+            <DateInfo>
               <SlCalender />
-              {new Date(notice.published_date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}   
-              </DateInfo>
+              {new Date(notice.published_date).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+              <SmallScreen>
+                {notice.notice_category && (
+                <NoticeTypeTitle data={notice.notice_category.notice_type}>
+                  {notice.notice_category.notice_type}
+                </NoticeTypeTitle>
+              )}
+              </SmallScreen>
+            </DateInfo>
+            
           </Header>
           <Container>
-          {file && (
-  <iframe
-    title="Embedded PDF"
-    src={`https://notices.tcioe.edu.np/media/files/${file}`}
-    width="100%"
-    height="100%"
-    frameBorder="0"
-  />
-)}
+              {file && (
+                <Viewer
+                  src={`https://notices.tcioe.edu.np/media/files/${file}`}
+                />
+              )}
           </Container>
         </WholeContainer>
         <LatestTrends>
@@ -419,12 +454,16 @@ const page = ({ params }) => {
             ))}
             <LoadMore showButton={showViewMoreButton}>
               {!showAllNotices && (
-                <button onClick={loadAllNotices}><FaArrowDown /></button>
+                <button onClick={loadAllNotices}>
+                  <FaArrowDown />
+                </button>
               )}
             </LoadMore>
             {checkButton && (
               <LoadLess>
-                <button onClick={hidePartialNotices}><FaArrowUp /></button>
+                <button onClick={hidePartialNotices}>
+                  <FaArrowUp />
+                </button>
               </LoadLess>
             )}
           </Scrollable>

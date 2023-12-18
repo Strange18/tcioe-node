@@ -11,4 +11,11 @@ module.exports = {
     // Enables the styled-components SWC transform
     styledComponents: true,
   },
+
+  webpack: (config) => {
+		config.resolve.alias.canvas = false;
+
+		return config;
+	},
+	reactStrictMode: false,
 };
