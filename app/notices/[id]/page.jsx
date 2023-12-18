@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   gap: 5rem;
   align-items: start;
 
-  @media (max-width: 1400px) {
+  @media (max-width: 1200px) {
     grid-template-columns: 1fr;
   }
 
