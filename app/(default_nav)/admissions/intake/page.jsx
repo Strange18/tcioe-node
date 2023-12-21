@@ -20,7 +20,7 @@ const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 75px 0 0px 0;
+  // padding: 75px 0 0px 0;
   overflow-x: auto;
   margin: 20px auto;
 `;
