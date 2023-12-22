@@ -14,8 +14,8 @@ const Container = styled.div`
     padding: 12px 64px 12px 64px;
 
     @media (max-width: 950px) {
-        flex-direction: column;
-        padding: 12px 32px 12px 32px;
+      flex-direction: column;
+      padding: 12px 32px 12px 32px;
     }
 `;
 
@@ -175,11 +175,11 @@ const Scholarship = () => {
               {/* 6.3)c ----------------------------------------------------------- */}
               <li>
                 <p>According to sections 11(a) and 11(b) of the Tribhuvan University Organization and Educational Administration Rules of 2050 B.S. and Tribhuvan University Reservation Seats Regulation of 2074 A.D., the seats to be allocated for admission on an inclusive basis as follows:</p>
-                <QuotaTableComponent/>
+                <QuotaTableComponent />
                 <p>Note:</p>
                 <LightParagraph>
                   &diams; If any applicant applies for reservation in more than one category, the priority order of the reservation quota will be determined based on the last quota mentioned. The reservation list will then be published in the order of priority of the last quotas, with open category applicants placed at the bottom and their names published in the last priority. For example, if an applicant applies in both the open and women's or indigenous categories, priority will first be given to their indigenous category and then to the women's category. Only after that will their priority be considered in the open category.
-                  <br/>
+                  <br />
                   &diams; In sections where the quotas are not filled from applicants applying in the reserved quota, the names of open category applicants will be published in the waiting list.
                 </LightParagraph>
               </li>
@@ -203,9 +203,9 @@ const Scholarship = () => {
                   <li>If the candidate has studied in Class 11 and 12 or equivalent level in a community or government school or on the constituent campus of Tribhuvan University, or has received a scholarship from the Nepal Government or an accredited institution of the Nepal Government, the proof should be in the form of the Class 11 and 12 mark sheets and a certificate from the respective District Education Office or the education authority within their jurisdiction and proof of scholarship received.</li>
                   <li>For Class 11 and 12, a minimum of 45% and, regarding the NEB, a Final Grade of at least C Grade must be achieved in all subjects on a regular basis (in the first attempt).</li>
                   <li>
-                  Applicants applying for reservation based on economic poverty under the proportional inclusive quota must submit a recommendation letter, along with evidence, from the respective municipality or rural municipality, or a certificate issued by the local authority, stating that the individual falls below the poverty line as per the standards set by the Nepal Government.
-                  <br/><b>Note:</b> According to the criteria for reservation in the constituent campuses under Tribhuvan University, the definition of a destitute person is as follows:
-                  <br/><b>A person considered economically destitute in the right of a district means someone whose annual family income is less than fifty thousand rupees, and this should be certified by the concerned local body along with the reasons.</b>
+                    Applicants applying for reservation based on economic poverty under the proportional inclusive quota must submit a recommendation letter, along with evidence, from the respective municipality or rural municipality, or a certificate issued by the local authority, stating that the individual falls below the poverty line as per the standards set by the Nepal Government.
+                    <br /><b>Note:</b> According to the criteria for reservation in the constituent campuses under Tribhuvan University, the definition of a destitute person is as follows:
+                    <br /><b>A person considered economically destitute in the right of a district means someone whose annual family income is less than fifty thousand rupees, and this should be certified by the concerned local body along with the reasons.</b>
                   </li>
                   <li>Among the destitute applicants eligible for reservation under the proportional inclusive quota, those with disabilities should submit the necessary document from the National Disabled Federation or the relevant government agency, the indigenous people/ethnic communities should submit the document from the National Indigenous/Ethnic Upliftment National Institute or the respective District Administration Office, the Dalits should submit the document from the National Dalit Commission or the respective District Administration Office, those marginalized in remote areas should submit the document from the respective municipality and rural municipality, the Madhesi community, Tharu community, and Muslim community individuals should submit the certificate from the respective District Administration Office.</li>
                 </FadedOrderedList>
@@ -247,7 +247,7 @@ const Scholarship = () => {
             <HeadingText>Quota for Foreign Citizens</HeadingText>
             <p>Under the Institute of Engineering 1/12th of the total seats in Full Fee programs at constituent campuses are reserved for foreign citizens.</p>
             <p>The entrance examination for foreign students will be as follows:</p>
-            <ForeignQuotaExaminationTable/>
+            <ForeignQuotaExaminationTable />
             <p>Applicants who have completed the minimum qualification in the above-mentioned entrance examinations will be eligible for enrollment in the constituent campuses under the Institute of Engineering.</p>
           </BodyText>
         </RightContainer>

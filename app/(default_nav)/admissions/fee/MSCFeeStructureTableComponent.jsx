@@ -37,6 +37,10 @@ const TableHeader = styled.th`
   @media (max-width: 768px) {
     font-size: 14px;
   }
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 8px;
+  }
 `;
 
 const TableData = styled.td`
@@ -44,6 +48,10 @@ const TableData = styled.td`
   text-align: center;
   @media (max-width: 768px) {
     font-size: 14px;
+  }
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 8px;
   }
 `;
 

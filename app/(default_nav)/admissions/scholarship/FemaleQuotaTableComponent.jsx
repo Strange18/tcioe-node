@@ -36,6 +36,11 @@ const TableHeader = styled.th`
   text-align: center;
   @media (max-width: 768px) {
     font-size: 14px;
+    padding: 8px;
+  }
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 6px;
   }
 `;
 
@@ -44,6 +49,10 @@ const TableData = styled.td`
   text-align: center;
   @media (max-width: 768px) {
     font-size: 14px;
+  }
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 6px;
   }
 `;
 
@@ -97,10 +106,9 @@ const FemaleQuotaTableComponent = () => {
             <TableData>4</TableData>
           </TableRow>
         </tbody>
-
       </Table>
     </Container>
-  )
-}
+  );
+};
 
 export default FemaleQuotaTableComponent;
