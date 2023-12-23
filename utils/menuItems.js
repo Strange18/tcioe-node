@@ -28,12 +28,8 @@ export const menuItems = [
             url: "/about/sections/planning",
           },
           {
-            title: "General Administration",
-            url: "/about/sections/generalAdministration",
-          },
-          {
-            title: "Personnel Administration",
-            url: "/about/sections/personnelAdministration",
+            title: "General/Personnel Administration",
+            url: "/about/sections/generalAndPersonnelAdministration",
           },
           {
             title: "Academic Administration and Examination Section",
