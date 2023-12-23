@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import HeaderComponent from "@/components/HeaderComponent";
 import { menuItems } from "@/utils/menuItems";
+import "pdfcraft/dist/index.es.css";
+import { Viewer } from "pdfcraft";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -118,7 +120,7 @@ const IframeContainer = styled.div`
   border: none;
   overflow-y: auto;
   transition: height 0.3s ease;
-  border-radius:15px;
+  border-radius: 15px;
 
   @media (max-width: 768px) {
     position: relative;
@@ -127,8 +129,8 @@ const IframeContainer = styled.div`
     width: 100%;
     height: ${(props) => (props.clicked ? "50vh" : "0")};
     margin-top: 16px;
-    border-radius:10px;
-    left: 0; 
+    border-radius: 10px;
+    left: 0;
   }
 `;
 
@@ -141,7 +143,7 @@ const CloseButton = styled.button`
   padding: 8px;
   border: none;
   cursor: pointer;
-  border-radius:5px;
+  border-radius: 5px;
 
   @media (max-width: 768px) {
     display: none;
@@ -197,23 +199,18 @@ const Page = () => {
     <>
       <HeaderComponent menuItems={menuItems} />
       <Wrapper>
-      <IframeContainer clicked={clickedItemId}>
-  {typeof window !== 'undefined' && window.innerWidth > 768 && (
-    <CloseButton onClick={() => setClickedItemId(null)}>
-      Close
-    </CloseButton>
-  )}
-  {clickedItemId && (
-    <iframe
-      src={data.find((item) => item.id === clickedItemId)?.file}
-      width="100%"
-      height="100%"
-      frameBorder="0"
-    />
-  )}
-</IframeContainer>
+        <IframeContainer clicked={clickedItemId}>
+          {typeof window !== "undefined" && window.innerWidth > 768 && (
+            <CloseButton onClick={() => setClickedItemId(null)}>
+              Close
+            </CloseButton>
+          )}
+          {clickedItemId && (
+            <Viewer src={data.find((item) => item.id === clickedItemId)?.file} />
+          )}
+        </IframeContainer>
 
-
+        
         <Header>
           <Title>ऐन</Title>
           <Line width={"100px"} />
@@ -237,7 +234,6 @@ const Page = () => {
               ))}
           </List>
         </Container>
-
         <Header>
           <Title>नियम</Title>
           <Line width={"100px"} />
@@ -261,7 +257,7 @@ const Page = () => {
               ))}
           </List>
         </Container>
-
+        
         <Header>
           <Title>विनियम</Title>
           <Line width={"100px"} />
@@ -285,7 +281,8 @@ const Page = () => {
               ))}
           </List>
         </Container>
-
+       
+        <Header>
           <Title>कार्यविधि</Title>
           <Line width={"100px"} />
         </Header>
@@ -308,7 +305,7 @@ const Page = () => {
               ))}
           </List>
         </Container>
-
+       
         <Header>
           <Title>निर्देशिका</Title>
           <Line width={"100px"} />
