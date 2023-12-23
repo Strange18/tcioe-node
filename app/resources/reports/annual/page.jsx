@@ -1,8 +1,10 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import HeaderComponent from "@/components/HeaderComponent";
 import { menuItems } from "@/utils/menuItems";
+import "pdfcraft/dist/index.es.css";
+import { Viewer } from "pdfcraft";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -104,8 +106,8 @@ const ItemTitle = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  
-  color: ${props => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
+
+  color: ${(props) => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
 
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -121,18 +123,6 @@ const EmbeddedContainer = styled.div`
   @media (max-width: 768px) {
     width: 100%;
     order: 1;
-  }
-`;
-
-const EmbeddedIframe = styled.iframe`
-  width: 100%;
-  height: 500px;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 768px) {
-    height: 400px;
   }
 `;
 
@@ -155,12 +145,14 @@ const Page = () => {
         const response = await fetch("https://notices.tcioe.edu.np/api/report/");
         const data = await response.json();
 
-        const annualReports = data.filter(report => report.type === "14f793b6-7897-442f-b44e-526c0b96ecc0");
+        const annualReports = data.filter((report) => report.type === "14f793b6-7897-442f-b44e-526c0b96ecc0");
 
         const sortedReports = annualReports.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
 
         if (sortedReports.length > 0) {
           setSelectedReport(sortedReports[0]);
+
+          window.history.pushState(null, null, `/resources/reports/annual#/${sortedReports[0].id}`);
         }
 
         setReports(sortedReports);
@@ -174,6 +166,8 @@ const Page = () => {
 
   const handleCardClick = (report) => {
     setSelectedReport(report);
+
+    window.history.pushState(null, null, `/resources/reports/annual#/${report.id}`);
   };
 
   return (
@@ -192,12 +186,7 @@ const Page = () => {
         <EmbeddedContainer>
           {selectedReport && (
             <>
-              <EmbeddedIframe
-                title={selectedReport.title}
-                src={selectedReport.file}
-                frameBorder="0"
-                allowFullScreen
-              />
+              <Viewer src={selectedReport.file} />
             </>
           )}
         </EmbeddedContainer>

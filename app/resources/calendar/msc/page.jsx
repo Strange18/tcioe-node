@@ -1,8 +1,10 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import HeaderComponent from "@/components/HeaderComponent";
 import { menuItems } from "@/utils/menuItems";
+import "pdfcraft/dist/index.es.css";
+import { Viewer } from "pdfcraft";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -53,7 +55,7 @@ const Container = styled.div`
   }
 `;
 
-const CalendarsContainer = styled.div`
+const DownloadsContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -68,10 +70,10 @@ const CalendarsContainer = styled.div`
   }
 `;
 
-const CalendarCard = styled.div`
+const DownloadItem = styled.a`
   cursor: pointer;
   height: 60px;
-  background-color: #ecf0f1;
+  background-color: ${(props) => (props.isSelected ? "transparent" : "#ecf0f1")};
   border-radius: 12px;
   padding: 12px;
   display: flex;
@@ -80,13 +82,15 @@ const CalendarCard = styled.div`
   gap: 12px;
   transition: 0.2s ease-in-out;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: ${(props) => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
+
+  &:hover {
+    background-color: ${(props) => (props.isSelected ? "transparent" : "#d5dbdb")};
+  }
 
   @media (max-width: 768px) {
     height: 80px;
-  }
-
-  &:hover {
-    background-color: #d5dbdb;
   }
 `;
 
@@ -99,39 +103,29 @@ const ItemText = styled.div`
 `;
 
 const ItemTitle = styled.div`
-  font-size: 1.2rem;
+  font-size: 1rem;
+  color: ${(props) => (props.isSelected ? "#f97a00" : "#2c3e50")};
   font-weight: bold;
+  width: 100%;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: ${props => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
-
+  white-space: normal;
+  text-align: center;
+  max-height: 100px;
+  
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    max-height: 80px;
   }
 `;
 
 const EmbeddedContainer = styled.div`
   flex: 3;
   max-width: 1000px;
-  margin-top: -16px;
-  align-self: flex-start;
+  margin: 16px auto;
+  align-self: center;
 
   @media (max-width: 768px) {
-    width: 100%;
-    order: 1;
-  }
-`;
-
-const EmbeddedIframe = styled.iframe`
-  width: 100%;
-  height: 500px;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 768px) {
-    height: 400px;
+    width: calc(100% - 20px);
   }
 `;
 
@@ -152,21 +146,26 @@ const Page = () => {
     const fetchData = async () => {
       try {
         const response = await fetch("https://notices.tcioe.edu.np/api/calendar/");
+        if (!response.ok) {
+          throw new Error(`API request failed with status ${response.status}`);
+        }
         const data = await response.json();
+        console.log("This is calendar:", data);
 
-        const MscCalendars = data.filter(
+        const filteredCalendars = data.filter(
           (calendar) => calendar.calendar_level === "Masters in Engineering"
         );
 
-        const sortedCalendars = MscCalendars.sort((a, b) => {
+        const sortedCalendars = filteredCalendars.sort((a, b) => {
           return new Date(b.created_at) - new Date(a.created_at);
         });
-
         setCalendars(sortedCalendars);
 
         if (sortedCalendars.length > 0) {
           setSelectedCalendar(sortedCalendars[0]);
         }
+
+        window.history.pushState(null, null, `/resources/calendar/msc#/${sortedCalendars[0].id}`);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -175,35 +174,39 @@ const Page = () => {
     fetchData();
   }, []);
 
-  const handleCardClick = (calendar) => {
+  const handleCalendarClick = (calendar) => {
     setSelectedCalendar(calendar);
+    window.history.pushState(null, null, `/resources/calendar/msc#/${calendar.id}`);
   };
+
 
   return (
     <Wrapper>
-      <h1>M.Sc. Academic Calendars</h1>
+      <h1>M.Sc. Academic Calendar</h1>
       <Container>
-        <CalendarsContainer>
+      <DownloadsContainer>
           {calendars.map((calendar) => (
-            <CalendarCard
+            <DownloadItem
               key={calendar.id}
-              onClick={() => handleCardClick(calendar)}
+              href={calendar.calendar_pdf}
+              onClick={(e) => {
+                e.preventDefault();
+                handleCalendarClick(calendar);
+              }}
+              isSelected={calendar === selectedCalendar}
             >
               <ItemText>
-                <ItemTitle isSelected={calendar === selectedCalendar}>{calendar.title}</ItemTitle>
+                <ItemTitle isSelected={calendar === selectedCalendar}>
+                  {calendar.title}
+                </ItemTitle>
               </ItemText>
-            </CalendarCard>
+            </DownloadItem>
           ))}
-        </CalendarsContainer>
+        </DownloadsContainer>
         <EmbeddedContainer>
           {selectedCalendar && (
             <>
-              <EmbeddedIframe
-                title={selectedCalendar.title}
-                src={selectedCalendar.calendar_pdf}
-                frameBorder="0"
-                allowFullScreen
-              />
+              <Viewer src={selectedCalendar.calendar_pdf} />
             </>
           )}
         </EmbeddedContainer>
@@ -220,3 +223,9 @@ const App = () => (
 );
 
 export default App;
+
+
+
+
+
+

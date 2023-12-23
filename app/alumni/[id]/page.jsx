@@ -1,3 +1,4 @@
+
 "use client";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
@@ -145,14 +146,14 @@ const Page = () => {
         const response = await fetch("https://notices.tcioe.edu.np/api/report/");
         const data = await response.json();
 
-        const annualReports = data.filter((report) => report.type === "bc79aa01-6e9b-4e8b-a0db-21c499941757");
+        const annualReports = data.filter((report) => report.type === "97e712cd-26bb-4811-af60-a761cc412c2a");
 
         const sortedReports = annualReports.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
 
         if (sortedReports.length > 0) {
           setSelectedReport(sortedReports[0]);
 
-          window.history.pushState(null, null, `/resources/reports/other#/${sortedReports[0].id}`);
+          window.history.pushState(null, null, `/alumni/${sortedReports[0].id}`);
         }
 
         setReports(sortedReports);
@@ -167,12 +168,13 @@ const Page = () => {
   const handleCardClick = (report) => {
     setSelectedReport(report);
 
-    window.history.pushState(null, null, `/resources/reports/other#/${report.id}`);
+    // Update the URL with the selected report's id
+    window.history.pushState(null, null, `/alumni/${report.id}`);
   };
 
   return (
     <Wrapper>
-      <h1>Other Reports</h1>
+      <h1>Alumni Tracer</h1>
       <Container>
         <ReportsContainer>
           {reports.map((report) => (

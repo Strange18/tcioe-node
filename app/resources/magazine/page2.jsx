@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import "pdfcraft/dist/index.es.css";
+import { Viewer } from "pdfcraft";
 
 const InterfaceWrapper = styled.div`
   width: 100%;
@@ -11,7 +13,7 @@ const InterfaceWrapper = styled.div`
   position: relative;
 
   h1 {
-    font-size: 1.8rem; /* Reduced font size */
+    font-size: 1.8rem;
     color: #2c3e50;
     font-weight: bold;
     text-decoration: none;
@@ -123,7 +125,7 @@ const ItemTitle = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
   
-  color: ${props => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
+  color: ${props => (props.isSelected ? "#f97a00" : "#2c3e50")};
 
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -143,7 +145,7 @@ const EmbeddedContainer = styled.div`
   }
 `;
 
-const EmbeddedIframe = styled.iframe`
+const PdfCraftViewer = styled(Viewer)`
   width: 100%;
   height: 500px;
   border: none;
@@ -156,10 +158,24 @@ const EmbeddedIframe = styled.iframe`
 `;
 
 const MagazineInterface = ({ magazineData, onClose }) => {
+  useEffect(() => {
+    
+    window.history.pushState(
+      null,
+      null,
+      `/resources/magazine#/${magazineData.id}` 
+    );
+
+    
+    return () => {
+      window.history.replaceState(null, null, "/resources/magazine");
+    };
+  }, [magazineData.id]);
+
   return (
     <InterfaceWrapper>
       <BackButton onClick={onClose}>{"<"}</BackButton>
-      <h1>{magazineData.slug === "industrial-vision-vol8-2022" ? "Industrial Vision" : "Shilpa Magazine"}</h1>
+      <h1>{magazineData.type === "7d02fa6b-cc7d-466b-aa11-19adcbe64216" ? "Industrial Vision" : "Shilpa Magazine"}</h1>
       <Container>
         <ReportsContainer>
           <ReportCard>
@@ -169,12 +185,7 @@ const MagazineInterface = ({ magazineData, onClose }) => {
           </ReportCard>
         </ReportsContainer>
         <EmbeddedContainer>
-          <EmbeddedIframe
-            title={magazineData.title}
-            src={magazineData.file}
-            frameBorder="0"
-            allowFullScreen
-          />
+          <PdfCraftViewer src={magazineData.file} />
         </EmbeddedContainer>
       </Container>
     </InterfaceWrapper>
