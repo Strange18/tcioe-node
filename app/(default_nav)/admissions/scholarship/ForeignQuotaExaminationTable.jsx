@@ -4,7 +4,11 @@ import styled from 'styled-components';
 const Container = styled.div`
   width: 100%;
   overflow-x: auto;
-  margin: 32px 0;
+  margin: 16px 0; /* Adjusted margin for smaller screens */
+
+  @media (min-width: 768px) {
+    margin: 32px 0;
+  }
 `;
 
 const Table = styled.table`
@@ -23,32 +27,22 @@ const TableRow = styled.tr`
   }
 `;
 
-const TableRowTotal = styled.tr`
-  &:nth-child(even) {
-    background-color: #f2f2f2;
-    font-weight: 600;
-    color: #090c4c;
-  }
-`;
-
 const TableHeader = styled.th`
-  padding: 10px;
+  padding: 8px; /* Adjusted padding for smaller screens */
   text-align: center;
+  font-size: 14px; /* Default font size for headers */
+
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 12px;
   }
 `;
 
 const TableData = styled.td`
-  padding: 10px;
+  padding: 8px; /* Adjusted padding for smaller screens */
   text-align: center;
-  @media (max-width: 768px) {
-    font-size: 14px;
-  }
-`;
+  font-size: 14px; /* Default font size for data */
 
-const ProgramData = styled(TableData)`
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     font-size: 12px;
   }
 `;

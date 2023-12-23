@@ -37,6 +37,11 @@ const TableHeader = styled.th`
   border: 1px solid #999;
   @media (max-width: 768px) {
     font-size: 14px;
+    padding: 8px;
+  }
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 6px;
   }
 `;
 
@@ -46,17 +51,15 @@ const TableData = styled.td`
   @media (max-width: 768px) {
     font-size: 14px;
   }
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 6px;
+  }
 `;
 
 const TableDataHeighlight = styled(TableData)`
   font-weight: 600;
   color: #090c4c;
-`;
-
-const ProgramData = styled(TableData)`
-  @media (max-width: 480px) {
-    font-size: 12px;
-  }
 `;
 
 const BEIntakeTableComponent = () => {
