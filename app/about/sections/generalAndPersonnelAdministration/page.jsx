@@ -8,9 +8,11 @@ import { RenderTeamCards } from "@/components/RenderTeamCards";
 import { useState, useEffect } from "react";
 const fetchData = async () => {
   const res = await fetch(
-    "https://notices.tcioe.edu.np/api/department/staffs/search/?department=Personnel Administration Section"
+    "https://notices.tcioe.edu.np/api/department/staffs/search/?department=General Administration Section"
   );
+
   const data = await res.json();
+
   return data;
 };
 const fetchImage = async () => {
@@ -31,19 +33,20 @@ const objectives = [
   "Filing of administrative letters available from various offices and manage.",
   "To the teaching staff T.U. Providing information as requested regarding laws and regulations.",
   "T.U. Acts, rules , regulations as directed by the campus head Carrying out other duties and responsibilities.",
+  "Completing the process of purchasing the necessary items for educational and administrative work requested by the various departments, branches, and units of the campus and sending the purchased items to the store for filing.",
+  "Recommending for payment of invoices related to inspection and storage goods.",
+  "Requesting the consultancy service to prepare the necessary cost estimate for the construction work to be done on the campus and submit the cost estimate, drawing, and design received from the consultancy service to the procurement committee.",
+  "After the recommendation for construction work from the procurement committee, after completing the necessary process, make the contract and give the order.",
+  "After the completion of the construction work, the consulting service will pass the inspection, etc., and recommend the payment of the amount from the procurement committee.",
+  "According to the nature of the purchase, direct purchase, price list, bid, etc.",
+  "Providing necessary support for the internal audit of the purchase and construction works and for the audit of the General Account.",
+  "Carrying out other duties and responsibilities as directed by the campus head according to T.U. Acts, rules, and regulations."
 ];
 export default function page() {
   const [img, setImg] = useState([]);
   const data = {
-    heading: "Personnel Administration Section",
-    body_text: `The Personnel Administration section of the Thapathali Campus is responsible for
-    maintaining records and monitoring the activities of staff and faculty members. This includes
-    maintaining daily attendance records, analyzing faculty performance for potential promotion, and
-    overseeing the recruitment of new staff members. The section is also responsible for monitoring
-    the performance of individual staff and faculty members from their recruitment to their retirement
-    or resignation. In addition, the personnel administration section houses applications from different
-    institutions and organizations that are addressed to Thapathali Campus and provides access to any
-    applications that need to be processed by the campus for other institutions.
+    heading: "General/Personnel Administration Section",
+    body_text: `The Thapathali Campus encompasses two essential administrative sections. The Personnel Administration section oversees staff and faculty management, maintaining records, monitoring activities, and handling recruitment processes, from analyzing faculty performance for potential promotion to overseeing individuals' tenure from recruitment to retirement or resignation. Moreover, this section manages applications directed to the campus and processes those meant for external institutions. On the other hand, the General Administration section ensures the smooth functioning of campus facilities and resources. This involves tasks like procurement, maintenance of infrastructure and utilities, security, cafeteria quality control, and asset preservation. Additionally, this section is pivotal in documenting operations to comply with Tribhuvan University's regulations, supporting all departments' day-to-day functions.
     `,
     img: img,
   };
