@@ -79,7 +79,7 @@ const Line = styled.div`
 
   @media (max-width: 958px) {
     height: 2px;
-    width: ${(props) => (props.width ? props.width : "285px")};
+    width: ${(props) => (props.width ? props.width : "290px")};
   }
 `;
 
