@@ -8,32 +8,61 @@ const fetchData = async () => {
     "https://notices.tcioe.edu.np/api/department/staffmembers/"
   );
   const data = await res.json();
-  return data;
+  return data.filter((member) => member.is_key_official);
 };
 const Page = () => {
   const [loading, setLoading] = useState(true);
-  const [keyOfficials, setKeyOfficials] = useState([]);
+
+  const [campusChief, setCampusChief] = useState([]);
+  const [assistantCampusChief, setAssistantCampusChief] = useState([]);
+  const [headsOfDepartment, setHeadsOfDepartment] = useState([]);
+  const [deputyHeadsOfDepartment, setDeputyHeadsOfDepartment] = useState([]);
+  const [mscCoord, setMscCoord] = useState([]);
+  const [headsOfSection, setHeadsOfSection] = useState([]);
+  const [headsOfSpecialSection, setHeadsOfSpecialSection] = useState([]);
+  const [headsOfUnit, setHeadsOfUnit] = useState([]);
   useEffect(() => {
     const getData = async () => {
       setLoading(true);
       const data = await fetchData();
-      setKeyOfficials(data);
+      setCampusChief(
+        data.filter((member) => member.staff_designation === "Campus Chief")
+      );
+      setAssistantCampusChief(
+        data.filter(
+          (member) => member.staff_designation === "Assistant Campus Chief"
+        )
+      );
+      setHeadsOfDepartment(
+        data.filter(
+          (member) => member.staff_designation === "Head of Department"
+        )
+      );
+      setDeputyHeadsOfDepartment(
+        data.filter(
+          (member) => member.staff_designation === "Deputy Head of Department"
+        )
+      );
+      setHeadsOfSection(
+        data.filter((member) => member.staff_designation === "Head, Section")
+      );
+      setHeadsOfSpecialSection(
+        data.filter(
+          (member) => member.staff_designation === "Head, Special Section"
+        )
+      );
+      setHeadsOfUnit(
+        data.filter((member) => member.staff_designation === "Head, Unit")
+      );
+      setMscCoord(
+        data.filter((member) => member.staff_designation === "MSC_COORD")
+      );
+
       setLoading(false);
     };
     getData();
   }, []);
-  let campusChief = keyOfficials.slice(0, 1);
-  let assistantCampusChief = keyOfficials.slice(1, 4);
-  let hod = keyOfficials.slice(4, 10);
-  let dhod = keyOfficials.slice(10, 16);
-  let msc = keyOfficials.slice(16, 19);
-  let unithead = keyOfficials.slice(19, 23);
-  let sectionheads = keyOfficials.slice(23, 25);
-  let administrative = [];
-  administrative.push(keyOfficials[25]);
-  administrative.push(keyOfficials[26]);
-  administrative.push(keyOfficials[29]);
-  console.log(administrative);
+
   return (
     <div className="flex flex-col justify-center items-center">
       {loading ? (
@@ -44,12 +73,12 @@ const Page = () => {
         <>
           <RenderTeamCards title="Campus Officials" Members={campusChief} />
           <RenderTeamCards title="" Members={assistantCampusChief} />
-          <RenderTeamCards title="" Members={hod} />
-          <RenderTeamCards title="" Members={dhod} />
-          <RenderTeamCards title="" Members={msc} />
-          <RenderUnitHeadComponent Members={unithead} />
-          <RenderTeamCards title="" Members={sectionheads} />
-          <RenderTeamCards title="" Members={administrative} />
+          <RenderTeamCards title="" Members={headsOfDepartment} />
+          <RenderTeamCards title="" Members={deputyHeadsOfDepartment} />
+          <RenderTeamCards title="" Members={mscCoord} />
+          <RenderUnitHeadComponent title="" Members={headsOfUnit} />
+          <RenderTeamCards title="" Members={headsOfSection} />
+          <RenderTeamCards title="" Members={headsOfSpecialSection} />
         </>
       )}
     </div>

@@ -7,6 +7,10 @@ const Container = styled.div`
   width: 100%;
   padding: 20px;
   text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
 `;
 
 const StyledParagraph = styled.div`
