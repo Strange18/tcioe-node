@@ -188,7 +188,7 @@ const Page = () => {
           {calendars.map((calendar) => (
             <DownloadItem
               key={calendar.id}
-              href={calendar.calendar_pdf}
+              href={calendar.calendar_pdf.replace(/^http:/, 'https:')}
               onClick={(e) => {
                 e.preventDefault();
                 handleCalendarClick(calendar);
