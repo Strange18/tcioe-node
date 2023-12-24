@@ -134,22 +134,6 @@ const IframeContainer = styled.div`
   }
 `;
 
-const CloseButton = styled.button`
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background-color: #f97a00;
-  color: white;
-  padding: 8px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
 const extractTitleWithoutNumbers = (title) => {
   return title.replace(/[\d_\-]+/g, "");
 };
@@ -200,11 +184,6 @@ const Page = () => {
       <HeaderComponent menuItems={menuItems} />
       <Wrapper>
         <IframeContainer clicked={clickedItemId}>
-          {typeof window !== "undefined" && window.innerWidth > 768 && (
-            <CloseButton onClick={() => setClickedItemId(null)}>
-              Close
-            </CloseButton>
-          )}
           {clickedItemId && (
             <Viewer src={data.find((item) => item.id === clickedItemId)?.file} />
           )}
