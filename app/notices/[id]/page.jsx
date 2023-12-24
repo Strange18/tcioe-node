@@ -79,20 +79,21 @@ const Line = styled.div`
 
   @media (max-width: 958px) {
     height: 2px;
-    width: ${(props) => (props.width ? props.width : "300px")};
+    width: ${(props) => (props.width ? props.width : "285px")};
   }
 `;
 
 const UnderLine = styled.div`
   height: 2px;
-  width: ${(props) => (props.width ? props.width : "300px")};
+  // width: ${(props) => (props.width ? props.width : "300px")};
+  width: 100%;
   background-color: #f97a00;
   border-radius: 2px;
   margin-bottom: 10px;
 
   @media (max-width: 1200px) {
     height: 2px;
-    width: ${(props) => (props.width ? props.width : "300px")};
+    // width: ${(props) => (props.width ? props.width : "300px")};
   }
 
   // @media (max-width: 1200px) {

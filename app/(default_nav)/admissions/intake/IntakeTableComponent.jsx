@@ -86,7 +86,7 @@ const ResponsiveTable = () => {
             <TableData>36</TableData>
             <TableData>108</TableData>
             <TableData>-</TableData>
-            <TableData>192</TableData>
+            <TableData>144</TableData>
           </TableRow>
           <TableRow>
             <ProgramData>
@@ -124,7 +124,7 @@ const ResponsiveTable = () => {
             <TableData>108</TableData>
             <TableData>324</TableData>
             <TableData>-</TableData>
-            <TableData>480</TableData>
+            <TableData>432</TableData>
           </TableRowTotal>
           <TableRow>
             <ProgramData>M.Sc. in Earthquake Engineering (MSEQE)</ProgramData>
