@@ -1,7 +1,7 @@
 import React from "react";
 import ClubsComponent from "@/components/CampusLife/ClubComponent";
 import amesin3 from "/assets/campuslife/AMESIN/amesin8.jpeg";
-import AmesinGallary from "@/components/Amesin_gallary";
+import AmesinGallary from "@/components/Amesin_Gallary";
 
 const page = () => {
   const text = [

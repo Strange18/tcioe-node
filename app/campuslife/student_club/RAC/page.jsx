@@ -1,7 +1,7 @@
 import React from "react";
 import ClubsComponent from "@/components/CampusLife/ClubComponent";
 import rac2 from "/assets/campuslife/RAC/rac2.jpeg";
-import RacImageGallery from "@/components/RacGallary";
+import RacImageGallery from "@/components/Rac_Gallary";
 
 const page = () => {
   const text = [

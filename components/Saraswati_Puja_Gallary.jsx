@@ -2,7 +2,7 @@
 import React from "react";
 import { BodyText } from "./AboutThapathaliComponent";
 import styled from "styled-components";
-import CampusImageIndividual from "./CampusImageIndividual";
+import RenderGallaryImages from "./RenderGallaryImages";
 
 import puja1 from "/assets/campuslife/Saraswati_Puja/puja1.jpg";
 import puja2 from "/assets/campuslife/Saraswati_Puja/puja2.jpg";
@@ -20,11 +20,6 @@ import puja13 from "/assets/campuslife/Saraswati_Puja/puja13.jpg";
 import puja14 from "/assets/campuslife/Saraswati_Puja/puja14.jpg";
 import puja15 from "/assets/campuslife/Saraswati_Puja/puja15.jpg";
 import puja16 from "/assets/campuslife/Saraswati_Puja/puja16.jpg";
-import puja17 from "/assets/campuslife/Saraswati_Puja/puja17.jpg";
-
-
-
-
 
 const HeadingText = styled("h1")`
   font-size: 26px;
@@ -34,7 +29,7 @@ const HeadingText = styled("h1")`
 
 const SubHeading = styled(HeadingText)`
   font-weight: 400;
-  margin-top: 144px;
+  margin-top: 50px;
 `;
 
 const Heading = styled(HeadingText)`
@@ -45,31 +40,6 @@ const SubText = styled(BodyText)`
   text-align: center;
   width: 60%;
   margin: 26px auto;
-`;
-
-const Container = styled("div")`
-  width: 90vw;
-  margin: 26px auto;
-  padding-bottom: 32px;
-`;
-
-const GridWrapper = styled("div")`
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: 200px;
-
-  & > div:nth-child(3) {
-    grid-row: span 2 / auto;
-  }
-
-  & > div:nth-child(5) {
-    grid-column: span 2 / auto;
-  }
-
-  & > div:nth-child(6) {
-    grid-row: span 2 / auto;
-  }
 `;
 
 const Saraswati_Puja_Gallary = ({ title, description }) => {
@@ -157,24 +127,13 @@ const Saraswati_Puja_Gallary = ({ title, description }) => {
         image_src: puja16,
         image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
-      {
-        id: 17,
-        image_src: puja17,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      }
   ];
   return (
     <>
       <SubHeading>{title}</SubHeading>
       <Heading>Experience</Heading>
       <SubText>{description}</SubText>
-      <Container>
-        <GridWrapper>
-          {images_api.map((image) => (
-            <CampusImageIndividual key={image.id} content={image} />
-          ))}
-        </GridWrapper>
-      </Container>
+      <RenderGallaryImages images={images_api} />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React from "react";
 import ClubsComponent from "@/components/CampusLife/ClubComponent";
 import ecast9 from "/assets/campuslife/ECAST/ecastimg.jpeg";
-import EcastGallary from "@/components/Ecast_gallary";
+import EcastGallary from "@/components/Ecast_Gallary";
 
 const page = () => {
   const text = [

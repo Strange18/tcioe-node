@@ -76,7 +76,7 @@ const Page = () => {
           <RenderTeamCards title="" Members={headsOfDepartment} />
           <RenderTeamCards title="" Members={deputyHeadsOfDepartment} />
           <RenderTeamCards title="" Members={mscCoord} />
-          <RenderUnitHeadComponent title="" Members={headsOfUnit} />
+          <RenderTeamCards title="" Members={headsOfUnit} />
           <RenderTeamCards title="" Members={headsOfSection} />
           <RenderTeamCards title="" Members={headsOfSpecialSection} />
         </>

@@ -2,9 +2,9 @@
 import React from "react";
 import { BodyText } from "./AboutThapathaliComponent";
 import styled from "styled-components";
-import CampusImageIndividual from "./CampusImageIndividual";
+import RenderGallaryImages from "./RenderGallaryImages";
 
-import tensor from "/assets/campuslife/Tensor/tensor.jpeg";
+// import tensor from "/assets/campuslife/Tensor/tensor.jpeg";
 import tensor2 from "/assets/campuslife/Tensor/tensor2.jpg";
 import tensor3 from "/assets/campuslife/Tensor/tensor3.jpeg";
 import tensor4 from "/assets/campuslife/Tensor/tensor4.jpg";
@@ -17,6 +17,7 @@ import tensor10 from "/assets/campuslife/Tensor/tensor10.jpg";
 
 
 
+
 const HeadingText = styled("h1")`
   font-size: 26px;
   color: #090c4c;
@@ -25,7 +26,7 @@ const HeadingText = styled("h1")`
 
 const SubHeading = styled(HeadingText)`
   font-weight: 400;
-  margin-top: 144px;
+  margin-top: 50px;
 `;
 
 const Heading = styled(HeadingText)`
@@ -36,31 +37,6 @@ const SubText = styled(BodyText)`
   text-align: center;
   width: 60%;
   margin: 26px auto;
-`;
-
-const Container = styled("div")`
-  width: 90vw;
-  margin: 26px auto;
-  padding-bottom: 32px;
-`;
-
-const GridWrapper = styled("div")`
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: 200px;
-
-  & > div:nth-child(3) {
-    grid-row: span 2 / auto;
-  }
-
-  & > div:nth-child(5) {
-    grid-column: span 2 / auto;
-  }
-
-  & > div:nth-child(6) {
-    grid-row: span 2 / auto;
-  }
 `;
 
 const Tensor_gallary = ({ title, description }) => {
@@ -118,13 +94,7 @@ const Tensor_gallary = ({ title, description }) => {
       <SubHeading>{title}</SubHeading>
       <Heading>Experience</Heading>
       <SubText>{description}</SubText>
-      <Container>
-        <GridWrapper>
-          {images_api.map((image) => (
-            <CampusImageIndividual key={image.id} content={image} />
-          ))}
-        </GridWrapper>
-      </Container>
+      <RenderGallaryImages  images={images_api} />
     </>
   );
 };

@@ -2,9 +2,9 @@
 import React from "react";
 import { BodyText } from "./AboutThapathaliComponent";
 import styled from "styled-components";
-import CampusImageIndividual from "./CampusImageIndividual";
+import RenderGallaryImages from "./RenderGallaryImages";
 
-import ecast from "/assets/campuslife/ECAST/ecastLogo.png";
+// import ecast from "/assets/campuslife/ECAST/ecastLogo.png";
 import ecast1 from "/assets/campuslife/ECAST/ecast1.png";
 import ecast2 from "/assets/campuslife/ECAST/ecast2.jpg";
 import ecast3 from "/assets/campuslife/ECAST/ecast3.jpg";
@@ -15,9 +15,6 @@ import ecast8 from "/assets/campuslife/ECAST/ecast8.jpg";
 import ecast9 from "/assets/campuslife/ECAST/ecast9.jpg";
 import ecast10 from "/assets/campuslife/ECAST/ecast10.jpg";
 
-
-
-
 const HeadingText = styled("h1")`
   font-size: 26px;
   color: #090c4c;
@@ -26,7 +23,7 @@ const HeadingText = styled("h1")`
 
 const SubHeading = styled(HeadingText)`
   font-weight: 400;
-  margin-top: 144px;
+  margin-top: 50px;
 `;
 
 const Heading = styled(HeadingText)`
@@ -39,30 +36,6 @@ const SubText = styled(BodyText)`
   margin: 26px auto;
 `;
 
-const Container = styled("div")`
-  width: 90vw;
-  margin: 26px auto;
-  padding-bottom: 32px;
-`;
-
-const GridWrapper = styled("div")`
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: 200px;
-
-  & > div:nth-child(3) {
-    grid-row: span 2 / auto;
-  }
-
-  & > div:nth-child(5) {
-    grid-column: span 2 / auto;
-  }
-
-  & > div:nth-child(6) {
-    grid-row: span 2 / auto;
-  }
-`;
 
 const Ecast_gallary = ({ title, description }) => {
   const images_api = [
@@ -76,54 +49,48 @@ const Ecast_gallary = ({ title, description }) => {
       image_src: ecast10,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
-   {
-      id: 4,
+    {
+      id: 3,
       image_src: ecast2,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    }, 
+    },
     {
-      id: 5,
+      id: 4,
       image_src: ecast3,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
-      id: 6,
+      id: 5,
       image_src: ecast4,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
-      id: 7,
+      id: 6,
       image_src: ecast9,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
-      id: 8,
+      id: 7,
       image_src: ecast6,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
-      id: 9,
+      id: 8,
       image_src: ecast7,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
-        id: 10,
-        image_src: ecast8,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
+      id: 9,
+      image_src: ecast8,
+      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
   ];
   return (
     <>
       <SubHeading>{title}</SubHeading>
       <Heading>Experience</Heading>
       <SubText>{description}</SubText>
-      <Container>
-        <GridWrapper>
-          {images_api.map((image) => (
-            <CampusImageIndividual key={image.id} content={image} />
-          ))}
-        </GridWrapper>
-      </Container>
+      <RenderGallaryImages images={images_api} />
     </>
   );
 };
