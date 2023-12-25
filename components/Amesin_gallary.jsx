@@ -36,7 +36,7 @@ const SubText = styled(BodyText)`
 `;
 
 
-const Amesin_gallary = ({ title, description }) => {
+const Amesin_Gallary = ({ title, description }) => {
   const images_api = [
     {
       id: 1,
@@ -94,4 +94,4 @@ const Amesin_gallary = ({ title, description }) => {
   );
 };
 
-export default Amesin_gallary;
+export default Amesin_Gallary;

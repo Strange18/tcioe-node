@@ -37,7 +37,7 @@ const SubText = styled(BodyText)`
 `;
 
 
-const Ecast_gallary = ({ title, description }) => {
+const Ecast_Gallary = ({ title, description }) => {
   const images_api = [
     {
       id: 1,
@@ -95,4 +95,4 @@ const Ecast_gallary = ({ title, description }) => {
   );
 };
 
-export default Ecast_gallary;
+export default Ecast_Gallary;

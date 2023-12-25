@@ -39,7 +39,7 @@ const SubText = styled(BodyText)`
   margin: 26px auto;
 `;
 
-const Tensor_gallary = ({ title, description }) => {
+const Tensor_Gallary = ({ title, description }) => {
   const images_api = [
     {
       id: 1,
@@ -99,4 +99,4 @@ const Tensor_gallary = ({ title, description }) => {
   );
 };
 
-export default Tensor_gallary;
+export default Tensor_Gallary;
