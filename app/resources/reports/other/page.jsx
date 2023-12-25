@@ -148,7 +148,7 @@ const Page = () => {
         const annualReports = data.filter((report) => report.type === "bc79aa01-6e9b-4e8b-a0db-21c499941757");
 
         const sortedReports = annualReports.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
-
+      
         if (sortedReports.length > 0) {
           setSelectedReport(sortedReports[0]);
 
@@ -169,6 +169,7 @@ const Page = () => {
 
     window.history.pushState(null, null, `/resources/reports/other#/${report.id}`);
   };
+   
 
   return (
     <Wrapper>

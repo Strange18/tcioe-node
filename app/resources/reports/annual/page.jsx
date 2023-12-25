@@ -149,7 +149,7 @@ const Page = () => {
 
         const sortedReports = annualReports.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
 
-        if (sortedReports.length > 0) {
+        if (sortedReports.length > 0) { // to set first one as selected report
           setSelectedReport(sortedReports[0]);
 
           window.history.pushState(null, null, `/resources/reports/annual#/${sortedReports[0].id}`);
@@ -169,6 +169,7 @@ const Page = () => {
 
     window.history.pushState(null, null, `/resources/reports/annual#/${report.id}`);
   };
+  
 
   return (
     <Wrapper>
@@ -186,8 +187,11 @@ const Page = () => {
         <EmbeddedContainer>
           {selectedReport && (
             <>
-              <Viewer src={selectedReport.file} />
+   
+     <Viewer src={`http://notices.tcioe.edu.np/media/media/reports/Annual_Report__2078_079.pdf`} /> 
+
             </>
+            
           )}
         </EmbeddedContainer>
       </Container>

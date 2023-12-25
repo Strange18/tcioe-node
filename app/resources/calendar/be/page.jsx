@@ -150,8 +150,7 @@ const Page = () => {
           throw new Error(`API request failed with status ${response.status}`);
         }
         const data = await response.json();
-        console.log("This is calendar:", data);
-
+       
         const filteredCalendars = data.filter(
           (calendar) => calendar.calendar_level === "Bachelors in Engineering"
         );
@@ -179,6 +178,12 @@ const Page = () => {
     window.history.pushState(null, null, `/resources/calendar/be#/${calendar.id}`);
   };
 
+  useEffect(() => {
+    if (selectedCalendar) {
+      console.log("Selected Calendar PDF URL:", selectedCalendar.calendar_pdf);
+    }
+  }, [selectedCalendar]);
+
 
   return (
     <Wrapper>
@@ -188,7 +193,7 @@ const Page = () => {
           {calendars.map((calendar) => (
             <DownloadItem
               key={calendar.id}
-              href={calendar.calendar_pdf.replace(/^http:/, 'https:')}
+              href={calendar.calendar_pdf}
               onClick={(e) => {
                 e.preventDefault();
                 handleCalendarClick(calendar);
