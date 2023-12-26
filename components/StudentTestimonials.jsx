@@ -18,7 +18,7 @@ const Container = styled.section`
   background-color: #fffff;
   padding: 5rem 0rem;
   padding-bottom: 0rem;
-  margin-top: 250px;
+  margin-top: 150px;
   display: flex;
   flex-direction: column;
 `;
@@ -60,7 +60,7 @@ const CurveContainer = styled("div")`
   width: 100%;
   height: 130px;
   position: absolute;
-  top: -49px;
+  top: -48px;
   right: 0px;
   // overflow-y: hidden;
 
@@ -74,7 +74,7 @@ const CurveContainer = styled("div")`
 const Curve = styled.div`
   width: 100%;
   height: 100%;
-  posistion: relative;
+  position: relative;
 `;
 
 export const CarouserContainer = styled("div")`

@@ -8,15 +8,15 @@ const CardWrapper = styled.section`
   display: flex;
   flex-direction: column;
   border: 1px solid lightgrey;
-  width: 300px;
+  width: 275px;
   border-top: 0px;
-  margin-top: 10em;
+  margin-top: 8em;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
   box-shadow: 0 4px 4px -4px gray;
   &:hover {
     box-shadow: 0 4px 4px -4px gray;
-    scale: 1.1;
+    scale: 1.05;
   }
 `;
 

@@ -10,7 +10,6 @@ import SearchNotice from "./SearchNotice";
 const Header = styled("header")`
   width: 100%;
   padding: 0 64px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,6 +31,7 @@ const Logo = styled.div`
   width: 70px;
   height: 85px;
   position: relative;
+  }
 `;
 const MiniSubtitle = styled.div`
   font-size: 14px;

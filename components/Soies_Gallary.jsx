@@ -2,7 +2,8 @@
 import React from "react";
 import { BodyText } from "./AboutThapathaliComponent";
 import styled from "styled-components";
-import CampusImageIndividual from "./CampusImageIndividual";
+import RenderGallaryImages from "./RenderGallaryImages";
+
 import soies1 from "/assets/campuslife/SOIES/soies1.jpeg";
 import soies2 from "/assets/campuslife/SOIES/soies2.jpeg";
 import soies3 from "/assets/campuslife/SOIES/soies3.jpeg";
@@ -17,23 +18,24 @@ import soies11 from "/assets/campuslife/SOIES/soies11.jpeg";
 import soies12 from "/assets/campuslife/SOIES/soies12.jpeg";
 import soies13 from "/assets/campuslife/SOIES/soies13.jpeg";
 import soies14 from "/assets/campuslife/SOIES/soies14.jpeg";
-import soies15 from "/assets/campuslife/SOIES/soies15.jpeg";
+// import soies15 from "/assets/campuslife/SOIES/soies15.jpeg";
 import soies16 from "/assets/campuslife/SOIES/soies16.jpeg";
 import soies17 from "/assets/campuslife/SOIES/soies17.jpeg";
 import soies18 from "/assets/campuslife/SOIES/soies18.jpeg";
 import soies19 from "/assets/campuslife/SOIES/soies19.jpeg";
 import soies20 from "/assets/campuslife/SOIES/soies20.jpeg";
-import soies21 from "/assets/campuslife/SOIES/soies21.jpeg";
+// import soies21 from "/assets/campuslife/SOIES/soies21.jpeg";
 import soies22 from "/assets/campuslife/SOIES/soies22.jpeg";
 import soies23 from "/assets/campuslife/SOIES/soies23.jpeg";
 import soies24 from "/assets/campuslife/SOIES/soies24.jpeg";
 import soies25 from "/assets/campuslife/SOIES/soies25.jpeg";
 import soies26 from "/assets/campuslife/SOIES/soies26.jpeg";
-import soies27 from "/assets/campuslife/SOIES/soies27.jpeg";
+// import soies27 from "/assets/campuslife/SOIES/soies27.jpeg";
 import soies28 from "/assets/campuslife/SOIES/soies28.jpeg";
 import soies29 from "/assets/campuslife/SOIES/soies29.jpeg";
 import soies30 from "/assets/campuslife/SOIES/soies30.jpeg";
 import soies31 from "/assets/campuslife/SOIES/soies31.jpeg";
+
 
 
 
@@ -46,7 +48,7 @@ const HeadingText = styled("h1")`
 
 const SubHeading = styled(HeadingText)`
   font-weight: 400;
-  margin-top: 144px;
+  margin-top: 50px;
 `;
 
 const Heading = styled(HeadingText)`
@@ -57,31 +59,6 @@ const SubText = styled(BodyText)`
   text-align: center;
   width: 60%;
   margin: 26px auto;
-`;
-
-const Container = styled("div")`
-  width: 90vw;
-  margin: 26px auto;
-  padding-bottom: 32px;
-`;
-
-const GridWrapper = styled("div")`
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: 200px;
-
-  & > div:nth-child(3) {
-    grid-row: span 2 / auto;
-  }
-
-  & > div:nth-child(5) {
-    grid-column: span 2 / auto;
-  }
-
-  & > div:nth-child(6) {
-    grid-row: span 2 / auto;
-  }
 `;
 
 const Soies_Gallary = ({ title, description }) => {
@@ -158,11 +135,11 @@ const Soies_Gallary = ({ title, description }) => {
         image_src: soies14,
         image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       },
-      {
-        id: 15,
-        image_src: soies15,
-        image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      },
+      // {
+      //   id: 15,
+      //   image_src: soies15,
+      //   image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      // },
       {
         id: 15,
         image_src: soies16,
@@ -240,13 +217,7 @@ const Soies_Gallary = ({ title, description }) => {
       <SubHeading>{title}</SubHeading>
       <Heading>Experience</Heading>
       <SubText>{description}</SubText>
-      <Container>
-        <GridWrapper>
-          {images_api.map((image) => (
-            <CampusImageIndividual key={image.id} content={image} />
-          ))}
-        </GridWrapper>
-      </Container>
+      <RenderGallaryImages images={images_api} />
     </>
   );
 };

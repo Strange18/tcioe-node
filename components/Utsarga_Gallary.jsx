@@ -2,7 +2,7 @@
 import React from "react";
 import { BodyText } from "./AboutThapathaliComponent";
 import styled from "styled-components";
-import CampusImageIndividual from "./CampusImageIndividual";
+import RenderGallaryImages from "./RenderGallaryImages";
 
 import utsarga1 from "/assets/campuslife/Utsarga/utsarga1.jpg";
 import utsarga2 from "/assets/campuslife/Utsarga/utsarga2.jpg";
@@ -16,11 +16,12 @@ import utsarga9 from "/assets/campuslife/Utsarga/utsarga9.jpg";
 import utsarga10 from "/assets/campuslife/Utsarga/utsarga10.jpg";
 import utsarga11 from "/assets/campuslife/Utsarga/utsarga11.jpg";
 import utsarga12 from "/assets/campuslife/Utsarga/utsarga12.jpg";
-import utsarga13 from "/assets/campuslife/Utsarga/utsarga13.jpg";
+// import utsarga13 from "/assets/campuslife/Utsarga/utsarga13.jpg";
 import utsarga14 from "/assets/campuslife/Utsarga/utsarga14.jpg";
 import utsarga15 from "/assets/campuslife/Utsarga/utsarga15.jpg";
 import utsarga16 from "/assets/campuslife/Utsarga/utsarga16.jpg";
 import utsarga17 from "/assets/campuslife/Utsarga/utsarga17.jpg";
+
 
 const HeadingText = styled("h1")`
   font-size: 26px;
@@ -30,7 +31,7 @@ const HeadingText = styled("h1")`
 
 const SubHeading = styled(HeadingText)`
   font-weight: 400;
-  margin-top: 144px;
+  margin-top: 50px;
 `;
 
 const Heading = styled(HeadingText)`
@@ -41,31 +42,6 @@ const SubText = styled(BodyText)`
   text-align: center;
   width: 60%;
   margin: 26px auto;
-`;
-
-const Container = styled("div")`
-  width: 90vw;
-  margin: 26px auto;
-  padding-bottom: 32px;
-`;
-
-const GridWrapper = styled("div")`
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-auto-rows: 200px;
-
-  & > div:nth-child(3) {
-    grid-row: span 2 / auto;
-  }
-
-  & > div:nth-child(5) {
-    grid-column: span 2 / auto;
-  }
-
-  & > div:nth-child(6) {
-    grid-row: span 2 / auto;
-  }
 `;
 
 const Utsarga_Gallary = ({ title, description }) => {
@@ -133,11 +109,11 @@ const Utsarga_Gallary = ({ title, description }) => {
       image_src: utsarga12,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
-    {
-      id: 13,
-      image_src: utsarga13,
-      image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
+    // {
+    //   id: 13,
+    //   image_src: utsarga13,
+    //   image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    // },
     {
       id: 14,
       image_src: utsarga14,
@@ -145,12 +121,12 @@ const Utsarga_Gallary = ({ title, description }) => {
     },
     {
       id: 15,
-      image_src: utsarga15,
+      image_src: utsarga16,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
       id: 16,
-      image_src: utsarga16,
+      image_src: utsarga15,
       image_context: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     },
     {
@@ -164,13 +140,7 @@ const Utsarga_Gallary = ({ title, description }) => {
       <SubHeading>{title}</SubHeading>
       <Heading>Experience</Heading>
       <SubText>{description}</SubText>
-      <Container>
-        <GridWrapper>
-          {images_api.map((image) => (
-            <CampusImageIndividual key={image.id} content={image} />
-          ))}
-        </GridWrapper>
-      </Container>
+      <RenderGallaryImages images={images_api} />
     </>
   );
 };
