@@ -56,7 +56,7 @@ const BodyText = styled.div`
   text-align: justify;
   overflow: hidden;
   transition: max-height 0.3s ease;
-  max-height: ${({ expanded }) => (expanded ? "unset" : "120px")};
+  max-height: ${({ expanded }) => (expanded ? "unset" : "125px")};
 `;
 const Readmore = styled.a`
   font-size: 16px;

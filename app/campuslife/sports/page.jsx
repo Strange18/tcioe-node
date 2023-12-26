@@ -47,7 +47,7 @@ const Page = () => {
     <PageContainer>
       <ContentContainer>
         <Heading>
-          <Emoji>🚧</Emoji>Work in Progress<Emoji>🚧</Emoji>
+          <Emoji>🚧</Emoji>Work in Progress <Emoji>🚧</Emoji>
         </Heading>
         <Subheading>
           This page is under construction. Check back soon!

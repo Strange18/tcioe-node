@@ -232,20 +232,20 @@ const BEIntakeTableComponent = () => {
           <TableRow>
             <TableData>Total</TableData>
             <TableData>3,400.00</TableData>
-            <TableData>30,000.00</TableData>
-            <TableData>1,10,000.00</TableData>
+            <TableData>40,000.00</TableData>
+            <TableData>1,15,000.00</TableData>
           </TableRow>
           <TableRow>
             <TableDataHeighlight>Fee Payable during Admission</TableDataHeighlight>
-            <TableData>3,400.00</TableData>
-            <TableData>30,000.00</TableData>
-            <TableData>1,10,000.00</TableData>
+            <TableData>15,470.00</TableData>
+            <TableData>1,84,800.00</TableData>
+            <TableData>4,60,550.00</TableData>
           </TableRow>
           <TableRow>
             <TableDataHeighlight>Total (4 Years Including Deposits)</TableDataHeighlight>
             <TableData>56,700.00</TableData>
-            <TableData>4,80,000.00</TableData>
-            <TableData>13,08,500.00</TableData>
+            <TableData>4,90,000.00</TableData>
+            <TableData>13,13,500.00</TableData>
           </TableRow>
         </tbody>
       </Table>

@@ -7,17 +7,15 @@ const Container = styled('div')`
     min-height: 255px;
     border: 1px solid #fff;
     padding: 24px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-
+    transition: 0.5s ease;
     &:hover {
         box-shadow: 0px -131px 57px 14px rgba(114,119,255,0.46) inset; 
         cursor: pointer;
-        transition: 0.5s ease;
     }
 `
 
@@ -36,7 +34,6 @@ const Heading = styled('h1')`
 const Subtext = styled('p')`
     display: none;
     color: #fff;
-
     ${Container}:hover & {
         display: block;
     }

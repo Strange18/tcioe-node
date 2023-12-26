@@ -7,6 +7,10 @@ export const CardsContainer = styled.section`
   display: flex;
   gap: 2em;
   justify-content: center;
+  @media (max-width: 764px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Title = styled.h1`
