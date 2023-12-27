@@ -144,33 +144,37 @@ const Page = () => {
       try {
         const response = await fetch("https://notices.tcioe.edu.np/api/report/");
         const data = await response.json();
-
+  
         const selfStudyReports = data.filter((report) => report.type === "8436a4bf-2406-4d66-bd34-a37def2f4ddb");
-
+  
         const sortedReports = selfStudyReports.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
-
+  
+        const storedReportId = localStorage.getItem("selectedReportId");
+  
         // Check if there are any reports
         if (sortedReports.length > 0) {
-          const storedReportId = localStorage.getItem("selectedReportId");
-
-          // If there is a stored report id or none, set the latest report as the selected report
+          // Set the selected report to the first report in the sorted list (latest report) only on initial load
           const defaultReport = storedReportId
             ? sortedReports.find((report) => report.id === storedReportId) || sortedReports[0]
             : sortedReports[0];
-
+  
           setSelectedReport(defaultReport);
           localStorage.setItem("selectedReportId", defaultReport.id);
           window.history.pushState(null, null, `/resources/reports/ssr/${defaultReport.id}`);
         }
-
+  
         setReports(sortedReports);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
+  
     fetchData();
   }, []);
+  
+  
+  
+  
 
   const getViewerSrc = (fileUrl) => {
     const fileName = fileUrl.split("/").pop();
