@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import HeaderComponent from "@/components/HeaderComponent";
 import { menuItems } from "@/utils/menuItems";
+import "pdfcraft/dist/index.es.css";
+import { Viewer } from "pdfcraft";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -114,11 +116,13 @@ const IframeContainer = styled.div`
   top: 150px;
   left: 35%;
   width: 60%;
+  width: ${(props) => (props.clicked ? "60%" : "0")};  
+
   height: ${(props) => (props.clicked ? "70vh" : "0")};
   border: none;
   overflow-y: auto;
   transition: height 0.3s ease;
-  border-radius:15px;
+  border-radius: 15px;
 
   @media (max-width: 768px) {
     position: relative;
@@ -127,24 +131,8 @@ const IframeContainer = styled.div`
     width: 100%;
     height: ${(props) => (props.clicked ? "50vh" : "0")};
     margin-top: 16px;
-    border-radius:10px;
-    left: 0; 
-  }
-`;
-
-const CloseButton = styled.button`
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  background-color: #f97a00;
-  color: white;
-  padding: 8px;
-  border: none;
-  cursor: pointer;
-  border-radius:5px;
-
-  @media (max-width: 768px) {
-    display: none;
+    border-radius: 10px;
+    left: 0;
   }
 `;
 
@@ -179,6 +167,12 @@ const Page = () => {
     fetchData();
   }, []);
 
+
+  const getViewerSrc = (fileUrl) => {
+    const fileName = fileUrl.split("/").pop();
+    return `https://notices.tcioe.edu.np/media/media/reports/${fileName}`;
+  };
+
   const handleItemClick = (itemId) => {
     setClickedItemId(itemId);
 
@@ -197,23 +191,12 @@ const Page = () => {
     <>
       <HeaderComponent menuItems={menuItems} />
       <Wrapper>
-      <IframeContainer clicked={clickedItemId}>
-  {typeof window !== 'undefined' && window.innerWidth > 768 && (
-    <CloseButton onClick={() => setClickedItemId(null)}>
-      Close
-    </CloseButton>
-  )}
-  {clickedItemId && (
-    <iframe
-      src={data.find((item) => item.id === clickedItemId)?.file}
-      width="100%"
-      height="100%"
-      frameBorder="0"
-    />
-  )}
-</IframeContainer>
+        <IframeContainer clicked={clickedItemId}>
+          {clickedItemId && (
+            <Viewer src={getViewerSrc(data.find((item) => item.id === clickedItemId)?.file)} />          )}
+        </IframeContainer>
 
-
+        
         <Header>
           <Title>ऐन</Title>
           <Line width={"100px"} />
@@ -237,7 +220,6 @@ const Page = () => {
               ))}
           </List>
         </Container>
-
         <Header>
           <Title>नियम</Title>
           <Line width={"100px"} />
@@ -261,7 +243,7 @@ const Page = () => {
               ))}
           </List>
         </Container>
-
+        
         <Header>
           <Title>विनियम</Title>
           <Line width={"100px"} />
@@ -285,6 +267,7 @@ const Page = () => {
               ))}
           </List>
         </Container>
+       
         <Header>
           <Title>कार्यविधि</Title>
           <Line width={"100px"} />
@@ -308,7 +291,7 @@ const Page = () => {
               ))}
           </List>
         </Container>
-
+       
         <Header>
           <Title>निर्देशिका</Title>
           <Line width={"100px"} />
