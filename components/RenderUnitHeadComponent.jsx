@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 export const CardsContainer = styled.section`
   display: flex;
-  gap: 2em;
+  gap: 3em;
   justify-content: center;
   @media (max-width: 764px) {
     flex-direction: column;
@@ -30,7 +30,7 @@ export const Title = styled.h1`
 
 export const Wrapper = styled.section`
   width: 95%;
-  padding: 62px;
+  padding: 32px 32px 64px 32px;
   @media (max-width: 764px) {
     padding: 32px;
   }

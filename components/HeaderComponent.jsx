@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import {React, useState} from "react";
 import styled from "styled-components";
 import logo from "@/assets/logo.svg";
 import Image from "next/legacy/image";
@@ -11,13 +11,17 @@ const Header = styled("header")`
   width: 100%;
   padding: 0 64px;
   display: flex;
-  justify-content: space-between;
+  gap: 2rem;
+  // justify-content: space-between;
   align-items: center;
   background-color: #fff;
   z-index: 100;
   box-shadow: 0 2px 2px rgba(0,0,0,0.15);
   position: sticky;
   top: 0;
+  @media (max-width: 920px) {
+    padding: 0 32px;
+  }
 `;
 
 const Flexbox = styled("div")`
@@ -59,6 +63,12 @@ const TextContainer = styled("div")`
 `;
 
 const HeaderComponent = ({ menuItems }) => {
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+
+  const handleCheckboxChange = (event) => {
+    setIsCheckboxChecked(event.target.checked);
+    document.body.style.overflow = event.target.checked ? 'hidden' : 'auto';
+  };
   return (
     <Header className="header-container">
       <Link href="/" style={{ textDecoration: "none" }}>
@@ -74,7 +84,8 @@ const HeaderComponent = ({ menuItems }) => {
         </Flexbox>
       </Link>
 
-      <input type="checkbox" name="" id="check" />
+      <input type="checkbox" name="" id="check"  checked={isCheckboxChecked}
+          onChange={handleCheckboxChange} / >
 
       <div className="hamburger-menu-container">
         <div className="hamburger-menu">

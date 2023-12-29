@@ -24,10 +24,10 @@ const TableRow = styled.tr`
 `;
 
 const TableRowTotal = styled.tr`
+font-weight: 600;
+color: #090c4c;
   &:nth-child(even) {
     background-color: #f2f2f2;
-    font-weight: 600;
-    color: #090c4c;
   }
 `;
 
