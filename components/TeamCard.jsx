@@ -10,7 +10,7 @@ const CardWrapper = styled.section`
   border: 1px solid lightgrey;
   width: 275px;
   border-top: 0px;
-  margin-top: 10em;
+  margin-top: 6em;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   box-shadow: 0 4px 4px -4px gray;

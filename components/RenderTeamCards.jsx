@@ -38,7 +38,7 @@ export const RenderTeamCards = ({ Members, title }) => {
       {title && (
         <div className="w-fit flex flex-col gap-1 justify-center pb-12">
           <Title>{title}</Title>
-          <div className="w-40 h-[6px] bg-[#f97a01] md:w-32 md:h-[5px] sm:w-10"></div>
+          <div className="h-[5px] bg-[#f97a01]"></div>
         </div>
       )}
       <CardsContainer>
