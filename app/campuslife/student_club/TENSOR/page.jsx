@@ -1,7 +1,7 @@
 import React from "react";
 import ClubsComponent from "@/components/CampusLife/ClubComponent";
 import tensor1 from "/assets/campuslife/Tensor/tensor1.jpg";
-import Tensor_Gallary from "@/components/Tensor_Gallary";
+import Tensor_gallary from "@/components/Tensor_gallary";
 const page = () => {
   const text = [
     `The Tensor student club (formed and focused specially on Data Science, AI and ML), is renowned for its exceptional activity and unwavering commitment to fostering a tech-centric learning environment. With a passion for technology and innovation, the Tensor club stands as a thriving hub for like-minded students seeking to delve deeper into the realms of electronics and computer engineering.
