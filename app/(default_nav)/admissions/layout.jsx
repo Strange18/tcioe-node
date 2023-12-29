@@ -19,31 +19,34 @@ const StyledParagraph = styled.div`
   color: #fff;
   background-color: #090C4C;
   padding: 15px;
-  border-radius: 8px 15px 15px 8px;
+  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: inline-block;
   position: relative;
   min-width: 30%;
   text-align: center;
   margin: 0 auto;
+  > a:hover{
+    color: #FFCC00;
+  }
 `;
 
-const VerticalLine = styled.div`
-  position: absolute;
-  height: 100%;
-  width: 10px; /* Increased line width */
-  top: 0;
-  left: -15px; /* Adjusted position */
-  background-color: #FFCC00;
-  border-radius: 8px 8px 8px 8px;
-`;
+// const VerticalLine = styled.div`
+//   position: absolute;
+//   height: 100%;
+//   width: 10px; /* Increased line width */
+//   top: 0;
+//   left: -15px; /* Adjusted position */
+//   background-color: #FFCC00;
+//   border-radius: 8px 8px 8px 8px;
+// `;
 
 const DisclamerParagraph = styled.div`
   font-size: 14px;
   font-weight: bold;
   color: #090C4C;
   padding: 15px;
-  border-radius: 8px 15px 15px 8px;
+  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: inline-block;
   position: relative;
@@ -58,7 +61,7 @@ export default function AdmissionsLayout({ children }) {
       {children}
       <Container>
         <StyledParagraph>
-          <VerticalLine></VerticalLine>
+          {/* <VerticalLine></VerticalLine> */}
           <a href="/notices/dc5e5f7a-1829-45c6-a76f-d0538d4e2592" target="_blank">BE/BArch Entrance/Admission Booklet 2080</a>
         </StyledParagraph>
         <DisclamerParagraph>

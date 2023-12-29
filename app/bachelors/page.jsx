@@ -13,7 +13,7 @@ import mechanical from "@/assets/mech_pic.jpeg";
 import civil from "@/assets/civil_pic.jpeg";
 import industrial from "@/assets/industrial_pic.jpeg";
 import architecture from "@/assets/arch-hero.jpg";
-import hero from "@/assets/program.png";
+import hero from "@/assets/bachelorprogram.jpg";
 
 const programs_data = [
   {

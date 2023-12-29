@@ -6,18 +6,17 @@ import Image from "next/legacy/image";
 
 const Container = styled.div`
   width: 100%;
-  min-height: 525px;
   display: flex;
   flex-wrap: wrap;
   gap: 32px;
-  padding: 12px 64px 12px 64px;
-  margin-bottom: 2rem;
+  padding: 32px 64px;
+  margin-block: 1rem;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 768px) {
     flex-direction: column;
+    gap: 16px;
     align-items: center;
-    padding: 12px 32px 12px 32px;
-    margin-top: -4rem;
+    padding: 12px 32px;
   }
 `;
 
@@ -25,12 +24,7 @@ const RightContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 75px 0 0px 0;
-
-  @media (max-width: 1200px) {
-    margin-top: -7rem;
-  }
+  gap: 1.5rem;
 `;
 
 export const BodyText = styled.div`
@@ -46,35 +40,26 @@ const LeftContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  margin-top: 75px;
-
-  @media (max-width: 1200px) {
-    margin-top: 50px;
-    flex: 100%;
-  }
 `;
 
 const Header = styled.div`
-  width: 100%;
+  width: fit-content;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 24px;
+  gap: 4px;
 `;
 const Title = styled.div`
   font-size: 2rem;
   font-weight: bold;
   color: #181b57;
-
   @media (max-width: 600px) {
     font-size: 1.5rem;
   }
 `;
 const Line = styled.div`
-  height: 4px;
-  width: ${(props) => (props.width ? props.width : "100px")};
+  height: 5px;
+  width: 100%;
   background-color: #f97a00;
-  border-radius: 6px;
 `;
 
 const AboutComponent = ({ heading, body_text, img }) => {
@@ -83,9 +68,9 @@ const AboutComponent = ({ heading, body_text, img }) => {
       <LeftContainer>
         <Image
           src={img}
-          layout="intrinsic"
           width={500}
           height={500}
+          layout="intrinsic"
           objectFit="contain"
           alt={heading}
         />
@@ -93,10 +78,9 @@ const AboutComponent = ({ heading, body_text, img }) => {
       <RightContainer>
       <Header>
           <Title>{heading}</Title>
-          <Line width={"100px"} />
-          
-        </Header>
-        <BodyText>{body_text}</BodyText>
+          <Line />
+      </Header>
+      <BodyText>{body_text}</BodyText>
       </RightContainer>
     </Container>
   );

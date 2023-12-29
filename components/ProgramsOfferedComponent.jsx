@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 12px;
+
 
   @media (max-width: 950px) {
     padding: 24px 0 0 0;
@@ -18,25 +18,22 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.div`
-  min-width: 25%;
+  width: fit-content;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 0px;
+  gap: 4px;
   justify-content: center;
   align-items: center;
 `;
 const Title = styled.div`
   font-size: 2rem;
   font-weight: bold;
-  /* margin-bottom: 12px; */
   color: #181b57;
 `;
 const Line = styled.div`
-  height: 4px;
-  width: ${(props) => (props.width ? props.width : "300px")};
+  height: 5px;
+  width: 100%;
   background-color: #f97a00;
-  border-radius: 6px;
 `;
 
 const Container = styled.div`
@@ -88,9 +85,11 @@ const LeftContainer = styled.div`
   }
 `;
 const ImageContainer = styled.div`
-  width: 80%;
+  width: 100%;
   height: 80%;
   position: relative;
+  border-radius: 12px;
+  overflow: hidden;
 `;
 
 const ProgramsOfferedComponent = ({ programs }) => {
@@ -109,7 +108,7 @@ const ProgramsOfferedComponent = ({ programs }) => {
                   <Image
                     src={program.image}
                     layout="fill"
-                    objectFit="contain"
+                    objectFit="cover"
                     alt="Campus Chief"
                   />
                 </ImageContainer>

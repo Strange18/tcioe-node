@@ -6,7 +6,7 @@ const UnionComponent = ({ title, description, members, tabletitle }) => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="flex flex-col w-full p-[64px] md:p-[32px] gap-8 text-gray-800 bg-white shadow-lg pin-r pin-y">
         <div className="flex-1 flex flex-col gap-4">
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 w-fit">
             <h1 className="  uppercase text-3xl font-bold text-[#012454]">
               {title}
             </h1>

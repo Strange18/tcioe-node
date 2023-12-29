@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   gap: 16px;
 
   h1 {
+    width: fit-content;
     font-size: 2rem;
     color: #2c3e50;
     font-weight: bold;
@@ -26,10 +27,9 @@ const Wrapper = styled.div`
     position: absolute;
     bottom: -4px;
     left: 0;
-    width: 100px;
+    width: 100%;
     height: 5px;
     background-color: #f97a00;
-    border-radius: 4px;
   }
 
   @media (max-width: 768px) {

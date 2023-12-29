@@ -7,7 +7,7 @@ import ProgramsOfferedComponent from "@/components/ProgramsOfferedComponent";
 
 import ProgramsIntroComponent from "@/components/ProgramsIntroComponent";
 import earthquakeEngineering from "@/assets/earthquakeEngineering.jpeg";
-import hero from "@/assets/masterprogram.png";
+import hero from "@/assets/masterprogram.jpg";
 import mechanicaldesign from "@/assets/mechdesign.jpeg";
 import informatics from "@/assets/elec_pic.jpeg";
 const programs_data = [

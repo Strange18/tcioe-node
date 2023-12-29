@@ -24,16 +24,14 @@ const StyledImage = styled(Image)`
 
 
 const Line = styled.div`
-  height: 4px;
-  width: ${(props) => (props.width ? props.width : "300px")};
+  height: 5px;
+  width: 100%;
   background-color: #f97a00;
-  border-radius: 6px;
 `;
 
 const Title = styled.div`
-  font-size: 30px;
+  font-size: 2rem;
   font-weight: bold;
-  /* margin-bottom: 12px; */
   color: #181b57;
 `;
 
@@ -52,23 +50,21 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.div`
-  min-width: 25%;
+  width: fit-content;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   margin-bottom: 0px;
   justify-content: center;
   align-items: center;
 `;
 const Page = () => {
   return (
-    
-    
     <div>
     <Wrapper>
         <Header>
           <Title>Organization Chart</Title>
-          <Line width={"270px"} />
+          <Line />
         </Header>
         </Wrapper>
       <StyledImage src={orgChart} alt="organization chart" />

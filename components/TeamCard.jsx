@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/legacy/image";
-import Link from "next/link";
 import React from "react";
 import { styled } from "styled-components";
+import defaultImage from "../public/tcioe_logo.png"
 
 const CardWrapper = styled.section`
   display: flex;
@@ -10,7 +10,7 @@ const CardWrapper = styled.section`
   border: 1px solid lightgrey;
   width: 275px;
   border-top: 0px;
-  margin-top: 8em;
+  margin-top: 6em;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   box-shadow: 0 4px 4px -4px gray;
@@ -52,15 +52,15 @@ const CardInfo = styled.section`
   // height: 95px;
 `;
 
-const CardInfoWithoutImg = styled.section`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
-  gap: 0.3em;
-  height: 110px;
-  border-top: 5px solid #f97a00;
-`;
+// const CardInfoWithoutImg = styled.section`
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+//   justify-content: center;
+//   gap: 0.3em;
+//   height: 110px;
+//   border-top: 5px solid #f97a00;
+// `;
 
 const Title = styled.h2`
   font-weight: 400;
@@ -86,16 +86,16 @@ const Email = styled.h4`
   color: #7177ff;
 `;
 
-const Department = styled.h3`
-  color: #777;
-  font-weight: 600;
-  font-size: 0.8rem;
-  text-align: center;
-  width: 70%;
-  margin: auto;
-  margin-top: 0px;
-  margin-bottom: 0px;
-`;
+// const Department = styled.h3`
+//   color: #777;
+//   font-weight: 600;
+//   font-size: 0.8rem;
+//   text-align: center;
+//   width: 70%;
+//   margin: auto;
+//   margin-top: 0px;
+//   margin-bottom: 0px;
+// `;
 
 const TeamCard = ({ detail }) => {
   console.log(detail);
@@ -108,11 +108,9 @@ const TeamCard = ({ detail }) => {
     : null;
   return (
     <CardWrapper>
-      {modifiedPhoto ? (
-        <>
           <CardImg>
             <ImgDiv>
-              <Image src={modifiedPhoto} layout="fill" objectFit="cover" />
+              <Image src={modifiedPhoto || defaultImage} layout="fill" objectFit="cover" />
             </ImgDiv>
             <EmptyDiv></EmptyDiv>
           </CardImg>
@@ -124,20 +122,8 @@ const TeamCard = ({ detail }) => {
               detail.staff_designation == "MSc. Coordinator") && (
               <Department>{detail.department}</Department>
             )} */}
-            {detail.email && <Email>{detail.email}</Email>}
+            {detail.email && <Email><a href={`mailto:${detail.email}`}>{detail.email}</a></Email>}
           </CardInfo>
-        </>
-      ) : (
-        <CardInfoWithoutImg>
-          <Title>{detail.name}</Title>
-          <Designation>{detail.responsibility}</Designation>
-          {detail.email && (
-            <Email>
-              <a href={`mailto:${detail.email}`}>{detail.email}</a>
-            </Email>
-          )}
-        </CardInfoWithoutImg>
-      )}
     </CardWrapper>
   );
 };

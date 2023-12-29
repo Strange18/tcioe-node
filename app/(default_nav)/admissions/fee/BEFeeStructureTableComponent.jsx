@@ -23,11 +23,18 @@ const TableRow = styled.tr`
   }
 `;
 
-const TableRowTotal = styled.tr`
+const TableRowBold = styled.tr`
+font-weight: 600;
   &:nth-child(even) {
     background-color: #f2f2f2;
-    font-weight: 600;
-    color: #090c4c;
+  }
+`;
+
+const TableRowHighlight = styled.tr`
+font-weight: 600;
+color: #090c4c;
+  &:nth-child(even) {
+    background-color: #f2f2f2;
   }
 `;
 
@@ -57,7 +64,7 @@ const TableData = styled.td`
   }
 `;
 
-const TableDataHeighlight = styled(TableData)`
+const TableDataHighlight = styled(TableData)`
   font-weight: 600;
   color: #090c4c;
 `;
@@ -157,20 +164,20 @@ const BEIntakeTableComponent = () => {
             <TableData>925.00</TableData>
             <TableData>4,000.00</TableData>
           </TableRow>
-          <TableRow>
+          <TableRowBold>
             <TableData>Total (1 Semester)</TableData>
             <TableData>5,890.00</TableData>
             <TableData>43,600.00</TableData>
             <TableData>1,21,850.00</TableData>
-          </TableRow>
-          <TableRow>
-            <TableDataHeighlight>Total (8 Semesters)</TableDataHeighlight>
+          </TableRowBold>
+          <TableRowHighlight>
+            <TableData>Total (8 Semesters)</TableData>
             <TableData>47,120.00</TableData>
             <TableData>3,48,800.00</TableData>
             <TableData>9,74,800.00</TableData>
-          </TableRow>
+          </TableRowHighlight>
           <TableRow>
-            <TableDataHeighlight colSpan="4">Other Fee (Payable Only Once)</TableDataHeighlight>
+            <TableDataHighlight colSpan="4">Other Fee (Payable Only Once)</TableDataHighlight>
           </TableRow>
           <TableRow>
             <TableData>Campus Operations and Infrastructure Development</TableData>
@@ -196,20 +203,20 @@ const BEIntakeTableComponent = () => {
             <TableData>500.00</TableData>
             <TableData>500.00</TableData>
           </TableRow>
-          <TableRow>
+          <TableRowBold>
             <TableData>Total</TableData>
             <TableData>6,180.00</TableData>
             <TableData>1,01,200.00</TableData>
             <TableData>2,23,700.00</TableData>
-          </TableRow>
-          <TableRow>
-            <TableDataHeighlight>Total (4 Years)</TableDataHeighlight>
+          </TableRowBold>
+          <TableRowHighlight>
+            <TableData>Total (4 Years)</TableData>
             <TableData>53,300.00</TableData>
             <TableData>4,50,000.00</TableData>
             <TableData>11,98,500.00</TableData>
-          </TableRow>
+          </TableRowHighlight>
           <TableRow>
-            <TableDataHeighlight colSpan="5">Deposit</TableDataHeighlight>
+            <TableDataHighlight colSpan="5">Deposits</TableDataHighlight>
           </TableRow>
           <TableRow>
             <TableData>Library Deposit</TableData>
@@ -229,24 +236,24 @@ const BEIntakeTableComponent = () => {
             <TableData>25,000.00</TableData>
             <TableData>1,00,000.00</TableData>
           </TableRow>
-          <TableRow>
+          <TableRowBold>
             <TableData>Total</TableData>
             <TableData>3,400.00</TableData>
             <TableData>40,000.00</TableData>
             <TableData>1,15,000.00</TableData>
-          </TableRow>
-          <TableRow>
-            <TableDataHeighlight>Fee Payable during Admission</TableDataHeighlight>
+          </TableRowBold>
+          <TableRowHighlight>
+            <TableData>Fee Payable during Admission</TableData>
             <TableData>15,470.00</TableData>
             <TableData>1,84,800.00</TableData>
             <TableData>4,60,550.00</TableData>
-          </TableRow>
-          <TableRow>
-            <TableDataHeighlight>Total (4 Years Including Deposits)</TableDataHeighlight>
+          </TableRowHighlight>
+          <TableRowHighlight>
+            <TableData>Total (4 Years Including Deposits)</TableData>
             <TableData>56,700.00</TableData>
             <TableData>4,90,000.00</TableData>
             <TableData>13,13,500.00</TableData>
-          </TableRow>
+          </TableRowHighlight>
         </tbody>
       </Table>
     </Container>

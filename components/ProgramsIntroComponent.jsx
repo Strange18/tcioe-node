@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   width: 100%;
-  min-height: 400px;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   padding-top: 32px;
@@ -15,8 +15,8 @@ const Wrapper = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 90%;
-  min-height: 400px;
+  width: 100%;
+  // min-height: 400px;
   gap: 3em;
   padding: 0px 64px 12px 64px;
   @media (max-width: 950px) {
@@ -32,11 +32,12 @@ const Title = styled.h1`
   }
 `;
 const Description = styled.div`
-  font-size: 1.25rem;
+  font-size: 18px;
+  text-align: justify;
   color: #909090;
-  @media (max-width: 950px) {
-    font-size: 1rem;
-  }
+  // @media (max-width: 950px) {
+  //   font-size: 1rem;
+  // }
 `;
 const ProgramsIntroComponent = ({ title, description }) => {
   return (

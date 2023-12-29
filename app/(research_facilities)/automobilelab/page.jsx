@@ -22,6 +22,7 @@ margin-bottom: 1rem;
 
 const listStyles = {
   listStyleType: 'disc',
+  marginLeft: '1rem',
 };
 
 
