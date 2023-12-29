@@ -215,10 +215,6 @@
     top: initial;
     left: initial;
     width: 80vw;
-    > li{
-      width: 100%;
-    padding-inline: 1rem;
-    }
   }
   
   .dropdown .dropdown-submenu {
@@ -227,9 +223,10 @@
     left: initial;
     top: initial;
     box-shadow: none;
-    > li{
-      width: 100%;
-      padding-inline: 1rem;
-      }
+  }
+
+  .dropdown .dropdown-submenu > li{
+    width: 100%;
+    padding-inline: 1rem;
   }
 }
