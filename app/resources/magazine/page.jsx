@@ -177,7 +177,7 @@ const MagazinePage = () => {
         />
       ) : (
         <MagazinePageWrapper>
-          <h1>Magazine</h1>
+          <h1>Magazines</h1>
           <MagazineList>
             {magazines.map((magazine) => (
               <MagazineCard key={magazine.id}>
