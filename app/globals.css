@@ -207,18 +207,18 @@
   }
 
   .menu-items {
-    width: 80vw;
+    width: 75vw;
   }
 
   .dropdown {
     position: initial;
     top: initial;
     left: initial;
-    width: 80vw;
+    width: 75vw;
   }
   
   .dropdown .dropdown-submenu {
-    width: 75vw;
+    width: 70vw;
     position: initial;
     left: initial;
     top: initial;

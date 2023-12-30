@@ -20,7 +20,7 @@ const Header = styled("header")`
   position: sticky;
   top: 0;
   @media (max-width: 920px) {
-    padding: 0 32px;
+    padding: 0 16px;
   }
 `;
 
