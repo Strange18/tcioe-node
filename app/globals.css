@@ -151,7 +151,7 @@
 #check {
   position: absolute;
   top: 50%;
-  right: 32px;
+  right: 16px;
   transform: translateY(-50%);
   width: 2.5rem;
   height: 2.5rem;
