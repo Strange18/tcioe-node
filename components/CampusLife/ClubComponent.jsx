@@ -28,12 +28,10 @@ const Title = tw.h1`
   uppercase
   text-3xl
   font-bold
-
+  mb-1
 `;
-
 const Line = tw.div`
-  h-[7px]
-  w-[100px]
+  h-[5px]
   bg-[#f97a01]
 `;
 const Text = tw.p`
@@ -48,9 +46,11 @@ const ClubComponent = (props) => {
   return (
     <Container>
       <UpperWrapper>
+      <div className="w-fit">
         <Title>{props.title}</Title>
         <Line />
-        <Text>{props.text1}</Text>
+      </div>
+      <Text>{props.text1}</Text>
       </UpperWrapper>
       <ImgWrapper>
         <Image

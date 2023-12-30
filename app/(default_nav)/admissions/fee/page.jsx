@@ -28,7 +28,7 @@ const RightContainer = styled.div`
 `;
 
 const Heading = styled.div`
-  font-size: 24px;
+  font-size: 2rem;
   font-weight: 700;
   color: #090c4c;
   text-align: center;
@@ -43,7 +43,7 @@ const BodyText = styled.div`
 `;
 
 const NoteContainer = styled.div`
-  margin-top: 30px;
+  // margin-top: 30px;
 `;
 
 const NoteHeading = styled.div`
@@ -66,7 +66,7 @@ const NoteText = styled.div`
 const FadedParagraph = styled.p`
   color: #a9a9a9;
   font-size: 14px;
-  margin-top: -10px;
+  // margin-top: -10px;
 `;
 const FeeStructure = () => {
   return (
@@ -92,7 +92,7 @@ const FeeStructure = () => {
           </BodyText>
 
           <NoteContainer>
-            <NoteHeading>Notes</NoteHeading>
+            <NoteHeading>Note:</NoteHeading>
             <NoteText>
               <p>
                 1. The tuition fee, examination fee, campus operations, and infrastructure development will be increased by 7% annually from next year, considering inflation, to reduce the impact of poverty and establish financial stability.

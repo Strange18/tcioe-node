@@ -19,14 +19,14 @@ const RightContainer = styled.div`
   flex: 3;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  // gap: 24px;
   // padding: 75px 0 0px 0;
   overflow-x: auto;
   margin: 20px auto;
 `;
 
 const Heading = styled.div`
-  font-size: 24px;
+  font-size: 2rem;
   font-weight: 700;
   color: #090c4c;
   text-align: center;
@@ -40,7 +40,7 @@ export const BodyText = styled.div`
 `;
 
 const NoteContainer = styled.div`
-  margin-top: 30px;
+  // margin-top: 30px;
 `;
 
 const NoteHeading = styled.div`
@@ -51,7 +51,7 @@ const NoteHeading = styled.div`
 `;
 
 const NoteText = styled.div`
-  font-size: 16px;
+  font-size: 18px;
   color: #8a8a8a;
   line-height: 1.8rem;
 

@@ -45,7 +45,7 @@ const TableData = styled.td`
   font-size: 14px; /* Default font size for data */
 
   @media (max-width: 768px) {
-    adding-left: 4px;
+    padding-left: 4px;
     padding-right: 4px;
     font-size: 12px;
   }
