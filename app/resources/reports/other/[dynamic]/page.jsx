@@ -145,13 +145,13 @@ const Page = () => {
         const response = await fetch("https://notices.tcioe.edu.np/api/report/");
         const data = await response.json();
   
-        const alumniReports = data.filter((report) => report.type === "97e712cd-26bb-4811-af60-a761cc412c2a");
+        const otherReports = data.filter((report) => report.type === "bc79aa01-6e9b-4e8b-a0db-21c499941757");
   
-        const sortedReports = alumniReports.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
+        const sortedReports = otherReports.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
   
         const storedReportId = localStorage.getItem("selectedReportId");
   
-        const isSamePage = window.location.pathname === `/alumni/${storedReportId}`;
+        const isSamePage = window.location.pathname === `/resources/reports/other/${storedReportId}`;
   
         if (sortedReports.length > 0) {
           const defaultReport = isSamePage
@@ -162,7 +162,7 @@ const Page = () => {
           localStorage.setItem("selectedReportId", defaultReport.id);
   
           if (isSamePage) {
-            window.history.pushState(null, null, `/alumni/${defaultReport.id}`);
+            window.history.pushState(null, null, `/resources/reports/other/${defaultReport.id}`);
           }
         }
   
@@ -170,7 +170,7 @@ const Page = () => {
   
         if (!isSamePage && sortedReports.length > 0) {
           const defaultOpenCalendarId = sortedReports[0].id;
-          window.history.pushState(null, null, `/alumni/${defaultOpenCalendarId}`);
+          window.history.pushState(null, null, `/resources/reports/other/${defaultOpenCalendarId}`);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -192,12 +192,12 @@ const Page = () => {
   const handleCardClick = (report) => {
     setSelectedReport(report);
     localStorage.setItem("selectedReportId", report.id);
-    window.history.pushState(null, null, `/alumni/${report.id}`);
+    window.history.pushState(null, null, `/resources/reports/other/${report.id}`);
   };
 
   return (
     <Wrapper>
-      <h1>Alumni</h1>
+      <h1>Other Reports</h1>
       <Container>
         <ReportsContainer>
           {reports.map((report) => (

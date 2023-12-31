@@ -135,83 +135,69 @@ const StyledPage = styled.div`
   }
 `;
 
+// ... (imports)
+
 const Page = () => {
-  const [reports, setReports] = useState([]);
-  const [selectedReport, setSelectedReport] = useState(null);
+  const [calendar, setCalendar] = useState([]);
+  const [selectedCalendar, setSelectedCalendar] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://notices.tcioe.edu.np/api/report/");
+        const response = await fetch("https://notices.tcioe.edu.np/api/calendar/");
         const data = await response.json();
-  
-        const alumniReports = data.filter((report) => report.type === "97e712cd-26bb-4811-af60-a761cc412c2a");
-  
-        const sortedReports = alumniReports.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
-  
-        const storedReportId = localStorage.getItem("selectedReportId");
-  
-        const isSamePage = window.location.pathname === `/alumni/${storedReportId}`;
-  
-        if (sortedReports.length > 0) {
-          const defaultReport = isSamePage
-            ? sortedReports.find((report) => report.id === storedReportId) || sortedReports[0]
-            : sortedReports[0];
-  
-          setSelectedReport(defaultReport);
-          localStorage.setItem("selectedReportId", defaultReport.id);
-  
-          if (isSamePage) {
-            window.history.pushState(null, null, `/alumni/${defaultReport.id}`);
-          }
-        }
-  
-        setReports(sortedReports);
-  
-        if (!isSamePage && sortedReports.length > 0) {
-          const defaultOpenCalendarId = sortedReports[0].id;
-          window.history.pushState(null, null, `/alumni/${defaultOpenCalendarId}`);
-        }
+
+        const bebarchCalendar = data.filter((calendar) => calendar.calendar_level === "Bachelors in Engineering");
+
+        const sortedCalendars = bebarchCalendar.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
+
+        const isSamePage = window.location.pathname === `/resources/calendar/be/${localStorage.getItem("selectedCalendarId")}`;
+
+        const defaultCalendar = isSamePage
+          ? sortedCalendars.find((calendar) => calendar.id === localStorage.getItem("selectedCalendarId")) || sortedCalendars[0]
+          : sortedCalendars[0];
+
+        setSelectedCalendar(defaultCalendar);
+        localStorage.setItem("selectedCalendarId", defaultCalendar.id);
+        window.history.pushState(null, null, `/resources/calendar/be/${defaultCalendar.id}`);
+
+        setCalendar(sortedCalendars);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-  
+
     fetchData();
   }, []);
-  
-
-  
-  
 
   const getViewerSrc = (fileUrl) => {
     const fileName = fileUrl.split("/").pop();
-    return `https://notices.tcioe.edu.np/media/media/reports/${fileName}`;
+    return `https://notices.tcioe.edu.np/media/media/calendars/${fileName}`;
   };
 
-  const handleCardClick = (report) => {
-    setSelectedReport(report);
-    localStorage.setItem("selectedReportId", report.id);
-    window.history.pushState(null, null, `/alumni/${report.id}`);
+  const handleCardClick = (calendar) => {
+    setSelectedCalendar(calendar);
+    localStorage.setItem("selectedCalendarId", calendar.id);
+    window.history.pushState(null, null, `/resources/calendar/be/${calendar.id}`);
   };
 
   return (
     <Wrapper>
-      <h1>Alumni</h1>
+      <h1>B.E./BArch. Academic Calendar</h1>
       <Container>
         <ReportsContainer>
-          {reports.map((report) => (
-            <ReportCard key={report.id} onClick={() => handleCardClick(report)}>
+          {calendar.map((calendar) => (
+            <ReportCard key={calendar.id} onClick={() => handleCardClick(calendar)}>
               <ItemText>
-                <ItemTitle isSelected={report === selectedReport}>{report.title}</ItemTitle>
+                <ItemTitle isSelected={calendar === selectedCalendar}>{calendar.title}</ItemTitle>
               </ItemText>
             </ReportCard>
           ))}
         </ReportsContainer>
         <EmbeddedContainer>
-          {selectedReport && (
+          {selectedCalendar && (
             <>
-              <Viewer src={getViewerSrc(selectedReport.file)} />
+              <Viewer src={getViewerSrc(selectedCalendar.calendar_pdf)} />
             </>
           )}
         </EmbeddedContainer>

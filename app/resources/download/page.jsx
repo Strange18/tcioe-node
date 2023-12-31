@@ -1,8 +1,11 @@
-"use client";
+"use client"
+
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import HeaderComponent from "@/components/HeaderComponent";
 import { menuItems } from "@/utils/menuItems";
+import "pdfcraft/dist/index.es.css";
+import { Viewer } from "pdfcraft";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -82,7 +85,7 @@ const DownloadItem = styled.a`
   transition: 0.2s ease-in-out;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-decoration: none;
-  color: ${(props) => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
+  color: ${(props) => (props.isSelected ? "#f97a00" : "#2c3e50")};
 
   &:hover {
     background-color: ${(props) => (props.isSelected ? "transparent" : "#d5dbdb")};
@@ -102,39 +105,29 @@ const ItemText = styled.div`
 `;
 
 const ItemTitle = styled.div`
-  font-size: 1.2rem;
+  font-size: 1rem;
+  color: ${(props) => (props.isSelected ? "#f97a00" : "#2c3e50")};
   font-weight: bold;
+  width: 100%;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  color: ${(props) => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
+  white-space: normal;
+  text-align: center;
+  max-height: 100px;
 
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    max-height: 80px;
   }
 `;
 
 const EmbeddedContainer = styled.div`
   flex: 3;
   max-width: 1000px;
-  margin-top: -16px;
-  align-self: flex-start;
+  margin: 16px auto;
+  align-self: center;
 
   @media (max-width: 768px) {
-    width: 100%;
-    order: 1;
-  }
-`;
-
-const EmbeddedIframe = styled.iframe`
-  width: 100%;
-  height: 500px;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 768px) {
-    height: 400px;
+    width: calc(100% - 20px);
   }
 `;
 
@@ -157,11 +150,21 @@ const Page = () => {
         const response = await fetch("https://notices.tcioe.edu.np/api/resource-search/?editable=True");
         const data = await response.json();
 
-        const sortedDownloads = data.sort((a, b) => {
-          return new Date(b.created_at) - new Date(a.created_at);
-        });
+        const sortedDownloads = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        const isSamePage = window.location.pathname === `/resources/download/${localStorage.getItem("selectedDownloadId")}`;
+
 
         setDownloads(sortedDownloads);
+
+        const storedSelectedDownloadId = localStorage.getItem("selectedDownloadId");
+
+        if (isSamePage && storedSelectedDownloadId) {
+          const storedSelectedDownload = sortedDownloads.find((download) => download.id === storedSelectedDownloadId);
+          if (storedSelectedDownload) {
+            setSelectedDownload(storedSelectedDownload);
+            return;
+          }
+        }
 
         if (sortedDownloads.length > 0) {
           setSelectedDownload(sortedDownloads[0]);
@@ -174,6 +177,17 @@ const Page = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const handleLatestDownloadId = (downloadId) => {
+      window.history.pushState(null, null, `/resources/download/${downloadId}`);
+    };
+
+    if (selectedDownload) {
+      handleLatestDownloadId(selectedDownload.id);
+      localStorage.setItem("selectedDownloadId", selectedDownload.id);
+    }
+  }, [selectedDownload]);
+
   return (
     <Wrapper>
       <h1>Downloads</h1>
@@ -182,7 +196,9 @@ const Page = () => {
           {downloads.map((download) => (
             <DownloadItem
               key={download.id}
-              onClick={() => setSelectedDownload(download)}
+              onClick={() => {
+                setSelectedDownload(download);
+              }}
               isSelected={download === selectedDownload}
             >
               <ItemText>
@@ -194,12 +210,7 @@ const Page = () => {
         <EmbeddedContainer>
           {selectedDownload && (
             <>
-              <EmbeddedIframe
-                title={selectedDownload.title}
-                src={`https://notices.tcioe.edu.np/media/files/${selectedDownload.file.split("/")[5]}`}
-                frameBorder="0"
-                allowFullScreen
-              />
+              <Viewer src={`https://notices.tcioe.edu.np/media/files/${selectedDownload.file.split("/")[5]}`} />
             </>
           )}
         </EmbeddedContainer>
