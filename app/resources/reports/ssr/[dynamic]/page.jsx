@@ -151,19 +151,27 @@ const Page = () => {
   
         const storedReportId = localStorage.getItem("selectedReportId");
   
-        // Check if there are any reports
+        const isSamePage = window.location.pathname === `/resources/reports/ssr/${storedReportId}`;
+  
         if (sortedReports.length > 0) {
-          // Set the selected report to the first report in the sorted list (latest report) only on initial load
-          const defaultReport = storedReportId
+          const defaultReport = isSamePage
             ? sortedReports.find((report) => report.id === storedReportId) || sortedReports[0]
             : sortedReports[0];
   
           setSelectedReport(defaultReport);
           localStorage.setItem("selectedReportId", defaultReport.id);
-          window.history.pushState(null, null, `/resources/reports/ssr/${defaultReport.id}`);
+  
+          if (isSamePage) {
+            window.history.pushState(null, null, `/resources/reports/ssr/${defaultReport.id}`);
+          }
         }
   
         setReports(sortedReports);
+  
+        if (!isSamePage && sortedReports.length > 0) {
+          const defaultOpenCalendarId = sortedReports[0].id;
+          window.history.pushState(null, null, `/resources/reports/ssr/${defaultOpenCalendarId}`);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -172,7 +180,7 @@ const Page = () => {
     fetchData();
   }, []);
   
-  
+
   
   
 

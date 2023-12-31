@@ -135,6 +135,8 @@ const StyledPage = styled.div`
   }
 `;
 
+// ... (imports)
+
 const Page = () => {
   const [calendar, setCalendar] = useState([]);
   const [selectedCalendar, setSelectedCalendar] = useState(null);
@@ -144,35 +146,29 @@ const Page = () => {
       try {
         const response = await fetch("https://notices.tcioe.edu.np/api/calendar/");
         const data = await response.json();
-  
+
         const bebarchCalendar = data.filter((calendar) => calendar.calendar_level === "Bachelors in Engineering");
-  
+
         const sortedCalendars = bebarchCalendar.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
-  
-        const storedCalendarId = localStorage.getItem("selectedCalendarId");
-  
-        // Check if there are any reports
-        if (sortedCalendars.length > 0) {
-          // Set the selected report to the first report in the sorted list (latest report) only on initial load
-          const defaultCalendar = storedCalendarId
-            ? sortedCalendars.find((calendar) => calendar.id === storedCalendarId) || sortedCalendars[0]
-            : sortedCalendars[0];
-  
-          setSelectedCalendar(defaultCalendar);
-          localStorage.setItem("selectedCalendarId", defaultCalendar.id);
-          window.history.pushState(null, null, `/resources/calendar/be/${defaultCalendar.id}`);
-        }
-  
+
+        const isSamePage = window.location.pathname === `/resources/calendar/be/${localStorage.getItem("selectedCalendarId")}`;
+
+        const defaultCalendar = isSamePage
+          ? sortedCalendars.find((calendar) => calendar.id === localStorage.getItem("selectedCalendarId")) || sortedCalendars[0]
+          : sortedCalendars[0];
+
+        setSelectedCalendar(defaultCalendar);
+        localStorage.setItem("selectedCalendarId", defaultCalendar.id);
+        window.history.pushState(null, null, `/resources/calendar/be/${defaultCalendar.id}`);
+
         setCalendar(sortedCalendars);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-  
+
     fetchData();
   }, []);
-  
-  
 
   const getViewerSrc = (fileUrl) => {
     const fileName = fileUrl.split("/").pop();
@@ -201,7 +197,7 @@ const Page = () => {
         <EmbeddedContainer>
           {selectedCalendar && (
             <>
-     <Viewer src={getViewerSrc(selectedCalendar.calendar_pdf)} />
+              <Viewer src={getViewerSrc(selectedCalendar.calendar_pdf)} />
             </>
           )}
         </EmbeddedContainer>

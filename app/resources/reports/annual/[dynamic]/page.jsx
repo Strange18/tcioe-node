@@ -145,25 +145,33 @@ const Page = () => {
         const response = await fetch("https://notices.tcioe.edu.np/api/report/");
         const data = await response.json();
   
-        const selfStudyReports = data.filter((report) => report.type === "14f793b6-7897-442f-b44e-526c0b96ecc0");
+        const annualReports = data.filter((report) => report.type === "14f793b6-7897-442f-b44e-526c0b96ecc0");
   
-        const sortedReports = selfStudyReports.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
+        const sortedReports = annualReports.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
   
         const storedReportId = localStorage.getItem("selectedReportId");
   
-        // Check if there are any reports
+        const isSamePage = window.location.pathname === `/resources/reports/annual/${storedReportId}`;
+  
         if (sortedReports.length > 0) {
-          // Set the selected report to the first report in the sorted list (latest report) only on initial load
-          const defaultReport = storedReportId
+          const defaultReport = isSamePage
             ? sortedReports.find((report) => report.id === storedReportId) || sortedReports[0]
             : sortedReports[0];
   
           setSelectedReport(defaultReport);
           localStorage.setItem("selectedReportId", defaultReport.id);
-          window.history.pushState(null, null, `/resources/reports/annual/${defaultReport.id}`);
+  
+          if (isSamePage) {
+            window.history.pushState(null, null, `/resources/reports/annual/${defaultReport.id}`);
+          }
         }
   
         setReports(sortedReports);
+  
+        if (!isSamePage && sortedReports.length > 0) {
+          const defaultOpenCalendarId = sortedReports[0].id;
+          window.history.pushState(null, null, `/resources/reports/annual/${defaultOpenCalendarId}`);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -171,6 +179,8 @@ const Page = () => {
   
     fetchData();
   }, []);
+  
+
   
   
 

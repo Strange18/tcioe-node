@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { menuItems } from "@/utils/menuItems";
 import HeaderComponent from "@/components/HeaderComponent";
-import MagazineInterface from "./page2";
+import MagazineInterface from "../page2";
 
 const MagazinePageWrapper = styled.div`
   padding: 16px;

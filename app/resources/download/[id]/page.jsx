@@ -150,12 +150,14 @@ const Page = () => {
         const data = await response.json();
 
         const sortedDownloads = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        const isSamePage = window.location.pathname === `/resources/download/${localStorage.getItem("selectedDownloadId")}`;
+
 
         setDownloads(sortedDownloads);
 
         const storedSelectedDownloadId = localStorage.getItem("selectedDownloadId");
 
-        if (storedSelectedDownloadId) {
+        if (isSamePage && storedSelectedDownloadId) {
           const storedSelectedDownload = sortedDownloads.find((download) => download.id === storedSelectedDownloadId);
           if (storedSelectedDownload) {
             setSelectedDownload(storedSelectedDownload);

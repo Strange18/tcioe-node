@@ -136,8 +136,8 @@ const StyledPage = styled.div`
 `;
 
 const Page = () => {
-  const [alumni, setAlumni] = useState([]);
-  const [selectedAlumni, setSelectedAlumni] = useState(null);
+  const [reports, setReports] = useState([]);
+  const [selectedReport, setSelectedReport] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -145,25 +145,33 @@ const Page = () => {
         const response = await fetch("https://notices.tcioe.edu.np/api/report/");
         const data = await response.json();
   
-        const alumniPage = data.filter((alumni) => alumni.type === "97e712cd-26bb-4811-af60-a761cc412c2a");
+        const alumniReports = data.filter((report) => report.type === "97e712cd-26bb-4811-af60-a761cc412c2a");
   
-        const sortedAlumni = alumniPage.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
+        const sortedReports = alumniReports.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
   
-        const storedAlumniId = localStorage.getItem("selectedAlumniId");
+        const storedReportId = localStorage.getItem("selectedReportId");
   
-        // Check if there are any reports
-        if (sortedAlumni.length > 0) {
-          // Set the selected report to the first report in the sorted list (latest report) only on initial load
-          const defaultAlumni = storedAlumniId
-            ? sortedAlumni.find((alumni) => alumni.id === storedAlumniId) || sortedAlumni[0]
-            : sortedAlumni[0];
+        const isSamePage = window.location.pathname === `/alumni/${storedReportId}`;
   
-          setSelectedAlumni(defaultAlumni);
-          localStorage.setItem("selectedAlumniId", defaultAlumni.id);
-          window.history.pushState(null, null, `/alumni/${defaultAlumni.id}`);
+        if (sortedReports.length > 0) {
+          const defaultReport = isSamePage
+            ? sortedReports.find((report) => report.id === storedReportId) || sortedReports[0]
+            : sortedReports[0];
+  
+          setSelectedReport(defaultReport);
+          localStorage.setItem("selectedReportId", defaultReport.id);
+  
+          if (isSamePage) {
+            window.history.pushState(null, null, `/alumni/${defaultReport.id}`);
+          }
         }
   
-        setAlumni(sortedAlumni);
+        setReports(sortedReports);
+  
+        if (!isSamePage && sortedReports.length > 0) {
+          const defaultOpenCalendarId = sortedReports[0].id;
+          window.history.pushState(null, null, `/alumni/${defaultOpenCalendarId}`);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -172,19 +180,19 @@ const Page = () => {
     fetchData();
   }, []);
   
+
   
   
-  
-  
+
   const getViewerSrc = (fileUrl) => {
     const fileName = fileUrl.split("/").pop();
     return `https://notices.tcioe.edu.np/media/media/reports/${fileName}`;
   };
 
-  const handleCardClick = (alumni) => {
-    setSelectedAlumni(alumni);
-    localStorage.setItem("selectedAlumniId", alumni.id);
-    window.history.pushState(null, null, `/alumni/${alumni.id}`);
+  const handleCardClick = (report) => {
+    setSelectedReport(report);
+    localStorage.setItem("selectedReportId", report.id);
+    window.history.pushState(null, null, `/alumni/${report.id}`);
   };
 
   return (
@@ -192,18 +200,18 @@ const Page = () => {
       <h1>Alumni</h1>
       <Container>
         <ReportsContainer>
-          {alumni.map((alumni) => (
-            <ReportCard key={alumni.id} onClick={() => handleCardClick(alumni)}>
+          {reports.map((report) => (
+            <ReportCard key={report.id} onClick={() => handleCardClick(report)}>
               <ItemText>
-                <ItemTitle isSelected={alumni === selectedAlumni}>{alumni.title}</ItemTitle>
+                <ItemTitle isSelected={report === selectedReport}>{report.title}</ItemTitle>
               </ItemText>
             </ReportCard>
           ))}
         </ReportsContainer>
         <EmbeddedContainer>
-          {selectedAlumni && (
+          {selectedReport && (
             <>
-              <Viewer src={getViewerSrc(selectedAlumni.file)} />
+              <Viewer src={getViewerSrc(selectedReport.file)} />
             </>
           )}
         </EmbeddedContainer>
@@ -220,5 +228,3 @@ const App = () => (
 );
 
 export default App;
-
-
