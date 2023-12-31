@@ -6,29 +6,27 @@ import styled from "styled-components";
 export const CardsContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
-  gap: 6em;
+  column-gap: 6em;
+  row-gap: 4em;
   flex: 1fr 1fr 1fr;
   justify-content: center;
 `;
 
 export const Title = styled.h1`
-  width: 30%;
   color: #333333;
   font-size: 2rem;
   font-weight: bold;
   @media (max-width: 764px) {
     font-size: 1.5rem;
-    width: 50%;
   }
-  @media (max-width: 564px) {
-    font-size: 1rem;
-    width: 80%;
-  }
+  // @media (max-width: 564px) {
+  //   font-size: 1rem;
+  // }
 `;
 
 export const Wrapper = styled.section`
-  width: 95%;
-  padding: 62px;
+  width: 100%;
+  padding: 32px 64px 64px 64px;
   @media (max-width: 764px) {
     padding: 32px;
   }
@@ -38,9 +36,9 @@ export const RenderTeamCards = ({ Members, title }) => {
   return (
     <Wrapper>
       {title && (
-        <div className="flex flex-col gap-2">
+        <div className="w-fit flex flex-col gap-1 justify-center pb-12">
           <Title>{title}</Title>
-          <div className="w-60 h-[6px] bg-[#f97a01] md:w-32 md:h-[5px] sm:w-14"></div>
+          <div className="h-[5px] bg-[#f97a01]"></div>
         </div>
       )}
       <CardsContainer>

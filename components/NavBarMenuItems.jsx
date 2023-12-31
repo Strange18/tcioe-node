@@ -1,11 +1,16 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import DropDownMenu from "./DropDownMenu";
+import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 
 const NavBarMenuItems = ({ items, depthLevel }) => {
   const [dropdown, setDropdown] = useState(false);
   const dropdownRef = useRef();
   const contentRef = useRef();
+
+  const handleButtonClick = () => {
+    setDropdown((prevDropdown) => !prevDropdown);
+  };
 
   const handleMouseEnter = () => {
     setDropdown(true);
@@ -14,6 +19,7 @@ const NavBarMenuItems = ({ items, depthLevel }) => {
   const handleMouseLeave = () => {
     setDropdown(false);
   };
+
 
   return (
     <li
@@ -27,9 +33,9 @@ const NavBarMenuItems = ({ items, depthLevel }) => {
           <button type="button" aria-haspopup="menu">
             {items.title}{" "}
             {depthLevel > 0 ? (
-              <span>&#x25b6;</span>
+              <span><IoIosArrowForward /></span>
             ) : (
-              <span className="arrow" />
+                <span><IoIosArrowDown className="arrow-icon"/></span>
             )}
           </button>
           {dropdown && (
@@ -48,9 +54,9 @@ const NavBarMenuItems = ({ items, depthLevel }) => {
           href={items.url}
           target={
             items.title === "SILPA Magazine" ||
-            items.title === "Industrial Vision" ||
-            items.title === "B.E./B.Arch. Admission" ||
-            items.title === "M.Sc. Admission"
+              items.title === "Industrial Vision" ||
+              items.title === "B.E./B.Arch. Admission" ||
+              items.title === "M.Sc. Admission"
               ? "_blank"
               : "_self"
           }

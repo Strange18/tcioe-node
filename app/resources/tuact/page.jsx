@@ -19,11 +19,11 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.div`
-  width: 100%;
+  width: fit-content;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin: 24px 0;
+  gap: 4px;
+  margin-bottom: 24px;
 `;
 
 const Title = styled.div`
@@ -38,10 +38,9 @@ const Title = styled.div`
 `;
 
 const Line = styled.div`
-  height: 4px;
-  width: ${(props) => (props.width ? props.width : "100px")};
+  height: 5px;
+  width: 100%;
   background-color: #f97a00;
-  border-radius: 6px;
 `;
 
 const Container = styled.div`

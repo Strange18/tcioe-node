@@ -9,34 +9,30 @@ import HeaderComponent from "@/components/HeaderComponent";
 
 const Wrapper = styled.div`
   width: 100%;
-  padding: 16px 64px 0 64px;
+  padding: 12px 64px;
   display: flex;
   flex-direction: column;
-  gap: 0px;
-
   @media (max-width: 768px) {
-    padding: 16px 12px 0 12px;
+    padding: 12px 16px;
   }
 `;
 
 const Header = styled.div`
-  width: 100%;
+  width: fit-content;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   margin-bottom: 24px;
 `;
 const Title = styled.div`
   font-size: 2rem;
   font-weight: bold;
-  /* margin-bottom: 12px; */
   color: #181b57;
 `;
 const Line = styled.div`
-  height: 4px;
-  width: ${(props) => (props.width ? props.width : "100px")};
+  height: 5px;
+  width: 100%;
   background-color: #f97a00;
-  border-radius: 6px;
 `;
 
 const Container = styled.div`
@@ -97,7 +93,7 @@ const Item = styled(Link)`
   width: 98%;
   height: 100px;
   background-color: #f0efef;
-  border-radius: 12px;
+  border-radius: 8px;
   padding: 12px;
   display: flex;
   justify-content: space-between;
@@ -231,10 +227,10 @@ const DatePickerContainer = styled.div`
 `;
 
 const SearchButton = styled.button`
-  height: 30px;
-  border-radius: 6px;
+  height: 32px;
+  border-radius: 4px;
   background-color: #7177ff;
-  padding: 4px 12px 4px 12px;
+  padding: 4px 12px;
   font-size: 1rem;
   color: #ffffff;
   outline: none;

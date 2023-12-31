@@ -1,8 +1,7 @@
 "use client";
-
+import React from "react";
 import Objectives from "@/components/About/Sections/Objective";
 import AboutComponent from "../../../(research_facilities)/AboutComponent";
-import administrative_img from "/assets/units/administrative.png";
 
 import { RenderTeamCards } from "@/components/RenderTeamCards";
 import { useState, useEffect } from "react";
@@ -72,4 +71,3 @@ export default function page() {
     </>
   );
 }
-import React from "react";

@@ -6,9 +6,9 @@ import Link from "next/link";
 import logo from "@/assets/logo.png";
 import footervector from "@/assets/footerVector.png";
 import call from "@/assets/call.svg";
-import mail from "@/assets/mail.svg";
+import mail from "@/assets/email.svg";
 import location from "@/assets/location.svg";
-import Linkedin from "@/assets/Linkedin.svg";
+// import Linkedin from "@/assets/Linkedin.svg";
 import Facebook from "@/assets/Facebook.svg";
 
 const Footer = styled.footer`

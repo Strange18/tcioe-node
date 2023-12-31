@@ -11,8 +11,7 @@ gap-14
 lg:flex-col
 `;
 const Line = tw.div`
-  h-[6px]
-  w-[100px]
+  h-[5px]
   bg-[#f97a01]
 `;
 export const Container = tw.div`
@@ -42,7 +41,7 @@ export const Description = tw.div`
 const MVVContainer = ({ heading, title, description }) => {
   return (
     <Container>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 w-fit">
         <Heading>{heading}</Heading>
         <Line />
       </div>

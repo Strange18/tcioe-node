@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700&display=swap");
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 * {
   padding: 0;
@@ -18,16 +18,6 @@
   --font-color: #ffffff;
   --light-brown: #ddd;
   --dark-brown: #f2f2f2;
-}
-
-.header-container {
-  position: relative;
-}
-
-.header-right-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .menus {
@@ -62,12 +52,12 @@
   width: 100%;
 }
 
-button span {
-  margin-left: 3px;
+.arrow-icon {
+  margin-left: 4px;
 }
 
-.menu-items > a,
-.menu-items button {
+.menu-items button,
+.menu-items > a {
   text-align: left;
   padding: 0.7rem 1rem;
 }
@@ -78,7 +68,7 @@ button span {
   border-radius: 4px;
 }
 
-.arrow::after {
+/* .arrow::after {
   content: "";
   display: inline-block;
   margin-left: 0.28em;
@@ -86,7 +76,7 @@ button span {
   border-top: 0.42em solid;
   border-right: 0.32em solid transparent;
   border-left: 0.32em solid transparent;
-}
+} */
 
 .dropdown {
   position: absolute;
@@ -161,7 +151,7 @@ button span {
 #check {
   position: absolute;
   top: 50%;
-  right: 4rem;
+  right: 32px;
   transform: translateY(-50%);
   width: 2.5rem;
   height: 2.5rem;
@@ -201,32 +191,42 @@ button span {
     height: calc(100vh - 5.2rem);
     top: 5.2rem;
     left: 0;
-    overflow: scroll;
+    overflow-y: scroll;
     width: 100%;
     background-color: white;
-    flex-direction: column-reverse;
-    justify-content: center;
+    flex-direction: column;
     gap: 1rem;
-   
+    justify-content: flex-start;
   }
 
   .menus {
+    background-color: white;
     flex-direction: column;
+    margin-block: 4rem;
     width: 100%;
+  }
+
+  .menu-items {
+    width: 75vw;
   }
 
   .dropdown {
     position: initial;
     top: initial;
     left: initial;
-    width: 100%;
-    padding: 0 1rem;
+    width: 75vw;
   }
-
+  
   .dropdown .dropdown-submenu {
+    width: 70vw;
     position: initial;
     left: initial;
     top: initial;
-    padding: 0 1rem;
+    box-shadow: none;
+  }
+
+  .dropdown .dropdown-submenu > li{
+    width: 100%;
+    padding-inline: 1rem;
   }
 }

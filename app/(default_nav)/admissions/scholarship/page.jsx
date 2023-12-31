@@ -10,12 +10,13 @@ const Container = styled.div`
     width: 100%;
     min-height: 525px;
     display: flex;
+
     gap: 32px;
     padding: 12px 64px 12px 64px;
-
+    
     @media (max-width: 950px) {
       flex-direction: column;
-      padding: 12px 32px 12px 32px;
+      padding: 12px 16px;
     }
 `;
 
@@ -24,13 +25,12 @@ const RightContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 24px;
-    // padding: 75px 0 0px 0;
     overflow-x: auto;
     margin: 20px auto;
 `;
 
 const Heading = styled.div`
-    font-size: 28px;
+    font-size: 2rem;
     font-weight: 700;
     color: #090C4C;
     text-align: center;
@@ -70,7 +70,7 @@ const FadedParagraph = styled.p`
   color: #a9a9a9;
   font-size: 16px;
   margin-left: 20px;
-  margin-top: -20px;
+  margin-top: -10px;
 `;
 
 const LightParagraph = styled.p`
@@ -78,13 +78,13 @@ const LightParagraph = styled.p`
   font-size: 16px;
   margin-left: 20px;
   line-height: 1.2rem;
-  margin-top: -20px;
+  margin-top: -10px;
 `;
 
 const FadedOrderedList = styled.ol`
   color: #a9a9a9;
   font-size: 16px;
-  margin-top: -20px;
+  margin-top: -10px;
 
   // enumerate list items
   li {
