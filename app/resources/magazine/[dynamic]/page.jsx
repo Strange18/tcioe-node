@@ -3,17 +3,17 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { menuItems } from "@/utils/menuItems";
 import HeaderComponent from "@/components/HeaderComponent";
-import MagazineInterface from "./page2";
+import MagazineInterface from "../page2";
 
 const MagazinePageWrapper = styled.div`
-  padding: 32px 32px 64px 32px;
+  padding: 16px;
   text-align: center;
 
   h1 {
     font-size: 2rem;
     color: #2c3e50;
     font-weight: bold;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     position: relative;
     display: inline-block;
   }
@@ -23,9 +23,10 @@ const MagazinePageWrapper = styled.div`
     position: absolute;
     bottom: -4px;
     left: 50%;
-    width: 100%;
+    width: 50%;
     height: 5px;
     background-color: #f97a00;
+    border-radius: 4px;
     transform: translateX(-50%);
   }
 `;
@@ -48,7 +49,7 @@ const MagazineCard = styled.div`
   transition: transform 0.2s ease-in-out;
 
   &:hover {
-    transform: scale(1.025);
+    transform: scale(1.05);
   }
 
   @media (max-width: 1200px) {
@@ -132,7 +133,7 @@ const ViewButton = styled.a`
 
   &:hover {
     background-color: #7177ff;
-    transform: scale(1.05);
+    transform: scale(1.1);
   }
 `;
 
@@ -183,7 +184,7 @@ const MagazinePage = () => {
         />
       ) : (
         <MagazinePageWrapper>
-          <h1>Magazines</h1>
+          <h1>Magazine</h1>
           <MagazineList>
             {magazines.map((magazine) => (
               <MagazineCard key={magazine.id}>

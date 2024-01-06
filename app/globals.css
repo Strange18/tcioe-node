@@ -151,7 +151,11 @@
 #check {
   position: absolute;
   top: 50%;
+<<<<<<< HEAD
   right: 16px;
+=======
+  right: 32px;
+>>>>>>> 59cca0ad33ec0c0a977fca4ee738b100fbe65460
   transform: translateY(-50%);
   width: 2.5rem;
   height: 2.5rem;

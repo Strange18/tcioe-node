@@ -1,8 +1,10 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import HeaderComponent from "@/components/HeaderComponent";
 import { menuItems } from "@/utils/menuItems";
+import "pdfcraft/dist/index.es.css";
+import { Viewer } from "pdfcraft";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -53,7 +55,7 @@ const Container = styled.div`
   }
 `;
 
-const CalendarsContainer = styled.div`
+const ReportsContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -68,7 +70,7 @@ const CalendarsContainer = styled.div`
   }
 `;
 
-const CalendarCard = styled.div`
+const ReportCard = styled.div`
   cursor: pointer;
   height: 60px;
   background-color: #ecf0f1;
@@ -104,7 +106,8 @@ const ItemTitle = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: ${props => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
+
+  color: ${(props) => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
 
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -123,18 +126,6 @@ const EmbeddedContainer = styled.div`
   }
 `;
 
-const EmbeddedIframe = styled.iframe`
-  width: 100%;
-  height: 500px;
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 768px) {
-    height: 400px;
-  }
-`;
-
 const StyledPage = styled.div`
   background-color: #f7f7f7;
   padding-bottom: 16px;
@@ -144,8 +135,10 @@ const StyledPage = styled.div`
   }
 `;
 
+// ... (imports)
+
 const Page = () => {
-  const [calendars, setCalendars] = useState([]);
+  const [calendar, setCalendar] = useState([]);
   const [selectedCalendar, setSelectedCalendar] = useState(null);
 
   useEffect(() => {
@@ -154,19 +147,21 @@ const Page = () => {
         const response = await fetch("https://notices.tcioe.edu.np/api/calendar/");
         const data = await response.json();
 
-        const beBarchCalendars = data.filter(
-          (calendar) => calendar.calendar_level === "Bachelors in Engineering"
-        );
+        const bebarchCalendar = data.filter((calendar) => calendar.calendar_level === "Bachelors in Engineering");
 
-        const sortedCalendars = beBarchCalendars.sort((a, b) => {
-          return new Date(b.created_at) - new Date(a.created_at);
-        });
+        const sortedCalendars = bebarchCalendar.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
 
-        setCalendars(sortedCalendars);
+        const isSamePage = window.location.pathname === `/resources/calendar/be/${localStorage.getItem("selectedCalendarId")}`;
 
-        if (sortedCalendars.length > 0) {
-          setSelectedCalendar(sortedCalendars[0]);
-        }
+        const defaultCalendar = isSamePage
+          ? sortedCalendars.find((calendar) => calendar.id === localStorage.getItem("selectedCalendarId")) || sortedCalendars[0]
+          : sortedCalendars[0];
+
+        setSelectedCalendar(defaultCalendar);
+        localStorage.setItem("selectedCalendarId", defaultCalendar.id);
+        window.history.pushState(null, null, `/resources/calendar/be/${defaultCalendar.id}`);
+
+        setCalendar(sortedCalendars);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -175,35 +170,34 @@ const Page = () => {
     fetchData();
   }, []);
 
+  const getViewerSrc = (fileUrl) => {
+    const fileName = fileUrl.split("/").pop();
+    return `https://notices.tcioe.edu.np/media/media/calendars/${fileName}`;
+  };
+
   const handleCardClick = (calendar) => {
     setSelectedCalendar(calendar);
+    localStorage.setItem("selectedCalendarId", calendar.id);
+    window.history.pushState(null, null, `/resources/calendar/be/${calendar.id}`);
   };
 
   return (
     <Wrapper>
-      <h1>B.E./BArch. Academic Calendars</h1>
+      <h1>B.E./BArch. Academic Calendar</h1>
       <Container>
-        <CalendarsContainer>
-          {calendars.map((calendar) => (
-            <CalendarCard
-              key={calendar.id}
-              onClick={() => handleCardClick(calendar)}
-            >
+        <ReportsContainer>
+          {calendar.map((calendar) => (
+            <ReportCard key={calendar.id} onClick={() => handleCardClick(calendar)}>
               <ItemText>
                 <ItemTitle isSelected={calendar === selectedCalendar}>{calendar.title}</ItemTitle>
               </ItemText>
-            </CalendarCard>
+            </ReportCard>
           ))}
-        </CalendarsContainer>
+        </ReportsContainer>
         <EmbeddedContainer>
           {selectedCalendar && (
             <>
-              <EmbeddedIframe
-                title={selectedCalendar.title}
-                src={selectedCalendar.calendar_pdf}
-                frameBorder="0"
-                allowFullScreen
-              />
+              <Viewer src={getViewerSrc(selectedCalendar.calendar_pdf)} />
             </>
           )}
         </EmbeddedContainer>

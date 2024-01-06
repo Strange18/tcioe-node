@@ -1,4 +1,5 @@
-"use client";
+"use client"
+
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import HeaderComponent from "@/components/HeaderComponent";
@@ -55,7 +56,7 @@ const Container = styled.div`
   }
 `;
 
-const ReportsContainer = styled.div`
+const DownloadsContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -70,10 +71,10 @@ const ReportsContainer = styled.div`
   }
 `;
 
-const ReportCard = styled.div`
+const DownloadItem = styled.a`
   cursor: pointer;
   height: 60px;
-  background-color: #ecf0f1;
+  background-color: ${(props) => (props.isSelected ? "transparent" : "#ecf0f1")};
   border-radius: 12px;
   padding: 12px;
   display: flex;
@@ -82,13 +83,15 @@ const ReportCard = styled.div`
   gap: 12px;
   transition: 0.2s ease-in-out;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: ${(props) => (props.isSelected ? "#f97a00" : "#2c3e50")};
+
+  &:hover {
+    background-color: ${(props) => (props.isSelected ? "transparent" : "#d5dbdb")};
+  }
 
   @media (max-width: 768px) {
     height: 80px;
-  }
-
-  &:hover {
-    background-color: #d5dbdb;
   }
 `;
 
@@ -101,28 +104,29 @@ const ItemText = styled.div`
 `;
 
 const ItemTitle = styled.div`
-  font-size: 1.2rem;
+  font-size: 1rem;
+  color: ${(props) => (props.isSelected ? "#f97a00" : "#2c3e50")};
   font-weight: bold;
+  width: 100%;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-  color: ${(props) => (props.isSelected ? "#f97a00" : "#2c3e50")}; // Set color based on isSelected prop
+  white-space: normal;
+  text-align: center;
+  max-height: 100px;
 
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.9rem;
+    max-height: 80px;
   }
 `;
 
 const EmbeddedContainer = styled.div`
   flex: 3;
   max-width: 1000px;
-  margin-top: -16px;
-  align-self: flex-start;
+  margin: 16px auto;
+  align-self: center;
 
   @media (max-width: 768px) {
-    width: 100%;
-    order: 1;
+    width: calc(100% - 20px);
   }
 `;
 
@@ -136,82 +140,76 @@ const StyledPage = styled.div`
 `;
 
 const Page = () => {
-  const [reports, setReports] = useState([]);
-  const [selectedReport, setSelectedReport] = useState(null);
+  const [downloads, setDownloads] = useState([]);
+  const [selectedDownload, setSelectedDownload] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://notices.tcioe.edu.np/api/report/");
+        const response = await fetch("https://notices.tcioe.edu.np/api/resource-search/?editable=True");
         const data = await response.json();
-  
-        const alumniReports = data.filter((report) => report.type === "97e712cd-26bb-4811-af60-a761cc412c2a");
-  
-        const sortedReports = alumniReports.sort((a, b) => new Date(b.uploaded_at) - new Date(a.uploaded_at));
-  
-        const storedReportId = localStorage.getItem("selectedReportId");
-  
-        const isSamePage = window.location.pathname === `/alumni/${storedReportId}`;
-  
-        if (sortedReports.length > 0) {
-          const defaultReport = isSamePage
-            ? sortedReports.find((report) => report.id === storedReportId) || sortedReports[0]
-            : sortedReports[0];
-  
-          setSelectedReport(defaultReport);
-          localStorage.setItem("selectedReportId", defaultReport.id);
-  
-          if (isSamePage) {
-            window.history.pushState(null, null, `/alumni/${defaultReport.id}`);
+
+        const sortedDownloads = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+        const isSamePage = window.location.pathname === `/resources/download/${localStorage.getItem("selectedDownloadId")}`;
+
+
+        setDownloads(sortedDownloads);
+
+        const storedSelectedDownloadId = localStorage.getItem("selectedDownloadId");
+
+        if (isSamePage && storedSelectedDownloadId) {
+          const storedSelectedDownload = sortedDownloads.find((download) => download.id === storedSelectedDownloadId);
+          if (storedSelectedDownload) {
+            setSelectedDownload(storedSelectedDownload);
+            return;
           }
         }
-  
-        setReports(sortedReports);
-  
-        if (!isSamePage && sortedReports.length > 0) {
-          const defaultOpenCalendarId = sortedReports[0].id;
-          window.history.pushState(null, null, `/alumni/${defaultOpenCalendarId}`);
+
+        if (sortedDownloads.length > 0) {
+          setSelectedDownload(sortedDownloads[0]);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-  
+
     fetchData();
   }, []);
-  
 
-  
-  
+  useEffect(() => {
+    const handleLatestDownloadId = (downloadId) => {
+      window.history.pushState(null, null, `/resources/download/${downloadId}`);
+    };
 
-  const getViewerSrc = (fileUrl) => {
-    const fileName = fileUrl.split("/").pop();
-    return `https://notices.tcioe.edu.np/media/media/reports/${fileName}`;
-  };
-
-  const handleCardClick = (report) => {
-    setSelectedReport(report);
-    localStorage.setItem("selectedReportId", report.id);
-    window.history.pushState(null, null, `/alumni/${report.id}`);
-  };
+    if (selectedDownload) {
+      handleLatestDownloadId(selectedDownload.id);
+      localStorage.setItem("selectedDownloadId", selectedDownload.id);
+    }
+  }, [selectedDownload]);
 
   return (
     <Wrapper>
-      <h1>Alumni</h1>
+      <h1>Downloads</h1>
       <Container>
-        <ReportsContainer>
-          {reports.map((report) => (
-            <ReportCard key={report.id} onClick={() => handleCardClick(report)}>
+        <DownloadsContainer>
+          {downloads.map((download) => (
+            <DownloadItem
+              key={download.id}
+              onClick={() => {
+                setSelectedDownload(download);
+              }}
+              isSelected={download === selectedDownload}
+            >
               <ItemText>
-                <ItemTitle isSelected={report === selectedReport}>{report.title}</ItemTitle>
+                <ItemTitle isSelected={download === selectedDownload}>{download.title}</ItemTitle>
               </ItemText>
-            </ReportCard>
+            </DownloadItem>
           ))}
-        </ReportsContainer>
+        </DownloadsContainer>
         <EmbeddedContainer>
-          {selectedReport && (
+          {selectedDownload && (
             <>
-              <Viewer src={getViewerSrc(selectedReport.file)} />
+              <Viewer src={`https://notices.tcioe.edu.np/media/files/${selectedDownload.file.split("/")[5]}`} />
             </>
           )}
         </EmbeddedContainer>
