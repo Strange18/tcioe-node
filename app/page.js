@@ -5,7 +5,7 @@ import CampusImageGallery from "@/components/CampusImageGallery";
 import HeroComponent from "@/components/HeroComponent";
 import OurDepartmentsSection from "@/components/OurDepartmentsSection";
 import StudentTestimonials from "@/components/StudentTestimonials";
-
+import SuggestionBar from "@/components/SuggestionBar/SuggestionBar";
 //paxi backend bata data fetch garera pathaune
 import hero from "@/assets/Hero.png";
 import CampusCheifimage from "../assets/CC_image.png";
@@ -46,6 +46,8 @@ export default function Home() {
           }
         />
         <StudentTestimonials />
+
+        {/* <SuggestionBar /> */}
       </div>
     </>
   );
