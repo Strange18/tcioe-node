@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import {React, useState} from "react";
+import { React, useState } from "react";
 import styled from "styled-components";
 import logo from "@/assets/logo.svg";
 import Image from "next/legacy/image";
@@ -16,7 +16,7 @@ const Header = styled("header")`
   align-items: center;
   background-color: #fff;
   z-index: 100;
-  box-shadow: 0 2px 2px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
   position: sticky;
   top: 0;
   @media (max-width: 920px) {
@@ -67,25 +67,36 @@ const HeaderComponent = ({ menuItems }) => {
 
   const handleCheckboxChange = (event) => {
     setIsCheckboxChecked(event.target.checked);
-    document.body.style.overflow = event.target.checked ? 'hidden' : 'auto';
+    document.body.style.overflow = event.target.checked ? "hidden" : "auto";
   };
   return (
     <Header className="header-container">
       <Link href="/" style={{ textDecoration: "none" }}>
-        <Flexbox>
-          <Logo>
-            <Image src={logo} layout="fill" objectFit="contain" alt="" />
-          </Logo>
-          <TextContainer>
-            <MiniSubtitle>Tribhuvan University</MiniSubtitle>
-            <Subtitle>Institute of Engineering</Subtitle>
-            <Title>Thapathali Campus</Title>
-          </TextContainer>
-        </Flexbox>
+        <div>
+          <Flexbox>
+            <Logo>
+              <Image src={logo} layout="fill" objectFit="contain" alt="" />
+            </Logo>
+            <TextContainer>
+              <MiniSubtitle>Tribhuvan University</MiniSubtitle>
+              <Subtitle>Institute of Engineering</Subtitle>
+              <Title>Thapathali Campus</Title>
+            </TextContainer>
+          </Flexbox>
+          <div class="text-[8px] text-[#090d4c] flex flex-col items-center mb-2">
+            <span>Accredited By</span>
+            <span>University Grants Commission (UGC) Nepal, 2024</span>
+          </div>
+        </div>
       </Link>
 
-      <input type="checkbox" name="" id="check"  checked={isCheckboxChecked}
-          onChange={handleCheckboxChange} / >
+      <input
+        type="checkbox"
+        name=""
+        id="check"
+        checked={isCheckboxChecked}
+        onChange={handleCheckboxChange}
+      />
 
       <div className="hamburger-menu-container">
         <div className="hamburger-menu">
