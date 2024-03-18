@@ -161,10 +161,10 @@ export const menuItems = [
         title: "M.Sc. Admission",
         url: "https://mscadmission.tcioe.edu.np/2079/ ",
       },
-      {
-        title: "Fee Structure",
-        url: "/admissions/fee",
-      },
+      // {
+      //   title: "Fee Structure",
+      //   url: "/admissions/fee",
+      // },
       {
         title: "Annual Intake",
         url: "/admissions/intake",
