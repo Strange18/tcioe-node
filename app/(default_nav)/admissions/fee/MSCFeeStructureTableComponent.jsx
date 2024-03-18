@@ -76,11 +76,11 @@ const MSCFeeStructureTableComponent = () => {
         </TableHead>
         <tbody>
           <TableRow>
-            <TableData>MSDEM, MSIISE, MSEQE</TableData>
+{/*             <TableData>MSDEM, MSIISE, MSEQE</TableData>
             <TableData>21,355/-</TableData>
             <TableData>46,855/-</TableData>
             <TableData>54,175/-</TableData>
-            <TableData>$2,060</TableData>
+            <TableData>$2,060</TableData> */}
           </TableRow>
         </tbody>
       </Table>
