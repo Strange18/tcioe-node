@@ -188,6 +188,7 @@ const FooterComponent = () => {
           <LogoTextContainer>
             <LogoTextsub>Institute of Engineering</LogoTextsub>
             <LogoText>Thapathali Campus</LogoText>
+            <Description> Accredited by University Grants Commision (UGC) Nepal</Description>
             <Description> Quality Education Since 1930 A.D.</Description>
           </LogoTextContainer>
         </LogoContainer>
