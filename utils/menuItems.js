@@ -165,6 +165,10 @@ export const menuItems = [
       //   title: "Fee Structure",
       //   url: "/admissions/fee",
       // },
+      // {
+      //   title: "Fee Structure",
+      //   url: "/admissions/fee",
+      // },
       {
         title: "Annual Intake",
         url: "/admissions/intake",

@@ -14,7 +14,7 @@ import StudentTestimonials from "@/components/StudentTestimonials";
 
 const head_data = {
   post: "Department Head",
-  name: "Kiran Chandra Dahal",
+  name: "Er. Umesh Kanta Ghimire",
   message:
     " Welcome to our campus! As the Campus Head, I am delighted to have you join our vibrant community. Our campus is a place where students are encouraged to explore their passions, expand their horizons, and create lasting memories. We strive to provide a nurturing and inclusive environment that fosters academic excellence, personal growth, and holistic development. With state-of-the-art facilities, dedicated faculty members, and a wide range of co-curricular activities, we aim to empower our students to become future leaders and make a positive impact in their chosen fields.",
   photo: CampusCheifimage,
