@@ -3,9 +3,11 @@
 
 import tw from "tailwind-styled-components";
 import { useState } from "react";
-import "tailwindcss/tailwind.css";
+// Import tailwind
+import "../globals.css";
 import map_2d from "./../../assets/map/2D_View.png";
 import map_3d from "./../../assets/map/3D_View.png";
+import React from "react";
 
 import Image from "next/image";
 
