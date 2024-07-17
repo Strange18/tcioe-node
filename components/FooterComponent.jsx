@@ -211,7 +211,7 @@ const FooterComponent = () => {
               alt="icon"
               color="#ffffff"
             />
-            <ContactText>+977-01-4246307</ContactText>
+            <ContactText>+977-01-5971474</ContactText>
           </ContactItem>
           <ContactItem>
             <Image
