@@ -29,7 +29,7 @@ const usePosition = (ref) => {
 
         const update = () => {
             const rect = element.getBoundingClientRect()
-            console.log(rect)
+            // console.log(rect)
             const visibleElements = Array.from(element.children).filter(child => {
                 const childRect = child.getBoundingClientRect()
     
