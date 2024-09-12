@@ -65,7 +65,7 @@ export default function AdmissionsLayout({ children }) {
           <a href="/notices/065a727f-f46d-487e-8b76-60ca3b770766" target="_blank">BE/BArch Entrance/Admission Booklet 2081</a>
         </StyledParagraph>
         <DisclamerParagraph>
-          Disclamer: The information in this page is an unofficial translation of the IOE Entrance/Admission Booklet 2080. The official document is available at the link above.
+          Disclamer: The information in this page is an unofficial translation of the IOE Entrance/Admission Booklet 2081. The official document is available at the link above.
         </DisclamerParagraph>
       </Container>
     </>
