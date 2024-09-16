@@ -98,7 +98,7 @@ const Email = styled.h4`
 // `;
 
 const TeamCard = ({ detail }) => {
-  console.log(detail);
+  // console.log(detail);
   const { photo } = detail;
   const modifiedPhoto = photo
     ? photo.replace(

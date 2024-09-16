@@ -188,6 +188,7 @@ const FooterComponent = () => {
           <LogoTextContainer>
             <LogoTextsub>Institute of Engineering</LogoTextsub>
             <LogoText>Thapathali Campus</LogoText>
+            <Description> Accredited by University Grants Commision (UGC) Nepal</Description>
             <Description> Quality Education Since 1930 A.D.</Description>
           </LogoTextContainer>
         </LogoContainer>
@@ -211,7 +212,7 @@ const FooterComponent = () => {
               alt="icon"
               color="#ffffff"
             />
-            <ContactText>+977-01-4246307</ContactText>
+            <ContactText>+977-01-5971474</ContactText>
           </ContactItem>
           <ContactItem>
             <Image
