@@ -178,6 +178,7 @@ const RandComponent = styled.div`
 `;
 
 const FooterComponent = () => {
+  const today = new Date();
   return (
     <Footer>
       <Container>
@@ -251,7 +252,7 @@ const FooterComponent = () => {
             />
           </Link>
         </SocialMedia>
-        <Copyright>Copyright © 2023 IOE, Thapathali Campus </Copyright>
+        <Copyright>Copyright © {today.getFullYear()} IOE, Thapathali Campus </Copyright>
         <RandComponent></RandComponent>
       </BottomSection>
 

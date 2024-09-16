@@ -72,15 +72,10 @@ const Title = styled.div`
   }
 `;
 const Line = styled.div`
-  height: 4px;
-  width: ${(props) => (props.width ? props.width : "600px")};
+  height: 2px;
+  width: 100%;
   background-color: #f97a00;
   border-radius: 6px;
-
-  @media (max-width: 958px) {
-    height: 2px;
-    width: ${(props) => (props.width ? props.width : "290px")};
-  }
 `;
 
 const UnderLine = styled.div`
