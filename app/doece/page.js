@@ -24,14 +24,14 @@ const programs_data = [
     id: 1,
     name: "Bachelor of Computer Engineering",
     description: `In the program, 52 core and elective courses are offered in eight semesters. Experienced and qualified faculties are involved in the program Besides the course, the department aims at updating the knowledge of the students with the latest development in the fields of Information Technology and Computer Engineering through special lectures from experts and reputed scholars.
-         Department follows the course prepared by the Institute of Engineering for this program Academic quality and other matters of the program are controlled and guided by the university. TU awards the certificates to the successful students at the end of the program.`,
+         Department follows the course prepared by the Institute of Engineering for this program Academic quality and other matters of the program are controlled and guided by the university. TU awards the certificates to the successful students at the end of the program. The program is exclusively taught in English.`,
     image: computer,
   },
   {
     id: 2,
     name: "Bachelor of Electronics and Communication Engineering",
     description: `This is a four-year bachelor program. In this program, 50 core and elective courses are offered in eight semesters. The course comprises of lecture, laboratory exercises and site-visits. Experienced and qualified faculties provide the students with theoretical as well practical knowledge. Besides the course, the Department aims at updating the knowledge of the students with the latest development in the fields of Information Communication Technology and Electronics through special lectures from experts and reputed scholars.
-        The Department follows the courses prepared by the Institute of Engineering. Academic quality and other matters of the program are controlled and guided by the university. TU awards the certificates to the students after completing the program successfully.`,
+        The Department follows the courses prepared by the Institute of Engineering. Academic quality and other matters of the program are controlled and guided by the university. TU awards the certificates to the students after completing the program successfully. The program is exclusively taught in English.`,
     image: electronics,
   },
 ];
